@@ -1,0 +1,51 @@
+name: inspect-sources
+
+on:
+  push:
+    branches: [arena/**]
+    paths:
+      - 'scripts/inspect_sources.sh'
+      - '.github/workflows/inspect.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: inspect-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  inspect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run deep inspection
+        run: |
+          bash scripts/inspect_sources.sh 2>&1 | tee scripts/inspect_output.txt
+          echo "inspect run: $(date -u +%Y-%m-%dT%H:%M:%SZ)" >> scripts/inspect_output.txt
+          exit 0
+      - name: Commit inspect output
+        if: always()
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git checkout -B ${GITHUB_REF_NAME}
+          git add scripts/inspect_output.txt
+          if git diff --cached --quiet; then
+            echo "no changes"
+          else
+            git commit -m "inspect-results: update CC source inspection output"
+            for i in 1 2 3 4 5; do
+              if git push origin HEAD:${GITHUB_REF_NAME}; then
+                echo "pushed (attempt $i)"
+                exit 0
+              fi
+              echo "push failed (attempt $i), fetching+rebasing..."
+              git fetch origin ${GITHUB_REF_NAME}
+              git rebase FETCH_HEAD || git reset --hard FETCH_HEAD
+            done
+            echo "ALL PUSH ATTEMPTS FAILED"
+            exit 1
+          fi

@@ -1,0 +1,59 @@
+ITENS QUE EXIGEM DOWNLOAD MANUAL
+=================================
+
+Estes itens não puderam ser baixados automaticamente porque os hosts exigem
+login/conta ou assinatura. Siga os passos abaixo para completar o visual da
+Helene. (Depois de baixar, instale como os demais: .package → Mods.)
+
+--------------------------------------------------------------------
+1) THE SIMS RESOURCE (6 itens) — exige conta GRATUITA
+--------------------------------------------------------------------
+   a. Crie/entre na sua conta em: https://www.thesimsresource.com/login
+   b. Abra cada link abaixo e clique em "Download" (tem um botão de
+      "slow download" gratuito em alguns itens).
+   c. Links exatos:
+
+   ▸ 16. Holiday Snow Blush (VELYSEA)
+      https://www.thesimsresource.com/members/VELYSEA/downloads/details/category/sims4-makeup-female-blush/title/holiday-snow-blush/id/1632502/
+
+   ▸ 17. Eyeshadow N42
+      https://www.thesimsresource.com/downloads/details/category/sims4-makeup-female-eyeshadow/title/eyeshadow-n42/id/1458745/
+
+   ▸ 18. Elegante Long Hairstyle 071124 (S-CLUB)
+      https://www.thesimsresource.com/downloads/details/category/sims4-hair-hairstyles/title/elegante-long-hairstyle-071124-by-s-club/id/1721513/
+
+   ▸ 19. Eyebrows 28 v2
+      https://www.thesimsresource.com/downloads/details/category/sims4-hair-facial-eyebrows/title/eyebrows-28-v2/id/1485348/
+
+   ▸ 20. S-CLUB WM TS4 Eyelashes 201801
+      https://www.thesimsresource.com/downloads/details/category/sims4-makeup-female-eyeliner/title/s-club-wm-ts4-eyelashes-201801/id/1400406/
+
+   ▸ 21. Freckles Z53
+      https://www.thesimsresource.com/downloads/details/category/sims4-makeup-female-skindetails/title/freckles-z53/id/1658934/
+
+--------------------------------------------------------------------
+2) 3D EYELASHES N6 (Northern Siberia Winds) — Patreon
+--------------------------------------------------------------------
+   O post é exclusivo para assinantes do Patreon:
+   https://www.patreon.com/posts/3d-eyelashes-123193524
+   Se você assina o patreon do criador (https://www.patreon.com/northernsiberiawinds),
+   o arquivo "[NORTHERN SIBERIA WINDS] 3D EYELASHES N6.zip" fica disponível
+   na página do post. Caso contrário, o sim ainda funciona sem ele
+   (os cílios são opcionais para o visual da personagem).
+
+--------------------------------------------------------------------
+3) (Referência) HEATHER SKIN N7 — já incluída via Git LFS
+--------------------------------------------------------------------
+   A pele já está no repositório (pasta CCs/, arquivo 06_poyo-...package,
+   365 MB). Para baixá-la com o resto do pacote: instale o Git LFS
+   (https://git-lfs.com/) e rode `git lfs install` uma vez antes do clone.
+   Pela interface do GitHub, clique em "Download" na página do arquivo
+   06_poyo-...package (o Download ZIP do repositório NÃO inclui LFS).
+
+   Se preferir o link direto do Google Drive do criador (alternativa):
+   https://drive.usercontent.google.com/download?id=1O4qRheU3lpua7WBt5rbv6Waz2fIwdwrX&export=download&confirm=t
+   (arquivo: "[poyopoyo] Heather Skin (Skin N7).package")
+   Página do criador: https://www.patreon.com/posts/heather-skin-n7-85159474
+   Existe também a versão "Overlay":
+   https://drive.usercontent.google.com/download?id=1PDjx52k7sUvgy6V2qwk5TVEKiPtJRFau&export=download&confirm=t
+   (use a Overlay apenas se você quiser aplicar a pele sobre outra base)

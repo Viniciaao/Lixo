@@ -1,0 +1,95 @@
+== probe start 23 sources ==
+[household] Helene Dacosta - SIM (household)
+   status=200 type=text/html; charset=utf-8 len=~119279
+   final=https://www.curseforge.com/sims4/sims-households/helene-dacosta/download/8763744
+   markers=[] ['CF_200']
+[eggsims19] [EGGSIMS] earrings 19
+   status=200 type=text/html; charset=utf-8 len=~119296
+   final=https://www.curseforge.com/sims4/create-a-sim/eggsims-earrings-19/download/6496196
+   markers=[] ['CF_200']
+[sparklynails] Sparkly French Nails (4w25)
+   status=200 type=text/html; charset=utf-8 len=~119443
+   final=https://www.curseforge.com/sims4/create-a-sim/sparkly-french-nails/download/8649348
+   markers=[] ['CF_200']
+[maryjane] Shiny Patent Mary Jane Heels (PolySphere)
+   status=200 type=text/html; charset=utf-8 len=~119277
+   final=https://www.curseforge.com/sims4/create-a-sim/shiny-patent-mary-jane-heels/download/7751173
+   markers=[] ['CF_200']
+[maryjane_ah] Shiny Patent Mary Jane Heels AutoHeight
+   status=200 type=text/html; charset=utf-8 len=~119279
+   final=https://www.curseforge.com/sims4/create-a-sim/shiny-patent-mary-jane-heels/download/7751168
+   markers=[] ['CF_200']
+[avasweatshirt] Ava Sweatshirt (MissValentinee)
+   status=200 type=text/html; charset=utf-8 len=~119511
+   final=https://www.curseforge.com/sims4/create-a-sim/ava-sweatshirt/download/8177818
+   markers=[] ['CF_200']
+[gpme_c2] GPME Gold C2 (goppolsme)
+   status=403 type=text/html; charset=UTF-8 len=~0
+   final=https://www.patreon.com/posts/gpme-gold-c2-22436855
+   markers=[] []
+[nsw_n6] 3D Eyelashes N6 (NorthernSiberiaWinds)
+   status=403 type=text/html; charset=UTF-8 len=~0
+   final=https://www.patreon.com/posts/3d-eyelashes-123193524
+   markers=[] []
+[gpme_eyes] GPME Gold Eyes (goppolsme)
+   status=403 type=text/html; charset=UTF-8 len=~0
+   final=https://www.patreon.com/posts/gpme-gold-eyes-17490207
+   markers=[] []
+[heather_skin] Heather Skin N7 (poyopoyosim)
+   status=403 type=text/html; charset=UTF-8 len=~0
+   final=https://www.patreon.com/posts/heather-skin-n7-85159474
+   markers=[] []
+[phaedra_skirt] _phaedra_mini_skirt (Belaloallure)
+   status=403 type=text/html; charset=UTF-8 len=~0
+   final=https://www.patreon.com/posts/belaloallure-day-77031948
+   markers=[] []
+[lips_n35] Wild Cat Make-up / LIPS N35 (NSW)
+   status=403 type=text/html; charset=UTF-8 len=~0
+   final=https://www.patreon.com/posts/wild-cat-make-up-64319245
+   markers=[] []
+[lips_presets] _lips_presets_7f / helgatisha (obscurus)
+   status=403 type=text/html; charset=UTF-8 len=~0
+   final=https://www.patreon.com/posts/helgatisha-sims-59616486
+   markers=[] []
+[default_mouth] Default Mouth (MagicBot)
+   status=403 type=text/html; charset=UTF-8 len=~0
+   final=https://www.patreon.com/posts/default-mouth-56990147
+   markers=[] []
+[tsr_blush] Holiday Snow Blush (VELYSEA) TSR
+   status=200 type=text/html; charset=UTF-8 len=~200000
+   final=https://www.thesimsresource.com/members/VELYSEA/downloads/details/category/sims4-makeup-female-blush/title/holiday-snow-blush/id/1632502/
+   markers=['LOGIN_MARK'] []
+[tsr_eyeshadow] Eyeshadow N42 TSR
+   status=200 type=text/html; charset=UTF-8 len=~200000
+   final=https://www.thesimsresource.com/downloads/details/category/sims4-makeup-female-eyeshadow/title/eyeshadow-n42/id/1458745/
+   markers=['LOGIN_MARK'] []
+[tsr_hair] Elegante Long Hairstyle 071124 S-CLUB TSR
+   status=200 type=text/html; charset=UTF-8 len=~200000
+   final=https://www.thesimsresource.com/downloads/details/category/sims4-hair-hairstyles/title/elegante-long-hairstyle-071124-by-s-club/id/1721513/
+   markers=['LOGIN_MARK'] []
+[tsr_brows] Eyebrows 28 v2 TSR
+   status=200 type=text/html; charset=UTF-8 len=~200000
+   final=https://www.thesimsresource.com/downloads/details/category/sims4-hair-facial-eyebrows/title/eyebrows-28-v2/id/1485348/
+   markers=['LOGIN_MARK'] []
+[tsr_lashes] S-CLUB WM TS4 Eyelashes 201801 TSR
+   status=200 type=text/html; charset=UTF-8 len=~200000
+   final=https://www.thesimsresource.com/downloads/details/category/sims4-makeup-female-eyeliner/title/s-club-wm-ts4-eyelashes-201801/id/1400406/
+   markers=['LOGIN_MARK'] []
+[tsr_freckles] Freckles Z53 TSR
+   status=200 type=text/html; charset=UTF-8 len=~200000
+   final=https://www.thesimsresource.com/downloads/details/category/sims4-makeup-female-skindetails/title/freckles-z53/id/1658934/
+   markers=['LOGIN_MARK'] []
+[kijiko_sfs] [Kijiko] EA Eyelashes Remover (SimFileShare)
+   status=200 type=text/html; charset=utf-8 len=9612
+   final=https://simfileshare.net/download/3247982/
+   markers=[] []
+[kijiko_mf] [Kijiko] EA Eyelashes Remover (MediaFire)
+   status=200 type=text/html; charset=UTF-8 len=~200000
+   final=https://www.mediafire.com/file/tgp3kcs4iy2mnft/%255BKijiko%255DRemove-EA-Lashes.zip/file
+   markers=[] []
+[euno_page] eunosims body preset page
+   status=200 type=text/html;charset=UTF-8 len=48591
+   final=https://eunosims.tistory.com/entry/sims4cc-body-preset-1-5
+   markers=[] []
+== probe done ==
+probe run: 2026-09-06T20:18:44Z
