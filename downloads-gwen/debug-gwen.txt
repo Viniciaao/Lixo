@@ -1,15 +1,11 @@
-patreon 108144816 (Hair F-Hair No.9 (Hazeh)): 2 attachment ids
 patreon 141401392 (Fullbody Peach Friend (SMSims)): 0 attachment ids
 cdx 141401392: 0 snapshots
 patreon 23286338 (Convert Shoes (MadMan/magicbot)): 0 attachment ids
 cdx 23286338: 0 snapshots
-patreon 61905018 (Lipstick n33 Gloss Collection (NSW)): 16 attachment ids
 patreon 31835588 (Eyeshadow Lips+Eyelids set (ddarkstonee)): 0 attachment ids
 cdx 31835588: 7 snapshots
 patreon 31627231 (Eyeliner GPME Gold (goppolsme)): 0 attachment ids
 cdx 31627231: 0 snapshots
-patreon 64319245 (Blush Wild Cat (NSW)): 16 attachment ids
-patreon 117517959 (Teeth Default Alpha (MADMAN)): 8 attachment ids
 patreon 30029164 (Teeth alpha update 2020 (MADMAN)): 6 attachment ids
 cdx 30029164: 8 snapshots
 boosty html ddarkstonee: HTTP 200
