@@ -1,6 +1,5 @@
 """Offline regression tests: no network, paid sources or game installation needed."""
 import copy
-import io
 import json
 import struct
 import sys
@@ -247,6 +246,10 @@ class PackagingTests(unittest.TestCase):
         self.assertIn("não estão em blobs Git", output["README.md"])
         self.assertIn("115736891", output["INSTALACAO-MANUAL.txt"])
         self.assertNotIn("modsfire.com", output["LINKS-ORIGINAIS.txt"])
+        for text in output.values():
+            if text:
+                self.assertTrue(text.endswith("\n"))
+                self.assertFalse(text.endswith("\n\n"))
 
     def test_missing_source_and_false_summary_are_rejected(self):
         manifest = self.manifest()

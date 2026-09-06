@@ -296,6 +296,8 @@ class Fetcher:
         if len(lists) == 1:
             with zipfile.ZipFile(self.pack / sim["path"]) as archive:
                 content = archive.read(lists[0]["name"]).decode("utf-8-sig")
+            # This is a readable evidence copy. Original bytes/hash remain in the ZIP/manifest.
+            content = content.replace("\r\n", "\n").replace("\r", "\n").rstrip("\n") + "\n"
             (self.work / "fetch_georgia_creator_cc.txt").write_text(content, encoding="utf-8")
 
     def fetch_sfs(self, sid, number, label):

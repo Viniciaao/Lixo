@@ -238,7 +238,7 @@ fornecida no reconhecimento, não confirmação de autoria/versão/requisitos.
                            *item.get("errors", []), *item["urls"], ""])
     manual.extend(["Não foi testado no jogo. Sem os itens manuais, a aparência de Georgia pode diferir.",
                    "Escolha variantes/defaults compatíveis; não instale tudo indiscriminadamente.", ""])
-    return {"README.md": readme, "LINKS-ORIGINAIS.txt": "\n".join(links) + "\n",
+    return {"README.md": readme, "LINKS-ORIGINAIS.txt": "\n".join(links).rstrip() + "\n",
             "INSTALACAO-MANUAL.txt": "\n".join(manual), "SHA256SUMS.txt": checksums(files)}
 
 
