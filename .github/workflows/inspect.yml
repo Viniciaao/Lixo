@@ -31,6 +31,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git checkout -B ${GITHUB_REF_NAME}
           git add scripts/inspect_output.txt
           if git diff --cached --quiet; then
             echo "no changes"
@@ -39,10 +40,12 @@ jobs:
             for i in 1 2 3 4 5; do
               if git push origin HEAD:${GITHUB_REF_NAME}; then
                 echo "pushed (attempt $i)"
-                break
+                exit 0
               fi
-              echo "push failed (attempt $i), rebasing..."
-              git pull --rebase origin ${GITHUB_REF_NAME} || true
+              echo "push failed (attempt $i), fetching+rebasing..."
+              git fetch origin ${GITHUB_REF_NAME}
+              git rebase FETCH_HEAD || git reset --hard FETCH_HEAD
             done
-            echo "committed and pushed"
+            echo "ALL PUSH ATTEMPTS FAILED"
+            exit 1
           fi
