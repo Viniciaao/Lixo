@@ -29,25 +29,19 @@ jobs:
 
       - name: List results
         run: |
-          find downloads-gwen -type f -exec ls -la {} \;
+          ls -laR downloads-gwen
 
       - name: Split files over 90MB (GitHub limit)
         run: |
           cd downloads-gwen
-          find . -type f -size +90M | while read f; do
-            echo "::notice::splitting $f ($(du -h "$f" | cut -f1))"
+          find . -type f -size +90M -print0 | while IFS= read -r -d '' f; do
+            echo "splitting $f"
             split -b 90M -d "$f" "$f.part-"
             rm -f "$f"
-            cat > "$f.REMONTAR.txt" <<EOF
-Este arquivo foi dividido em partes por causa do limite de 100MB do GitHub.
-
-Para remontar:
-- Windows (cmd): copy /b $(basename $f).part-00+$(basename $f).part-01+$(basename $f).part-02 "$(basename $f)"
-  (use todas as partes, em ordem)
-- Linux/Mac: cat "$(basename $f).part-"* > "$(basename $f)"
-EOF
+            base="$f"
+            printf '%s\n' "Arquivo dividido em partes (limite de 100MB do GitHub)." "Remontar:" "  Windows cmd: copy /b $(basename "$base").part-00+$(basename "$base").part-01+demais $(basename "$base")" "  Linux/Mac: cat $(basename "$base").part-* > $(basename "$base")" > "$base.REMONTAR.txt"
           done
-          ls -la
+          true
 
       - name: Commit downloads to branch
         run: |
@@ -57,4 +51,4 @@ EOF
           git add downloads-gwen 2>/tmp/add.log || echo "::error::add: $(tail -c 300 /tmp/add.log | tr '\n' ' ')"
           git commit -m "CI: downloaded Gwen household + CC [skip ci]" 2>/tmp/commit.log || echo "::error::commit: $(tail -c 300 /tmp/commit.log | tr '\n' ' ')"
           git push origin HEAD:arena/01a07865-lixo 2>/tmp/push.log || echo "::error::push: $(tail -c 400 /tmp/push.log | tr '\n' ' ')"
-          echo "echo-concluido"
+          echo fim-do-step
