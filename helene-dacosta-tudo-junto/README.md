@@ -21,6 +21,11 @@ helene-dacosta-tudo-junto/
 ├── INSTALACAO-MANUAL.txt      ← itens que precisam de download manual (login)
 ├── SHA256SUMS.txt             ← checagem de integridade dos arquivos
 └── CCs/                       ← os arquivos prontos para instalar
+    ├── 01_SIM-Helene-Dacosta.zip   (tray → pasta Tray/)
+    ├── 02_EGGSIMS-earrings-19.zip
+    ├── 03_Sparkly-French-Nails.zip
+    ├── 04_Shiny-Patent-Mary-Jane-Heels.zip
+    ├── 05_Ava-Sweatshirt.zip
     ├── 07_Belaloallure-...        (Patreon → .package)
     ├── 08_GPME-Gold-C2-contour.package
     ├── 09_GPME-Gold-Eyes-G2.package
@@ -31,7 +36,8 @@ helene-dacosta-tudo-junto/
     └── 15_eunosims-euno-Body-preset.package
 ```
 
-Itens **01–06, 10, 16–21** estão em produção/aguardando download (ver seção de status).
+Itens **06, 10, 16–21** estão pendentes (ver seção de status) — o 06 pode entrar
+via Git LFS após nova execução do workflow de fetch.
 
 ---
 
@@ -60,11 +66,11 @@ Itens **01–06, 10, 16–21** estão em produção/aguardando download (ver se�
 
 | # | Item | Criador | Host | Status |
 |---|------|---------|------|--------|
-| 01 | Helene Dacosta (o sim/household) | Danielavlp | CurseForge | ⏳ aguardando download |
-| 02 | [EGGSIMS] earrings 19 | eggu_sims | CurseForge | ⏳ aguardando download |
-| 03 | Sparkly French Nails | 4w25 | CurseForge | ⏳ aguardando download |
-| 04 | Shiny Patent Mary Jane Heels | PolySphere | CurseForge | ⏳ aguardando download |
-| 05 | Ava Sweatshirt | MissValentinee | CurseForge | ⏳ aguardando download |
+| 01 | Helene Dacosta (o sim/household) | Danielavlp | CurseForge | ✅ baixado (tray) |
+| 02 | [EGGSIMS] earrings 19 | eggu_sims | CurseForge | ✅ baixado |
+| 03 | Sparkly French Nails | 4w25 | CurseForge | ✅ baixado |
+| 04 | Shiny Patent Mary Jane Heels | PolySphere | CurseForge | ✅ baixado |
+| 05 | Ava Sweatshirt | MissValentinee | CurseForge | ✅ baixado |
 | 06 | Heather Skin (Skin N7) | poyopoyosim | Google Drive/Patreon | ⚠️ arquivo grande (ver abaixo) |
 | 07 | `_phaedra_mini_skirt` | Belaloallure | Patreon | ✅ baixado |
 | 08 | GPME Gold C2 (contour) | goppolsme | Patreon/SimFileShare | ✅ baixado |
@@ -91,11 +97,12 @@ Legenda: ✅ baixado · ⏳ download automático pendente · 🔒 download manua
 O arquivo da pele tem **~365 MB** e o GitHub não aceita arquivos acima de 100 MB
 em repositórios comuns. Decisão em andamento:
 
-- **Opção A (Git LFS):** o arquivo entra no repositório via Git LFS — para baixá-lo
-  você precisa de `git lfs install` antes do clone.
+- **Opção A (Git LFS):** o arquivo entra no repositório via Git LFS — o workflow
+  de fetch já está configurado para rastrear `CCs/06_*` com LFS (o arquivo fica
+  disponível após a próxima execução). Para baixá-lo pelo `git clone`/`git pull`
+  você precisa ter `git lfs install` feito uma vez na sua máquina.
 - **Opção B (link direto):** link do Google Drive dela dentro deste README.
 
-Quando o download automático terminar, esta seção será atualizada com o método final.
 Download direto (se precisar agora):
 <https://drive.usercontent.google.com/download?id=1O4qRheU3lpua7WBt5rbv6Waz2fIwdwrX&export=download&confirm=t>
 
