@@ -1,0 +1,155 @@
+############ CURSEFORGE DOWNLOAD URLS ############
+### CF: https://www.curseforge.com/sims4/sims-households/helene-dacosta/download/8763744
+code=200 final=https://www.curseforge.com/sims4/sims-households/helene-dacosta/download/8763744 type=text/html; charset=utf-8
+HTTP/2 200 
+content-type: text/html; charset=utf-8
+set-cookie: __cf_bm=gNUrVHuqYwNa.MRxmT0_2lIC3QFwUYAnMl9oFvkHpFo-1788724863.7979507-1.0.1.1-xAre5Q7MBYyzGoJWo2xLFzZQ2uh2S4V6635bvlPxxDIifQQl2B2gBwTVP_30UYghHdm6p5q.8Hb4UX7EcTjzXotMfwN.EfizCXSlI1lRUFgZ02OVWI6xz6kfxSdOyboUNNm0v4bWcGNF.MJjf02p_A; HttpOnly; SameSite=None; Secure; Path=/; Domain=curseforge.com; Expires=Sun, 06 Sep 2026 20:31:04 GMT
+body-size=119290
+--- forgecdn links in body:
+https://media.forgecdn.net/navbar-image-urls/navbar-image-url_44329429-a08d-4a4c-aec9-ca2ceb0158c4.webp
+https://media.forgecdn.net/navbar-image-urls/navbar-image-url_296f17aa-2e77-4097-84be-c97879ba9410.webp
+https://media.forgecdn.net/avatars/1070/17/638605223094593241.webp
+https://media.forgecdn.net/avatars/thumbnails/2015/109/256/256/639236278367084210.png
+https://media.forgecdn.net/avatars/thumbnails/2015/109/256/256/639236278367084210.png
+--- text markers:
+      1 Seconds
+      1 seconds
+
+### CF: https://www.curseforge.com/sims4/create-a-sim/eggsims-earrings-19/download/6496196
+code=200 final=https://www.curseforge.com/sims4/create-a-sim/eggsims-earrings-19/download/6496196 type=text/html; charset=utf-8
+HTTP/2 200 
+content-type: text/html; charset=utf-8
+set-cookie: __cf_bm=G94HkbAwqx4p8xKcXUE3_CN77kS36xkUQL9S47b9vbs-1788724864.2124596-1.0.1.1-46GkQ4r__nrjqb.QtDt4B8o8ZpvoThy6la0HziO07ljSw4zTelMFZ5u11VeLyD8Z0DITGJ6.4R9ThnwjGh1ODLp2AbATUnmLyPVBEULKRJAUS79f8NW_qM98lRm4U38cWBm1WPiraLZrUJwWvrrDIA; HttpOnly; SameSite=None; Secure; Path=/; Domain=curseforge.com; Expires=Sun, 06 Sep 2026 20:31:04 GMT
+body-size=119281
+--- forgecdn links in body:
+https://media.forgecdn.net/navbar-image-urls/navbar-image-url_44329429-a08d-4a4c-aec9-ca2ceb0158c4.webp
+https://media.forgecdn.net/navbar-image-urls/navbar-image-url_296f17aa-2e77-4097-84be-c97879ba9410.webp
+https://media.forgecdn.net/avatars/1070/17/638605223094593241.webp
+https://media.forgecdn.net/avatars/thumbnails/1279/907/256/256/638832301690115101.png
+https://media.forgecdn.net/avatars/thumbnails/1279/907/256/256/638832301690115101.png
+--- text markers:
+      1 Seconds
+      1 seconds
+
+### CF: https://www.curseforge.com/sims4/create-a-sim/sparkly-french-nails/download/8649348
+code=200 final=https://www.curseforge.com/sims4/create-a-sim/sparkly-french-nails/download/8649348 type=text/html; charset=utf-8
+HTTP/2 200 
+content-type: text/html; charset=utf-8
+set-cookie: __cf_bm=G1aImcHvJ28bWtD7XFfpVuX5FzToPg45df62CVpXigk-1788724864.3633606-1.0.1.1-XxkQvGe5fgY5IkVPUmSRgmSaJXxcsvfpZntvar3bVmUoeADUaEXnAcVqhzinv3HMbKpG8q6pxQ3WjR051uuYyz9Mpl6HLGD_LKN4c8NINviL.ue_duJGrIt7K4FFPvle3JDn7pXWJgfa6OH8FrolMQ; HttpOnly; SameSite=None; Secure; Path=/; Domain=curseforge.com; Expires=Sun, 06 Sep 2026 20:31:04 GMT
+body-size=119460
+--- forgecdn links in body:
+https://media.forgecdn.net/navbar-image-urls/navbar-image-url_44329429-a08d-4a4c-aec9-ca2ceb0158c4.webp
+https://media.forgecdn.net/navbar-image-urls/navbar-image-url_296f17aa-2e77-4097-84be-c97879ba9410.webp
+https://media.forgecdn.net/avatars/1070/17/638605223094593241.webp
+https://media.forgecdn.net/avatars/thumbnails/1779/148/256/256/639129057860940462.png
+https://media.forgecdn.net/avatars/thumbnails/1779/148/256/256/639129057860940462.png
+--- text markers:
+      1 Seconds
+      1 seconds
+
+### CF: https://www.curseforge.com/sims4/create-a-sim/shiny-patent-mary-jane-heels/download/7751173
+code=200 final=https://www.curseforge.com/sims4/create-a-sim/shiny-patent-mary-jane-heels/download/7751173 type=text/html; charset=utf-8
+HTTP/2 200 
+content-type: text/html; charset=utf-8
+set-cookie: __cf_bm=6rCUnz0S9SZtjGJ3oNPK0TqwyoacsWh7tQCuF8g6Zmc-1788724864.566694-1.0.1.1-HZp8yPKw0ubHRJWY4Pr4_Eklbxw6cCxG9E92.9OYD.xo_xNeMowUojdQvDY0klxpsuNRY5WdaYIZFxvF1H3VMi7F117HeAM86Fpxq8Mxv57Wv8Q5hC5sr_R_7yxAIE1Dzj5GkpM1D1t7cRordlsjDw; HttpOnly; SameSite=None; Secure; Path=/; Domain=curseforge.com; Expires=Sun, 06 Sep 2026 20:31:04 GMT
+body-size=119273
+--- forgecdn links in body:
+https://media.forgecdn.net/navbar-image-urls/navbar-image-url_44329429-a08d-4a4c-aec9-ca2ceb0158c4.webp
+https://media.forgecdn.net/navbar-image-urls/navbar-image-url_296f17aa-2e77-4097-84be-c97879ba9410.webp
+https://media.forgecdn.net/avatars/1070/17/638605223094593241.webp
+https://media.forgecdn.net/avatars/thumbnails/1645/649/256/256/639051032788357278.png
+https://media.forgecdn.net/avatars/thumbnails/1645/649/256/256/639051032788357278.png
+--- text markers:
+      1 Seconds
+      1 seconds
+
+### CF: https://www.curseforge.com/sims4/create-a-sim/ava-sweatshirt/download/8177818
+code=200 final=https://www.curseforge.com/sims4/create-a-sim/ava-sweatshirt/download/8177818 type=text/html; charset=utf-8
+HTTP/2 200 
+content-type: text/html; charset=utf-8
+set-cookie: __cf_bm=beV5tQmE_Tp0mxFmNklmUN8PLkvLlbhXhUUvkfGTRf8-1788724864.727368-1.0.1.1-Bv3faymbY1DDXpfzVsOLCTWB3qAWO95vzcjacFGBhMlcL.l4p1uEiCWkeYNdmngxrMkOUc4gQz4CYXiu7evhBYLFtNK2qqER6vxOJ6npUG89ZbU.n7xxMEQeo0vyznhAuXLz9ooIxYFFiS0uoieLVQ; HttpOnly; SameSite=None; Secure; Path=/; Domain=curseforge.com; Expires=Sun, 06 Sep 2026 20:31:04 GMT
+body-size=119523
+--- forgecdn links in body:
+https://media.forgecdn.net/navbar-image-urls/navbar-image-url_44329429-a08d-4a4c-aec9-ca2ceb0158c4.webp
+https://media.forgecdn.net/navbar-image-urls/navbar-image-url_296f17aa-2e77-4097-84be-c97879ba9410.webp
+https://media.forgecdn.net/avatars/1070/17/638605223094593241.webp
+https://media.forgecdn.net/avatars/thumbnails/1838/140/256/256/639158660646256169.png
+https://media.forgecdn.net/avatars/thumbnails/1838/140/256/256/639158660646256169.png
+--- text markers:
+      1 Seconds
+      1 seconds
+
+############ PATREON (browser-like curl) ############
+### PATREON: https://www.patreon.com/posts/gpme-gold-c2-22436855
+html code=403 size=5828
+
+### PATREON: https://www.patreon.com/posts/3d-eyelashes-123193524
+html code=403 size=5831
+
+### PATREON: https://www.patreon.com/posts/gpme-gold-eyes-17490207
+html code=403 size=5834
+
+### PATREON: https://www.patreon.com/posts/heather-skin-n7-85159474
+html code=403 size=5837
+
+### PATREON: https://www.patreon.com/posts/belaloallure-day-77031948
+html code=403 size=5840
+
+### PATREON: https://www.patreon.com/posts/wild-cat-make-up-64319245
+html code=403 size=5840
+
+### PATREON: https://www.patreon.com/posts/helgatisha-sims-59616486
+html code=403 size=5837
+
+### PATREON: https://www.patreon.com/posts/default-mouth-56990147
+html code=403 size=5831
+
+############ PATREON API ############
+### API post 22436855
+api code=200 size=17497
+{"data":{"id":"22436855","type":"post","attributes":{"attachments_preview_metadata":[],"autopilot_controlled_unlock_state":null,"comment_count":0,"content":null,"content_json_string":"{\"type\":\"doc\",\"content\":[{\"type\":\"paragraph\",\"content\":[{\"type\":\"text\",\"text\":\"GPME-GOLD Cheekbones Contour C2\u00a0\"}]},{\"type\":\"bulletList\",\"content\":[{\"type\":\"listItem\",\"content\":[{\"type\":\"paragraph\",\"content\":[{\"type\":\"text\",\"marks\":[{\"type\":\"link\",\"attrs\":{\"href\":\"http://www.simfileshare.net/download/807916/\",\"target\":\"_blank\"}},{\"type\":\"bold\"}],\"text\":\"Download\"},{\"type\":\"text\",\"text\":\" \u00a0(no ad)\u00a0\"}]}]},{\"type\":\"listItem
+
+### API post 123193524
+api code=200 size=19351
+{"data":{"id":"123193524","type":"post","attributes":{"attachments_preview_metadata":[{"file_name":"[NORTHERN SIBERIA WINDS] 3D EYELASHES N1.zip","mimetype":"application","size_bytes":7878448},{"file_name":"[NORTHERN SIBERIA WINDS] 3D EYELASHES N2.zip","mimetype":"application","size_bytes":8492516},{"file_name":"[NORTHERN SIBERIA WINDS] 3D EYELASHES N3.zip","mimetype":"application","size_bytes":7026259},{"file_name":"[NORTHERN SIBERIA WINDS] 3D EYELASHES N4.zip","mimetype":"application","size_bytes":9396614},{"file_name":"[NORTHERN SIBERIA WINDS] 3D EYELASHES N5.zip","mimetype":"application","size_bytes":7905195},{"file_name":"[NORTHERN SIBERIA WINDS] 3D EYELASHES N6.zip","mimetype":"applica
+
+### API post 17490207
+api code=200 size=17727
+{"data":{"id":"17490207","type":"post","attributes":{"attachments_preview_metadata":[],"autopilot_controlled_unlock_state":null,"comment_count":0,"content":null,"content_json_string":"{\"type\":\"doc\",\"content\":[{\"type\":\"paragraph\",\"content\":[{\"type\":\"text\",\"text\":\"GPME-GOLD Eyes G2\"}]},{\"type\":\"bulletList\",\"content\":[{\"type\":\"listItem\",\"content\":[{\"type\":\"paragraph\",\"content\":[{\"type\":\"text\",\"text\":\"30 Swatches\"}]}]},{\"type\":\"listItem\",\"content\":[{\"type\":\"paragraph\",\"content\":[{\"type\":\"text\",\"marks\":[{\"type\":\"link\",\"attrs\":{\"href\":\"http://simfileshare.net/download/472891/\",\"target\":\"_blank\"}}],\"text\":\"Download\"},
+
+### API post 85159474
+api code=200 size=21478
+{"data":{"id":"85159474","type":"post","attributes":{"attachments_preview_metadata":[],"autopilot_controlled_unlock_state":null,"comment_count":4,"content":null,"content_json_string":"{\"type\":\"doc\",\"content\":[{\"type\":\"paragraph\",\"content\":[{\"type\":\"image\",\"attrs\":{\"alignment\":null,\"alt\":null,\"caption\":null,\"height\":null,\"link\":null,\"media_height\":null,\"media_id\":\"211936055\",\"media_width\":null,\"node_type\":\"inline\",\"src\":\"https://c10.patreonusercontent.com/4/patreon-media/p/post/85159474/a6f3ba9512d84f2fac9a8b7f91650f6e/eyJhIjoxLCJ3Ijo4MjB9/1.png?token-hash=3Ff-ljdQCl_hh6UTiQcyiQZxzsNqo5NmhUqiyLheBVY%3D&token-time=1789948800\",\"width\":null}}]},{\"ty
+
+### API post 77031948
+api code=200 size=37466
+{"data":{"id":"77031948","type":"post","attributes":{"attachments_preview_metadata":[{"file_name":"Belaloallure_Daniela_door_dress.package","mimetype":"application","size_bytes":16080092},{"file_name":"Belaloallure_phaedra_leather_top.package","mimetype":"application","size_bytes":6518632},{"file_name":"Belaloallure_phaedra_mini_skirt.package","mimetype":"application","size_bytes":4170760},{"file_name":"Belaloallure_Rufeida_corset_shirt.package","mimetype":"application","size_bytes":48993415},{"file_name":"Belaloallure_Rufeida_mini_leather_skirt.package","mimetype":"application","size_bytes":2791814}],"autopilot_controlled_unlock_state":null,"comment_count":9,"content":null,"content_json_str
+
+### API post 64319245
+api code=200 size=83234
+{"data":{"id":"64319245","type":"post","attributes":{"attachments_preview_metadata":[{"file_name":"[NorthernSiberiaWinds] EYELIDS N11.package","mimetype":"application","size_bytes":22728431},{"file_name":"[NorthernSiberiaWinds] EYELIDS N12.package","mimetype":"application","size_bytes":29822700},{"file_name":"[NorthernSiberiaWinds] NOSEMASK N6.package","mimetype":"application","size_bytes":8147312},{"file_name":"[NorthernSiberiaWinds] LIPS N34.package","mimetype":"application","size_bytes":3369075},{"file_name":"[NorthernSiberiaWinds] LIPS N35.package","mimetype":"application","size_bytes":3742201},{"file_name":"[NorthernSiberiaWinds] LIPS BLOOD N1.package","mimetype":"application","size_byt
+
+### API post 59616486
+api code=200 size=21468
+{"data":{"id":"59616486","type":"post","attributes":{"attachments_preview_metadata":[],"autopilot_controlled_unlock_state":null,"comment_count":12,"content":null,"content_json_string":"{\"type\":\"doc\",\"content\":[{\"type\":\"heading\",\"content\":[{\"type\":\"hardBreak\"}],\"attrs\":{\"level\":3}},{\"type\":\"heading\",\"content\":[{\"type\":\"text\",\"text\":\"Here is my part! Check out \"},{\"type\":\"text\",\"marks\":[{\"type\":\"bold\"}],\"text\":\"her!\"},{\"type\":\"text\",\"text\":\"(link coming soon)\"}],\"attrs\":{\"level\":3}},{\"type\":\"paragraph\",\"content\":[{\"type\":\"text\",\"marks\":[{\"type\":\"bold\"}],\"text\":\"EYES PRESETS 5f:\"},{\"type\":\"text\",\"text\":\" 3 pr
+
+### API post 56990147
+api code=200 size=21510
+{"data":{"id":"56990147","type":"post","attributes":{"attachments_preview_metadata":[],"autopilot_controlled_unlock_state":null,"comment_count":38,"content":null,"content_json_string":"{\"type\":\"doc\",\"content\":[{\"type\":\"image\",\"attrs\":{\"alignment\":null,\"alt\":null,\"caption\":null,\"height\":null,\"link\":null,\"media_height\":80,\"media_id\":\"124732577\",\"media_width\":1848,\"node_type\":\"block\",\"src\":\"https://c10.patreonusercontent.com/4/patreon-media/p/post/56990147/264b1cf0b4ef4a1e92374e45dfd2cd5e/eyJhIjoxLCJ3Ijo4MjB9/1.png?token-hash=JMQVwQLftpK6SVKFZ53CC5zI8ocv_7gYLdCiNAWSlfE%3D&token-time=1789948800\",\"width\":null}},{\"type\":\"heading\",\"content\":[{\"type\":\
+
+############ TISTORY / KAKAO ############
+tistory code=200
+--- package links:
+https://blog.kakaocdn.net/dna/bpAt8L/btsMIbBwbIl/AAAAAAAAAAAAAAAAAAAAAFNHYCkka2RztvWlFXtwaqhSAXIS0lgLlrhNtokJrCEz/euno%20Body%20preset%201-4.package?credential=yqXZFxpELC7KVnFOS48ylbz2pIh7yKj8&expires=1790780399&allow_ip=&allow_referer=&signature=e%2Bhp59YDFfEHwClmQBqffCfKqFo%3D&attach=1&knm=tfile.package
+
+############ MEDIAFIRE API (kijiko) ############
+mf code=400
+{"response":{"action":"file\/get","message":"Unknown or invalid API method","error":253,"result":"Error","current_api_version":"1.5"}}
+
+############ SIMFILESHARE (kijiko) ############
+sfs code=200 final=https://simfileshare.net/download/3247982/
+--- forms/actions/download links:
+href="https://cdn.simfileshare.net/download/3247982/?dl"
+
+############ DONE ############
+inspect run: 2026-09-06T20:01:10Z
