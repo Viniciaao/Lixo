@@ -116,3 +116,19 @@ Azure dos artifacts recusou a conexão (`EOF`). A validação binária completa 
 executada no runner; não declarar que os binários foram verificados localmente.
 O pacote completo de arquivos públicos deve ser obtido pelo artifact no navegador
 ou por `gh run download` em uma máquina com acesso a esse armazenamento.
+
+A segunda execução (`34062870040`) validou 55 arquivos / 502.465.421 bytes,
+incluindo as **24 máscaras** do Drive. Restou somente o item 21: a API pública
+agora entrega seu corpo em `content_json_string` (ProseMirror), com `content=null`.
+O parser passou a ler os links desse formato também; isso não é conteúdo bloqueado.
+
+A lista **original**, `Georgia/Georgia CC.txt`, foi extraída do ZIP validado como
+`work/fetch_georgia_creator_cc.txt`. Ela confirma os URLs completos do TSR e os
+posts originais de goppolsme (`44511936`, `19279776`), Simandy (Tumblr
+`630272666330415104`) e sims3melancholic (`96600228`), agora registrados nas fontes.
+Também revela duas ressalvas importantes:
+
+- Item 04 é chamado de “Fullbody” e “[tabae]clothes01”, mas o link fornecido é
+  **Belaloallure Rina Sweatpants**; confirmar a correspondência manualmente.
+- Item 11 cita **Mikooi Sims**, `16154-realistic-female-body-details`, sem URL.
+  Não assumir que seja Miiko ou que o guia/mirror recebido identifique a versão.

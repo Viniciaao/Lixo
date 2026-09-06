@@ -43,7 +43,15 @@ def patreon(post):
 
 
 def tsr(post):
-    return f"https://www.thesimsresource.com/downloads/details/category/sims4/id/{post}/"
+    # Exact URLs from Georgia/Georgia CC.txt inside the verified household ZIP.
+    routes = {
+        1766849: "sims4-hair-hairstyles/title/s-club-031226-double-ponytail",
+        1486209: "sims4-clothing-female-teenadultelder-everyday/title/belaloallure-rina-sweatpants",
+        1459200: "sims4-eyecolors/title/cytosine-eyes",
+        1355997: "sims4-makeup-female-skindetails/title/soft-face-freckles-hq",
+        1770164: "sims4/title/venerian-tea-time-lashes-hq",
+    }
+    return f"https://www.thesimsresource.com/downloads/details/category/{routes.get(post, 'sims4')}/id/{post}/"
 
 
 SOURCES = [
@@ -52,19 +60,20 @@ SOURCES = [
     source(2, "Hair S-Club 031226 Double Ponytail", "S-Club", [tsr(1766849)], "manual", "TSR: download manual conforme acesso da sua conta."),
     source(3, 'Teeth "Normal" — alpha teeth', "MagicBot", ["https://simfileshare.net/folder/235489/", patreon(117517959)],
            note="Variantes DEFAULT e NON-DEFAULT: não instalar todos os defaults juntos."),
-    source(4, "Fullbody Rina Sweatpants", "Belaloallure (tabae)", [tsr(1486209)], "manual", "TSR: download manual conforme acesso da sua conta."),
+    source(4, "Rina Sweatpants (Fullbody na lista do sim)", "Belaloallure; lista cita [tabae]clothes01", [tsr(1486209)], "manual",
+           "A lista original chama o item Fullbody e cita [tabae]clothes01, mas fornece este link de Rina Sweatpants. Confirmar a correspondência/variante com o criador do sim; download manual TSR."),
     source(5, "Leo levis shoes conversion", "MadMan / MagicBot", [patreon(23286338)], note="Preferir o arquivo FIX F+M publicado pelo criador."),
-    source(6, "GPME-GOLD MAKEUP SET CC31", "goppolsme", ["https://simfileshare.net/download/2172979/"]),
+    source(6, "GPME-GOLD MAKEUP SET CC31", "goppolsme", [patreon(44511936), "https://simfileshare.net/download/2172979/"]),
     source(7, "Basics Please — eyeshadows", "TwistedCat", [patreon(63321024)], note="EyeLid / Full / OuterEdge: alternativas do mesmo conjunto."),
-    source(8, "GPME-GOLD Liner cc10", "goppolsme", ["https://simfileshare.net/download/568017/"]),
+    source(8, "GPME-GOLD Liner cc10", "goppolsme", [patreon(19279776), "https://simfileshare.net/download/568017/"]),
     source(9, "WILD CAT — BLUSH N7", "Northern Siberia Winds", [patreon(64319245)], note="Selecionar BLUSH N7, não as peles/maquiagens restantes do post."),
     source(10, "Cytosine Eyes — facepaint", "RemusSirion", [tsr(1459200)], "manual", "TSR: download manual conforme acesso da sua conta."),
-    source(11, "Realistic Female Body Details", "Mikooi / Miiko (atribuição a confirmar)",
+    source(11, "Realistic Female Body Details (16154)", "Mikooi Sims (conforme lista do sim)",
            ["https://bestsimsmods.com/sims-4-mikkoi-female-body-details-6-0/"], "manual",
-           "Referência recebida, não validada: conteúdo adulto, ~273 MB; possível requisito Get Famous. Confirmar versão, autoria e requisitos na fonte original. Mirror não usado."),
+           "A lista original cita Mikooi Sims e 16154-realistic-female-body-details, sem link. O guia recebido não foi validado: conteúdo adulto, ~273 MB e possível Get Famous são informações a confirmar na fonte original. Não confundir automaticamente com Miiko; mirror não usado."),
     source(12, "misc. face details", "okruee", [patreon(71370172)], note="TATTOO / OCCULT / SKINDETAIL: escolher a categoria desejada."),
     source(13, "Lighting Overlay 2.0", "jo_se_oh", [patreon(94005453)], note="TRUE BLACK e COLOR: variantes; conferir instruções do criador."),
-    source(14, "In game shadow — face shadow", "Simandy", [patreon(42027501)], note="O post oferece opções; não são 16 dependências independentes."),
+    source(14, "In game shadow — face shadow", "Simandy", ["https://simandy.tumblr.com/post/630272666330415104/because-every-time-i-look-at-photoshop-i-want-to", patreon(42027501)], note="O post oferece opções em 3 arquivos/categorias; não são 16 dependências independentes."),
     source(15, "Soft Face Freckles HQ", "alf-si", [tsr(1355997)], "manual", "TSR: download manual conforme acesso da sua conta."),
     source(16, "Bodycare Kit — seleção feminina", "Northern Siberia Winds", [patreon(93373994)],
            note="Seleção de nomes FEMALE / CLEAVAGE / BODY PRESET, excluindo MALE quando não FEMALE. Escolher variantes/presets no CAS."),
@@ -73,9 +82,9 @@ SOURCES = [
            "O post original foi atualizado em 31/05/2026 e remete ao post 115736891: exige entrar/participar como membro gratuito. Baixar manualmente as variantes N6 straight/curly/extra conforme o criador; não é indicação de assinatura paga."),
     source(19, "Eyebrows 33–41", "alf-si / ANGISSI", ["https://alf-si.tumblr.com/post/614674051815849984", tsr(1561164), tsr(1561412), tsr(1561566)],
            "manual", "Mapeamento recebido confirma somente links candidatos n33/n34/n35. n36–41 e a variante usada pelo sim ainda precisam de confirmação manual; não substituí-las silenciosamente."),
-    source(20, "Cleavage Masks Collection", "sims3melancholic", [f"https://drive.google.com/drive/folders/{DRIVE_FOLDER}"],
+    source(20, "Cleavage Masks Collection", "sims3melancholic", [patreon(96600228), f"https://drive.google.com/drive/folders/{DRIVE_FOLDER}"],
            note="A pasta pública atual contém CLEAVAGE MASKS #1-6, com subpastas OVERLAYS/SKIN COLORS e categorias SCARS/TATTOO. São alternativas; não sobrepor todas."),
-    source(21, "Nosemask N10 + overlay + presets", "obscurus", [patreon(26574490), "https://simfileshare.net/folder/66108/"],
+    source(21, "Nosemask N10 + overlay + presets", "obscurus", ["https://obscurus-sims.tumblr.com/post/184629124468/nosemask-n10-70-colors-all-ages-all-genders", patreon(26574490), "https://simfileshare.net/folder/66108/"],
            note="O post público aponta ao SFS: nosemask N10 LRLE, overlay e um .package com os quatro presets. 70 cores / HQ compatível conforme o criador; escolher no CAS."),
 ]
 
@@ -137,6 +146,27 @@ def sanitized_error(error):
         parsed = urlsplit(match.group(0))
         return urlunsplit((parsed.scheme, parsed.netloc, parsed.path, "", ""))
     return re.sub(r"https?://[^\s\"']+", redact, str(error))[:700]
+
+
+def post_link_urls(attributes):
+    """Patreon now returns some public bodies as ProseMirror JSON, not HTML."""
+    parser = Links()
+    parser.feed(attributes.get("content") or "")
+    urls = [href for href, _ in parser.links]
+    rich_text = attributes.get("content_json_string")
+    if rich_text:
+        pending = [json.loads(rich_text)]
+        while pending:
+            node = pending.pop()
+            if isinstance(node, list):
+                pending.extend(node)
+            elif isinstance(node, dict):
+                if node.get("type") == "link":
+                    href = node.get("attrs", {}).get("href")
+                    if isinstance(href, str):
+                        urls.append(href)
+                pending.extend(value for value in node.values() if isinstance(value, (dict, list)))
+    return list(dict.fromkeys(urls))
 
 
 def public_attachments(document):
@@ -305,11 +335,10 @@ class Fetcher:
         self.items[number]["selected_names"] = [a["name"] for a in selected]
         self.log(f"[{number}] {len(selected)}/{len(attachments)} attachments matched; public access confirmed")
         if not selected and number == "21":
-            parser = Links()
-            parser.feed(document["data"]["attributes"].get("content") or "")
+            links = post_link_urls(document["data"]["attributes"])
             # Only follow the folder explicitly linked by the public author post.
             if not any(urlsplit(href).hostname in {"simfileshare.net", "www.simfileshare.net"}
-                       and urlsplit(href).path.rstrip("/") == "/folder/66108" for href, _ in parser.links):
+                       and urlsplit(href).path.rstrip("/") == "/folder/66108" for href in links):
                 raise ValueError("author post no longer links the expected SFS folder 66108")
             self.items[number]["resolved_folder"] = "https://simfileshare.net/folder/66108/"
             self.fetch_sfs_folder("66108", number, label, [

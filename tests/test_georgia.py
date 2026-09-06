@@ -11,7 +11,7 @@ from pathlib import Path
 from unittest.mock import MagicMock, patch
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
-from fetch_georgia import SOURCES, Fetcher, Links, PublicUnavailable, attachment_selected, clean_name, public_attachments, sanitized_error
+from fetch_georgia import SOURCES, Fetcher, Links, PublicUnavailable, attachment_selected, clean_name, post_link_urls, public_attachments, sanitized_error
 from georgia_validation import safe_member, sniff_extension, validate_dbpf, validate_file
 from package_georgia import check_manifest, render, verify_payloads
 
@@ -200,6 +200,14 @@ class DownloadTests(unittest.TestCase):
                 download.assert_not_called()
             fetcher.session.close()
 
+    def test_patreon_rich_text_links_not_image_urls(self):
+        url = "http://simfileshare.net/folder/66108/"
+        document = {"type": "doc", "content": [
+            {"type": "text", "marks": [{"type": "link", "attrs": {"href": url}}]},
+            {"type": "image", "attrs": {"src": "https://example.com/image?token=secret"}},
+        ]}
+        self.assertEqual(post_link_urls({"content": None, "content_json_string": json.dumps(document)}), [url])
+
     def test_nosemask_follows_only_authors_expected_sfs_link(self):
         with tempfile.TemporaryDirectory() as root:
             fetcher = Fetcher(Path(root) / "pack", Path(root) / "work")
@@ -210,6 +218,12 @@ class DownloadTests(unittest.TestCase):
             with patch.object(fetcher, "get", return_value=response), patch.object(fetcher, "fetch_sfs_folder") as folder, patch("builtins.print"):
                 fetcher.fetch_patreon("26574490", "21", "nosemask", None)
                 self.assertEqual(folder.call_args.args[0], "66108")
+                document["data"]["attributes"]["content"] = None
+                document["data"]["attributes"]["content_json_string"] = json.dumps({
+                    "type": "doc", "content": [{"type": "text", "marks": [{"type": "link", "attrs": {"href": "http://simfileshare.net/folder/66108/"}}]}]})
+                fetcher.fetch_patreon("26574490", "21", "nosemask", None)
+                self.assertEqual(folder.call_count, 2)
+                document["data"]["attributes"]["content_json_string"] = None
                 document["data"]["attributes"]["content"] = '<a href="https://evil.example/folder/66108/">DL</a>'
                 with self.assertRaises(ValueError):
                     fetcher.fetch_patreon("26574490", "21", "nosemask", None)
