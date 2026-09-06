@@ -26,8 +26,15 @@ jobs:
       - name: Fetch CC sources
         run: |
           mkdir -p work
-          python3 scripts/fetch_sources.py 2>&1 | tee work/fetch_log.txt
-          echo "fetch run: $(date -u +%Y-%m-%dT%H:%M:%SZ)" >> work/fetch_log.txt
+          set +e
+          python3 scripts/fetch_sources.py > work/fetch_log.txt 2>&1
+          rc=$?
+          set -e
+          echo "fetch-exit=$rc run: $(date -u +%Y-%m-%dT%H:%M:%SZ)" >> work/fetch_log.txt
+          echo "--- log tail ---"
+          tail -60 work/fetch_log.txt
+          echo "--- end log ---"
+          exit 0
       - name: Commit fetched files
         if: always()
         run: |
