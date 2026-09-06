@@ -2,3 +2,10 @@ __pycache__/
 *.pyc
 *.part
 .pytest_cache/
+
+# Georgia: binary downloads and local tooling live outside ordinary Git blobs.
+.cache/
+.venv/
+georgia-tudo-junto/CCs/
+georgia-tudo-junto.zip
+work/georgia-artifacts/

@@ -1,0 +1,85 @@
+name: fetch-georgia
+
+on:
+  push:
+    branches: [arena/01a078ab-lixo]
+    paths:
+      - 'scripts/fetch_georgia.py'
+      - 'scripts/georgia_validation.py'
+      - 'scripts/package_georgia.py'
+      - 'scripts/requirements-georgia.txt'
+      - 'tests/test_georgia.py'
+      - '.github/workflows/fetch-georgia.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: fetch-georgia-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  fetch:
+    if: github.ref == 'refs/heads/arena/01a078ab-lixo'
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
+          fetch-depth: 0
+          lfs: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install dependencies
+        run: |
+          python -m pip install -r scripts/requirements-georgia.txt
+          if ! command -v 7z && ! command -v 7zz; then
+            sudo apt-get update
+            sudo apt-get install -y p7zip-full
+          fi
+      - name: Offline regression tests
+        run: python -m unittest discover -s tests -v
+      - name: Fetch and validate public Georgia sources
+        id: fetch
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p work
+          python -u scripts/fetch_georgia.py 2>&1 | tee work/fetch_georgia_log.txt
+      - name: Upload validated downloads (may be partial on failure)
+        if: always() && steps.fetch.outcome != 'skipped'
+        uses: actions/upload-artifact@v4
+        with:
+          name: georgia-tudo-junto
+          path: georgia-tudo-junto/
+          retention-days: 90
+          if-no-files-found: error
+      - name: Upload diagnostics
+        if: always() && steps.fetch.outcome != 'skipped'
+        uses: actions/upload-artifact@v4
+        with:
+          name: georgia-diagnostics
+          path: work/fetch_georgia_*
+          retention-days: 90
+          if-no-files-found: warn
+      - name: Commit metadata only to the session branch
+        if: always() && steps.fetch.outcome != 'skipped'
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "${GITHUB_REF_NAME}" = 'arena/01a078ab-lixo'
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          for file in georgia-tudo-junto/MANIFEST.json georgia-tudo-junto/SHA256SUMS.txt \
+                      work/fetch_georgia_manifest.json work/fetch_georgia_report.txt work/fetch_georgia_log.txt; do
+            if [ -f "$file" ]; then
+              git add -- "$file"
+            fi
+          done
+          if ! git diff --cached --quiet; then
+            git commit -m 'fetch-georgia: record validated downloads and explicit pending sources'
+            git push origin arena/01a078ab-lixo
+          fi

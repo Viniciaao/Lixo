@@ -1,0 +1,86 @@
+# Georgia (MizuTS4) — reconhecimento de CCs
+
+Reconhecimento recebido do usuário, originalmente realizado em **2026-09-06**.
+Os commits locais `d1ddaec` e `d8e3d35` não vieram no checkout e não foram encontrados
+no GitHub. Script, workflow e este mapeamento foram restaurados a partir do texto
+fornecido pelo usuário — **não** são os commits originais recuperados.
+
+## Retomada nesta sessão
+
+- Branch fixo: `arena/01a078ab-lixo` (não o antigo `arena/01a07849-lixo`).
+- O PR #2 de Helene já foi mesclado; Georgia terá um PR separado contra `main`.
+- Workflow: `.github/workflows/fetch-georgia.yml`.
+- Fetch: `scripts/fetch_georgia.py`; validação: `scripts/georgia_validation.py`.
+- Resultados efetivos em `work/fetch_georgia_manifest.json` e
+  `work/fetch_georgia_report.txt`, produzidos pelo runner, não por este documento.
+- Downloads grandes ficam no artifact `georgia-tudo-junto` do Actions; o Git
+  guarda manifestos, hashes, documentação e código, evitando novos blobs grandes.
+- Não acessar contas, contornar assinatura/login ou usar mirrors não oficiais.
+
+## O sim
+
+- <https://www.curseforge.com/sims4/sims-households/georgia> — MizuTS4,
+  “Sweet and dangerous.”
+- `Georgia.zip`, file id **8674144**; reconhecimento informa 102,4 KB,
+  upload em 2026-08-18, Alpha+1 / jogo 1.126.78. Esses metadados foram recebidos,
+  não equivalem a teste no jogo; tamanho e hash reais constam no manifesto.
+- Household/Tray, sem CC incluído.
+- Rota pública: `/api/v1/mods/{modId}/files/8674144/download` no CurseForge,
+  seguindo o redirecionamento fornecido pelo serviço.
+
+## Mapeamento recebido (21 itens)
+
+| # | Item | Criador | Fonte | Plano inicial |
+|---|---|---|---|---|
+| 01 | Sim Georgia | MizuTS4 | CurseForge 8674144 | AUTO |
+| 02 | Hair S-Club 031226 Double Ponytail | S-Club | TSR 1766849 | MANUAL |
+| 03 | Teeth “Normal”: Default alpha teeth all + Non-default | MagicBot | SFS folder 235489; Patreon 117517959 | AUTO; variantes |
+| 04 | Fullbody Rina Sweatpants | Belaloallure (tabae) | TSR 1486209 | MANUAL |
+| 05 | Leo levis shoes conversion, FIX F+M | MadMan / MagicBot | Patreon 23286338 | AUTO |
+| 06 | GPME-GOLD MAKEUP SET CC31 | goppolsme | SFS 2172979 | AUTO |
+| 07 | Basics Please: EyeLid / Full / OuterEdge | TwistedCat | Patreon 63321024 | AUTO |
+| 08 | GPME-GOLD Liner cc10 | goppolsme | SFS 568017 | AUTO |
+| 09 | WILD CAT: somente BLUSH N7 | Northern Siberia Winds | Patreon 64319245 | AUTO |
+| 10 | Cytosine Eyes (facepaint) | RemusSirion | TSR 1459200 | MANUAL |
+| 11 | Realistic Female Body Details | Mikooi / Miiko (confirmar autoria) | guia abaixo | MANUAL |
+| 12 | misc. face details: TATTOO / OCCULT / SKINDETAIL | okruee | Patreon 71370172 | AUTO |
+| 13 | Lighting Overlay 2.0: TRUE BLACK + COLOR | jo_se_oh | Patreon 94005453 | AUTO |
+| 14 | In game shadow, 16 opções | Simandy | Patreon 42027501 | AUTO |
+| 15 | Soft Face Freckles HQ | alf-si | TSR 1355997 | MANUAL |
+| 16 | Bodycare Kit, seleção FEMALE / CLEAVAGE / BODY PRESET | Northern Siberia Winds | Patreon 93373994 | AUTO; excluir MALE |
+| 17 | Tea Time Lashes HQ | venerian | TSR 1770164 | MANUAL |
+| 18 | 3D Eyelashes Set: straight / curly / extra | obscurus | Patreon 93848968, indicado pelo post 93851178 | AUTO somente se público |
+| 19 | Eyebrows 33–41 | alf-si / ANGISSI | Tumblr 614674051815849984; TSR 1561164/1561412/1561566 | MANUAL; mapeamento parcial |
+| 20 | Cleavage Masks Collection | sims3melancholic | Drive folder 1p4W_kdF7oPJ4aRVQQ-alkEDZAJdrkm5B | AUTO |
+| 21 | Nosemask N10 (70 cores) + overlay + 4 presets | obscurus | Patreon 26574490 | AUTO |
+
+## Links e ressalvas do reconhecimento
+
+- Sim: <https://www.curseforge.com/sims4/sims-households/georgia/files/8674144>.
+- SFS: <https://simfileshare.net/download/2172979/>,
+  <https://simfileshare.net/download/568017/>,
+  <https://simfileshare.net/folder/235489/>.
+- Drive: <https://drive.google.com/drive/folders/1p4W_kdF7oPJ4aRVQQ-alkEDZAJdrkm5B>.
+- API pública Patreon: `/api/posts/{id}`. Sempre verificar
+  `current_user_can_view` sem autenticação e usar nome/tamanho do próprio objeto
+  `media`, associado pelo id. A ordem de `included` não garante a ordem do preview.
+- Sobrancelhas: <https://alf-si.tumblr.com/post/614674051815849984>.
+  Recebidos n33=1561164, n34=1561412, n35=1561566; **n36–41 não confirmados**.
+- Body details: referência recebida
+  <https://bestsimsmods.com/sims-4-mikkoi-female-body-details-6-0/>.
+  O reconhecimento menciona conteúdo adulto, ~273 MB, requisito Get Famous e
+  outra versão 8.8 em mirror. Autoria, versão e requisitos precisam ser confirmados
+  pelo usuário com o criador; o mirror não será usado pelo fetch.
+- MediaFire alternativo recebido para CC31: chave `0tnhzu2zrncobn5`;
+  preferir SFS oficial mapeado. Nenhum mirror substitui automaticamente uma fonte.
+
+## Critérios de conclusão
+
+1. Enviar o branch **desta sessão**, disparar e acompanhar o workflow.
+2. Registrar falhas reais (sem `exit 0` incondicional); itens bloqueados ficam manuais.
+3. Rejeitar HTML/JSON/ponteiros LFS; validar DBPF 2.1 e limites do índice,
+   CRC dos ZIP/RAR/7z, cabeçalhos DBPF internos e presença de Tray no sim.
+4. Gerar SHA-256 dos downloads e membros dos arquivos compactados.
+5. Montar README, links oficiais e pendências manuais, explicitando variantes,
+   conflitos de defaults e ausência de teste no jogo.
+6. Abrir PR novo; nunca chamar o pacote de “completo” enquanto houver itens manuais.
