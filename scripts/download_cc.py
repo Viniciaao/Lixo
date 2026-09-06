@@ -461,6 +461,167 @@ def main():
     log("== RESCUE: NSW official website ==")
     nsw_site("Bodycare Kit (NSW)", OUT / "rescue-nsw-bodycare")
 
+    log("== RESCUE round 3 ==")
+    rescue_round3()
+
+
+def rescue_round3():
+    import pathlib
+    dbg = OUT / "debug-rescue3.txt"
+    lines = []
+
+    def say(s):
+        print(f"[r3] {s}", flush=True)
+        lines.append(s)
+
+    # ---- 1. explicit SFS link: Simandy Spotlight merged
+    fold = OUT / "patreon-42027501"
+    if not (fold.exists() and any(fold.iterdir())):
+        ok, info = try_url("https://simfileshare.net/download/4346575/", fold)
+        say(f"simandy spotlight sfs -> {info}")
+        if ok:
+            record("downloaded", item="Spotlight tattoos (Simandy)", source="sfs/4346575")
+
+    # ---- 2. CurseForge projects via cfwidget + CDN
+    def cf_project(slug, label, fold):
+        if fold.exists() and any(fold.iterdir()):
+            return
+        try:
+            r = fetch(f"https://api.cfwidget.com/sims4/{slug}", session=S)
+            if r.status_code != 200:
+                say(f"cf {slug}: widget HTTP {r.status_code}")
+                return
+            data = r.json()
+            files = sorted(data.get("files", []),
+                           key=lambda f: f.get("uploaded_at") or "", reverse=True)
+            for f in files[:1]:
+                i, name = f["id"], (f.get("name") or "").strip()
+                variants = [name, name.replace(" ", "_"), name.replace(" ", "%20"),
+                            re.sub(r"[^\w.\-]", "", name)]
+                for cand in dict.fromkeys(v for v in variants if v):
+                    cdn = f"https://mediafilez.forgecdn.net/files/{i//1000}/{i%1000}/{cand}"
+                    ok, info = try_url(cdn, fold)
+                    say(f"cf {slug} file {i} '{cand}' -> {info}")
+                    if ok:
+                        record("downloaded", item=label, source=f"curseforge:{slug}")
+                        return
+        except Exception as e:
+            say(f"cf {slug} err {e}")
+
+    cf_project("create-a-sim/amaranth-top", "Amaranth TOP (148DAZED)", OUT / "patreon-117097930-top")
+    cf_project("create-a-sim/amaranth-skirt", "Amaranth SKIRT (148DAZED)", OUT / "patreon-117097930-skirt")
+    cf_project("create-a-sim/amaranth-set", "Amaranth SET (148DAZED)", OUT / "patreon-117097930-set")
+    cf_project("create-a-sim/lighting-overlay-2-0", "Lighting overlay (Jo_se_oh)", OUT / "patreon-94005453")
+    cf_project("create-a-sim/moles-01", "Moles 01 (LutessaSims)", OUT / "rescue-lutessa-moles")
+
+    # ---- 3. SFS folder crawler (creator archive folders)
+    def sfs_folder(folder_id, out, keywords, depth=0, seen=None, max_files=6):
+        seen = seen if seen is not None else set()
+        if folder_id in seen or len(seen) > 60:
+            return
+        seen.add(folder_id)
+        try:
+            r = fetch(f"https://simfileshare.net/folder/{folder_id}/", session=S)
+            if r.status_code != 200:
+                say(f"sfs folder {folder_id}: HTTP {r.status_code}")
+                return
+            items = re.findall(
+                r'href="(https://simfileshare\.net/download/\d+)/">([^<]+)<', r.text)
+            subs = re.findall(
+                r'href="https://simfileshare\.net/folder/(\d+)/"', r.text)
+            say(f"sfs folder {folder_id}: {len(items)} arquivos, {len(subs)} subpastas")
+            hits = 0
+            for u, fname in items:
+                if hits >= max_files:
+                    break
+                if any(k in fname.lower() for k in keywords):
+                    ok, info = try_url(u, out, referer="https://simfileshare.net/")
+                    say(f"  {fname} -> {info}")
+                    if ok:
+                        hits += 1
+            if hits:
+                return
+            for sub in subs[:12]:
+                sfs_folder(sub, out, keywords, depth + 1, seen, max_files)
+                if out.exists() and any(out.iterdir()):
+                    return
+        except Exception as e:
+            say(f"sfs folder {folder_id} err {e}")
+
+    sfs_folder(60606, OUT / "rescue-okruee-miscface", ["misc"])          # archive root -> Okruee
+    sfs_folder(61005, OUT / "rescue-obscurus-3dlash", ["3d_eyelash", "3d eyelash", "eyelash"])
+    sfs_folder(84952, OUT / "rescue-obscurus-3dlash", ["3d_eyelash", "3d eyelash", "eyelash"])
+    sfs_folder(190204, OUT / "rescue-miikocc-acne", ["acne"])
+
+    # ---- 4. Madlen Mia Boots retexture: original tumblr post has SFS link
+    fold = OUT / "rescue-madlen-boots"
+    if not (fold.exists() and any(fold.iterdir())):
+        ok, info = scrape_page(
+            "https://remussirion.tumblr.com/post/174331197269/madlen-mia-boots-retexture-ts4-download-this",
+            fold, "Madlen Mia Boots Retexture (RemusSirion)")
+        say(f"madlen boots post -> {info}")
+        if ok:
+            record("downloaded", item="Madlen Mia Boots Retexture", source="remussirion tumblr")
+        else:
+            wayback_extract("https://remussirion.tumblr.com/post/174331197269/"
+                            "madlen-mia-boots-retexture-ts4-download-this",
+                            fold, "Madlen Mia Boots Retexture")
+
+    # ---- 5. Wayback CDX: NSW website bodycare + remussirion patreon bzip
+    def cdx_urls(pattern):
+        try:
+            r = fetch("http://web.archive.org/cdx/search/cdx?url=" + pattern
+                      + "&output=text&fl=original&collapse=urlkey&limit=300", session=S)
+            return [u.strip() for u in r.text.splitlines() if u.strip()]
+        except Exception as e:
+            say(f"cdx {pattern} err {e}")
+            return []
+
+    fold = OUT / "rescue-nsw-bodycare"
+    if not (fold.exists() and any(fold.iterdir())):
+        urls = [u for u in cdx_urls("northernsiberiawinds.com*") if "bodycare" in u.lower()]
+        say(f"nsw cdx bodycare pages: {urls[:5]}")
+        for u in urls[:4]:
+            wayback_extract(u, fold, "Bodycare Kit (NSW)")
+            if fold.exists() and any(fold.iterdir()):
+                break
+
+    fold = OUT / "rescue-remussirion-bzip"
+    if not (fold.exists() and any(fold.iterdir())):
+        urls = [u for u in cdx_urls("patreon.com/remussirion*") if "bzip" in u.lower() or "eyes" in u.lower()]
+        urls += [u for u in cdx_urls("remussirion.tumblr.com*") if "bzip" in u.lower()]
+        say(f"remussirion bzip cdx: {urls[:5]}")
+        for u in urls[:4]:
+            wayback_extract(u, fold, "BZIP Eyes (RemusSirion)")
+            if fold.exists() and any(fold.iterdir()):
+                break
+
+    # ---- 6. boosty debug dump + broader keyword hunt
+    for blog, kws, label, fold in [
+        ("northernsiberiawinds", ["bodycare", "body care"], "Bodycare Kit (NSW)", OUT / "rescue-nsw-bodycare"),
+        ("sims3melancholic", ["cleavage"], "Cleavage masks 3 (sims3melancholic)", OUT / "patreon-96600228"),
+        ("okruee", ["misc"], "Misc face details (okruee)", OUT / "rescue-okruee-miscface"),
+        ("miikocc", ["acne"], "Acne (miikocc)", OUT / "rescue-miikocc-acne"),
+        ("obscurus_sims", ["eyelash", "lash"], "3D eyelashes (obscurus)", OUT / "rescue-obscurus-3dlash"),
+        ("148dazed", ["amaranth"], "Amaranth (148DAZED)", OUT / "patreon-117097930"),
+        ("jo_se_oh", ["light"], "Lighting overlay (Jo_se_oh)", OUT / "patreon-94005453"),
+    ]:
+        if fold.exists() and any(fold.iterdir()):
+            continue
+        try:
+            r = fetch(f"https://boosty.to/api/v1/blog/{blog}/posts?posts_count=300", session=S)
+            say(f"boosty {blog}: HTTP {r.status_code}")
+            if r.status_code != 200:
+                continue
+            posts = r.json().get("data", [])
+            lines.append(f"boosty {blog} titles: " + " | ".join(
+                (p.get("title") or "")[:40] for p in posts[:40]))
+            boosty_hunt(blog, kws, fold, label)
+        except Exception as e:
+            say(f"boosty {blog} err {e}")
+
+    dbg.write_text("\n".join(lines), encoding="utf-8")
+
     (OUT / "manifest.json").write_text(
         json.dumps(MANIFEST, indent=2, ensure_ascii=False))
     log(f"DONE. downloaded={len(MANIFEST['downloaded'])} "
