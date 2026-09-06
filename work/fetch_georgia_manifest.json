@@ -1,8 +1,8 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-09-06T21:56:03.414348+00:00",
-  "checkout_sha": "1619e4263f57ce004dba3e912cd5bec2b93a5dd1",
-  "workflow_run": "https://github.com/Viniciaao/Lixo/actions/runs/34062492099",
+  "generated_at": "2026-09-06T22:04:21.425211+00:00",
+  "checkout_sha": "f93b0f4b5ea912730be56a6ceb1aa5e476bd75dd",
+  "workflow_run": "https://github.com/Viniciaao/Lixo/actions/runs/34062870040",
   "items": [
     {
       "id": "01",
@@ -1227,18 +1227,14 @@
       "creator": "obscurus",
       "urls": [
         "https://www.patreon.com/posts/93848968",
-        "https://www.patreon.com/posts/93851178"
+        "https://www.patreon.com/posts/93851178",
+        "https://www.patreon.com/posts/115736891"
       ],
-      "mode": "auto",
-      "note": "Se o post de anexos não estiver público, download manual; nunca contornar assinatura.",
-      "status": "failed",
+      "mode": "manual",
+      "note": "O post original foi atualizado em 31/05/2026 e remete ao post 115736891: exige entrar/participar como membro gratuito. Baixar manualmente as variantes N6 straight/curly/extra conforme o criador; não é indicação de assinatura paga.",
+      "status": "manual",
       "files": [],
-      "errors": [
-        "no public attachment matches the requested selection"
-      ],
-      "post_title": "3D EYELASHES SET 👁👄👁",
-      "available_attachments": [],
-      "selected_names": []
+      "errors": []
     },
     {
       "id": "19",
@@ -1264,11 +1260,238 @@
         "https://drive.google.com/drive/folders/1p4W_kdF7oPJ4aRVQQ-alkEDZAJdrkm5B"
       ],
       "mode": "auto",
-      "note": "Coleção com variantes/atualização; escolher máscaras compatíveis, não sobrepor todas.",
-      "status": "failed",
-      "files": [],
-      "errors": [
-        "no public package/archive listed in the creator's Drive folder"
+      "note": "A pasta pública atual contém CLEAVAGE MASKS #1-6, com subpastas OVERLAYS/SKIN COLORS e categorias SCARS/TATTOO. São alternativas; não sobrepor todas.",
+      "status": "downloaded",
+      "files": [
+        {
+          "bytes": 214732,
+          "sha256": "6ee42ba5b5ede339f6b8b0768d3e598f7edd2d98ec694d0503ac62d40ee16e02",
+          "format": "package",
+          "members": [],
+          "path": "CCs/20_sims3melancholic-cleavage-sims3melancholic_cleavage_mask_1_OVERLAY_scar_.package",
+          "source_url": "https://drive.google.com/file/d/10I0kq0o89G-RS201vHFiIdr0jKmbGguR/view"
+        },
+        {
+          "bytes": 271155,
+          "sha256": "0c3c3d9ef0501a1b31dcacf573a2aaccac785aaeb5b0eec0026223663fa5b576",
+          "format": "package",
+          "members": [],
+          "path": "CCs/20_sims3melancholic-cleavage-sims3melancholic_cleavage_mask_2_OVERLAY_scar_.package",
+          "source_url": "https://drive.google.com/file/d/1Je8edbDJT8zU_Ki7PfI9bDCzTnf8jYG-/view"
+        },
+        {
+          "bytes": 335679,
+          "sha256": "163f56d2fb6192e56c675317ddedd2946f86587ad02bfcfda3f5ec823363f973",
+          "format": "package",
+          "members": [],
+          "path": "CCs/20_sims3melancholic-cleavage-sims3melancholic_cleavage_mask_3_OVERLAY_scar_.package",
+          "source_url": "https://drive.google.com/file/d/1rkA6a0Mr94cBq7N6S6efyWcdLoVyVKab/view"
+        },
+        {
+          "bytes": 1761316,
+          "sha256": "6c2d3d3d936e0999576acafa81d22aeaebec266ec9be19a37ed28539309496b4",
+          "format": "package",
+          "members": [],
+          "path": "CCs/20_sims3melancholic-cleavage-sims3melancholic_cleavage_mask_4_OVERLAY_scar_.package",
+          "source_url": "https://drive.google.com/file/d/1DVlXYjj-nX1QxslRnarjb-Kb4uUXzrN9/view"
+        },
+        {
+          "bytes": 1755483,
+          "sha256": "9a5a3db8f957cc8f0e98262963c59c1876685fc348e98bcfb22c6f18e0774637",
+          "format": "package",
+          "members": [],
+          "path": "CCs/20_sims3melancholic-cleavage-sims3melancholic_cleavage_mask_5_OVERLAY_scar_.package",
+          "source_url": "https://drive.google.com/file/d/1-mvUz-dBWyZb8ZvgcZ4mY_5DWqONHGeV/view"
+        },
+        {
+          "bytes": 1755652,
+          "sha256": "fe246c04946f6e0b5d8326e1b9504c8a753feb506ec3db657d27b3fd41b8f20a",
+          "format": "package",
+          "members": [],
+          "path": "CCs/20_sims3melancholic-cleavage-sims3melancholic_cleavage_mask_6_OVERLAY_scar_.package",
+          "source_url": "https://drive.google.com/file/d/1l3TqW2nOLD6TFDnYBxegXOGFpulY0qsc/view"
+        },
+        {
+          "bytes": 215464,
+          "sha256": "be4d47ce683757f5fd6b270796268539a25f4c4f701270aadb9f832d5ae2ccb6",
+          "format": "package",
+          "members": [],
+          "path": "CCs/20_sims3melancholic-cleavage-sims3melancholic_cleavage_mask_1_OVERLAY.package",
+          "source_url": "https://drive.google.com/file/d/1a6ZRRxABh4FnkKKAfIXXmNh7Jxfrp8Kq/view"
+        },
+        {
+          "bytes": 269686,
+          "sha256": "ba4a7beb26663b5d50883011ba07aa4dcb2e9efda9de3dec22851d25bebe243c",
+          "format": "package",
+          "members": [],
+          "path": "CCs/20_sims3melancholic-cleavage-sims3melancholic_cleavage_mask_2_OVERLAY.package",
+          "source_url": "https://drive.google.com/file/d/1qsMCObk6r710Pk4GLHdGMLmebb2W6nc3/view"
+        },
+        {
+          "bytes": 334377,
+          "sha256": "7fb87b18c44e39c4cdbb34cfab5c672e1e71b327807513a8fa7783de4b31f77f",
+          "format": "package",
+          "members": [],
+          "path": "CCs/20_sims3melancholic-cleavage-sims3melancholic_cleavage_mask_3_OVERLAY.package",
+          "source_url": "https://drive.google.com/file/d/1yywleR2mwy8jmpIEyPF2QVgpPlyNeSwU/view"
+        },
+        {
+          "bytes": 1752329,
+          "sha256": "c57e7985b4c59c4d4132722a5d3078ccda67c926226e01388ac90807fe706b8e",
+          "format": "package",
+          "members": [],
+          "path": "CCs/20_sims3melancholic-cleavage-sims3melancholic_cleavage_mask_4_OVERLAY.package",
+          "source_url": "https://drive.google.com/file/d/15hUUw_3aQc-jjWf1u3_mDI5naC9YKZ6z/view"
+        },
+        {
+          "bytes": 1746670,
+          "sha256": "80ecb10d353c755e1f16c809db6bddb1044a0a29cc74c5de3deeaa4320a2ed1d",
+          "format": "package",
+          "members": [],
+          "path": "CCs/20_sims3melancholic-cleavage-sims3melancholic_cleavage_mask_5_OVERLAY.package",
+          "source_url": "https://drive.google.com/file/d/1_qvcJ20V-aIwFgA6-6EdrVzNpZX1ZLxP/view"
+        },
+        {
+          "bytes": 1746160,
+          "sha256": "904949f29f37350f75b56e72656f0c47efa90842d76141a3e6b18fa8748925db",
+          "format": "package",
+          "members": [],
+          "path": "CCs/20_sims3melancholic-cleavage-sims3melancholic_cleavage_mask_6_OVERLAY.package",
+          "source_url": "https://drive.google.com/file/d/1KsQOWcm1PK7RiCe1yf0NWc4S67uhGoHg/view"
+        },
+        {
+          "bytes": 31508,
+          "sha256": "c9b83c538b1052fd97b22f20bb458a1a5eec3924f0e01a8d9f84e07367fc9fe9",
+          "format": "package",
+          "members": [],
+          "path": "CCs/20_sims3melancholic-cleavage-sims3melancgolic_cleavage_mask_1_scar_.package",
+          "source_url": "https://drive.google.com/file/d/1l6HfSpdL3Gh0qQPwv-pXdZmuh4r2kd4a/view"
+        },
+        {
+          "bytes": 36852,
+          "sha256": "d0bc1de34c947aafd7017202a99b92f8e0e1ae000d48505af5cce37e6a2360fe",
+          "format": "package",
+          "members": [],
+          "path": "CCs/20_sims3melancholic-cleavage-sims3melancgolic_cleavage_mask_2_scar_.package",
+          "source_url": "https://drive.google.com/file/d/1o9WKfBYKY4HUOZGljqPgTlVZL04LbroD/view"
+        },
+        {
+          "bytes": 36278,
+          "sha256": "0cc7490dd3075dfb6db96747bbfb77f23689d5bb0876ec2f3b1f26b01df73bf1",
+          "format": "package",
+          "members": [],
+          "path": "CCs/20_sims3melancholic-cleavage-sims3melancgolic_cleavage_mask_3_scar_.package",
+          "source_url": "https://drive.google.com/file/d/1Ax91lh8yczmIqo3jvY-o10yNykWj1MGS/view"
+        },
+        {
+          "bytes": 10805797,
+          "sha256": "e352ef39f002173233ad511e3f2f08fac7d9a9d74a7834087ced7b370a171e5c",
+          "format": "package",
+          "members": [],
+          "path": "CCs/20_sims3melancholic-cleavage-sims3melancholic_cleavage_mask_4_scar_.package",
+          "source_url": "https://drive.google.com/file/d/1vEWX06NpjSi5zRs_p1m6_nw0ZSp50qmY/view"
+        },
+        {
+          "bytes": 11291739,
+          "sha256": "c90c2573638e49e608d0c44e3ae95e91e5c3608e0f973b8e8561fd286a93f4b5",
+          "format": "package",
+          "members": [],
+          "path": "CCs/20_sims3melancholic-cleavage-sims3melancholic_cleavage_mask_5_scar_.package",
+          "source_url": "https://drive.google.com/file/d/16MOIav-sMOEe5EfOZ_R11ay7IXG09TE5/view"
+        },
+        {
+          "bytes": 10619123,
+          "sha256": "dacfbad6f20db16254dd66b85e9027e75ab0bc65b53921c6fa97a73df4d0ddf4",
+          "format": "package",
+          "members": [],
+          "path": "CCs/20_sims3melancholic-cleavage-sims3melancholic_cleavage_mask_6_scar_.package",
+          "source_url": "https://drive.google.com/file/d/1gocudhKGGGCr4QKxwaP_Kyj3sXH1T8AU/view"
+        },
+        {
+          "bytes": 3644367,
+          "sha256": "cd416a567929929af3b97d60d4b7e746b4c10a613bc70608d64172f61100a6bd",
+          "format": "package",
+          "members": [],
+          "path": "CCs/20_sims3melancholic-cleavage-sims3melancgolic_cleavage_mask_1.package",
+          "source_url": "https://drive.google.com/file/d/1LLwdSbEoZIcxmsJQiGRyZ6OP2Kw7NVhD/view"
+        },
+        {
+          "bytes": 6969619,
+          "sha256": "1ae791fa95ade6b9495fced56f392ddb61ba684c998c89704e5d0b744d50e107",
+          "format": "package",
+          "members": [],
+          "path": "CCs/20_sims3melancholic-cleavage-sims3melancgolic_cleavage_mask_2.package",
+          "source_url": "https://drive.google.com/file/d/1sl1GtMX5ryNOKMNSC_GNFkD6jSPh4_og/view"
+        },
+        {
+          "bytes": 7675614,
+          "sha256": "74abe3c5915114938e38bcd1db769707a793c768c1455194f3fd840fcfacf098",
+          "format": "package",
+          "members": [],
+          "path": "CCs/20_sims3melancholic-cleavage-sims3melancgolic_cleavage_mask_3.package",
+          "source_url": "https://drive.google.com/file/d/1PU6aWt-Z-Fq40n4ZJAoAOkLsYplVEdCi/view"
+        },
+        {
+          "bytes": 10817089,
+          "sha256": "e1811ae19643cc1fca9dd32e8d9e0dd8e4cc34fd8fb557991a96c1fcfb06482d",
+          "format": "package",
+          "members": [],
+          "path": "CCs/20_sims3melancholic-cleavage-sims3melancholic_cleavage_mask_4.package",
+          "source_url": "https://drive.google.com/file/d/1RaDGoMN19GHeNmIpxMuWgCTRkF9S0u3t/view"
+        },
+        {
+          "bytes": 11293677,
+          "sha256": "49fe21078cff4e544a52c16fe2d0c74dee09d364f662f403d49b2fba0d501d85",
+          "format": "package",
+          "members": [],
+          "path": "CCs/20_sims3melancholic-cleavage-sims3melancholic_cleavage_mask_5.package",
+          "source_url": "https://drive.google.com/file/d/1J3pMQ0x9bI-iEyIOaGh1gGbbPHWRE_C2/view"
+        },
+        {
+          "bytes": 10625366,
+          "sha256": "bae180d2228b273f54a08868b6c8232adab33aaa1925779bf65a5345aeb50dad",
+          "format": "package",
+          "members": [],
+          "path": "CCs/20_sims3melancholic-cleavage-sims3melancholic_cleavage_mask_6.package",
+          "source_url": "https://drive.google.com/file/d/1o8RH6JuKgVB4MivuMgHWfYAH8Rcqs7dY/view"
+        }
+      ],
+      "errors": [],
+      "resolved_folders": [
+        "12sNJMH8ekcY2yJ8onuWAH3kAWPLbbvUC",
+        "14gYJ57I_09axz5D8CtpLO-WrDMcFoXMy",
+        "1EXaqMkNMGYYNC3XwutSaw6b0M9eJeY9a",
+        "1F9bkXOgfIReIMsnOBr7xQ3oC-Ti89D7K",
+        "1KQqkGx0ONiIktbkoOHNYgB2q9msng0Gr",
+        "1T75rFesdRYt6X_XeEpPsiRCciH2rlTqJ",
+        "1XQvKG_aUqdekhg6mmUT9Wmqj2ft9L5pS",
+        "1p4W_kdF7oPJ4aRVQQ-alkEDZAJdrkm5B"
+      ],
+      "selected_names": [
+        "sims3melancholic_cleavage mask #1 OVERLAY (scar).package",
+        "sims3melancholic_cleavage mask #2 OVERLAY (scar).package",
+        "sims3melancholic_cleavage mask #3 OVERLAY (scar).package",
+        "sims3melancholic_cleavage mask #4 OVERLAY (scar).package",
+        "sims3melancholic_cleavage mask #5 OVERLAY (scar).package",
+        "sims3melancholic_cleavage mask #6 OVERLAY (scar).package",
+        "sims3melancholic_cleavage mask #1 OVERLAY.package",
+        "sims3melancholic_cleavage mask #2 OVERLAY.package",
+        "sims3melancholic_cleavage mask #3 OVERLAY.package",
+        "sims3melancholic_cleavage mask #4 OVERLAY.package",
+        "sims3melancholic_cleavage mask #5 OVERLAY.package",
+        "sims3melancholic_cleavage mask #6 OVERLAY.package",
+        "sims3melancgolic_cleavage mask #1 (scar).package",
+        "sims3melancgolic_cleavage mask #2 (scar).package",
+        "sims3melancgolic_cleavage mask #3 (scar).package",
+        "sims3melancholic_cleavage mask #4 (scar).package",
+        "sims3melancholic_cleavage mask #5 (scar).package",
+        "sims3melancholic_cleavage mask #6 (scar).package",
+        "sims3melancgolic_cleavage mask #1.package",
+        "sims3melancgolic_cleavage mask #2.package",
+        "sims3melancgolic_cleavage mask #3.package",
+        "sims3melancholic_cleavage mask #4.package",
+        "sims3melancholic_cleavage mask #5.package",
+        "sims3melancholic_cleavage mask #6.package"
       ]
     },
     {
@@ -1276,14 +1499,15 @@
       "name": "Nosemask N10 + overlay + presets",
       "creator": "obscurus",
       "urls": [
-        "https://www.patreon.com/posts/26574490"
+        "https://www.patreon.com/posts/26574490",
+        "https://simfileshare.net/folder/66108/"
       ],
       "mode": "auto",
-      "note": "70 cores conforme reconhecimento recebido; escolher máscara/overlay e presets no CAS.",
+      "note": "O post público aponta ao SFS: nosemask N10 LRLE, overlay e um .package com os quatro presets. 70 cores / HQ compatível conforme o criador; escolher no CAS.",
       "status": "failed",
       "files": [],
       "errors": [
-        "no public attachment matches the requested selection"
+        "author post no longer links the expected SFS folder 66108"
       ],
       "post_title": "Nosemask and nose presets for females!",
       "available_attachments": [],
@@ -1291,10 +1515,10 @@
     }
   ],
   "summary": {
-    "files": 31,
-    "bytes": 406459689,
-    "downloaded": 11,
-    "manual": 7,
-    "failed": 3
+    "files": 55,
+    "bytes": 502465421,
+    "downloaded": 12,
+    "manual": 8,
+    "failed": 1
   }
 }
