@@ -132,3 +132,26 @@ Também revela duas ressalvas importantes:
   **Belaloallure Rina Sweatpants**; confirmar a correspondência manualmente.
 - Item 11 cita **Mikooi Sims**, `16154-realistic-female-body-details`, sem URL.
   Não assumir que seja Miiko ou que o guia/mirror recebido identifique a versão.
+
+## Resultado final — 2026-09-06
+
+- Workflow **success**: <https://github.com/Viniciaao/Lixo/actions/runs/34063244692>.
+- **58 arquivos / 511.439.588 bytes (487,75 MiB)**: 54 `.package`, 3 ZIPs, 1 RAR.
+- **13 grupos baixados, 8 manuais, zero falhas**. Manuais: 02, 04, 10, 11,
+  15, 17, 18 e 19. Não equivale ao visual completo sem instalação manual.
+- Validação binária no runner: DBPF 2.1/limites do índice, CRC, cabeçalhos
+  internos, Tray e SHA-256; 81 membros internos catalogados nos arquivos compactados.
+- As execuções bem-sucedidas `34063064401` e `34063244692` produziram as
+  **mesmas 58 somas SHA-256 dos payloads**.
+- **23 testes offline passaram**, assim como a conferência local de manifestos,
+  documentação gerada, relatórios e `git diff --check`. Sem teste no jogo.
+- README, `LINKS-ORIGINAIS.txt`, `INSTALACAO-MANUAL.txt`, `MANIFEST.json` e
+  `SHA256SUMS.txt` estão em `georgia-tudo-junto/`. O artifact contém também `CCs/`.
+- Download: <https://github.com/Viniciaao/Lixo/actions/runs/34063244692/artifacts/9998144878>.
+  ZIP de 500.065.120 bytes; expiração informada pelo Actions: 2026-12-05T22:10:37Z.
+  Faça cópia local antes da expiração; o ZIP do repositório não inclui esses binários.
+- `work/georgia_delivery.json` guarda o id/digest/expiração do artifact e as
+  verificações de entrega. O digest do ZIP é informado pelo Actions; o download
+  desse ZIP não pôde ser repetido na sandbox devido ao bloqueio de rede já descrito.
+- A cópia legível da lista do criador foi normalizada para LF; o ZIP original
+  e seus hashes permanecem intocados.
