@@ -33,9 +33,11 @@ jobs:
 
       - name: Commit downloads to branch
         run: |
+          set -x
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add downloads-gwen
-          git commit -m "CI: downloaded Gwen household + CC [skip ci]" || echo "nothing to commit"
-          git pull --rebase origin arena/01a07865-lixo || true
-          git push origin HEAD:arena/01a07865-lixo
+          git ls-remote origin refs/heads/arena/01a07865-lixo 2>&1 | tail -2
+          git add downloads-gwen 2>/tmp/add.log || echo "::error::add: $(tail -c 300 /tmp/add.log | tr '\n' ' ')"
+          git commit -m "CI: downloaded Gwen household + CC [skip ci]" 2>/tmp/commit.log || echo "::error::commit: $(tail -c 300 /tmp/commit.log | tr '\n' ' ')"
+          git push origin HEAD:arena/01a07865-lixo 2>/tmp/push.log || echo "::error::push: $(tail -c 400 /tmp/push.log | tr '\n' ' ')"
+          echo "echo-concluido"
