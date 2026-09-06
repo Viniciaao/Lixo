@@ -30,6 +30,7 @@ OUT = pathlib.Path("downloads")
 OUT.mkdir(exist_ok=True)
 
 MANIFEST = {"downloaded": [], "failed": [], "manual": []}
+WB_DEBUG = []
 
 # hosts that actually serve files without login
 GOOD_HOSTS = [
@@ -466,7 +467,6 @@ def main():
 
 
 def rescue_round3():
-    import pathlib
     dbg = OUT / "debug-rescue3.txt"
     lines = []
 
@@ -526,9 +526,11 @@ def rescue_round3():
                 say(f"sfs folder {folder_id}: HTTP {r.status_code}")
                 return
             items = re.findall(
-                r'href="(https://simfileshare\.net/download/\d+)/">([^<]+)<', r.text)
+                r'href="((?:https://simfileshare\.net)?/download/(\d+)/)"[^>]*>([^<]+)<',
+                r.text)
+            items = [(f"https://simfileshare.net/download/{i}/", n) for _, i, n in items]
             subs = re.findall(
-                r'href="https://simfileshare\.net/folder/(\d+)/"', r.text)
+                r'href="(?:https://simfileshare\.net)?/folder/(\d+)/"', r.text)
             say(f"sfs folder {folder_id}: {len(items)} arquivos, {len(subs)} subpastas")
             hits = 0
             for u, fname in items:
@@ -571,8 +573,11 @@ def rescue_round3():
     def cdx_urls(pattern):
         try:
             r = fetch("http://web.archive.org/cdx/search/cdx?url=" + pattern
-                      + "&output=text&fl=original&collapse=urlkey&limit=300", session=S)
-            return [u.strip() for u in r.text.splitlines() if u.strip()]
+                      + "&matchType=prefix&output=text&fl=original&collapse=urlkey"
+                      + "&limit=500", session=S)
+            out = [u.strip() for u in r.text.splitlines() if u.strip()]
+            say(f"cdx {pattern[:40]}: {len(out)} urls")
+            return out
         except Exception as e:
             say(f"cdx {pattern} err {e}")
             return []
@@ -596,7 +601,25 @@ def rescue_round3():
             if fold.exists() and any(fold.iterdir()):
                 break
 
-    # ---- 6. boosty debug dump + broader keyword hunt
+    # ---- 6. boosty debug dump + broader keyword hunt (429 backoff-aware)
+    def boosty_posts(blog, attempts=3):
+        for a in range(attempts):
+            try:
+                r = fetch(f"https://boosty.to/api/v1/blog/{blog}/posts?posts_count=300",
+                          session=S)
+                say(f"boosty {blog}: HTTP {r.status_code} (tentativa {a+1})")
+                if r.status_code == 200:
+                    return r.json().get("data", [])
+                if r.status_code == 429:
+                    time.sleep(50 * (a + 1))
+                    continue
+                return []
+            except Exception as e:
+                say(f"boosty {blog} err {e}")
+                return []
+        return []
+
+    import time as _t
     for blog, kws, label, fold in [
         ("northernsiberiawinds", ["bodycare", "body care"], "Bodycare Kit (NSW)", OUT / "rescue-nsw-bodycare"),
         ("sims3melancholic", ["cleavage"], "Cleavage masks 3 (sims3melancholic)", OUT / "patreon-96600228"),
@@ -608,18 +631,16 @@ def rescue_round3():
     ]:
         if fold.exists() and any(fold.iterdir()):
             continue
-        try:
-            r = fetch(f"https://boosty.to/api/v1/blog/{blog}/posts?posts_count=300", session=S)
-            say(f"boosty {blog}: HTTP {r.status_code}")
-            if r.status_code != 200:
-                continue
-            posts = r.json().get("data", [])
+        posts = boosty_posts(blog)
+        if posts:
             lines.append(f"boosty {blog} titles: " + " | ".join(
                 (p.get("title") or "")[:40] for p in posts[:40]))
             boosty_hunt(blog, kws, fold, label)
-        except Exception as e:
-            say(f"boosty {blog} err {e}")
+        _t.sleep(10)
 
+    if WB_DEBUG:
+        lines.append("--- wayback debug ---")
+        lines.extend(WB_DEBUG)
     dbg.write_text("\n".join(lines), encoding="utf-8")
 
     (OUT / "manifest.json").write_text(
@@ -656,30 +677,40 @@ def wayback_extract(url, folder, label):
     """Fetch a wayback snapshot of a page and try its file links."""
     if folder.exists() and any(folder.iterdir()):
         return
+    from urllib.parse import unquote
     for ts in ("2", "2024", "2023"):
-        try:
-            r = fetch(f"https://web.archive.org/web/{ts}/{url}", session=S)
-            if r.status_code != 200 or "has not archived that URL" in r.text:
-                continue
-            text = r.text
-            # unwrap wayback-prefixed hrefs
-            text = re.sub(r'(https?://web\.archive\.org/web/\d+[a-z_]*/)(https?://)',
-                          r'\2', text)
-            cands, extra_posts = pick_candidates(extract_links(text))
-            log(f"  wayback[{ts}] {url[-50:]}: {len(cands)} candidatos")
-            for u in cands:
-                ok, info = try_url(u, folder, referer=url)
-                log(f"    try {u[:90]} -> {info}")
-                if ok:
-                    record("downloaded", item=label, source=f"wayback:{url}")
+        for mode in ("", "id_"):
+            try:
+                r = fetch(f"https://web.archive.org/web/{ts}{mode}/{url}", session=S)
+                if r.status_code != 200 or "has not archived that URL" in r.text:
+                    continue
+                text = r.text
+                # unwrap wayback-prefixed hrefs
+                text = re.sub(r'(https?://web\.archive\.org/web/\d+[a-z_]*/)(https?://)',
+                              r'\2', text)
+                # decode tumblr t.umblr.com redirect wrappers
+                for enc in re.findall(r't\.umblr\.com/redirect\?z=([^&"\']+)', text):
+                    text += " " + unquote(enc)
+                cands, extra_posts = pick_candidates(extract_links(text))
+                log(f"  wayback[{ts}{mode}] {url[-50:]}: {len(cands)} candidatos")
+                if not cands:
+                    WB_DEBUG.append(f"wayback[{ts}{mode}] {url}: hrefs="
+                                    + ", ".join(sorted(extract_links(text))[:25]))
+                for u in cands:
+                    ok, info = try_url(u, folder, referer=url)
+                    log(f"    try {u[:90]} -> {info}")
+                    if ok:
+                        record("downloaded", item=label, source=f"wayback:{url}")
+                        return
+                for pid_url in extra_posts:
+                    pid = re.search(r"(\d{6,})(?:[/?#]|$)", pid_url)
+                    if pid:
+                        patreon_cloudscraper(int(pid.group(1)), folder, label)
+                if folder.exists() and any(folder.iterdir()):
                     return
-            for pid_url in extra_posts:
-                pid = re.search(r"(\d{6,})(?:[/?#]|$)", pid_url)
-                if pid:
-                    patreon_cloudscraper(int(pid.group(1)), folder, label)
-            return  # a snapshot exists; further ts unlikely to differ
-        except Exception as e:
-            log(f"  wayback {url[-40:]} err {e}")
+                break  # a snapshot exists; don't try other modes for this ts
+            except Exception as e:
+                log(f"  wayback {url[-40:]} err {e}")
 
 
 def _walk_urls(obj):
