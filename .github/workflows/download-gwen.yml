@@ -27,6 +27,9 @@ jobs:
       - name: Download Gwen + required CC
         run: python scripts/download_gwen.py
 
+      - name: Download Gwen round 2
+        run: python scripts/download_gwen2.py || true
+
       - name: List results
         run: |
           ls -laR downloads-gwen
