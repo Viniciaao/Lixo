@@ -1,0 +1,12 @@
+=== top staged sizes ===
+388354 helene-dacosta-tudo-junto/CCs/14_Kijiko-Remove-EA-Lashes.zip
+85195 work/patreon/64319245.json
+38655 work/patreon/77031948.json
+25008 work/patreon/56990147.json
+24515 work/patreon/85159474.json
+24498 work/patreon/59616486.json
+21952 work/patreon/123193524.json
+20464 work/patreon/17490207.json
+20145 work/patreon/22436855.json
+11670 work/fetch_log.txt
+11605 work/fetch_report.txt
