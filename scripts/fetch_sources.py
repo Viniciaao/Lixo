@@ -456,7 +456,7 @@ def fetch_kijiko():
     log(f"   {info}")
 
 # ================================================================ main
-SCRIPT_VERSION = "fetch-v4.1"
+SCRIPT_VERSION = "fetch-v4.3"
 def main():
     try:
         import subprocess
