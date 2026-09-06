@@ -718,7 +718,7 @@ def rescue_round3():
                         re.findall(r'patreon\.com/file\?h=' + pid + r'&(?:amp;)?m=(\d+)', r.text)}
             except Exception as e:
                 say(f"wb-pat {pid} err {e}")
-        ids = sorted(ids)[:16]
+        ids = sorted(ids)[:40]
         say(f"patreon {pid}: {len(ids)} attachment ids do wayback")
         for a in ids:
             u = (f"https://www.patreon.com/file?h={pid}&i={a}"
@@ -759,6 +759,124 @@ def rescue_round3():
                         break
         except Exception as e:
             say(f"modco err {e}")
+
+    # ---- 9. renomear arquivos SFS salvos como id: mapear id->filename pelas pastas
+    idmap = {}
+    for fid in ("60606", "84952", "190204", "61005"):
+        r = sfs_fetch(fid)
+        if r is None:
+            continue
+        for u, n in re.findall(
+                r'href="(?:https://simfileshare\.net)?/download/(\d+)/"[^>]*>([^<]+)<', r.text) \
+                if False else re.findall(
+                r'href="(?:https://simfileshare\.net)?/download/(\d+)/">([^<]+)<', r.text):
+            idmap[u] = n
+        for sub, _n in re.findall(
+                r'href="(?:https://simfileshare\.net)?/folder/(\d+)/">([^<]+)<', r.text):
+            if sub in idmap:
+                continue
+            r2 = sfs_fetch(sub)
+            if r2 is None:
+                continue
+            for u, n in re.findall(
+                    r'href="(?:https://simfileshare\.net)?/download/(\d+)/">([^<]+)<', r2.text):
+                idmap[u] = n
+    for p in OUT.rglob("*.package"):
+        m = re.fullmatch(r"(\d{6,})", p.stem)
+        if m and m.group(1) in idmap:
+            new = p.with_name(idmap[m.group(1)])
+            if not new.exists():
+                p.rename(new)
+                say(f"renomeado {p.name} -> {new.name}")
+
+    # ---- 10. RemusSirion nose mask 04: post tumblr de 2022 pode ter link no wayback
+    fold = OUT / "rescue-remussirion-nosemask04"
+    if not (fold.exists() and any(fold.iterdir())):
+        wayback_extract("https://remussirion.tumblr.com/post/674023510947053568/"
+                        "nose-mask-04-update-ts4-download-hq-compatible",
+                        fold, "Nose Mask 04 (RemusSirion)")
+
+    # ---- 11. CDX: snapshots do patreon p/ cleavage + 3d lashes (todos os ts)
+    for pid, label in (("96600228", "Cleavage masks 3"), ("93851178", "3D eyelashes")):
+        fold = OUT / f"rescue-pat-{pid}"
+        if fold.exists() and any(fold.iterdir()):
+            continue
+        try:
+            r = fetch(f"http://web.archive.org/cdx/search/cdx?url=patreon.com/posts/{pid}"
+                      "&output=text&fl=timestamp,original&limit=20", session=S)
+            rows = [x.split() for x in r.text.splitlines() if x.strip()]
+            say(f"cdx {pid}: {len(rows)} snapshots")
+            for ts, orig in rows[:6]:
+                rr = fetch(f"https://web.archive.org/web/{ts}id_/{orig}", session=S)
+                if rr.status_code != 200:
+                    continue
+                ids = set(re.findall(r'patreon\.com/file\?h=' + pid + r'&(?:amp;)?i=(\d+)', rr.text))
+                ids |= {("m" + m) for m in re.findall(
+                    r'patreon\.com/file\?h=' + pid + r'&(?:amp;)?m=(\d+)', rr.text)}
+                say(f"  {ts}: {len(ids)} ids")
+                for a in sorted(ids)[:12]:
+                    u = (f"https://www.patreon.com/file?h={pid}&i={a}"
+                         if not a.startswith("m") else
+                         f"https://www.patreon.com/file?h={pid}&m={a[1:]}")
+                    try:
+                        r3 = fetch(u, session=SCRAPER, allow_redirects=True)
+                        ct = r3.headers.get("Content-Type", "").lower()
+                        say(f"    {u[-40:]} -> {r3.status_code} {ct[:25]}")
+                        if r3.status_code == 200 and "html" not in ct and len(r3.content) > 512:
+                            if save_response(r3, fold, f"patreon-{pid}-{a}.package"):
+                                record("downloaded", item=f"{label} anexo {a}", source=u)
+                    except Exception as e:
+                        say(f"    err {e}")
+            if fold.exists() and any(fold.iterdir()):
+                continue
+        except Exception as e:
+            say(f"cdx {pid} err {e}")
+
+    # ---- 12. linktree da sims3melancholic -> boosty real -> cleavage
+    fold = OUT / "patreon-96600228"
+    if not (fold.exists() and any(fold.iterdir())):
+        try:
+            r = fetch("https://linktr.ee/sims3melancholic", session=SCRAPER)
+            say(f"linktree: {r.status_code}")
+            boosts = set(re.findall(r'https://boosty\.to/([a-z0-9_]+)', r.text))
+            say(f"linktree boosty blogs: {boosts}")
+            for b in boosts:
+                boosty_hunt(b, ["cleavage"], fold, "Cleavage masks 3 (sims3melancholic)")
+                if fold.exists() and any(fold.iterdir()):
+                    break
+        except Exception as e:
+            say(f"linktree err {e}")
+
+    # ---- 13. ModCo: tentar URLs de busca do modcollective p/ bzip eyes
+    fold = OUT / "rescue-remussirion-bzip"
+    if not (fold.exists() and any(fold.iterdir())):
+        for u in ("https://www.modcollective.gg/sims4/browse?search=bzip",
+                  "https://www.modcollective.gg/sims4/browse?search=remussirion",
+                  "https://www.modcollective.gg/sims4/free-mods"):
+            try:
+                r = fetch(u, session=SCRAPER)
+                say(f"modco {u[-40:]}: {r.status_code}")
+                if r.status_code != 200:
+                    continue
+                creates = [c for c in re.findall(r'href="(/sims4/details/[^"]+)"', r.text)
+                           if "bzip" in c.lower() or "remus" in c.lower()]
+                say(f"  criacoes: {creates[:6]}")
+                for c in creates[:3]:
+                    r2 = fetch("https://www.modcollective.gg" + c, session=SCRAPER)
+                    if r2.status_code != 200:
+                        continue
+                    for m in re.findall(r'"(https?://[^"]*(?:download|file)[^"]*)"', r2.text)[:8]:
+                        ok, info = try_url(m, fold, referer=r2.url)
+                        say(f"    {m[:80]} -> {info}")
+                        if ok:
+                            record("downloaded", item="BZIP Eyes (RemusSirion)", source=m)
+                            break
+                    if fold.exists() and any(fold.iterdir()):
+                        break
+                if fold.exists() and any(fold.iterdir()):
+                    break
+            except Exception as e:
+                say(f"modco {u[-30:]} err {e}")
 
     dbg.write_text("\n".join(lines), encoding="utf-8")
 
