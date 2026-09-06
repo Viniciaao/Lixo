@@ -439,10 +439,194 @@ def main():
     ]:
         record("manual", item=label, site="Patreon (pagina da criadora)", url=url)
 
+    # ------------------------------------------------------------------
+    # RESCUE PHASE round 2: cloudscraper-patreon, wayback, boosty, NSW site
+    # ------------------------------------------------------------------
+    log("== RESCUE: patreon via cloudscraper ==")
+    for pid, label, folder in PATREON_RETRY:
+        patreon_cloudscraper(pid, folder, label)
+
+    log("== RESCUE: wayback for patreon posts ==")
+    for pid, label, folder in PATREON_RETRY:
+        wayback_extract(f"https://www.patreon.com/posts/{pid}", folder, f"{label}-wayback")
+
+    log("== RESCUE: wayback for tumblr posts ==")
+    for url, label, folder in TUMBLR_RETRY:
+        wayback_extract(url, folder, f"{label}-wayback")
+
+    log("== RESCUE: boosty mirrors ==")
+    for blog, keywords, label, folder in BOOSTY_HUNTS:
+        boosty_hunt(blog, keywords, folder, label)
+
+    log("== RESCUE: NSW official website ==")
+    nsw_site("Bodycare Kit (NSW)", OUT / "rescue-nsw-bodycare")
+
     (OUT / "manifest.json").write_text(
         json.dumps(MANIFEST, indent=2, ensure_ascii=False))
     log(f"DONE. downloaded={len(MANIFEST['downloaded'])} "
         f"failed={len(MANIFEST['failed'])} manual={len(MANIFEST['manual'])}")
+
+
+# ----------------------------------------------------------------------------
+# RESCUE: alternate routes
+# ----------------------------------------------------------------------------
+def patreon_cloudscraper(pid, folder, label):
+    url = f"https://www.patreon.com/posts/{pid}"
+    if folder.exists() and any(folder.iterdir()):
+        return
+    try:
+        r = fetch(url, session=SCRAPER)
+        if r.status_code != 200:
+            log(f"  cloudscraper {pid}: {r.status_code}")
+            return
+        cands, _ = pick_candidates(extract_links(r.text))
+        for u in cands:
+            ok, info = try_url(u, folder, referer=url)
+            log(f"    try {u[:90]} -> {info}")
+            if ok:
+                record("downloaded", item=label, source=url + " (cloudscraper)")
+                return
+        record("manual", item=label, site="Patreon (cloudscraper sem link)", url=url)
+    except Exception as e:
+        log(f"  cloudscraper {pid} err {e}")
+
+
+def wayback_extract(url, folder, label):
+    """Fetch a wayback snapshot of a page and try its file links."""
+    if folder.exists() and any(folder.iterdir()):
+        return
+    for ts in ("2", "2024", "2023"):
+        try:
+            r = fetch(f"https://web.archive.org/web/{ts}/{url}", session=S)
+            if r.status_code != 200 or "has not archived that URL" in r.text:
+                continue
+            text = r.text
+            # unwrap wayback-prefixed hrefs
+            text = re.sub(r'(https?://web\.archive\.org/web/\d+[a-z_]*/)(https?://)',
+                          r'\2', text)
+            cands, extra_posts = pick_candidates(extract_links(text))
+            log(f"  wayback[{ts}] {url[-50:]}: {len(cands)} candidatos")
+            for u in cands:
+                ok, info = try_url(u, folder, referer=url)
+                log(f"    try {u[:90]} -> {info}")
+                if ok:
+                    record("downloaded", item=label, source=f"wayback:{url}")
+                    return
+            for pid_url in extra_posts:
+                pid = re.search(r"(\d{6,})(?:[/?#]|$)", pid_url)
+                if pid:
+                    patreon_cloudscraper(int(pid.group(1)), folder, label)
+            return  # a snapshot exists; further ts unlikely to differ
+        except Exception as e:
+            log(f"  wayback {url[-40:]} err {e}")
+
+
+def _walk_urls(obj):
+    if isinstance(obj, str):
+        if obj.startswith("http"):
+            yield obj
+    elif isinstance(obj, dict):
+        for v in obj.values():
+            yield from _walk_urls(v)
+    elif isinstance(obj, list):
+        for v in obj:
+            yield from _walk_urls(v)
+
+
+def boosty_hunt(blog, keywords, folder, label):
+    """Boosty (RU patreon clone) public posts often carry the same files."""
+    if folder.exists() and any(folder.iterdir()):
+        return
+    try:
+        r = fetch(f"https://boosty.to/api/v1/blog/{blog}/posts?posts_count=300", session=S)
+        if r.status_code != 200:
+            log(f"  boosty {blog}: HTTP {r.status_code}")
+            return
+        posts = r.json().get("data", [])
+        for p in posts:
+            title = (p.get("title") or "").lower()
+            if p.get("blocked"):
+                continue
+            if not any(k in title for k in keywords):
+                continue
+            log(f"  boosty {blog}: match '{p.get('title')}'")
+            urls = [u for u in _walk_urls(p) if "boosty.to" not in u
+                    or "files.boosty" in u]
+            for u in urls[:8]:
+                ok, info = try_url(u, folder, referer=f"https://boosty.to/{blog}")
+                log(f"    try {u[:90]} -> {info}")
+                if ok:
+                    record("downloaded", item=label,
+                           source=f"boosty.to/{blog} post '{p.get('title')}'")
+                    return
+    except Exception as e:
+        log(f"  boosty {blog} err {e}")
+
+
+def nsw_site(label, folder):
+    """NSW official website posts carry the public download links."""
+    try:
+        r = fetch("https://northernsiberiawinds.com/", session=SCRAPER)
+        if r.status_code != 200:
+            log(f"  nsw site: HTTP {r.status_code}")
+            return
+        pages = [html.unescape(m) for m in
+                 re.findall(r'href="([^"]*bodycare[^"]*)"', r.text, re.I)]
+        base = "https://northernsiberiawinds.com"
+        for p in pages[:3]:
+            u = p if p.startswith("http") else base + (p if p.startswith("/") else "/" + p)
+            ok, info = scrape_page(u, folder, label, session=SCRAPER)
+            log(f"    nsw page {u} -> {info}")
+            if ok:
+                record("downloaded", item=label, source=u)
+                return
+    except Exception as e:
+        log(f"  nsw site err {e}")
+
+
+PATREON_RETRY = [
+    (93373994, "Bodycare Kit (NSW)", OUT / "patreon-93373994"),
+    (117097930, "Amaranth set (148DAZED)", OUT / "patreon-117097930"),
+    (72457009, "Acne (miikocc)", OUT / "patreon-72457009"),
+    (71370172, "Misc face details (okruee)", OUT / "patreon-71370172"),
+    (94005453, "Lighting overlay (Jo_se_oh)", OUT / "patreon-94005453"),
+    (93851178, "3D eyelashes (obscurus)", OUT / "patreon-93851178"),
+    (96600228, "Cleavage masks 3 (sims3melancholic)", OUT / "patreon-96600228"),
+    (42027501, "Spotlight tattoos (Simandy)", OUT / "patreon-42027501"),
+    (92135508, "Feet 1V remaster (magicbot)", OUT / "patreon-92135508"),
+    (26574490, "Nosemask N10 (obscurus)", OUT / "rescue-obscurus-n10"),
+]
+
+TUMBLR_RETRY = [
+    ("https://northernsiberiawinds.tumblr.com/post/734744726011576320/bodycare-kit",
+     "Bodycare Kit (NSW)", OUT / "rescue-nsw-bodycare"),
+    ("https://remussirion.tumblr.com/post/766701696234684416/bzip-eyes-set-ts4",
+     "BZIP Eyes (RemusSirion)", OUT / "rescue-remussirion-bzip"),
+    ("https://sayasims.tumblr.com/post/183470649946/saya-eye-reflections-detail-22-swatches-female",
+     "Saya eye reflections (SayaSims)", OUT / "rescue-sayasims"),
+    ("https://pralinesims.net/post/188285457999/arm-hand-jewellery-ultimate-collection",
+     "Arm&Hand Jewellery (Pralinesims)", OUT / "rescue-pralinesims"),
+    ("https://obscurus-sims.tumblr.com/post/184629124468/nosemask-n10-70-colors-all-ages-all-genders",
+     "Nosemask N10 (obscurus)", OUT / "rescue-obscurus-n10"),
+    ("https://simandy.tumblr.com/post/630272666330415104/because-every-time-i-look-at-photoshop-i-want-to",
+     "Spotlight Tattoos (Simandy)", OUT / "patreon-42027501"),
+]
+
+BOOSTY_HUNTS = [
+    ("northernsiberiawinds", ["bodycare"], "Bodycare Kit (NSW)", OUT / "patreon-93373994"),
+    ("148dazed", ["amaranth"], "Amaranth set (148DAZED)", OUT / "patreon-117097930"),
+    ("miikocc", ["acne"], "Acne (miikocc)", OUT / "patreon-72457009"),
+    ("okruee", ["misc face", "miscface"], "Misc face details (okruee)", OUT / "patreon-71370172"),
+    ("jo_se_oh", ["lighting"], "Lighting overlay (Jo_se_oh)", OUT / "patreon-94005453"),
+    ("obscurus_sims", ["3d lash", "3d eyelash", "lashes", "eyelash"], "3D eyelashes (obscurus)", OUT / "patreon-93851178"),
+    ("obscurus", ["3d lash", "eyelash", "lashes"], "3D eyelashes (obscurus)", OUT / "patreon-93851178"),
+    ("sims3melancholic", ["cleavage"], "Cleavage masks 3 (sims3melancholic)", OUT / "patreon-96600228"),
+    ("simandy", ["spotlight"], "Spotlight tattoos (Simandy)", OUT / "patreon-42027501"),
+    ("magicbot", ["feet"], "Feet 1V remaster (magicbot)", OUT / "patreon-92135508"),
+    ("lutessasims", ["moles"], "Moles (LutessaSims)", OUT / "rescue-lutessa-moles"),
+    ("yunseol", ["eyebrow", "brow"], "Eyebrows (YUNSEOL)", OUT / "rescue-yunseol-brows"),
+    ("mikooi", ["body detail", "realistic"], "Body details (Mikooi)", OUT / "rescue-mikooi-body"),
+]
 
 
 if __name__ == "__main__":
