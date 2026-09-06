@@ -99,6 +99,33 @@ CF_ITEMS = [
      "sims4/create-a-sim/ava-sweatshirt"),
 ]
 
+MODID_CACHE = {}
+def get_modid(slug):
+    if slug in MODID_CACHE:
+        return MODID_CACHE[slug]
+    mid = None
+    try:
+        r = SESSION.get(f"https://www.curseforge.com/{slug}", timeout=60)
+        m = re.search(r'"projectId"\s*:\s*"?(\d+)"?', r.text)
+        if not m:
+            m = re.search(r'data-project-id="(\d+)"', r.text)
+        if m:
+            mid = m.group(1)
+            log(f"   modid({slug}) = {mid}")
+    except Exception as e:
+        log(f"   get_modid page exc {e}")
+    if not mid:
+        try:
+            r = SESSION.get(f"https://api.cfwidget.com/{slug}", timeout=60)
+            j = r.json()
+            mid = str(j.get("id", "")) or None
+            if mid:
+                log(f"   modid via cfwidget({slug}) = {mid}")
+        except Exception as e:
+            log(f"   cfwidget exc {e}")
+    MODID_CACHE[slug] = mid
+    return mid
+
 def fetch_curseforge():
     log("\n===== CURSEFORGE =====")
     for idx, (prefix, name, fid, orig_name, slug) in enumerate(CF_ITEMS):
