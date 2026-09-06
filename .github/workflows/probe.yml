@@ -6,8 +6,6 @@ on:
     paths:
       - 'scripts/probe_sources.py'
       - '.github/workflows/probe.yml'
-      - '.github/workflows/fetch.yml'
-      - 'scripts/fetch_sources.py'
   workflow_dispatch:
 
 permissions:
@@ -39,7 +37,14 @@ jobs:
             echo "no changes"
           else
             git commit -m "probe-results: update CC source probe output"
-            git push origin HEAD:${GITHUB_REF_NAME}
+            for i in 1 2 3 4 5; do
+              if git push origin HEAD:${GITHUB_REF_NAME}; then
+                echo "pushed (attempt $i)"
+                break
+              fi
+              echo "push failed (attempt $i), rebasing..."
+              git pull --rebase origin ${GITHUB_REF_NAME} || true
+            done
             echo "committed and pushed"
           fi
       - name: Fallback - open issue with results

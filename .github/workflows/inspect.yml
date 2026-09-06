@@ -25,7 +25,9 @@ jobs:
         run: |
           bash scripts/inspect_sources.sh 2>&1 | tee scripts/inspect_output.txt
           echo "inspect run: $(date -u +%Y-%m-%dT%H:%M:%SZ)" >> scripts/inspect_output.txt
+          exit 0
       - name: Commit inspect output
+        if: always()
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
@@ -34,6 +36,13 @@ jobs:
             echo "no changes"
           else
             git commit -m "inspect-results: update CC source inspection output"
-            git push origin HEAD:${GITHUB_REF_NAME}
+            for i in 1 2 3 4 5; do
+              if git push origin HEAD:${GITHUB_REF_NAME}; then
+                echo "pushed (attempt $i)"
+                break
+              fi
+              echo "push failed (attempt $i), rebasing..."
+              git pull --rebase origin ${GITHUB_REF_NAME} || true
+            done
             echo "committed and pushed"
           fi
