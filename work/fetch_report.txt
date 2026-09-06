@@ -1,0 +1,148 @@
+
+===== CURSEFORGE =====
+-- CF SIM-Helene-Dacosta: trying media URL https://media.forgecdn.net/files/8763/744/Anyulinela_Household_Dacosta_0x0026170a56100035.zip
+   media: HTTP 403 ct=application/xml final=https://media.forgecdn.net/files/8763/744/Anyulinela_Household_Dacosta_0x0026170a56100035.zip 
+   endpoint: HTTP 404 ct=text/html; charset=utf-8 final=https://www.curseforge.com/sims-households/helene-dacosta/download/8763744 
+-- CF EGGSIMS-earrings-19: trying media URL https://media.forgecdn.net/files/6496/196/%5BEGGSIMS%5D%20earrings%2019_TS4.zip
+   media: HTTP 403 ct=application/xml final=https://media.forgecdn.net/files/6496/196/%5BEGGSIMS%5D%20earrings%2019_TS4.zip 
+   endpoint: HTTP 404 ct=text/html; charset=utf-8 final=https://www.curseforge.com/create-a-sim/eggsims-earrings-19/download/6496196 
+-- CF Sparkly-French-Nails: trying media URL https://media.forgecdn.net/files/8649/348/4w25_SparklyFrenchNails.zip
+   media: HTTP 403 ct=application/xml final=https://media.forgecdn.net/files/8649/348/4w25_SparklyFrenchNails.zip 
+   endpoint: HTTP 404 ct=text/html; charset=utf-8 final=https://www.curseforge.com/create-a-sim/sparkly-french-nails/download/8649348 
+-- CF Shiny-Patent-Mary-Jane-Heels: trying media URL https://media.forgecdn.net/files/7751/173/%5BPolySphere%5DShinyPatentMaryJaneHeels_NonAutoHeight.package.zip
+   media: HTTP 403 ct=application/xml final=https://media.forgecdn.net/files/7751/173/%5BPolySphere%5DShinyPatentMaryJaneHeels_NonAutoHeight.package.zip 
+   endpoint: HTTP 404 ct=text/html; charset=utf-8 final=https://www.curseforge.com/create-a-sim/shiny-patent-mary-jane-heels/download/7751173 
+-- CF Ava-Sweatshirt: trying media URL https://media.forgecdn.net/files/8177/818/Valentine_Top_Ava.zip
+   media: HTTP 403 ct=application/xml final=https://media.forgecdn.net/files/8177/818/Valentine_Top_Ava.zip 
+   endpoint: HTTP 404 ct=text/html; charset=utf-8 final=https://www.curseforge.com/create-a-sim/ava-sweatshirt/download/8177818 
+
+===== PATREON ANALYSIS =====
+-- PATREON GPME-Gold-C2-contour (GPME Gold C2 (goppolsme)): HTTP 200
+   hrefs[1]: ['http://www.simfileshare.net/download/807916/']
+   attachments[0]:
+   included[13] url-fields[4]:
+     - ('campaign', 'GoppolsMe', 'url', 'https://www.patreon.com/goppolsme')
+     - ('user', '', 'url', 'https://www.patreon.com/goppolsme')
+     - ('reward', '', 'url', 'https://www.patreon.com/checkout/goppolsme?rid=10252517')
+     - ('reward', '', 'url', 'https://www.patreon.com/checkout/goppolsme?rid=2374887')
+-- PATREON NSW-3D-Eyelashes-N6 (3D Eyelashes N6 (NSW)): HTTP 200
+   hrefs[0]: []
+   attachments[6]:
+     - [NORTHERN SIBERIA WINDS] 3D EYELASHES N1.zip (7878448 bytes)
+     - [NORTHERN SIBERIA WINDS] 3D EYELASHES N2.zip (8492516 bytes)
+     - [NORTHERN SIBERIA WINDS] 3D EYELASHES N3.zip (7026259 bytes)
+     - [NORTHERN SIBERIA WINDS] 3D EYELASHES N4.zip (9396614 bytes)
+     - [NORTHERN SIBERIA WINDS] 3D EYELASHES N5.zip (7905195 bytes)
+     - [NORTHERN SIBERIA WINDS] 3D EYELASHES N6.zip (8372424 bytes)
+   included[7] url-fields[6]:
+     - ('campaign', 'northern siberia winds', 'url', 'https://www.patreon.com/northernsiberiawinds')
+     - ('user', '', 'url', 'https://www.patreon.com/northernsiberiawinds')
+     - ('reward', '', 'url', 'https://www.patreon.com/checkout/northernsiberiawinds?rid=9985578')
+     - ('reward', '', 'url', 'https://www.patreon.com/checkout/northernsiberiawinds?rid=4904070')
+     - ('reward', '', 'url', 'https://www.patreon.com/checkout/northernsiberiawinds?rid=4904071')
+     - ('reward', '', 'url', 'https://www.patreon.com/checkout/northernsiberiawinds?rid=9064201')
+-- PATREON GPME-Gold-Eyes-G2 (GPME Gold Eyes (goppolsme)): HTTP 200
+   hrefs[1]: ['http://simfileshare.net/download/472891/']
+   attachments[0]:
+   included[14] url-fields[4]:
+     - ('campaign', 'GoppolsMe', 'url', 'https://www.patreon.com/goppolsme')
+     - ('user', '', 'url', 'https://www.patreon.com/goppolsme')
+     - ('reward', '', 'url', 'https://www.patreon.com/checkout/goppolsme?rid=10252517')
+     - ('reward', '', 'url', 'https://www.patreon.com/checkout/goppolsme?rid=2374887')
+-- PATREON Heather-Skin-N7 (Heather Skin N7 (poyopoyosim)): HTTP 200
+   hrefs[4]: ['https://c10.patreonusercontent.com/4/patreon-media/p/post/85159474/a6f3ba9512d84f2fac9a8b7f91650f6e/eyJhIjoxLCJ3Ijo4MjB9/1.png?token-hash=3Ff-ljdQCl_hh6UTiQcyiQZxzsNqo5NmhUqiyLheBVY%3D&token-time=1789948800', 'https://c10.patreonusercontent.com/4/patreon-media/p/post/85159474/bc62128be4f04c409862e889d2402093/eyJhIjoxLCJ3Ijo4MjB9/1.png?token-hash=KM9OFPQEIckCiOJz_S3Ec7Ty4lfaII0fM9CHwPlOY-k%3D&token-time=1789948800', 'https://drive.google.com/drive/folders/1-gFVfhtikp1_OVZ96YuW9q8v2vIESD7l?usp=sharing', 'https://c10.patreonusercontent.com/4/patreon-media/p/post/85159474/1d95f278d441444e89abf7e2940347d6/eyJhIjoxLCJ3Ijo4MjB9/1.png?token-hash=Cu4W-_DcCWQTVJ-uVNXXjyMRUO8Jk93WvFrsIitnVQ4%3D&token-time=1789948800']
+   attachments[0]:
+   included[13] url-fields[6]:
+     - ('campaign', 'Poyo', 'url', 'https://www.patreon.com/poyopoyosim')
+     - ('user', '', 'url', 'https://www.patreon.com/poyopoyosim')
+     - ('reward', '', 'url', 'https://www.patreon.com/checkout/poyopoyosim?rid=10252622')
+     - ('reward', '', 'url', 'https://www.patreon.com/checkout/poyopoyosim?rid=28747856')
+     - ('reward', '', 'url', 'https://www.patreon.com/checkout/poyopoyosim?rid=8790830')
+     - ('reward', '', 'url', 'https://www.patreon.com/checkout/poyopoyosim?rid=28747910')
+-- PATREON Belaloallure-phaedra-mini-skirt (_phaedra_mini_skirt (Belaloallure)): HTTP 200
+   hrefs[0]: []
+   attachments[5]:
+     - Belaloallure_Daniela_door_dress.package (16080092 bytes)
+     - Belaloallure_phaedra_leather_top.package (6518632 bytes)
+     - Belaloallure_phaedra_mini_skirt.package (4170760 bytes)
+     - Belaloallure_Rufeida_corset_shirt.package (48993415 bytes)
+     - Belaloallure_Rufeida_mini_leather_skirt.package (2791814 bytes)
+   included[24] url-fields[11]:
+     - ('campaign', 'Belaloallure', 'url', 'https://www.patreon.com/Belaloallure1')
+     - ('user', '', 'url', 'https://www.patreon.com/Belaloallure1')
+     - ('media', '', 'download_url', 'https://c10.patreonusercontent.com/4/patreon-media/p/post/77031948/01e1969bc32348359876158ac4e91b0b/eyJhIjoxLCJwIjoxfQ%3D%3D/1.package?token-hash=BVkXuAw8yBIOnCdsu6Wn7ARSvUQIhYpL5iOhX4891oI%3D&token-time=1788825600')
+     - ('media', '', 'download_url', 'https://c10.patreonusercontent.com/4/patreon-media/p/post/77031948/6e24c0983df2463b8b34240fcdad6091/eyJhIjoxLCJwIjoxfQ%3D%3D/1.package?token-hash=VoBqd-7_hpnVmj0JM-r7Hv_U-ukA2Tsa-9RecKTX7X0%3D&token-time=1788825600')
+     - ('media', '', 'download_url', 'https://c10.patreonusercontent.com/4/patreon-media/p/post/77031948/2ec64b25628b42ce99f1e0680240c35c/eyJhIjoxLCJwIjoxfQ%3D%3D/1.package?token-hash=RD8mk5aKdg_yo48zoJ_gv_Fw6pAdpLfqHIFzLVllV4o%3D&token-time=1788825600')
+     - ('media', '', 'download_url', 'https://c10.patreonusercontent.com/4/patreon-media/p/post/77031948/f9b705866d9d4f8a813f101b62b353c6/eyJhIjoxLCJwIjoxfQ%3D%3D/1.package?token-hash=kp4u8ohoPBzBSW3kjRHYTyB5DaQeGqQ_EqIwg1YL-8U%3D&token-time=1788825600')
+     - ('media', '', 'download_url', 'https://c10.patreonusercontent.com/4/patreon-media/p/post/77031948/78176f3699d04aa49e3f0dc89d70100f/eyJhIjoxLCJwIjoxfQ%3D%3D/1.package?token-hash=TWr_VvxO-KOLn9IY0vSJx2zezEbE1uaSc6CRSZhiUqw%3D&token-time=1788825600')
+     - ('reward', '', 'url', 'https://www.patreon.com/checkout/Belaloallure1?rid=10252515')
+     - ('reward', '', 'url', 'https://www.patreon.com/checkout/Belaloallure1?rid=2275413')
+     - ('reward', '', 'url', 'https://www.patreon.com/checkout/Belaloallure1?rid=5972457')
+     - ('reward', '', 'url', 'https://www.patreon.com/checkout/Belaloallure1?rid=27865213')
+-- PATREON NSW-LIPS-N35 (Wild Cat Make-up / LIPS N35 (NSW)): HTTP 200
+   hrefs[1]: ['https://c10.patreonusercontent.com/4/patreon-media/p/post/64319245/44b30ee3e8d14836bb8c0c53feeae5f2/eyJhIjoxLCJwIjoxfQ%3D%3D/1.png?token-hash=MM0J8d3-cCWYMfnRVhHeZJFK0Hy5plgNMSSfLaSJZ6I%3D&token-time=1789948800']
+   attachments[16]:
+     - [NorthernSiberiaWinds] EYELIDS N11.package (22728431 bytes)
+     - [NorthernSiberiaWinds] EYELIDS N12.package (29822700 bytes)
+     - [NorthernSiberiaWinds] NOSEMASK N6.package (8147312 bytes)
+     - [NorthernSiberiaWinds] LIPS N34.package (3369075 bytes)
+     - [NorthernSiberiaWinds] LIPS N35.package (3742201 bytes)
+     - [NorthernSiberiaWinds] LIPS BLOOD N1.package (564106 bytes)
+     - [NorthernSiberiaWinds] LIPS BLOOD N2.package (1599464 bytes)
+     - [NORTHERN SIBERIA WINDS] BLUSH N7.package (11783207 bytes)
+     - [NORTHERN SIBERIA WINDS] NOSE FRECKLES BLUSH N6.package (4743365 bytes)
+     - [NORTHERN SIBERIA WINDS] NOSE FRECKLES BLUSH N6 OVERLAY.package (430246 bytes)
+     - [NORTHERN SIBERIA WINDS] SKIN N12.package (38901444 bytes)
+     - [NORTHERN SIBERIA WINDS] SKIN N12 EXTRA DARK.package (23149025 bytes)
+     - [NORTHERN SIBERIA WINDS] SKIN N12 EXTRA DARK HQ.package (90921956 bytes)
+     - [NORTHERN SIBERIA WINDS] SKIN N12 HQ.package (156687341 bytes)
+     - [NORTHERN SIBERIA WINDS] SKIN N12 OVERLAY.package (9221450 bytes)
+     - [NORTHERN SIBERIA WINDS] SKIN N12 OVERLAY HQ.package (41043768 bytes)
+   included[35] url-fields[22]:
+     - ('campaign', 'northern siberia winds', 'url', 'https://www.patreon.com/northernsiberiawinds')
+     - ('user', '', 'url', 'https://www.patreon.com/northernsiberiawinds')
+     - ('media', '', 'download_url', 'https://c10.patreonusercontent.com/4/patreon-media/p/post/64319245/ee48ea4e512548cba00c408add5efe87/eyJhIjoxLCJwIjoxfQ%3D%3D/1.package?token-hash=jMUm07EB9GjD4NJXIN-fMkxTz_sYz_h7oz6PHR3Iw-o%3D&token-time=1788825600')
+     - ('media', '', 'download_url', 'https://c10.patreonusercontent.com/4/patreon-media/p/post/64319245/04814660499c4a7c8f1c582e0e19c011/eyJhIjoxLCJwIjoxfQ%3D%3D/1.package?token-hash=f0W7wdR2zhQBQrCH8OPrd8-UES30Qcz4ZUspv9-wNss%3D&token-time=1788825600')
+     - ('media', '', 'download_url', 'https://c10.patreonusercontent.com/4/patreon-media/p/post/64319245/56344e60f3e14770a790892967dcd9f2/eyJhIjoxLCJwIjoxfQ%3D%3D/1.package?token-hash=8y4l4eAAhnNXzLtYAbKT8P1HVq0R8d4SJXkYVpQQjMI%3D&token-time=1788825600')
+     - ('media', '', 'download_url', 'https://c10.patreonusercontent.com/4/patreon-media/p/post/64319245/25313ffc3f9646669852a85424abb75e/eyJhIjoxLCJwIjoxfQ%3D%3D/1.package?token-hash=esU5kFv7EEf58P1bx1k5QpG-J11rHOVUY9KzmPdpJAU%3D&token-time=1788825600')
+     - ('media', '', 'download_url', 'https://c10.patreonusercontent.com/4/patreon-media/p/post/64319245/c27e390c74b54271b55ca046ba995426/eyJhIjoxLCJwIjoxfQ%3D%3D/1.package?token-hash=e3ikEYNLYy1ZW9I-3E9hf4osbiyww6IJfLHrpH3Jc5U%3D&token-time=1788825600')
+     - ('media', '', 'download_url', 'https://c10.patreonusercontent.com/4/patreon-media/p/post/64319245/6ff9c511a97849c6bb175fe0b7f76f35/eyJhIjoxLCJwIjoxfQ%3D%3D/1.package?token-hash=7DIrlXjLea6dOLlaqQ1D6oMvcS5pBjXEX6au_JQHjyM%3D&token-time=1788825600')
+     - ('media', '', 'download_url', 'https://c10.patreonusercontent.com/4/patreon-media/p/post/64319245/eec2301c3c304dc19b59ea574e97e0fd/eyJhIjoxLCJwIjoxfQ%3D%3D/1.package?token-hash=JN9rTJWBeA3towgrbvi9_O69w51KczHBjiL1OXD76sE%3D&token-time=1788825600')
+     - ('media', '', 'download_url', 'https://c10.patreonusercontent.com/4/patreon-media/p/post/64319245/e726acdcc65d466cb987c791eb9d9b8d/eyJhIjoxLCJwIjoxfQ%3D%3D/1.package?token-hash=sRtojzBaohWupyPO1E14cnRGS_bO6j8IyXMCWEEgxak%3D&token-time=1788825600')
+     - ('media', '', 'download_url', 'https://c10.patreonusercontent.com/4/patreon-media/p/post/64319245/f2fd067d41f34d5cb29086028312c98b/eyJhIjoxLCJwIjoxfQ%3D%3D/1.package?token-hash=e1vCmoKe9raA7hNBVG-umr-WOMBqZyg2SLCOZwpnJoA%3D&token-time=1788825600')
+     - ('media', '', 'download_url', 'https://c10.patreonusercontent.com/4/patreon-media/p/post/64319245/35c94acf491b4092a461bcebb9407df0/eyJhIjoxLCJwIjoxfQ%3D%3D/1.package?token-hash=GWcVuNQmZQIWSDHxATB8Nqru9Gl1JLwEiJCItBkInSg%3D&token-time=1788825600')
+     - ('media', '', 'download_url', 'https://c10.patreonusercontent.com/4/patreon-media/p/post/64319245/d1de5d50775e4c8a9c8b00796a4a2a28/eyJhIjoxLCJwIjoxfQ%3D%3D/1.package?token-hash=nHFO0P8g4kitthXwmP6IGDXIjdIBhfWpuyRX694xeU4%3D&token-time=1788825600')
+     - ('media', '', 'download_url', 'https://c10.patreonusercontent.com/4/patreon-media/p/post/64319245/4289adb7ed5f4bb99e7317bfd50009cb/eyJhIjoxLCJwIjoxfQ%3D%3D/1.package?token-hash=x842sfztNHxjgTmyfSd2oPFW48rGWc-tXTvuqxmcioo%3D&token-time=1788825600')
+     - ('media', '', 'download_url', 'https://c10.patreonusercontent.com/4/patreon-media/p/post/64319245/07c2cba96b31425ba4f72b9661e94512/eyJhIjoxLCJwIjoxfQ%3D%3D/1.package?token-hash=dFUjterzP8S1F0bgb7AWXAPe4GXea2JLyAiST35NQ3g%3D&token-time=1788825600')
+     - ('media', '', 'download_url', 'https://c10.patreonusercontent.com/4/patreon-media/p/post/64319245/11944d15c62c412cbc0ef2ffcaa2cd0f/eyJhIjoxLCJwIjoxfQ%3D%3D/1.package?token-hash=62jZ7b4B6UjZVn7i6LmWYxuyJ6Y3SyQLBWE0OUlRpwY%3D&token-time=1788825600')
+     - ('media', '', 'download_url', 'https://c10.patreonusercontent.com/4/patreon-media/p/post/64319245/64112f3dce4d427ab70f2fab4a5acc7c/eyJhIjoxLCJwIjoxfQ%3D%3D/1.package?token-hash=A8pNWHBf8K-JGvAvSL92Nqv91k4trIH2QjHu2KHPPR8%3D&token-time=1788825600')
+     - ('media', '', 'download_url', 'https://c10.patreonusercontent.com/4/patreon-media/p/post/64319245/8614249ef2054f2998d78088a964f739/eyJhIjoxLCJwIjoxfQ%3D%3D/1.package?token-hash=Yb7ePmhj1aQ1Is9HUMuzJyDvwkL7HxIh7vqD2F_uYjQ%3D&token-time=1788825600')
+     - ('reward', '', 'url', 'https://www.patreon.com/checkout/northernsiberiawinds?rid=9985578')
+     - ('reward', '', 'url', 'https://www.patreon.com/checkout/northernsiberiawinds?rid=4904070')
+-- PATREON obscurus-helgatisha-lips-presets (_lips_presets_7f (obscurus/helgatisha)): HTTP 200
+   hrefs[1]: ['http://simfileshare.net/folder/151649/']
+   attachments[0]:
+   included[16] url-fields[4]:
+     - ('campaign', 'obscurus-sims', 'url', 'https://www.patreon.com/obscurus_sims')
+     - ('user', '', 'url', 'https://www.patreon.com/obscurus_sims')
+     - ('reward', '', 'url', 'https://www.patreon.com/checkout/obscurus_sims?rid=10252527')
+     - ('reward', '', 'url', 'https://www.patreon.com/checkout/obscurus_sims?rid=2930239')
+-- PATREON MagicBot-default-mouth (Default Mouth (MagicBot)): HTTP 200
+   hrefs[4]: ['https://c10.patreonusercontent.com/4/patreon-media/p/post/56990147/264b1cf0b4ef4a1e92374e45dfd2cd5e/eyJhIjoxLCJ3Ijo4MjB9/1.png?token-hash=JMQVwQLftpK6SVKFZ53CC5zI8ocv_7gYLdCiNAWSlfE%3D&token-time=1789948800', 'https://photos.app.goo.gl/ND8ZBVo3CKWSuZWNA', 'https://c10.patreonusercontent.com/4/patreon-media/p/post/56990147/f72617d3bdcf4375b3f3ae7890335b1e/eyJhIjoxLCJ3Ijo4MjB9/1.png?token-hash=e4sBGLiYOqg_J1nv-rULWDAVpjDqe-5KoND9smblgNU%3D&token-time=1789948800', 'https://simfileshare.net/download/2759281/']
+   attachments[0]:
+   included[16] url-fields[6]:
+     - ('campaign', 'MADMAN', 'url', 'https://www.patreon.com/magicbot')
+     - ('user', '', 'url', 'https://www.patreon.com/magicbot')
+     - ('reward', '', 'url', 'https://www.patreon.com/checkout/magicbot?rid=10263573')
+     - ('reward', '', 'url', 'https://www.patreon.com/checkout/magicbot?rid=3152968')
+     - ('reward', '', 'url', 'https://www.patreon.com/checkout/magicbot?rid=3152969')
+     - ('reward', '', 'url', 'https://www.patreon.com/checkout/magicbot?rid=3504502')
+
+===== KIJIKO (EA eyelashes remover) =====
+   SFS direct: OK size=388354 final=https://simfileshare.net/download/3247982/?dl 
+   => SAVED helene-dacosta-tudo-junto/CCs/14_Kijiko-Remove-EA-Lashes.zip
+
+===== EUNOSIMS (tistory body preset) =====
+   link: https://blog.kakaocdn.net/dna/TQPUM/btrNzGgKQP0/AAAAAAAAAAAAAAAAAAAAAOkSTwOp-hC1J6pfLh7tF3_81GLe1A-wElQxiE9FsM7B/img.jpg?credential=yqXZFxpELC7KVnFOS48ylbz2pIh7...
+   download: OK size=438119 final=https://blog.kakaocdn.net/dna/TQPUM/btrNzGgKQP0/AAAAAAAAAAAAAAAAAAAAAOkSTwOp-hC1J6pfLh7tF3_81GLe1A-wElQxiE9FsM7B/img.jpg?credential=yqXZFxpELC7KVnFOS48ylbz2pIh7yKj8&expires=1790780399&allow_ip=&allow_referer=&signature=w3TgcFL3NyCxg4sh4Yj9Ra%2FU3f0%3D 
+   => SAVED helene-dacosta-tudo-junto/CCs/15_eunosims-euno-Body-preset.package
