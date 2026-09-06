@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
-"""Fetch pass 2 for Helene Dacosta pack. Runs on GitHub Actions runner."""
+"""Fetch pass 3 for Helene Dacosta pack. Runs on GitHub Actions runner."""
+import glob
 import json
 import os
 import re
-import sys
+import shutil
 import time
 import urllib.parse
 
@@ -30,7 +31,14 @@ def log(msg):
 SESSION = requests.Session()
 SESSION.headers.update(H)
 
-DBPF = b"\x05\x73\x47\x50"  # TS4 .package magic (little endian DBPF 0x50534705)
+DBPF = b"DBPF"
+
+def is_good(head, size):
+    if size < 1000:
+        return False
+    if head[:1] == b"<":
+        return False
+    return True
 
 def sniff_ext(head, cdisp=""):
     if head[:2] == b"PK":
@@ -44,21 +52,15 @@ def sniff_ext(head, cdisp=""):
             return ext
     return ".bin"
 
-def is_good(head, size):
-    if size < 1000:
-        return False
-    if head[:1] == b"<":
-        return False
-    return True
-
-def try_download(url, dest=None, headers=None, timeout=120):
-    """returns (ok, info, head_bytes)"""
+def try_download(url, dest=None, headers=None, timeout=150):
+    """Download to dest (extension auto-sniffed). Returns (ok, info, head, saved_path)."""
     try:
         r = SESSION.get(url, headers=headers, timeout=timeout, allow_redirects=True, stream=True)
         ct = r.headers.get("Content-Type", "")
         if r.status_code != 200:
-            return False, f"HTTP {r.status_code} ct={ct} final={r.url}", b""
-        tmp = dest + ".part"
+            return False, f"HTTP {r.status_code} ct={ct} final={r.url}", b"", None
+        base = dest if not os.path.splitext(dest)[1] else os.path.splitext(dest)[0]
+        tmp = base + ".part"
         with open(tmp, "wb") as f:
             for chunk in r.iter_content(1 << 16):
                 f.write(chunk)
@@ -67,16 +69,16 @@ def try_download(url, dest=None, headers=None, timeout=120):
         size = os.path.getsize(tmp)
         if not is_good(head, size):
             os.remove(tmp)
-            return False, f"bad payload size={size} ct={ct} final={r.url}", head
+            return False, f"bad payload size={size} ct={ct} final={r.url}", head, None
         ext = sniff_ext(head, r.headers.get("Content-Disposition", ""))
-        if dest.endswith(".bin") or not os.path.splitext(dest)[1]:
-            final_dest = dest + ext
-        else:
-            final_dest = dest
+        final_dest = base + ext
         os.replace(tmp, final_dest)
-        return True, f"OK size={size} saved={os.path.basename(final_dest)} final={r.url}", head
+        return True, f"OK size={size} saved={os.path.basename(final_dest)} final={r.url}", head, final_dest
     except Exception as e:  # noqa
-        return False, f"EXC {type(e).__name__}: {e}", b""
+        return False, f"EXC {type(e).__name__}: {e}", b"", None
+
+def clean_name(name):
+    return re.sub(r"[^A-Za-z0-9._-]+", "_", name).strip("_")
 
 # ================================================================ CURSEFORGE
 CF_ITEMS = [
@@ -97,16 +99,16 @@ CF_ITEMS = [
      "sims4/create-a-sim/ava-sweatshirt"),
 ]
 
-def fetch_curseforge(debug_only_first=True):
+def fetch_curseforge():
     log("\n===== CURSEFORGE =====")
     for idx, (prefix, name, fid, orig_name, slug) in enumerate(CF_ITEMS):
-        dest = f"{OUT}/{prefix}_{name}.bin"
+        dest = f"{OUT}/{prefix}_{name}"
         ok = False
-        # A) direct media (tokenless) - usually 403 but cheap to try
+        # A) direct media (tokenless, usually 403)
         a, b = fid // 1000, fid % 1000
         media_url = f"https://media.forgecdn.net/files/{a}/{b}/{urllib.parse.quote(orig_name)}"
-        ok, info, _ = try_download(media_url, dest=dest,
-                                   headers={"Referer": "https://www.curseforge.com/"})
+        ok, info, _, saved = try_download(media_url, dest=dest,
+                                          headers={"Referer": "https://www.curseforge.com/"})
         log(f"-- CF {name}: media {info if ok else info}")
         if ok:
             continue
@@ -117,104 +119,87 @@ def fetch_curseforge(debug_only_first=True):
             time.sleep(2)
         except Exception:
             pass
-        ok, info, _ = try_download(dl_url, dest=dest,
-                                   headers={"Referer": f"https://www.curseforge.com/{slug}/"})
+        ok, info, _, saved = try_download(dl_url, dest=dest,
+                                          headers={"Referer": f"https://www.curseforge.com/{slug}/"})
         log(f"-- CF {name}: endpoint {info}")
         if ok:
             continue
-        # C) internal API download-url (needs modId)
-        modid = get_modid(slug)
-        if modid:
-            api = f"https://www.curseforge.com/api/v1/mods/{modid}/files/{fid}/download-url"
-            try:
-                r = SESSION.get(api, timeout=40,
-                                headers={"Accept": "application/json",
-                                         "Referer": f"https://www.curseforge.com/{slug}/"})
-                log(f"-- CF {name}: api-v1 status={r.status_code} body={r.text[:300]}")
-                if r.status_code == 200:
-                    try:
-                        j = r.json()
-                        data = j.get("data", [])
-                        for d in (data if isinstance(data, list) else [data]):
-                            du = (d or {}).get("downloadUrl")
-                            if du:
-                                ok, info, _ = try_download(du, dest=dest)
-                                log(f"-- CF {name}: api download {info}")
-                                break
-                    except Exception as e:
-                        log(f"-- CF {name}: api parse err {e}")
-            except Exception as e:
-                log(f"-- CF {name}: api exc {e}")
-        if ok:
-            continue
-        # D) debug the interstitial (only first item)
-        if debug_only_first and idx == 0:
-            cf_debug(dl_url, slug, fid)
+        if idx == 0:
+            cf_probe_deep(dl_url, fid)
+    log("   (CF needs manual solving - see probe debug above)")
 
-MODID_CACHE = {}
-def get_modid(slug):
-    if slug in MODID_CACHE:
-        return MODID_CACHE[slug]
-    mid = None
-    try:
-        r = SESSION.get(f"https://www.curseforge.com/{slug}", timeout=40)
-        m = re.search(r'"projectId"\s*:\s*"?(\d+)"?', r.text)
-        if not m:
-            m = re.search(r'data-project-id="(\d+)"', r.text)
-        if not m:
-            m = re.search(r'"id":\s*(\d{4,8})', r.text[:5000])
-        mid = m.group(1) if m else None
-        if mid:
-            log(f"   modid({slug}) = {mid}")
-    except Exception as e:
-        log(f"   get_modid exc {e}")
-    # fallback: cfwidget
-    if not mid:
-        try:
-            r = SESSION.get(f"https://api.cfwidget.com/{slug}", timeout=40)
-            j = r.json()
-            mid = str(j.get("id", "")) or None
-            if mid:
-                log(f"   modid via cfwidget({slug}) = {mid}")
-        except Exception as e:
-            log(f"   cfwidget exc {e}")
-    MODID_CACHE[slug] = mid
-    return mid
-
-def cf_debug(dl_url, slug, fid):
-    log("   === CF DEBUG ===")
+def cf_probe_deep(dl_url, fid):
+    """Collect intel to find the CurseForge signed download endpoint."""
+    log("   === CF DEEP PROBE ===")
     try:
         SESSION.cookies.clear()
-        r1 = SESSION.get(dl_url, timeout=60)
-        log(f"   pass1: status={r1.status_code} final={r1.url} len={len(r1.content)}")
-        log(f"   pass1 cookies: {[c.name for c in SESSION.cookies]}")
-        time.sleep(2)
-        r2 = SESSION.get(dl_url, timeout=60)
-        log(f"   pass2: status={r2.status_code} final={r2.url} ct={r2.headers.get('Content-Type')} len={len(r2.content)}")
-        if r2.status_code == 200 and r2.headers.get("Content-Type", "").startswith("text/html"):
-            body = r2.text
-            for kw in ("8763744", "media.forgecdn", "edge.forgecdn", "downloadUrl",
-                       "window.location", "token", "Seconds", "api/v1", "cf-chl"):
-                for m in re.finditer(re.escape(kw), body):
-                    s = max(0, m.start() - 120)
-                    seg = body[s:m.start() + 220].replace("\n", " ")
-                    log(f"   ...{kw}...: {seg[:330]}")
-                    break  # only first occurrence each
+        r = SESSION.get(dl_url, timeout=60)
+        body = r.text
+        with open(f"{WORK}/cf_page.html", "w") as f:
+            f.write(body)
+        log(f"   page len={len(body)}")
+        # build id
+        m = re.search(r'"buildId"\s*:\s*"([^"]+)"', body)
+        bid = m.group(1) if m else None
+        log(f"   buildId={bid}")
+        # Next.js data JSON
+        if bid:
+            data_url = dl_url.replace("https://www.curseforge.com", "") + ".json"
+            full = f"https://www.curseforge.com/_next/data/{bid}{data_url}"
+            try:
+                rr = SESSION.get(full, timeout=60,
+                                 headers={"Accept": "application/json"})
+                log(f"   next-data {full[:120]} -> HTTP {rr.status_code} len={len(rr.content)}")
+                if rr.status_code == 200:
+                    try:
+                        j = rr.json()
+                        s = json.dumps(j)
+                        with open(f"{WORK}/cf_nextdata.json", "w") as f:
+                            f.write(s)
+                        for kw in ("downloadUrl", "download_url", "signed", "expires"):
+                            for mm in re.finditer(kw, s):
+                                st = max(0, mm.start() - 60)
+                                log(f"      [{kw}]: ...{s[st:mm.start()+160]}...")
+                                break
+                    except Exception as e:
+                        log(f"   next-data parse err {e}")
+            except Exception as e:
+                log(f"   next-data exc {e}")
+        # JS chunk scripts
+        scripts = re.findall(r'<script src="([^"]+\.js)"', body)
+        # filter app/main chunks
+        cands = [s for s in scripts if "_next/static/chunks" in s][:14]
+        log(f"   chunk scripts ({len(cands)} of {len(scripts)})")
+        joined = ""
+        for s in cands:
+            try:
+                c = SESSION.get(s, timeout=40).text
+                joined += c + "\n"
+            except Exception:
+                pass
+        for kw in ("download-url", "downloadUrl", "download_url", "timeoutInSeconds", "media.forgecdn"):
+            hits = [mm.start() for mm in re.finditer(kw, joined)][:2]
+            for hp in hits:
+                st = max(0, hp - 140)
+                log(f"   js[{kw}]: ...{joined[st:hp+220]}...".replace("\n", " "))
     except Exception as e:
-        log(f"   cf_debug exc {e}")
-    log("   === END CF DEBUG ===")
+        log(f"   cf_probe_deep exc {e}")
+    log("   === END CF DEEP PROBE ===")
 
 # ================================================================ PATREON
 PATREON_JOBS = [
-    # (post id, prefixo, nome legivel, [(nome-alvo regex, size esperado, idx candidatos)])
+    # (post id, prefixo, nome legivel, [(nome-arquivo regex, size esperado, idx candidatos)])
     ("64319245", "11", "NSW-LIPS-N35",
-     [("LIPS N35", 3742201, [3, 4, 5, 2, 6])]),
+     [("LIPS N35", 3742201, [4, 3, 5, 2, 6])]),
     ("77031948", "07", "Belaloallure-phaedra-mini-skirt",
-     [("phaedra_mini_skirt", 4170760, [1, 2, 3, 0, 4])]),
+     [("phaedra_mini_skirt", 4170760, [2, 1, 3, 0, 4])]),
 ]
 
 def fetch_patreon_public():
     log("\n===== PATREON PUBLIC ATTACHMENTS =====")
+    # clean leftovers from previous runs
+    for f in glob.glob(f"{WORK}/patreon_tmp_*"):
+        os.remove(f)
     for pid, prefix, label, wants in PATREON_JOBS:
         try:
             r = SESSION.get(f"https://www.patreon.com/api/posts/{pid}",
@@ -232,113 +217,89 @@ def fetch_patreon_public():
                     u = obj.get("attributes", {}).get("download_url")
                     if u:
                         media_urls.append(u)
-            # build idx->(name,url)
             pairs = [(atts[i].get("file_name", ""), media_urls[i])
                      for i in range(min(len(atts), len(media_urls)))]
             for want_re, want_size, cands in wants:
-                chosen = None
-                for i in cands:
-                    if 0 <= i < len(pairs):
-                        name, url = pairs[i]
-                        chosen = (i, name, url)
-                        break
-                if not chosen:
-                    log(f"   [{label}] no candidate idx available")
-                    continue
-                i, fname, url = chosen
-                # match name regex first, then verify size after download
-                tmp_dest = f"{WORK}/patreon_tmp_{pid}_{i}.bin"
-                ok, info, _ = try_download(url, dest=tmp_dest,
-                                           headers={"Referer": "https://www.patreon.com/"})
-                log(f"   [{label}] try idx {i} ({fname}): {info}")
-                size = os.path.getsize(tmp_dest) if os.path.exists(tmp_dest) else -1
-                if not ok or abs(size - want_size) > 50000:
-                    ok = False
-                    log(f"   [{label}] size mismatch (got {size}, want {want_size}); trying more indices")
-                    for j in [c for c in cands if c != i]:
-                        if 0 <= j < len(pairs):
-                            nm, u2 = pairs[j]
-                            tmp2 = f"{WORK}/patreon_tmp_{pid}_{j}.bin"
-                            ok2, info2, _ = try_download(u2, dest=tmp2,
-                                                         headers={"Referer": "https://www.patreon.com/"})
-                            log(f"      try idx {j} ({nm}): {info2}")
-                            sz2 = os.path.getsize(tmp2) if os.path.exists(tmp2) else -1
-                            if ok2 and abs(sz2 - want_size) <= 50000:
-                                ok, tmp_dest, fname = ok2, tmp2, nm
-                                break
-                if ok:
-                    base = re.sub(r'[^A-Za-z0-9._-]+', '_', fname).strip("_")
-                    final = f"{OUT}/{prefix}_{label}_{base}.bin"
-                    os.replace(tmp_dest, final)
+                got = False
+                order = cands or list(range(len(pairs)))
+                tried = set()
+                for i in order:
+                    if i in tried or not (0 <= i < len(pairs)):
+                        continue
+                    tried.add(i)
+                    fname, url = pairs[i]
+                    if not re.search(want_re, fname, re.I):
+                        continue
+                    tmp = f"{WORK}/patreon_tmp_{pid}_{i}"
+                    ok, info, _, saved = try_download(url, dest=tmp,
+                                                      headers={"Referer": "https://www.patreon.com/"})
+                    log(f"   [{label}] idx {i} ({fname}): {info}")
+                    if not ok:
+                        continue
+                    size = os.path.getsize(saved)
+                    if abs(size - want_size) > 50000:
+                        log(f"   size mismatch (got {size}, want {want_size})")
+                        os.remove(saved)
+                        continue
+                    final = f"{OUT}/{prefix}_{label}_{clean_name(fname)}"
+                    os.replace(saved, final)
                     log(f"   => SAVED {final}")
-                else:
-                    log(f"   [{label}] FAILED")
+                    got = True
+                    break
+                if not got:
+                    log(f"   [{label}] FAILED (no candidate matched)")
         except Exception as e:
             log(f"-- PATREON {pid}: EXC {e}")
 
 # ================================================================ SIMFILESHARE
-def fetch_sfs(sfs_id, prefix, label, name_filter=None):
-    """Download a single file from SimFileShare."""
-    dest = f"{OUT}/{prefix}_{label}.bin"
+def fetch_sfs(sfs_id, prefix, label):
+    dest = f"{OUT}/{prefix}_{label}"
     try:
         SESSION.get(f"https://simfileshare.net/download/{sfs_id}/", timeout=60)
     except Exception:
         pass
-    ok, info, _ = try_download(f"https://cdn.simfileshare.net/download/{sfs_id}/?dl",
-                               dest=dest,
-                               headers={"Referer": f"https://simfileshare.net/download/{sfs_id}/"})
+    ok, info, _, saved = try_download(f"https://cdn.simfileshare.net/download/{sfs_id}/?dl",
+                                      dest=dest,
+                                      headers={"Referer": f"https://simfileshare.net/download/{sfs_id}/"})
     log(f"   SFS {sfs_id} ({label}): {info}")
     return ok
 
 def fetch_sfs_folder():
-    """List files of an SFS folder, download ones matching filter."""
     folder_id = "151649"
-    want = re.compile(r"lips.{0,4}presets?\s*7f|7f|helga", re.I)
+    want = re.compile(r"lips.*presets?\s*7f", re.I)
     log("\n===== SFS FOLDER obscurus 151649 =====")
     try:
         r = SESSION.get(f"https://simfileshare.net/folder/{folder_id}/", timeout=60)
         html = r.text
-        # entries: look for download links with nearby names
         entries = re.findall(r'href="(/download/\d+/)"[^>]*>(.*?)</a>', html, re.S)
-        # fallback pattern: blocks containing file name and a link
         if not entries:
-            blocks = re.split(r'<article|class="file', html)
-            for blk in blocks:
+            for blk in re.split(r'<article|class="file', html):
                 m1 = re.search(r'<a[^>]*href="(/download/\d+/)"', blk)
                 m2 = re.search(r'<h[23][^>]*>.*?>\s*([^<]{3,80})', blk, re.S)
                 if m1:
-                    name = m2.group(1).strip() if m2 else "?"
-                    entries.append((m1.group(1), name))
+                    entries.append((m1.group(1), m2.group(1).strip() if m2 else "?"))
         log(f"   found {len(entries)} entries")
-        for href, name in entries[:80]:
-            name = re.sub(r"\s+", " ", name).strip()
-            log(f"     {href}  {name}")
         hits = [(h, n) for h, n in entries if want.search(n or "")]
-        for href, name in hits:
-            sid = re.search(r"/download/(\d+)/", href).group(1)
-            label = re.sub(r"[^A-Za-z0-9._-]+", "_", name or sid).strip("_")[:60]
-            log(f"   => downloading match: {href} {name}")
-            fetch_sfs(sid, "12", f"obscurus-{label}")
+        for h, n in hits:
+            sid = re.search(r"/download/(\d+)/", h).group(1)
+            log(f"   => match {h} {n}")
+            fetch_sfs(sid, "12", f"obscurus-{clean_name(n)}")
     except Exception as e:
         log(f"   SFS folder exc {e}")
 
 # ================================================================ GOOGLE DRIVE
 def gdrive_folder_list(folder_id):
-    """List public gdrive folder via embeddedfolderview."""
     try:
-        r = SESSION.get(f"https://drive.google.com/embeddedfolderview?id={folder_id}#list",
-                        timeout=60)
+        r = SESSION.get(f"https://drive.google.com/embeddedfolderview?id={folder_id}#list", timeout=60)
         html = r.text
         rows = re.findall(r'<a href="(https://drive\.google\.com/file/d/([^/"]+)/view[^"]*)"[^>]*>(.*?)</a>',
                           html, re.S)
         if not rows:
-            log(f"   gdrive list failed; page len={len(html)}")
-            log("   page snippet: " + html[:500].replace("\n", " "))
+            log(f"   gdrive list failed; page len={len(html)} snippet={html[:300]}")
             return []
         out = []
         for url, fid, name in rows:
-            name = re.sub(r"<[^>]+>", "", name)
-            name = name.strip()
+            name = re.sub(r"<[^>]+>", "", name).strip()
             out.append((fid, name))
         return out
     except Exception as e:
@@ -346,17 +307,15 @@ def gdrive_folder_list(folder_id):
         return []
 
 def gdrive_download(fid, dest):
-    """Download a public gdrive file by id (handles virus-scan confirm)."""
     url = f"https://drive.usercontent.google.com/download?id={fid}&export=download&confirm=t"
-    ok, info, _ = try_download(url, dest=dest)
+    ok, info, _, saved = try_download(url, dest=dest)
     if not ok:
-        # second chance: classic drive host with confirm token
         try:
             r = SESSION.get(f"https://drive.google.com/uc?id={fid}&export=download", timeout=60)
             m = re.search(r'name="confirm" value="([0-9A-Za-z_-]+)"', r.text)
             if m:
-                url2 = f"https://drive.google.com/uc?id={fid}&export=download&confirm={m.group(1)}"
-                ok, info, _ = try_download(url2, dest=dest)
+                ok, info, _, saved = try_download(
+                    f"https://drive.google.com/uc?id={fid}&export=download&confirm={m.group(1)}", dest=dest)
         except Exception as e:
             log(f"   gdrive retry exc {e}")
     return ok
@@ -368,54 +327,37 @@ def fetch_poyo_drive():
     log(f"   folder items ({len(items)}):")
     for fid, name in items:
         log(f"     {fid}  {name}")
-    # choose: name mentioning heather (any skin file the sim needs is N7);
-    # if several heather, prefer ones containing N7 / 7 / skin
-    cand = [i for i in items if re.search(r"heather", i[1], re.I)]
-    log(f"   heather candidates: {[n for _, n in cand]}")
-    chosen = None
-    if len(cand) == 1:
-        chosen = cand[0]
-    elif len(cand) > 1:
-        for c in cand:
-            if re.search(r"\bN7\b|\b7\b|skin.?7", c[1], re.I):
-                chosen = c
-                break
-        if not chosen:
-            chosen = cand[0]
+    cand = [i for i in items if re.search(r"heather", i[1], re.I) and "overlay" not in i[1].lower()]
+    chosen = cand[0] if cand else None
     if chosen:
-        base = re.sub(r"[^A-Za-z0-9._-]+", "_", chosen[1]).strip("_")
-        dest = f"{OUT}/06_poyo-{base}.bin"
+        dest = f"{OUT}/06_poyo-{clean_name(chosen[1])}"
         ok = gdrive_download(chosen[0], dest)
-        log(f"   => downloading {chosen[1]} -> {ok}")
+        log(f"   => downloading {chosen[1]} ok={ok}")
     else:
-        log("   no heather candidate found")
+        log("   no heather skin candidate found (non-overlay)")
 
 # ================================================================ EUNOSIMS
 def fetch_eunosims():
     log("\n===== EUNOSIMS =====")
     try:
         r = SESSION.get("https://eunosims.tistory.com/entry/sims4cc-body-preset-1-5", timeout=60)
-        # the .package download link on the entry page
-        m = re.search(r'(https://blog\.kakaocdn\.net/[^"\']+?(?:preset|Body)[^"\']*?\.package[^"\']*?)"',
-                      r.text, re.I)
+        m = re.search(r'(https://blog\.kakaocdn\.net/[^"\']+?knm=tfile\.package[^"\']*?)"', r.text)
         if not m:
             m = re.search(r'(https://blog\.kakaocdn\.net/[^"\']+?credential=[^"\']+?\.package[^"\']*?)"', r.text)
         if not m:
             log("   no .package kakaocdn link found")
-            log("   candidates: " + "; ".join(re.findall(r'https://blog\.kakaocdn\.net/[^"\']{40,160}', r.text)[:5]))
             return
         link = m.group(1).replace("&amp;", "&")
         log(f"   link: {link[:150]}...")
-        dest = f"{OUT}/15_eunosims-euno-Body-preset.bin"
-        ok, info, _ = try_download(link, dest=dest, timeout=180)
+        dest = f"{OUT}/15_eunosims-euno-Body-preset"
+        ok, info, _, saved = try_download(link, dest=dest, timeout=200)
         log(f"   download: {info}")
     except Exception as e:
         log(f"   eunosims exc {e}")
 
 # ================================================================ KIJIKO
 def fetch_kijiko():
-    dest = f"{OUT}/14_Kijiko-Remove-EA-Lashes.bin"
-    if os.path.exists("helene-dacosta-tudo-junto/CCs/14_Kijiko-Remove-EA-Lashes.zip"):
+    if os.path.exists(f"{OUT}/14_Kijiko-Remove-EA-Lashes.zip"):
         log("\n===== KIJIKO: already present =====")
         return
     log("\n===== KIJIKO =====")
@@ -423,9 +365,10 @@ def fetch_kijiko():
         SESSION.get("https://simfileshare.net/download/3247982/", timeout=60)
     except Exception:
         pass
-    ok, info, _ = try_download("https://cdn.simfileshare.net/download/3247982/?dl",
-                               dest=dest,
-                               headers={"Referer": "https://simfileshare.net/download/3247982/"})
+    dest = f"{OUT}/14_Kijiko-Remove-EA-Lashes"
+    ok, info, _, saved = try_download("https://cdn.simfileshare.net/download/3247982/?dl",
+                                      dest=dest,
+                                      headers={"Referer": "https://simfileshare.net/download/3247982/"})
     log(f"   {info}")
 
 # ================================================================ main
@@ -441,7 +384,7 @@ def main():
     fetch_poyo_drive()
     with open(f"{WORK}/fetch_report.txt", "w") as f:
         f.write("\n".join(REPORT) + "\n")
-    log("\n===== FETCH 2 DONE =====")
+    log("\n===== FETCH 3 DONE =====")
 
 if __name__ == "__main__":
     main()
