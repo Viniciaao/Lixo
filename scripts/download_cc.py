@@ -698,33 +698,67 @@ def rescue_round3():
         lines.append("--- wayback debug ---")
         lines.extend(WB_DEBUG)
 
-    # ---- 7. patreon attachment links achados no wayback: tentar direto + via wayback
-    for h, i, m in [("93373994", "17046546", None), ("72457009", "11853048", None),
-                    ("72457009", None, "169663937"), ("71370172", "11658017", None),
-                    ("71370172", None, "166672146"), ("96600228", None, None)]:
-        fold = OUT / f"rescue-pat-{h}"
-        if fold.exists() and any(fold.iterdir()):
-            continue
-        if h == "96600228":
-            continue
-        if i:
-            u = f"https://www.patreon.com/file?h={h}&i={i}"
-        elif m:
-            u = f"https://www.patreon.com/file?h={h}&m={m}"
-        else:
-            continue
-        for cand in (u, f"https://web.archive.org/web/2/{u}"):
+    # ---- 7. anexos do patreon: wayback revela os ids (file?h=..&i=..) e o
+    # endpoint patreon.com/file serve o arquivo SEM login p/ posts publicos
+    for pid in ("93373994", "72457009", "71370172", "96600228", "93851178",
+                "94005453", "92135508", "117097930", "42027501", "26574490"):
+        fold = OUT / f"rescue-pat-{pid}"
+        got = set()
+        if fold.exists():
+            got = {p.name for p in fold.iterdir() if p.is_file()}
+        ids = set()
+        for mode in ("", "id_"):
             try:
-                r = fetch(cand, session=SCRAPER, allow_redirects=True)
-                say(f"patreon file {cand[-60:]} -> {r.status_code} "
-                    f"{r.headers.get('Content-Type','')[:30]}")
-                if r.status_code == 200 and "html" not in r.headers.get(
-                        "Content-Type", "").lower():
-                    if save_response(r, fold, f"patreon-{h}.package"):
-                        record("downloaded", item=f"patreon attachment {h}", source=cand)
-                        break
+                r = fetch(f"https://web.archive.org/web/2{mode}/"
+                          f"https://www.patreon.com/posts/{pid}", session=S)
+                if r.status_code != 200:
+                    continue
+                ids |= set(re.findall(r'patreon\.com/file\?h=' + pid + r'&(?:amp;)?i=(\d+)', r.text))
+                ids |= {("m" + m) for m in
+                        re.findall(r'patreon\.com/file\?h=' + pid + r'&(?:amp;)?m=(\d+)', r.text)}
             except Exception as e:
-                say(f"patreon file err {e}")
+                say(f"wb-pat {pid} err {e}")
+        ids = sorted(ids)[:16]
+        say(f"patreon {pid}: {len(ids)} attachment ids do wayback")
+        for a in ids:
+            u = (f"https://www.patreon.com/file?h={pid}&i={a}"
+                 if not a.startswith("m") else
+                 f"https://www.patreon.com/file?h={pid}&m={a[1:]}")
+            try:
+                r = fetch(u, session=SCRAPER, allow_redirects=True)
+                ct = r.headers.get("Content-Type", "").lower()
+                say(f"  {u[-45:]} -> {r.status_code} {ct[:30]}")
+                if r.status_code == 200 and "html" not in ct and len(r.content) > 512:
+                    if save_response(r, fold, f"patreon-{pid}-{a}.package"):
+                        record("downloaded", item=f"patreon attachment {pid}/{a}", source=u)
+            except Exception as e:
+                say(f"  patreon file err {e}")
+
+    # ---- 8. ModCo (modcollective.gg) - bzip eyes da RemusSirion
+    fold = OUT / "rescue-remussirion-bzip"
+    if not (fold.exists() and any(fold.iterdir())):
+        try:
+            r = fetch("https://www.modcollective.gg/sims4/artist/remussirion", session=SCRAPER)
+            say(f"modco artist page: {r.status_code}")
+            if r.status_code == 200:
+                creates = re.findall(r'href="(/sims4/details/creation/[^"]+)"', r.text)
+                bz = [c for c in creates if "bzip" in c.lower() or "zip" in c.lower()]
+                say(f"modco criacoes: {creates[:10]} bzip: {bz}")
+                for c in (bz or creates)[:6]:
+                    r2 = fetch("https://www.modcollective.gg" + c, session=SCRAPER)
+                    if r2.status_code != 200:
+                        continue
+                    for m in re.findall(r'href="([^"]*(?:download|api)[^"]*)"', r2.text)[:5]:
+                        u = m if m.startswith("http") else "https://www.modcollective.gg" + m
+                        ok, info = try_url(u, fold, referer=r2.url)
+                        say(f"    modco {u[:80]} -> {info}")
+                        if ok:
+                            record("downloaded", item="BZIP Eyes (RemusSirion)", source=u)
+                            break
+                    if fold.exists() and any(fold.iterdir()):
+                        break
+        except Exception as e:
+            say(f"modco err {e}")
 
     dbg.write_text("\n".join(lines), encoding="utf-8")
 
