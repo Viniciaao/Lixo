@@ -1,9 +1,5 @@
 #!/usr/bin/env python3
-"""Fetch all obtainable CC sources for the Helene Dacosta sim pack.
-
-Runs on a GitHub Actions runner (full internet). Saves files under
-helene-dacosta-tudo-junto/ and writes a report to work/fetch_report.txt
-"""
+"""Fetch pass 2 for Helene Dacosta pack. Runs on GitHub Actions runner."""
 import json
 import os
 import re
@@ -15,7 +11,6 @@ import requests
 
 UA = ("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
       "(KHTML, like Gecko) Chrome/124.0 Safari/537.36")
-
 H = {
     "User-Agent": UA,
     "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8",
@@ -35,209 +30,418 @@ def log(msg):
 SESSION = requests.Session()
 SESSION.headers.update(H)
 
-def looks_html(data, ct=""):
-    return (data[:1] == b"<") or ("html" in ct)
+DBPF = b"\x05\x73\x47\x50"  # TS4 .package magic (little endian DBPF 0x50534705)
 
-def save_file(path, data):
-    if not data:
+def sniff_ext(head, cdisp=""):
+    if head[:2] == b"PK":
+        return ".zip"
+    if head[:4] == DBPF:
+        return ".package"
+    m = re.search(r"filename=\"?([^\";]+)", cdisp or "")
+    if m:
+        ext = os.path.splitext(m.group(1))[1][:10]
+        if ext:
+            return ext
+    return ".bin"
+
+def is_good(head, size):
+    if size < 1000:
         return False
-    with open(path, "wb") as f:
-        f.write(data)
+    if head[:1] == b"<":
+        return False
     return True
 
-def try_download(url, headers=None, timeout=90, stream_to=None, extra_notes=""):
-    """Download url to stream_to (or return bytes). Returns (ok, info)."""
+def try_download(url, dest=None, headers=None, timeout=120):
+    """returns (ok, info, head_bytes)"""
     try:
-        r = SESSION.get(url, headers=headers, timeout=timeout, allow_redirects=True,
-                        stream=True)
+        r = SESSION.get(url, headers=headers, timeout=timeout, allow_redirects=True, stream=True)
         ct = r.headers.get("Content-Type", "")
         if r.status_code != 200:
-            return False, f"HTTP {r.status_code} ct={ct} final={r.url} {extra_notes}"
-        if stream_to:
-            with open(stream_to, "wb") as f:
-                for chunk in r.iter_content(1 << 16):
-                    f.write(chunk)
-            size = os.path.getsize(stream_to)
-            with open(stream_to, "rb") as f:
-                head = f.read(4)
-            if size < 100 or looks_html(head, ct):
-                os.remove(stream_to)
-                return False, f"bad payload size={size} ct={ct} final={r.url} {extra_notes}"
-            return True, f"OK size={size} final={r.url} {extra_notes}"
-        data = r.content
-        if len(data) < 100 or looks_html(data[:4], ct):
-            return False, f"bad payload size={len(data)} ct={ct} final={r.url} {extra_notes}"
-        return data, f"OK size={len(data)} final={r.url} {extra_notes}"
+            return False, f"HTTP {r.status_code} ct={ct} final={r.url}", b""
+        tmp = dest + ".part"
+        with open(tmp, "wb") as f:
+            for chunk in r.iter_content(1 << 16):
+                f.write(chunk)
+        with open(tmp, "rb") as f:
+            head = f.read(8)
+        size = os.path.getsize(tmp)
+        if not is_good(head, size):
+            os.remove(tmp)
+            return False, f"bad payload size={size} ct={ct} final={r.url}", head
+        ext = sniff_ext(head, r.headers.get("Content-Disposition", ""))
+        if dest.endswith(".bin") or not os.path.splitext(dest)[1]:
+            final_dest = dest + ext
+        else:
+            final_dest = dest
+        os.replace(tmp, final_dest)
+        return True, f"OK size={size} saved={os.path.basename(final_dest)} final={r.url}", head
     except Exception as e:  # noqa
-        return False, f"EXC {type(e).__name__}: {e} {extra_notes}"
+        return False, f"EXC {type(e).__name__}: {e}", b""
 
-# ---------------------------------------------------------------- CurseForge
+# ================================================================ CURSEFORGE
 CF_ITEMS = [
-    # (prefixo, nome arquivo, file id, filename original, classe)
-    ("01", "SIM-Helene-Dacosta",
-     8763744, "Anyulinela_Household_Dacosta_0x0026170a56100035.zip",
-     "sims-households/helene-dacosta"),
-    ("02", "EGGSIMS-earrings-19",
-     6496196, "[EGGSIMS] earrings 19_TS4.zip",
-     "create-a-sim/eggsims-earrings-19"),
-    ("03", "Sparkly-French-Nails",
-     8649348, "4w25_SparklyFrenchNails.zip",
-     "create-a-sim/sparkly-french-nails"),
-    ("04", "Shiny-Patent-Mary-Jane-Heels",
-     7751173, "[PolySphere]ShinyPatentMaryJaneHeels_NonAutoHeight.package.zip",
-     "create-a-sim/shiny-patent-mary-jane-heels"),
-    ("05", "Ava-Sweatshirt",
-     8177818, "Valentine_Top_Ava.zip",
-     "create-a-sim/ava-sweatshirt"),
+    ("01", "SIM-Helene-Dacosta", 8763744,
+     "Anyulinela_Household_Dacosta_0x0026170a56100035.zip",
+     "sims4/sims-households/helene-dacosta"),
+    ("02", "EGGSIMS-earrings-19", 6496196,
+     "[EGGSIMS] earrings 19_TS4.zip",
+     "sims4/create-a-sim/eggsims-earrings-19"),
+    ("03", "Sparkly-French-Nails", 8649348,
+     "4w25_SparklyFrenchNails.zip",
+     "sims4/create-a-sim/sparkly-french-nails"),
+    ("04", "Shiny-Patent-Mary-Jane-Heels", 7751173,
+     "[PolySphere]ShinyPatentMaryJaneHeels_NonAutoHeight.package.zip",
+     "sims4/create-a-sim/shiny-patent-mary-jane-heels"),
+    ("05", "Ava-Sweatshirt", 8177818,
+     "Valentine_Top_Ava.zip",
+     "sims4/create-a-sim/ava-sweatshirt"),
 ]
 
-def fetch_curseforge():
+def fetch_curseforge(debug_only_first=True):
     log("\n===== CURSEFORGE =====")
-    for prefix, name, fid, orig_name, slug in CF_ITEMS:
-        dest = f"{OUT}/{prefix}_{name}.zip"
+    for idx, (prefix, name, fid, orig_name, slug) in enumerate(CF_ITEMS):
+        dest = f"{OUT}/{prefix}_{name}.bin"
         ok = False
-        # Strategy 1: tokenless media.forgecdn.net URL
+        # A) direct media (tokenless) - usually 403 but cheap to try
         a, b = fid // 1000, fid % 1000
-        enc = urllib.parse.quote(orig_name)
-        media_url = f"https://media.forgecdn.net/files/{a}/{b}/{enc}"
-        log(f"-- CF {name}: trying media URL {media_url}")
-        ok, info = try_download(media_url, stream_to=dest,
-                                headers={"Referer": "https://www.curseforge.com/"})
-        log(f"   media: {info}")
-        if not ok:
-            # Strategy 2: download endpoint, two passes with cookies
-            dl_url = f"https://www.curseforge.com/{slug}/download/{fid}"
-            try:
-                SESSION.get(dl_url, timeout=60)  # warm up / get cookies
-                time.sleep(2)
-            except Exception:
-                pass
-            ok, info = try_download(dl_url, stream_to=dest,
-                                    headers={"Referer": "https://www.curseforge.com/"})
-            log(f"   endpoint: {info}")
+        media_url = f"https://media.forgecdn.net/files/{a}/{b}/{urllib.parse.quote(orig_name)}"
+        ok, info, _ = try_download(media_url, dest=dest,
+                                   headers={"Referer": "https://www.curseforge.com/"})
+        log(f"-- CF {name}: media {info if ok else info}")
         if ok:
-            log(f"   => SAVED {dest}")
+            continue
+        # B) download endpoint, two-pass
+        dl_url = f"https://www.curseforge.com/{slug}/download/{fid}"
+        try:
+            SESSION.get(dl_url, timeout=60)
+            time.sleep(2)
+        except Exception:
+            pass
+        ok, info, _ = try_download(dl_url, dest=dest,
+                                   headers={"Referer": f"https://www.curseforge.com/{slug}/"})
+        log(f"-- CF {name}: endpoint {info}")
+        if ok:
+            continue
+        # C) internal API download-url (needs modId)
+        modid = get_modid(slug)
+        if modid:
+            api = f"https://www.curseforge.com/api/v1/mods/{modid}/files/{fid}/download-url"
+            try:
+                r = SESSION.get(api, timeout=40,
+                                headers={"Accept": "application/json",
+                                         "Referer": f"https://www.curseforge.com/{slug}/"})
+                log(f"-- CF {name}: api-v1 status={r.status_code} body={r.text[:300]}")
+                if r.status_code == 200:
+                    try:
+                        j = r.json()
+                        data = j.get("data", [])
+                        for d in (data if isinstance(data, list) else [data]):
+                            du = (d or {}).get("downloadUrl")
+                            if du:
+                                ok, info, _ = try_download(du, dest=dest)
+                                log(f"-- CF {name}: api download {info}")
+                                break
+                    except Exception as e:
+                        log(f"-- CF {name}: api parse err {e}")
+            except Exception as e:
+                log(f"-- CF {name}: api exc {e}")
+        if ok:
+            continue
+        # D) debug the interstitial (only first item)
+        if debug_only_first and idx == 0:
+            cf_debug(dl_url, slug, fid)
 
-# ---------------------------------------------------------------- Patreon
-PATREON_POSTS = [
-    # (post id, label, arquivo alvo esperado)
-    ("22436855", "GPME-Gold-C2-contour", "GPME Gold C2 (goppolsme)"),
-    ("123193524", "NSW-3D-Eyelashes-N6", "3D Eyelashes N6 (NSW)"),
-    ("17490207", "GPME-Gold-Eyes-G2", "GPME Gold Eyes (goppolsme)"),
-    ("85159474", "Heather-Skin-N7", "Heather Skin N7 (poyopoyosim)"),
-    ("77031948", "Belaloallure-phaedra-mini-skirt", "_phaedra_mini_skirt (Belaloallure)"),
-    ("64319245", "NSW-LIPS-N35", "Wild Cat Make-up / LIPS N35 (NSW)"),
-    ("59616486", "obscurus-helgatisha-lips-presets", "_lips_presets_7f (obscurus/helgatisha)"),
-    ("56990147", "MagicBot-default-mouth", "Default Mouth (MagicBot)"),
+MODID_CACHE = {}
+def get_modid(slug):
+    if slug in MODID_CACHE:
+        return MODID_CACHE[slug]
+    mid = None
+    try:
+        r = SESSION.get(f"https://www.curseforge.com/{slug}", timeout=40)
+        m = re.search(r'"projectId"\s*:\s*"?(\d+)"?', r.text)
+        if not m:
+            m = re.search(r'data-project-id="(\d+)"', r.text)
+        if not m:
+            m = re.search(r'"id":\s*(\d{4,8})', r.text[:5000])
+        mid = m.group(1) if m else None
+        if mid:
+            log(f"   modid({slug}) = {mid}")
+    except Exception as e:
+        log(f"   get_modid exc {e}")
+    # fallback: cfwidget
+    if not mid:
+        try:
+            r = SESSION.get(f"https://api.cfwidget.com/{slug}", timeout=40)
+            j = r.json()
+            mid = str(j.get("id", "")) or None
+            if mid:
+                log(f"   modid via cfwidget({slug}) = {mid}")
+        except Exception as e:
+            log(f"   cfwidget exc {e}")
+    MODID_CACHE[slug] = mid
+    return mid
+
+def cf_debug(dl_url, slug, fid):
+    log("   === CF DEBUG ===")
+    try:
+        SESSION.cookies.clear()
+        r1 = SESSION.get(dl_url, timeout=60)
+        log(f"   pass1: status={r1.status_code} final={r1.url} len={len(r1.content)}")
+        log(f"   pass1 cookies: {[c.name for c in SESSION.cookies]}")
+        time.sleep(2)
+        r2 = SESSION.get(dl_url, timeout=60)
+        log(f"   pass2: status={r2.status_code} final={r2.url} ct={r2.headers.get('Content-Type')} len={len(r2.content)}")
+        if r2.status_code == 200 and r2.headers.get("Content-Type", "").startswith("text/html"):
+            body = r2.text
+            for kw in ("8763744", "media.forgecdn", "edge.forgecdn", "downloadUrl",
+                       "window.location", "token", "Seconds", "api/v1", "cf-chl"):
+                for m in re.finditer(re.escape(kw), body):
+                    s = max(0, m.start() - 120)
+                    seg = body[s:m.start() + 220].replace("\n", " ")
+                    log(f"   ...{kw}...: {seg[:330]}")
+                    break  # only first occurrence each
+    except Exception as e:
+        log(f"   cf_debug exc {e}")
+    log("   === END CF DEBUG ===")
+
+# ================================================================ PATREON
+PATREON_JOBS = [
+    # (post id, prefixo, nome legivel, [(nome-alvo regex, size esperado, idx candidatos)])
+    ("64319245", "11", "NSW-LIPS-N35",
+     [("LIPS N35", 3742201, [3, 4, 5, 2, 6])]),
+    ("77031948", "07", "Belaloallure-phaedra-mini-skirt",
+     [("phaedra_mini_skirt", 4170760, [1, 2, 3, 0, 4])]),
 ]
 
-def fetch_patreon_analysis():
-    log("\n===== PATREON ANALYSIS =====")
-    for pid, key, label in PATREON_POSTS:
-        api = f"https://www.patreon.com/api/posts/{pid}"
+def fetch_patreon_public():
+    log("\n===== PATREON PUBLIC ATTACHMENTS =====")
+    for pid, prefix, label, wants in PATREON_JOBS:
         try:
-            r = SESSION.get(api, headers={"Accept": "application/json, text/plain, */*"}, timeout=60)
-            log(f"-- PATREON {key} ({label}): HTTP {r.status_code}")
+            r = SESSION.get(f"https://www.patreon.com/api/posts/{pid}",
+                            headers={"Accept": "application/json, text/plain, */*"}, timeout=60)
+            log(f"-- PATREON {pid} ({label}): HTTP {r.status_code}")
             if r.status_code != 200:
-                log(f"   body: {r.text[:200]}")
                 continue
-            data = r.json()
+            d = r.json()
             with open(f"{WORK}/patreon/{pid}.json", "w") as f:
-                json.dump(data, f, indent=1)
-            attrs = data.get("data", {}).get("attributes", {})
-            # content links
-            content = attrs.get("content_json_string") or "{}"
-            try:
-                cj = json.loads(content)
-                text = json.dumps(cj)
-            except Exception:
-                text = content or ""
-            hrefs = re.findall(r'https?://[^\s"\\]+', text)
-            hrefs = [h.rstrip('\\').rstrip('"') for h in hrefs]
-            hrefs = [h for h in hrefs if "patreon.com" not in h or "/posts/" not in h or "patreonusercontent" in h]
-            log(f"   hrefs[{len(hrefs)}]: {hrefs[:25]}")
-            # attachment metadata
-            atts = attrs.get("attachments_preview_metadata", []) or []
-            log(f"   attachments[{len(atts)}]:")
-            for a in atts:
-                log(f"     - {a.get('file_name')} ({a.get('size_bytes')} bytes)")
-            # included (public attachment urls etc.)
-            inc = data.get("included", []) or []
-            urls = []
-            for obj in inc:
-                at = obj.get("attributes", {})
-                for k in ("url", "download_url", "display_url"):
-                    v = at.get(k)
-                    if v and isinstance(v, str) and v.startswith("http"):
-                        urls.append((obj.get("type"), at.get("name", ""), k, v))
-            log(f"   included[{len(inc)}] url-fields[{len(urls)}]:")
-            for u in urls[:20]:
-                log(f"     - {u}")
-        except Exception as e:  # noqa
-            log(f"-- PATREON {key}: EXC {type(e).__name__}: {e}")
+                json.dump(d, f)
+            atts = d["data"]["attributes"].get("attachments_preview_metadata") or []
+            media_urls = []
+            for obj in d.get("included") or []:
+                if obj.get("type") == "media":
+                    u = obj.get("attributes", {}).get("download_url")
+                    if u:
+                        media_urls.append(u)
+            # build idx->(name,url)
+            pairs = [(atts[i].get("file_name", ""), media_urls[i])
+                     for i in range(min(len(atts), len(media_urls)))]
+            for want_re, want_size, cands in wants:
+                chosen = None
+                for i in cands:
+                    if 0 <= i < len(pairs):
+                        name, url = pairs[i]
+                        chosen = (i, name, url)
+                        break
+                if not chosen:
+                    log(f"   [{label}] no candidate idx available")
+                    continue
+                i, fname, url = chosen
+                # match name regex first, then verify size after download
+                tmp_dest = f"{WORK}/patreon_tmp_{pid}_{i}.bin"
+                ok, info, _ = try_download(url, dest=tmp_dest,
+                                           headers={"Referer": "https://www.patreon.com/"})
+                log(f"   [{label}] try idx {i} ({fname}): {info}")
+                size = os.path.getsize(tmp_dest) if os.path.exists(tmp_dest) else -1
+                if not ok or abs(size - want_size) > 50000:
+                    ok = False
+                    log(f"   [{label}] size mismatch (got {size}, want {want_size}); trying more indices")
+                    for j in [c for c in cands if c != i]:
+                        if 0 <= j < len(pairs):
+                            nm, u2 = pairs[j]
+                            tmp2 = f"{WORK}/patreon_tmp_{pid}_{j}.bin"
+                            ok2, info2, _ = try_download(u2, dest=tmp2,
+                                                         headers={"Referer": "https://www.patreon.com/"})
+                            log(f"      try idx {j} ({nm}): {info2}")
+                            sz2 = os.path.getsize(tmp2) if os.path.exists(tmp2) else -1
+                            if ok2 and abs(sz2 - want_size) <= 50000:
+                                ok, tmp_dest, fname = ok2, tmp2, nm
+                                break
+                if ok:
+                    base = re.sub(r'[^A-Za-z0-9._-]+', '_', fname).strip("_")
+                    final = f"{OUT}/{prefix}_{label}_{base}.bin"
+                    os.replace(tmp_dest, final)
+                    log(f"   => SAVED {final}")
+                else:
+                    log(f"   [{label}] FAILED")
+        except Exception as e:
+            log(f"-- PATREON {pid}: EXC {e}")
 
-# ---------------------------------------------------------------- Kijiko
+# ================================================================ SIMFILESHARE
+def fetch_sfs(sfs_id, prefix, label, name_filter=None):
+    """Download a single file from SimFileShare."""
+    dest = f"{OUT}/{prefix}_{label}.bin"
+    try:
+        SESSION.get(f"https://simfileshare.net/download/{sfs_id}/", timeout=60)
+    except Exception:
+        pass
+    ok, info, _ = try_download(f"https://cdn.simfileshare.net/download/{sfs_id}/?dl",
+                               dest=dest,
+                               headers={"Referer": f"https://simfileshare.net/download/{sfs_id}/"})
+    log(f"   SFS {sfs_id} ({label}): {info}")
+    return ok
+
+def fetch_sfs_folder():
+    """List files of an SFS folder, download ones matching filter."""
+    folder_id = "151649"
+    want = re.compile(r"lips.{0,4}presets?\s*7f|7f|helga", re.I)
+    log("\n===== SFS FOLDER obscurus 151649 =====")
+    try:
+        r = SESSION.get(f"https://simfileshare.net/folder/{folder_id}/", timeout=60)
+        html = r.text
+        # entries: look for download links with nearby names
+        entries = re.findall(r'href="(/download/\d+/)"[^>]*>(.*?)</a>', html, re.S)
+        # fallback pattern: blocks containing file name and a link
+        if not entries:
+            blocks = re.split(r'<article|class="file', html)
+            for blk in blocks:
+                m1 = re.search(r'<a[^>]*href="(/download/\d+/)"', blk)
+                m2 = re.search(r'<h[23][^>]*>.*?>\s*([^<]{3,80})', blk, re.S)
+                if m1:
+                    name = m2.group(1).strip() if m2 else "?"
+                    entries.append((m1.group(1), name))
+        log(f"   found {len(entries)} entries")
+        for href, name in entries[:80]:
+            name = re.sub(r"\s+", " ", name).strip()
+            log(f"     {href}  {name}")
+        hits = [(h, n) for h, n in entries if want.search(n or "")]
+        for href, name in hits:
+            sid = re.search(r"/download/(\d+)/", href).group(1)
+            label = re.sub(r"[^A-Za-z0-9._-]+", "_", name or sid).strip("_")[:60]
+            log(f"   => downloading match: {href} {name}")
+            fetch_sfs(sid, "12", f"obscurus-{label}")
+    except Exception as e:
+        log(f"   SFS folder exc {e}")
+
+# ================================================================ GOOGLE DRIVE
+def gdrive_folder_list(folder_id):
+    """List public gdrive folder via embeddedfolderview."""
+    try:
+        r = SESSION.get(f"https://drive.google.com/embeddedfolderview?id={folder_id}#list",
+                        timeout=60)
+        html = r.text
+        rows = re.findall(r'<a href="(https://drive\.google\.com/file/d/([^/"]+)/view[^"]*)"[^>]*>(.*?)</a>',
+                          html, re.S)
+        if not rows:
+            log(f"   gdrive list failed; page len={len(html)}")
+            log("   page snippet: " + html[:500].replace("\n", " "))
+            return []
+        out = []
+        for url, fid, name in rows:
+            name = re.sub(r"<[^>]+>", "", name)
+            name = name.strip()
+            out.append((fid, name))
+        return out
+    except Exception as e:
+        log(f"   gdrive folder exc {e}")
+        return []
+
+def gdrive_download(fid, dest):
+    """Download a public gdrive file by id (handles virus-scan confirm)."""
+    url = f"https://drive.usercontent.google.com/download?id={fid}&export=download&confirm=t"
+    ok, info, _ = try_download(url, dest=dest)
+    if not ok:
+        # second chance: classic drive host with confirm token
+        try:
+            r = SESSION.get(f"https://drive.google.com/uc?id={fid}&export=download", timeout=60)
+            m = re.search(r'name="confirm" value="([0-9A-Za-z_-]+)"', r.text)
+            if m:
+                url2 = f"https://drive.google.com/uc?id={fid}&export=download&confirm={m.group(1)}"
+                ok, info, _ = try_download(url2, dest=dest)
+        except Exception as e:
+            log(f"   gdrive retry exc {e}")
+    return ok
+
+def fetch_poyo_drive():
+    log("\n===== GOOGLE DRIVE (poyo Heather Skin N7) =====")
+    fid_folder = "1-gFVfhtikp1_OVZ96YuW9q8v2vIESD7l"
+    items = gdrive_folder_list(fid_folder)
+    log(f"   folder items ({len(items)}):")
+    for fid, name in items:
+        log(f"     {fid}  {name}")
+    # choose: name mentioning heather (any skin file the sim needs is N7);
+    # if several heather, prefer ones containing N7 / 7 / skin
+    cand = [i for i in items if re.search(r"heather", i[1], re.I)]
+    log(f"   heather candidates: {[n for _, n in cand]}")
+    chosen = None
+    if len(cand) == 1:
+        chosen = cand[0]
+    elif len(cand) > 1:
+        for c in cand:
+            if re.search(r"\bN7\b|\b7\b|skin.?7", c[1], re.I):
+                chosen = c
+                break
+        if not chosen:
+            chosen = cand[0]
+    if chosen:
+        base = re.sub(r"[^A-Za-z0-9._-]+", "_", chosen[1]).strip("_")
+        dest = f"{OUT}/06_poyo-{base}.bin"
+        ok = gdrive_download(chosen[0], dest)
+        log(f"   => downloading {chosen[1]} -> {ok}")
+    else:
+        log("   no heather candidate found")
+
+# ================================================================ EUNOSIMS
+def fetch_eunosims():
+    log("\n===== EUNOSIMS =====")
+    try:
+        r = SESSION.get("https://eunosims.tistory.com/entry/sims4cc-body-preset-1-5", timeout=60)
+        # the .package download link on the entry page
+        m = re.search(r'(https://blog\.kakaocdn\.net/[^"\']+?(?:preset|Body)[^"\']*?\.package[^"\']*?)"',
+                      r.text, re.I)
+        if not m:
+            m = re.search(r'(https://blog\.kakaocdn\.net/[^"\']+?credential=[^"\']+?\.package[^"\']*?)"', r.text)
+        if not m:
+            log("   no .package kakaocdn link found")
+            log("   candidates: " + "; ".join(re.findall(r'https://blog\.kakaocdn\.net/[^"\']{40,160}', r.text)[:5]))
+            return
+        link = m.group(1).replace("&amp;", "&")
+        log(f"   link: {link[:150]}...")
+        dest = f"{OUT}/15_eunosims-euno-Body-preset.bin"
+        ok, info, _ = try_download(link, dest=dest, timeout=180)
+        log(f"   download: {info}")
+    except Exception as e:
+        log(f"   eunosims exc {e}")
+
+# ================================================================ KIJIKO
 def fetch_kijiko():
-    log("\n===== KIJIKO (EA eyelashes remover) =====")
-    dest = f"{OUT}/14_Kijiko-Remove-EA-Lashes.zip"
-    # 1) SimFileShare direct
+    dest = f"{OUT}/14_Kijiko-Remove-EA-Lashes.bin"
+    if os.path.exists("helene-dacosta-tudo-junto/CCs/14_Kijiko-Remove-EA-Lashes.zip"):
+        log("\n===== KIJIKO: already present =====")
+        return
+    log("\n===== KIJIKO =====")
     try:
         SESSION.get("https://simfileshare.net/download/3247982/", timeout=60)
     except Exception:
         pass
-    ok, info = try_download("https://cdn.simfileshare.net/download/3247982/?dl",
-                            headers={"Referer": "https://simfileshare.net/download/3247982/"},
-                            stream_to=dest)
-    log(f"   SFS direct: {info}")
-    if not ok:
-        # 2) MediaFire v1.5 API
-        try:
-            r = SESSION.get("https://www.mediafire.com/api/1.5/file/get.php"
-                            "?quick_key=tgp3kcs4iy2mnft&response_format=json", timeout=60)
-            log(f"   MF api: HTTP {r.status_code} {r.text[:400]}")
-            try:
-                j = r.json()
-                fi = j.get("response", {}).get("file_info", {})
-                lnk = fi.get("links", {}).get("normal_download", "")
-                log(f"   MF link: {lnk}")
-                if lnk:
-                    ok, info = try_download(lnk, stream_to=dest)
-                    log(f"   MF download: {info}")
-            except Exception as e:
-                log(f"   MF parse exc {e}")
-        except Exception as e:
-            log(f"   MF api exc {e}")
-    if ok:
-        log(f"   => SAVED {dest}")
+    ok, info, _ = try_download("https://cdn.simfileshare.net/download/3247982/?dl",
+                               dest=dest,
+                               headers={"Referer": "https://simfileshare.net/download/3247982/"})
+    log(f"   {info}")
 
-# ---------------------------------------------------------------- eunosims
-def fetch_eunosims():
-    log("\n===== EUNOSIMS (tistory body preset) =====")
-    try:
-        r = SESSION.get("https://eunosims.tistory.com/entry/sims4cc-body-preset-1-5", timeout=60)
-        m = re.search(r'(https://blog\.kakaocdn\.net/[^"\']+?credential=[^"\']+)', r.text)
-        if not m:
-            log(f"   no kakaocdn link found; page size={len(r.text)}")
-            return
-        link = m.group(1).replace("&amp;", "&")
-        log(f"   link: {link[:160]}...")
-        dest = f"{OUT}/15_eunosims-euno-Body-preset.package"
-        ok, info = try_download(link, stream_to=dest, timeout=120)
-        log(f"   download: {info}")
-        if ok:
-            log(f"   => SAVED {dest}")
-    except Exception as e:
-        log(f"   EXC {type(e).__name__}: {e}")
-
-# ---------------------------------------------------------------- main
+# ================================================================ main
 def main():
-    fetch_curseforge()
-    fetch_patreon_analysis()
     fetch_kijiko()
     fetch_eunosims()
+    fetch_curseforge()
+    fetch_patreon_public()
+    fetch_sfs(807916, "08", "GPME-Gold-C2-contour")
+    fetch_sfs(472891, "09", "GPME-Gold-Eyes-G2")
+    fetch_sfs(2759281, "13", "MagicBot-Default-Mouth")
+    fetch_sfs_folder()
+    fetch_poyo_drive()
     with open(f"{WORK}/fetch_report.txt", "w") as f:
         f.write("\n".join(REPORT) + "\n")
-    log("\n===== FETCH DONE =====")
+    log("\n===== FETCH 2 DONE =====")
 
 if __name__ == "__main__":
     main()
