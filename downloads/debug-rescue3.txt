@@ -1,0 +1,19 @@
+simandy spotlight sfs -> ok
+cf create-a-sim/amaranth-top file 5995364 '[148DAZED] AMARANTH_TOP.zip' -> ok
+cf create-a-sim/amaranth-skirt file 5995357 '[148DAZED] AMARANTH_SKIRT.zip' -> ok
+cf create-a-sim/amaranth-set: widget HTTP 404
+cf create-a-sim/lighting-overlay-2-0 file 4962720 '[JOSH JO_SE_OH] Ligthing Overlay 2.0.zip' -> ok
+cf create-a-sim/moles-01 file 4466153 'lutessasims_moles_01.zip' -> ok
+sfs folder 60606: 0 arquivos, 0 subpastas
+sfs folder 61005: 0 arquivos, 0 subpastas
+sfs folder 84952: 0 arquivos, 0 subpastas
+sfs folder 190204: 0 arquivos, 0 subpastas
+madlen boots post -> page HTTP 403
+nsw cdx bodycare pages: []
+remussirion bzip cdx: []
+boosty northernsiberiawinds: HTTP 429
+boosty sims3melancholic: HTTP 429
+boosty okruee: HTTP 429
+boosty miikocc: HTTP 429
+boosty obscurus_sims: HTTP 429
+boosty 148dazed: HTTP 429
