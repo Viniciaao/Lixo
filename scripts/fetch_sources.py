@@ -429,7 +429,14 @@ def fetch_kijiko():
     log(f"   {info}")
 
 # ================================================================ main
+SCRIPT_VERSION = "fetch-v4.1"
 def main():
+    try:
+        import subprocess
+        head = subprocess.check_output(["git", "rev-parse", "HEAD"], text=True).strip()
+    except Exception:
+        head = "?"
+    log(f"=== SCRIPT_VERSION={SCRIPT_VERSION} checkout_head={head[:12]} ===")
     fetch_kijiko()
     fetch_eunosims()
     fetch_curseforge()
