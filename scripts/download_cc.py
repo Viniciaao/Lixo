@@ -514,46 +514,60 @@ def rescue_round3():
     cf_project("create-a-sim/lighting-overlay-2-0", "Lighting overlay (Jo_se_oh)", OUT / "patreon-94005453")
     cf_project("create-a-sim/moles-01", "Moles 01 (LutessaSims)", OUT / "rescue-lutessa-moles")
 
-    # ---- 3. SFS folder crawler (creator archive folders)
-    def sfs_folder(folder_id, out, keywords, depth=0, seen=None, max_files=6):
+    # ---- 3. SFS folder crawler (creator archive folders), v2: navigate by name
+    def sfs_fetch(folder_id, tries=3):
+        for a in range(tries):
+            try:
+                r = fetch(f"https://simfileshare.net/folder/{folder_id}/", session=S)
+                if r.status_code == 200:
+                    return r
+                say(f"sfs folder {folder_id}: HTTP {r.status_code} (tentativa {a+1})")
+            except Exception as e:
+                say(f"sfs folder {folder_id} err {e}")
+            time.sleep(8)
+        return None
+
+    def sfs_folder(folder_id, out, keywords, seen=None, max_files=3, depth=0):
         seen = seen if seen is not None else set()
-        if folder_id in seen or len(seen) > 60:
+        if folder_id in seen or len(seen) > 25:
             return
         seen.add(folder_id)
-        try:
-            r = fetch(f"https://simfileshare.net/folder/{folder_id}/", session=S)
-            if r.status_code != 200:
-                say(f"sfs folder {folder_id}: HTTP {r.status_code}")
+        r = sfs_fetch(folder_id)
+        if r is None:
+            return
+        items = re.findall(
+            r'href="((?:https://simfileshare\.net)?/download/(\d+)/)"[^>]*>([^<]+)<',
+            r.text)
+        items = [(f"https://simfileshare.net/download/{i}/", n) for _, i, n in items]
+        subs = re.findall(
+            r'href="(?:https://simfileshare\.net)?/folder/(\d+)/">([^<]+)<', r.text)
+        say(f"sfs folder {folder_id}: {len(items)} arquivos, {len(subs)} subpastas")
+        hits = 0
+        for u, fname in items:
+            if hits >= max_files:
+                break
+            if any(k in fname.lower() for k in keywords):
+                ok, info = try_url(u, out, referer="https://simfileshare.net/")
+                say(f"  {fname} -> {info}")
+                if ok:
+                    hits += 1
+        if hits:
+            return
+        # sub-pastas cujo nome combine com o alvo
+        wanted = re.compile("|".join(keywords), re.I)
+        named = [(fid, name) for fid, name in subs if wanted.search(name)]
+        for fid, name in named[:4]:
+            say(f"  entrando na subpasta '{name}'")
+            sfs_folder(fid, out, keywords, seen, max_files, depth + 1)
+            if out.exists() and any(out.iterdir()):
                 return
-            items = re.findall(
-                r'href="((?:https://simfileshare\.net)?/download/(\d+)/)"[^>]*>([^<]+)<',
-                r.text)
-            items = [(f"https://simfileshare.net/download/{i}/", n) for _, i, n in items]
-            subs = re.findall(
-                r'href="(?:https://simfileshare\.net)?/folder/(\d+)/"', r.text)
-            say(f"sfs folder {folder_id}: {len(items)} arquivos, {len(subs)} subpastas")
-            hits = 0
-            for u, fname in items:
-                if hits >= max_files:
-                    break
-                if any(k in fname.lower() for k in keywords):
-                    ok, info = try_url(u, out, referer="https://simfileshare.net/")
-                    say(f"  {fname} -> {info}")
-                    if ok:
-                        hits += 1
-            if hits:
-                return
-            for sub in subs[:12]:
-                sfs_folder(sub, out, keywords, depth + 1, seen, max_files)
-                if out.exists() and any(out.iterdir()):
-                    return
-        except Exception as e:
-            say(f"sfs folder {folder_id} err {e}")
 
-    sfs_folder(60606, OUT / "rescue-okruee-miscface", ["misc"])          # archive root -> Okruee
-    sfs_folder(61005, OUT / "rescue-obscurus-3dlash", ["3d_eyelash", "3d eyelash", "eyelash"])
-    sfs_folder(84952, OUT / "rescue-obscurus-3dlash", ["3d_eyelash", "3d eyelash", "eyelash"])
+    sfs_folder(60606, OUT / "rescue-okruee-miscface", ["okruee", "misc"])   # arquivo gigante por criador
+    sfs_folder(60606, OUT / "rescue-obscurus-3dlash", ["obscurus"])
+    sfs_folder(60606, OUT / "rescue-miikocc-acne", ["miikocc", "miiko"])
+    sfs_folder(84952, OUT / "rescue-obscurus-3dlash", ["3d", "eyelash"])
     sfs_folder(190204, OUT / "rescue-miikocc-acne", ["acne"])
+    sfs_folder(61005, OUT / "rescue-obscurus-3dlash", ["3d_eyelash", "eyelash"])
 
     # ---- 4. Madlen Mia Boots retexture: original tumblr post has SFS link
     fold = OUT / "rescue-madlen-boots"
@@ -636,11 +650,82 @@ def rescue_round3():
             lines.append(f"boosty {blog} titles: " + " | ".join(
                 (p.get("title") or "")[:40] for p in posts[:40]))
             boosty_hunt(blog, kws, fold, label)
+        else:
+            # fallback: pagina HTML do boosty (SSR embutida)
+            try:
+                r = fetch(f"https://boosty.to/{blog}", session=SCRAPER)
+                say(f"boosty html {blog}: HTTP {r.status_code}")
+                if r.status_code == 200:
+                    urls = [u for u in _walk_urls(r.text)
+                            if any(x in u for x in ("files.boosty", "simfileshare",
+                                                    "mediafire", "drive.google", "dropbox"))]
+                    say(f"boosty html {blog}: {len(urls)} urls de arquivo")
+                    for u in urls[:8]:
+                        ok, info = try_url(u, fold, referer=f"https://boosty.to/{blog}")
+                        say(f"    try {u[:90]} -> {info}")
+                        if ok:
+                            record("downloaded", item=label, source=f"boosty.to/{blog}")
+                            break
+                    if not urls:
+                        # tenta achar post urls do blog e visitar cada uma
+                        purls = re.findall(
+                            r'https://boosty\.to/' + re.escape(blog) +
+                            r'/posts/([a-z0-9\-]+)', r.text)
+                        say(f"boosty html {blog}: {len(purls)} posts")
+                        for slug in purls[:30]:
+                            t = slug.lower()
+                            if any(k in t for k in kws):
+                                r2 = fetch(f"https://boosty.to/{blog}/posts/{slug}",
+                                           session=SCRAPER)
+                                u2 = [u for u in _walk_urls(r2.text)
+                                      if any(x in u for x in ("files.boosty", "simfileshare",
+                                                              "mediafire", "drive.google",
+                                                              "dropbox"))]
+                                for u in u2[:6]:
+                                    ok, info = try_url(u, fold, referer=r2.url)
+                                    say(f"    {slug} try {u[:80]} -> {info}")
+                                    if ok:
+                                        record("downloaded", item=label,
+                                               source=f"boosty.to/{blog}/posts/{slug}")
+                                        break
+                                if fold.exists() and any(fold.iterdir()):
+                                    break
+            except Exception as e:
+                say(f"boosty html {blog} err {e}")
         _t.sleep(10)
 
     if WB_DEBUG:
         lines.append("--- wayback debug ---")
         lines.extend(WB_DEBUG)
+
+    # ---- 7. patreon attachment links achados no wayback: tentar direto + via wayback
+    for h, i, m in [("93373994", "17046546", None), ("72457009", "11853048", None),
+                    ("72457009", None, "169663937"), ("71370172", "11658017", None),
+                    ("71370172", None, "166672146"), ("96600228", None, None)]:
+        fold = OUT / f"rescue-pat-{h}"
+        if fold.exists() and any(fold.iterdir()):
+            continue
+        if h == "96600228":
+            continue
+        if i:
+            u = f"https://www.patreon.com/file?h={h}&i={i}"
+        elif m:
+            u = f"https://www.patreon.com/file?h={h}&m={m}"
+        else:
+            continue
+        for cand in (u, f"https://web.archive.org/web/2/{u}"):
+            try:
+                r = fetch(cand, session=SCRAPER, allow_redirects=True)
+                say(f"patreon file {cand[-60:]} -> {r.status_code} "
+                    f"{r.headers.get('Content-Type','')[:30]}")
+                if r.status_code == 200 and "html" not in r.headers.get(
+                        "Content-Type", "").lower():
+                    if save_response(r, fold, f"patreon-{h}.package"):
+                        record("downloaded", item=f"patreon attachment {h}", source=cand)
+                        break
+            except Exception as e:
+                say(f"patreon file err {e}")
+
     dbg.write_text("\n".join(lines), encoding="utf-8")
 
     (OUT / "manifest.json").write_text(
@@ -694,8 +779,12 @@ def wayback_extract(url, folder, label):
                 cands, extra_posts = pick_candidates(extract_links(text))
                 log(f"  wayback[{ts}{mode}] {url[-50:]}: {len(cands)} candidatos")
                 if not cands:
-                    WB_DEBUG.append(f"wayback[{ts}{mode}] {url}: hrefs="
-                                    + ", ".join(sorted(extract_links(text))[:25]))
+                    hostish = [h for h in extract_links(text)
+                               if any(d in h for d in ("fileshare", "mediafire",
+                                                       "drive.", "dropbox", "patreon.com/file",
+                                                       "forgecdn", "discord", "box.", "1drv"))]
+                    WB_DEBUG.append(f"wayback[{ts}{mode}] {url}: filehost hrefs="
+                                    + " | ".join(hostish[:40]))
                 for u in cands:
                     ok, info = try_url(u, folder, referer=url)
                     log(f"    try {u[:90]} -> {info}")
@@ -708,7 +797,7 @@ def wayback_extract(url, folder, label):
                         patreon_cloudscraper(int(pid.group(1)), folder, label)
                 if folder.exists() and any(folder.iterdir()):
                     return
-                break  # a snapshot exists; don't try other modes for this ts
+                # sem candidatos nesta modalidade; tenta a proxima (raw id_)
             except Exception as e:
                 log(f"  wayback {url[-40:]} err {e}")
 
