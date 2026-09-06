@@ -7,38 +7,15 @@
     },
     {
       "item": "Calluna skinblend (NESURII)",
-      "source": "https://nesurii.tumblr.com/post/623283055124217856/calluna-a-non-default-skinblend-a-face-only",
-      "note": "via patreon ref"
+      "source": "https://nesurii.tumblr.com/post/623283055124217856/calluna-a-non-default-skinblend-a-face-only"
     },
     {
       "item": "MON makeup set (catplnt)",
-      "source": "https://catplnt.tumblr.com/post/164406141686/mon-makeup-set-bc-i-made-everyone-wait-9-years-and",
-      "note": "via patreon ref"
+      "source": "https://catplnt.tumblr.com/post/164406141686/mon-makeup-set-bc-i-made-everyone-wait-9-years-and"
     },
     {
       "item": "Eyebrows 33-41 (alf-si)",
-      "source": "https://alf-si.tumblr.com/post/614674051815849984/ts4-eyebrows-33-41-download-33-34-35-36-37-38-39",
-      "note": "via patreon ref"
-    },
-    {
-      "item": "Spotlight tattoos (Simandy)",
-      "source": "sfs/4346575"
-    },
-    {
-      "item": "Amaranth TOP (148DAZED)",
-      "source": "curseforge:create-a-sim/amaranth-top"
-    },
-    {
-      "item": "Amaranth SKIRT (148DAZED)",
-      "source": "curseforge:create-a-sim/amaranth-skirt"
-    },
-    {
-      "item": "Lighting overlay (Jo_se_oh)",
-      "source": "curseforge:create-a-sim/lighting-overlay-2-0"
-    },
-    {
-      "item": "Moles 01 (LutessaSims)",
-      "source": "curseforge:create-a-sim/moles-01"
+      "source": "https://alf-si.tumblr.com/post/614674051815849984/ts4-eyebrows-33-41-download-33-34-35-36-37-38-39"
     }
   ],
   "failed": [],
@@ -74,40 +51,58 @@
       "url": "https://www.thesimsresource.com/downloads/details/category/sims4/title/venerian-tea-time-lashes-hq/id/1770164/"
     },
     {
+      "item": "Bodycare Kit (Northern Siberia Winds) - stretchmarks + torso mask-ref",
+      "site": "Patreon (post indisponível p/ bots)",
+      "url": "https://www.patreon.com/posts/93373994",
+      "status": 403
+    },
+    {
       "item": "Bodycare Kit (Northern Siberia Winds) - stretchmarks + torso mask",
       "site": "Tumblr/Patreon",
       "url": "https://northernsiberiawinds.tumblr.com/post/734744726011576320/bodycare-kit",
-      "reason": "page HTTP 403"
+      "reason": "no downloadable link on page"
     },
     {
       "item": "BZIP Eyes Set (RemusSirion)",
       "site": "Tumblr/Patreon",
       "url": "https://remussirion.tumblr.com/post/766701696234684416/bzip-eyes-set-ts4",
-      "reason": "page HTTP 403"
+      "reason": "no downloadable link on page"
     },
     {
       "item": "Saya eye reflections detail (SayaSims)",
       "site": "Tumblr/Patreon",
       "url": "https://sayasims.tumblr.com/post/183470649946/saya-eye-reflections-detail-22-swatches-female",
-      "reason": "page HTTP 403"
+      "reason": "no downloadable link on page"
+    },
+    {
+      "item": "Arm & Hand Jewellery (Pralinesims)-ref",
+      "site": "Patreon (post indisponível p/ bots)",
+      "url": "https://www.patreon.com/posts/30354144",
+      "status": 403
     },
     {
       "item": "Arm & Hand Jewellery (Pralinesims)",
       "site": "Tumblr/Patreon",
       "url": "https://pralinesims.net/post/188285457999/arm-hand-jewellery-ultimate-collection",
-      "reason": "page HTTP 403"
+      "reason": "no downloadable link on page"
+    },
+    {
+      "item": "Nosemask N10 (obscurus)-ref",
+      "site": "Patreon (post indisponível p/ bots)",
+      "url": "https://www.patreon.com/posts/26574490",
+      "status": 403
     },
     {
       "item": "Nosemask N10 (obscurus)",
       "site": "Tumblr/Patreon",
       "url": "https://obscurus-sims.tumblr.com/post/184629124468/nosemask-n10-70-colors-all-ages-all-genders",
-      "reason": "page HTTP 403"
+      "reason": "no downloadable link on page"
     },
     {
       "item": "Spotlight Tattoos (Simandy/SimMandy)",
       "site": "Tumblr/Patreon",
       "url": "https://simandy.tumblr.com/post/630272666330415104/because-every-time-i-look-at-photoshop-i-want-to",
-      "reason": "page HTTP 403"
+      "reason": "no downloadable link on page"
     },
     {
       "item": "Amaranth set lower body (148DAZED)",
