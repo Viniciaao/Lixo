@@ -64,12 +64,15 @@ def save_response(resp, folder: pathlib.Path, fallback_name: str):
     data = resp.content
     if not data or len(data) < 512:
         return None
+    head = data[:4096].lstrip()
+    if head.startswith(b"<") or b"<html" in head.lower():
+        return None  # pagina HTML disfarcada de arquivo
     ct = resp.headers.get("Content-Type", "").lower()
-    if "text/html" in ct and "package" not in fallback_name:
+    if "text/html" in ct:
         return None
     fname = fallback_name
     cd = resp.headers.get("Content-Disposition", "")
-    m = re.search(r'filename\*?="?([^";]+)"?', cd)
+    m = re.search(r'filename\*?=(?:UTF-8\'\')?"?([^";]+)"?', cd)
     if m:
         fname = unquote(m.group(1))
     if not re.search(r"\.(zip|package|rar|7z)$", fname, re.I):
@@ -105,7 +108,19 @@ def dl_sfs(url, folder):
     if r.status_code != 200:
         return False, f"HTTP {r.status_code}"
     name = save_response(r, folder, url.rstrip("/").split("/")[-1] + ".package")
-    return (name is not None), "ok" if name else "html response"
+    if name:
+        return True, "ok"
+    # interstitial com countdown: esperar e tentar de novo na mesma sessao
+    for wait, ref in ((7, None), (12, "https://simfileshare.net/")):
+        time.sleep(wait)
+        h = {"Referer": ref} if ref else {}
+        r = fetch(url, headers=h)
+        if r.status_code != 200:
+            return False, f"HTTP {r.status_code}"
+        name = save_response(r, folder, url.rstrip("/").split("/")[-1] + ".package")
+        if name:
+            return True, "ok (2a tentativa)"
+    return False, "sfs interstitial persistente"
 
 
 def dl_mediafire(url, folder):
@@ -877,6 +892,52 @@ def rescue_round3():
                     break
             except Exception as e:
                 say(f"modco {u[-30:]} err {e}")
+
+    # ---- 14. round 8: re-download com validador HTML corrigido
+    say("--- round 8: re-downloads ---")
+    for did, label, foldname in (("105042", "Calluna skinblend (NESURII)", "CallunaskinblendNESURII"),
+                                 ("18131", "MON makeup set (catplnt)", "MONmakeupsetcatplnt"),
+                                 ("66108", "Nosemask N10 (obscurus)", "rescue-obscurus-n10")):
+        fold = OUT / foldname
+        ok, info = try_url(f"https://simfileshare.net/download/{did}/", fold)
+        say(f"sfs re {did} ({label}) -> {info}")
+        if ok:
+            record("downloaded", item=label, source=f"sfs/{did} (round8)")
+
+    sfs_folder(84952, OUT / "rescue-obscurus-3dlash", ["3d"])
+    sfs_folder(61005, OUT / "rescue-obscurus-3dlash", ["3d_eyelash", "3d eyelash", "3d"])
+    sfs_folder(190204, OUT / "rescue-miikocc-acne", ["acne"])
+    # subpastas da Miikocc (plasmahoney) procurando acne
+    r = sfs_fetch(190204)
+    if r is not None:
+        for sub, name in re.findall(
+                r'href="(?:https://simfileshare\.net)?/folder/(\d+)/">([^<]+)<', r.text)[:10]:
+            sfs_folder(sub, OUT / "rescue-miikocc-acne", ["acne"])
+            if (OUT / "rescue-miikocc-acne").exists() and any((OUT / "rescue-miikocc-acne").iterdir()):
+                break
+
+    # NSW female de novo (os arquivos foram apagados na poda)
+    fold = OUT / "rescue-pat-93373994"
+    if not (fold.exists() and any(fold.iterdir())):
+        ids = set()
+        for mode in ("", "id_"):
+            try:
+                r = fetch(f"https://web.archive.org/web/2{mode}/"
+                          f"https://www.patreon.com/posts/93373994", session=S)
+                if r.status_code == 200:
+                    ids |= set(re.findall(r'patreon\.com/file\?h=93373994&(?:amp;)?i=(\d+)', r.text))
+            except Exception:
+                pass
+        for a in sorted(ids)[:40]:
+            try:
+                r = fetch(f"https://www.patreon.com/file?h=93373994&i={a}",
+                          session=SCRAPER, allow_redirects=True)
+                cd = r.headers.get("Content-Disposition", "")
+                if r.status_code == 200 and ("FEMALE" in cd.upper() or "female" in cd):
+                    if save_response(r, fold, f"nsw-{a}.package"):
+                        record("downloaded", item=f"NSW female {a}", source="patreon/93373994")
+            except Exception as e:
+                say(f"nsw {a} err {e}")
 
     dbg.write_text("\n".join(lines), encoding="utf-8")
 
