@@ -25,9 +25,11 @@ jobs:
         run: pip install requests
       - name: Fetch CC sources
         run: |
+          mkdir -p work
           python3 scripts/fetch_sources.py 2>&1 | tee work/fetch_log.txt
           echo "fetch run: $(date -u +%Y-%m-%dT%H:%M:%SZ)" >> work/fetch_log.txt
       - name: Commit fetched files
+        if: always()
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
