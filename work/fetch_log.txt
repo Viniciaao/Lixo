@@ -1,4 +1,4 @@
-=== SCRIPT_VERSION=fetch-v4.1 checkout_head=838cf91257a7 ===
+=== SCRIPT_VERSION=fetch-v4.3 checkout_head=a09fc9876378 ===
 
 ===== KIJIKO: already present =====
 
@@ -8,27 +8,27 @@
 
 ===== CURSEFORGE =====
 -- CF SIM-Helene-Dacosta: media HTTP 403 ct=application/xml final=https://media.forgecdn.net/files/8763/744/Anyulinela_Household_Dacosta_0x0026170a56100035.zip
--- CF SIM-Helene-Dacosta: endpoint bad payload size=119306 ct=text/html; charset=utf-8 final=https://www.curseforge.com/sims4/sims-households/helene-dacosta/download/8763744
+-- CF SIM-Helene-Dacosta: endpoint bad payload size=119328 ct=text/html; charset=utf-8 final=https://www.curseforge.com/sims4/sims-households/helene-dacosta/download/8763744
    modid via cfwidget(sims4/sims-households/helene-dacosta) = 1673705
 -- CF SIM-Helene-Dacosta: api-download status=307 ct=text/plain; charset=utf-8 loc=https://edge.forgecdn.net/files/8763/744/Anyulinela_Household_Dacosta_0x0026170a56100035.zip?api-key=267C6CA3
 -- CF SIM-Helene-Dacosta: api redirect download OK size=87054 saved=01_SIM-Helene-Dacosta.zip final=https://mediafilez.forgecdn.net/files/8763/744/Anyulinela_Household_Dacosta_0x0026170a56100035.zip
 -- CF EGGSIMS-earrings-19: media HTTP 403 ct=application/xml final=https://media.forgecdn.net/files/6496/196/%5BEGGSIMS%5D%20earrings%2019_TS4.zip
--- CF EGGSIMS-earrings-19: endpoint bad payload size=119275 ct=text/html; charset=utf-8 final=https://www.curseforge.com/sims4/create-a-sim/eggsims-earrings-19/download/6496196
+-- CF EGGSIMS-earrings-19: endpoint bad payload size=119281 ct=text/html; charset=utf-8 final=https://www.curseforge.com/sims4/create-a-sim/eggsims-earrings-19/download/6496196
    modid via cfwidget(sims4/create-a-sim/eggsims-earrings-19) = 1258782
 -- CF EGGSIMS-earrings-19: api-download status=307 ct=text/plain; charset=utf-8 loc=https://edge.forgecdn.net/files/6496/196/%5bEGGSIMS%5d%20earrings%2019_TS4.zip?api-key=267C6CA3
 -- CF EGGSIMS-earrings-19: api redirect download OK size=471434 saved=02_EGGSIMS-earrings-19.zip final=https://mediafilez.forgecdn.net/files/6496/196/%5BEGGSIMS%5D%20earrings%2019_TS4.zip
 -- CF Sparkly-French-Nails: media HTTP 403 ct=application/xml final=https://media.forgecdn.net/files/8649/348/4w25_SparklyFrenchNails.zip
--- CF Sparkly-French-Nails: endpoint bad payload size=119459 ct=text/html; charset=utf-8 final=https://www.curseforge.com/sims4/create-a-sim/sparkly-french-nails/download/8649348
+-- CF Sparkly-French-Nails: endpoint bad payload size=119425 ct=text/html; charset=utf-8 final=https://www.curseforge.com/sims4/create-a-sim/sparkly-french-nails/download/8649348
    modid via cfwidget(sims4/create-a-sim/sparkly-french-nails) = 1526990
 -- CF Sparkly-French-Nails: api-download status=307 ct=text/plain; charset=utf-8 loc=https://edge.forgecdn.net/files/8649/348/4w25_SparklyFrenchNails.zip?api-key=267C6CA3
 -- CF Sparkly-French-Nails: api redirect download OK size=232828 saved=03_Sparkly-French-Nails.zip final=https://mediafilez.forgecdn.net/files/8649/348/4w25_SparklyFrenchNails.zip
 -- CF Shiny-Patent-Mary-Jane-Heels: media HTTP 403 ct=application/xml final=https://media.forgecdn.net/files/7751/173/%5BPolySphere%5DShinyPatentMaryJaneHeels_NonAutoHeight.package.zip
--- CF Shiny-Patent-Mary-Jane-Heels: endpoint bad payload size=119282 ct=text/html; charset=utf-8 final=https://www.curseforge.com/sims4/create-a-sim/shiny-patent-mary-jane-heels/download/7751173
+-- CF Shiny-Patent-Mary-Jane-Heels: endpoint bad payload size=119280 ct=text/html; charset=utf-8 final=https://www.curseforge.com/sims4/create-a-sim/shiny-patent-mary-jane-heels/download/7751173
    modid via cfwidget(sims4/create-a-sim/shiny-patent-mary-jane-heels) = 1446114
 -- CF Shiny-Patent-Mary-Jane-Heels: api-download status=307 ct=text/plain; charset=utf-8 loc=https://edge.forgecdn.net/files/7751/173/%5bPolySphere%5dShinyPatentMaryJaneHeels_NonAutoHeight.package.zip?api-key=267C6CA3
 -- CF Shiny-Patent-Mary-Jane-Heels: api redirect download OK size=1841103 saved=04_Shiny-Patent-Mary-Jane-Heels.zip final=https://mediafilez.forgecdn.net/files/7751/173/%5BPolySphere%5DShinyPatentMaryJaneHeels_NonAutoHeight.package.zip
 -- CF Ava-Sweatshirt: media HTTP 403 ct=application/xml final=https://media.forgecdn.net/files/8177/818/Valentine_Top_Ava.zip
--- CF Ava-Sweatshirt: endpoint bad payload size=119553 ct=text/html; charset=utf-8 final=https://www.curseforge.com/sims4/create-a-sim/ava-sweatshirt/download/8177818
+-- CF Ava-Sweatshirt: endpoint bad payload size=119542 ct=text/html; charset=utf-8 final=https://www.curseforge.com/sims4/create-a-sim/ava-sweatshirt/download/8177818
    modid via cfwidget(sims4/create-a-sim/ava-sweatshirt) = 1560208
 -- CF Ava-Sweatshirt: api-download status=307 ct=text/plain; charset=utf-8 loc=https://edge.forgecdn.net/files/8177/818/Valentine_Top_Ava.zip?api-key=267C6CA3
 -- CF Ava-Sweatshirt: api redirect download OK size=13349234 saved=05_Ava-Sweatshirt.zip final=https://mediafilez.forgecdn.net/files/8177/818/Valentine_Top_Ava.zip
@@ -50,8 +50,8 @@
      /download/2841764/  obscurus_nose_presets_9f.package
      /download/2841763/  obscurus_lips_presets_7f.package
      /download/2841762/  obscurus_eyes_presets_5f.package
-     /download/2841673/  obscurus_eyebrows_48.package
      /download/2841672/  obscurus_eyebrows_51.package
+     /download/2841673/  obscurus_eyebrows_48.package
      /download/2841671/  obscurus_eyebrows_49.package
      /download/2841670/  obscurus_eyebrows_50.package
      /download/2841669/  obscurus_lips_N44.package
@@ -60,17 +60,22 @@
      /download/2841665/  obscurus_lips_N46.package
      /download/2841664/  obscurus_nose_blush.package
      /download/2841663/  obscurus_eyeliner_N15.package
-     /download/2841662/  obscurus_eyeliner_N16.package
      /download/2841661/  obscurus_eyeliner_N13.package
-     /download/2841660/  obscurus_eyeliner_N14.package
+     /download/2841662/  obscurus_eyeliner_N16.package
      /download/2841659/  obscurus_eyeshadows_N12.package
+     /download/2841660/  obscurus_eyeliner_N14.package
      /download/2841657/  obscurus_eyeshadows_N10.package
      /download/2841658/  obscurus_eyeshadows_N11.package
    name-matches: 0
    falling back to known id 2841763 (obscurus_lips_presets_7f.package)
    SFS 2841763 (obscurus-lips-presets-7f): OK size=126928 saved=12_obscurus-lips-presets-7f.package final=https://simfileshare.net/download/2841763/?dl
 
-===== GOOGLE DRIVE (poyo): SKIPPED (365MB file - needs decision) =====
+===== GOOGLE DRIVE (poyo Heather Skin N7) =====
+   folder items (2):
+     1O4qRheU3lpua7WBt5rbv6Waz2fIwdwrX  [poyopoyo] Heather Skin (Skin N7).package
+     1PDjx52k7sUvgy6V2qwk5TVEKiPtJRFau  [poyopoyo] Heather Skin Overlay (Skin N7).package
+   => downloading [poyopoyo] Heather Skin (Skin N7).package ok=True info=OK size=365428353 saved=06_poyo-poyopoyo_Heather_Skin_Skin_N7_.package final=https://drive.usercontent.google.com/download?id=1O4qRheU3lpua7WBt5rbv6Waz2fIwdwrX&export=download&confirm=t saved=helene-dacosta-tudo-junto/CCs/06_poyo-poyopoyo_Heather_Skin_Skin_N7_.package
+   file size on disk: 365428353
 
 ===== FINAL CCs DIR =====
    01_SIM-Helene-Dacosta.zip (87054 bytes)
@@ -78,6 +83,7 @@
    03_Sparkly-French-Nails.zip (232828 bytes)
    04_Shiny-Patent-Mary-Jane-Heels.zip (1841103 bytes)
    05_Ava-Sweatshirt.zip (13349234 bytes)
+   06_poyo-poyopoyo_Heather_Skin_Skin_N7_.package (365428353 bytes)
    07_Belaloallure-phaedra-mini-skirt_Belaloallure_phaedra_mini_skirt.package (4170760 bytes)
    08_GPME-Gold-C2-contour.package (2773132 bytes)
    09_GPME-Gold-Eyes-G2.package (1498028 bytes)
@@ -88,4 +94,4 @@
    15_eunosims-euno-Body-preset.package (5905252 bytes)
 
 ===== FETCH 3 DONE =====
-fetch-exit=0 run: 2026-09-06T20:54:48Z
+fetch-exit=0 run: 2026-09-06T21:08:23Z
