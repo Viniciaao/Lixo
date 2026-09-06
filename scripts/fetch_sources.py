@@ -124,9 +124,53 @@ def fetch_curseforge():
         log(f"-- CF {name}: endpoint {info}")
         if ok:
             continue
+        # C) site API route: {base}/mods/{projectId}/files/{fileId}/download
+        modid = get_modid(slug)
+        if modid:
+            api = f"https://www.curseforge.com/api/v1/mods/{modid}/files/{fid}/download"
+            try:
+                SESSION.get(f"https://www.curseforge.com/{slug}/download/{fid}", timeout=60)
+                rr = SESSION.get(api, allow_redirects=False, timeout=60,
+                                 headers={"Accept": "*/*",
+                                          "Referer": f"https://www.curseforge.com/{slug}/download/{fid}"})
+                log(f"-- CF {name}: api-download status={rr.status_code} ct={rr.headers.get('Content-Type')} loc={rr.headers.get('Location')}")
+                if rr.status_code in (301, 302, 303, 307, 308) and rr.headers.get("Location"):
+                    ok, info, _, saved = try_download(rr.headers["Location"], dest=dest,
+                                                      headers={"Referer": api})
+                    log(f"-- CF {name}: api redirect download {info}")
+                elif rr.status_code == 200:
+                    ct = rr.headers.get("Content-Type", "")
+                    if "json" in ct:
+                        try:
+                            j = rr.json()
+                            du = j.get("downloadUrl") or j.get("url") or (j.get("data") or {}).get("downloadUrl")
+                            log(f"-- CF {name}: api json keys={list(j.keys()) if isinstance(j, dict) else type(j)} du={du}")
+                            if du:
+                                ok, info, _, saved = try_download(du, dest=dest)
+                                log(f"-- CF {name}: api json download {info}")
+                        except Exception as e:
+                            log(f"-- CF {name}: api json parse err {e}")
+                    elif not ct.startswith("text/html"):
+                        # direct payload
+                        tmp = dest + ".part"
+                        with open(tmp, "wb") as f:
+                            f.write(rr.content)
+                        head = open(tmp, "rb").read(8)
+                        if is_good(head, len(rr.content)):
+                            ext = sniff_ext(head, rr.headers.get("Content-Disposition", ""))
+                            os.replace(tmp, dest + ext)
+                            log(f"-- CF {name}: api direct payload saved ({len(rr.content)} bytes)")
+                            ok = True
+                        else:
+                            os.remove(tmp)
+                            log(f"-- CF {name}: api direct payload bad")
+            except Exception as e:
+                log(f"-- CF {name}: api exc {type(e).__name__}: {e}")
+        if ok:
+            continue
         if idx == 0:
             cf_probe_deep(dl_url, fid)
-    log("   (CF needs manual solving - see probe debug above)")
+    log("   (CF section done)")
 
 def cf_probe_deep(dl_url, fid):
     """Collect intel to find the CurseForge signed download endpoint."""
@@ -394,7 +438,10 @@ def main():
     fetch_sfs(472891, "09", "GPME-Gold-Eyes-G2")
     fetch_sfs(2759281, "13", "MagicBot-Default-Mouth")
     fetch_sfs_folder()
-    fetch_poyo_drive()
+    if os.environ.get("FETCH_POYO") == "1":
+        fetch_poyo_drive()
+    else:
+        log("\n===== GOOGLE DRIVE (poyo): SKIPPED (365MB file - needs decision) =====")
     with open(f"{WORK}/fetch_report.txt", "w") as f:
         f.write("\n".join(REPORT) + "\n")
     log("\n===== FINAL CCs DIR =====")
