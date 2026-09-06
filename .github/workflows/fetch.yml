@@ -1,0 +1,41 @@
+name: fetch-sources
+
+on:
+  push:
+    branches: [arena/**]
+    paths:
+      - 'scripts/fetch_sources.py'
+      - '.github/workflows/fetch.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: fetch-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install deps
+        run: pip install requests
+      - name: Fetch CC sources
+        run: |
+          python3 scripts/fetch_sources.py 2>&1 | tee work/fetch_log.txt
+          echo "fetch run: $(date -u +%Y-%m-%dT%H:%M:%SZ)" >> work/fetch_log.txt
+      - name: Commit fetched files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add helene-dacosta-tudo-junto work
+          if git diff --cached --quiet; then
+            echo "no changes"
+          else
+            git commit -m "fetch: CC files for Helene Dacosta pack"
+            git push origin HEAD:${GITHUB_REF_NAME}
+            echo "committed and pushed"
+          fi
