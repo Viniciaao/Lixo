@@ -1,0 +1,1300 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-09-06T21:56:03.414348+00:00",
+  "checkout_sha": "1619e4263f57ce004dba3e912cd5bec2b93a5dd1",
+  "workflow_run": "https://github.com/Viniciaao/Lixo/actions/runs/34062492099",
+  "items": [
+    {
+      "id": "01",
+      "name": "Sim Georgia",
+      "creator": "MizuTS4",
+      "urls": [
+        "https://www.curseforge.com/sims4/sims-households/georgia",
+        "https://www.curseforge.com/sims4/sims-households/georgia/files/8674144"
+      ],
+      "mode": "auto",
+      "note": "Georgia.zip; file id 8674144. Somente household/Tray, sem CC.",
+      "status": "downloaded",
+      "files": [
+        {
+          "bytes": 104883,
+          "sha256": "ba9c60676b974245c00bdd6a1c256d5bf47c2340db237d1e0eaede5926d120e8",
+          "format": "zip",
+          "members": [
+            {
+              "name": "Georgia/Georgia CC.txt",
+              "bytes": 4113,
+              "sha256": "915528f1b496354a90c8ba8cf8bd00e8a5962d4bdb8d61c6bbaf9e0738c1d782"
+            },
+            {
+              "name": "Georgia/Tray/0x00000000!0x001516fd4ef11e6e.householdbinary",
+              "bytes": 74812,
+              "sha256": "a2003c31c7c26c2633cbf2e2d08ce6a308b1d7c04f7e5754ae380f218bf9c0ff"
+            },
+            {
+              "name": "Georgia/Tray/0x00000001!0x001516fd4ef11e6e.trayitem",
+              "bytes": 1642,
+              "sha256": "0276553d2117a06dab6605782adb46db534f42e2a74039a70a4b3aafffb6fcc8"
+            },
+            {
+              "name": "Georgia/Tray/0x00000013!0x0e1516fd4ef11e6f.sgi",
+              "bytes": 52887,
+              "sha256": "5d89e2cc85a335c3649e86f23157c4cd0b48e9997cb4f1eb3ec8fb499f4370e1"
+            },
+            {
+              "name": "Georgia/Tray/0x8d0cbb02!0x001516fd4ef11e6e.hhi",
+              "bytes": 9875,
+              "sha256": "9dfb37ea834715543f4e16fecc1364f0f2f8cf7b428718c35484e4860c673b11"
+            },
+            {
+              "name": "Georgia/Tray/0x8d0cbb03!0x001516fd4ef11e6e.hhi",
+              "bytes": 28845,
+              "sha256": "7a6d3f06d80b21aac4d6eac51802587b21f83d161617e850a2a68dad6f5983d0"
+            }
+          ],
+          "path": "CCs/01_SIM-Georgia.zip",
+          "source_url": "https://www.curseforge.com/sims4/sims-households/georgia/files/8674144"
+        }
+      ],
+      "errors": [],
+      "project_id": "1681405"
+    },
+    {
+      "id": "02",
+      "name": "Hair S-Club 031226 Double Ponytail",
+      "creator": "S-Club",
+      "urls": [
+        "https://www.thesimsresource.com/downloads/details/category/sims4/id/1766849/"
+      ],
+      "mode": "manual",
+      "note": "TSR: download manual conforme acesso da sua conta.",
+      "status": "manual",
+      "files": [],
+      "errors": []
+    },
+    {
+      "id": "03",
+      "name": "Teeth \"Normal\" — alpha teeth",
+      "creator": "MagicBot",
+      "urls": [
+        "https://simfileshare.net/folder/235489/",
+        "https://www.patreon.com/posts/117517959"
+      ],
+      "mode": "auto",
+      "note": "Variantes DEFAULT e NON-DEFAULT: não instalar todos os defaults juntos.",
+      "status": "downloaded",
+      "files": [
+        {
+          "bytes": 49494034,
+          "sha256": "ddc875ad4237696cb8abcaeb0adcd0c69c78239af7fb2abad4639452a629e910",
+          "format": "zip",
+          "members": [
+            {
+              "name": "[MB] AFM teeth 2 big.package",
+              "bytes": 1473568,
+              "sha256": "7dbef5b04dc422af1d32fcaacb351de21e27318cef94fec828a1c48b3ef8e584"
+            },
+            {
+              "name": "[MB] AFM teeth base.package",
+              "bytes": 1476680,
+              "sha256": "5e4de4bf739fe6b767ed0b8ea45b4d0a47b0755892565cb04ae17cc9eb1072e2"
+            },
+            {
+              "name": "[MB] AFM teeth braces.package",
+              "bytes": 1790288,
+              "sha256": "09f6f6240c337deadcec50db46a7aa4e782db72587945b03a54a8f82f307223e"
+            },
+            {
+              "name": "[MB] AFM teeth curves.package",
+              "bytes": 1473016,
+              "sha256": "9dab8cb37714d872c49934e899adc5c8d3ed8f033a027254c26121dad85e667d"
+            },
+            {
+              "name": "[MB] AFM teeth gold.package",
+              "bytes": 1477022,
+              "sha256": "f1aa7fdf508410f1f57e09d4b75fc8fa3033930791c5aa7e24536fb03779e952"
+            },
+            {
+              "name": "[MB] AFM teeth implanted.package",
+              "bytes": 1529167,
+              "sha256": "2028cc7b51a1f65a34c90d26e4294078753bdbfa06d13e6af6d22cbd2da50a55"
+            },
+            {
+              "name": "[MB] AFM teeth japanese.package",
+              "bytes": 1479548,
+              "sha256": "6866ac3b156dd1e58389010ccec8de7f42b097a9d9d6db6eb616e8a8e8f94d51"
+            },
+            {
+              "name": "[MB] AFM teeth mermaid.package",
+              "bytes": 1494148,
+              "sha256": "69d56e7ab690e0f40769c2533108957c0c74972d714142cd00acd4ed6f0d3483"
+            },
+            {
+              "name": "[MB] AFM teeth silver.package",
+              "bytes": 1477161,
+              "sha256": "fa0a6c80e764c93eb8c1cc4839348c5522055a82519ce870944a7aca23617da2"
+            },
+            {
+              "name": "[MB] AFM teeth slit.package",
+              "bytes": 1471011,
+              "sha256": "0f4dbb65f21a32eacd78855e38e6eb942f9e68b16d714921ee1ed21c0b44bcb8"
+            },
+            {
+              "name": "[MB] AFM teeth vampire 1 style.package",
+              "bytes": 1474792,
+              "sha256": "63c04c591f78e2e980d07385ee6bcfd905a8918542bfee7f9db0321c448a24da"
+            },
+            {
+              "name": "[MB] AFM teeth vampire 2 style.package",
+              "bytes": 1472039,
+              "sha256": "cf4929affe4103757f6fab682b6d25306a087e7fd0877fa84219d40f2632cbd7"
+            },
+            {
+              "name": "[MB] AFM teeth vampire 3 style.package",
+              "bytes": 1473682,
+              "sha256": "02d418088a994d527c48eb2de188f1eaa512adc7f8c886cb9c5f72a813e34b1a"
+            },
+            {
+              "name": "[MB] AFM teeth vampire 4 style.package",
+              "bytes": 1476343,
+              "sha256": "a7b0250f6f71519d77ea988b170f8ecea1ff03a06d3dc0403772088bee0ab311"
+            },
+            {
+              "name": "[MB] AFM teeth werewolves 1 style.package",
+              "bytes": 1478176,
+              "sha256": "4bebd437af527d8f9a6aa66c4b11662733a45573d0587d9caa6c5d17a48f895b"
+            },
+            {
+              "name": "[MB] AFM teeth werewolves 2 style.package",
+              "bytes": 1480758,
+              "sha256": "a9a0d988e07f278d13b196e4b5c97490e38586f67b38eadef1c54ca1f94bc813"
+            },
+            {
+              "name": "[MB] AFM teeth werewolves 3 style.package",
+              "bytes": 1479551,
+              "sha256": "fa2274d580dbd884422b6e786f644f8f8a45fd1e09c2a12870b7c554694685db"
+            },
+            {
+              "name": "[MB] AFM teeth werewolves 4 style.package",
+              "bytes": 1479206,
+              "sha256": "218dd1b46a8f0c915ccc240a8b6fe0889e2dd11662974cf48b7e0314ef2264d4"
+            },
+            {
+              "name": "[MB] AFM teeth werewolves 5 style.package",
+              "bytes": 1478915,
+              "sha256": "cb317409c57687b1d842fa49dbc25b328d42507c4e3a42bd904fdc7d7d129e92"
+            },
+            {
+              "name": "[MB] AFM teeth werewolves 6 style.package",
+              "bytes": 1478094,
+              "sha256": "087347d709a7192da9c1e94d4623e416e7743d7db514587fda36a7b6de8492fb"
+            },
+            {
+              "name": "[MB] CFM teeth 2 big no 1.package",
+              "bytes": 1447300,
+              "sha256": "dc09bcfc969850266921cf2953c27fa23d7c6eb23d6937e24ebf2ff616d0a5cb"
+            },
+            {
+              "name": "[MB] CFM teeth 2 big.package",
+              "bytes": 1482215,
+              "sha256": "0c71b3f4ab7f0d30dc36d5e41a1474d8e200608a343cd634fd602a35778ce039"
+            },
+            {
+              "name": "[MB] CFM teeth base.package",
+              "bytes": 1485208,
+              "sha256": "856fdccb39a2074a01df05dc68291f5db2a48b5a443ca8ee0914f2d9717609e0"
+            },
+            {
+              "name": "[MB] CFM teeth braces no 1.package",
+              "bytes": 1750539,
+              "sha256": "ce05a630e7efdaeec9423d247582db3068201b8f2d5fb5690ee660b1e4223281"
+            },
+            {
+              "name": "[MB] CFM teeth braces.package",
+              "bytes": 1803040,
+              "sha256": "3778cb2e4c38a06164a9877b9351a92e2a0401585ef5e50efd2a9ecd71819334"
+            },
+            {
+              "name": "[MB] CFM teeth curves no 1.package",
+              "bytes": 1447819,
+              "sha256": "cf6542ef502073c171189a0ae00e724d2560c34b46803e8c7095c7a3e2973221"
+            },
+            {
+              "name": "[MB] CFM teeth curves.package",
+              "bytes": 1481147,
+              "sha256": "53c6a0d580708c1d3075028ad371587344466f0bc9e16cb2017af759bb74f6ab"
+            },
+            {
+              "name": "[MB] CFM teeth no 1.package",
+              "bytes": 1449164,
+              "sha256": "297e323d191452f45df6ac041545d49a89f48f376ec6f202c08d66a62b528de1"
+            },
+            {
+              "name": "[MB] CFM teeth no 2.package",
+              "bytes": 1412180,
+              "sha256": "578f994fe183a0dd9c3710ba11f36abed9b03bd2fe23465f476edd25e65c323d"
+            },
+            {
+              "name": "[MB] CFM teeth slit no 1.package",
+              "bytes": 1447446,
+              "sha256": "1c52a15f47ca75c709e7bcb4e5a9acf75d82ebe7f5608f5f23d06c6c56f2d716"
+            },
+            {
+              "name": "[MB] CFM teeth slit.package",
+              "bytes": 1479433,
+              "sha256": "4d6fbe15c67ae34d821b31c6d0cfb16b0d4f4a0b23260c0ad4dbcdcae309531e"
+            },
+            {
+              "name": "[MB] IFM no teeth.package",
+              "bytes": 236969,
+              "sha256": "aada51aa08e449588e7cb75efa1ab4a4b3d16891e4900e04c728627063f3d6c1"
+            },
+            {
+              "name": "[MB] IFM only 2.package",
+              "bytes": 499456,
+              "sha256": "80cc77b16063add055aa11d0aa7772ebfe5adb24a31b0a35f0934c894faaaa54"
+            },
+            {
+              "name": "[MB] IFM only 4.package",
+              "bytes": 574109,
+              "sha256": "6cb414f4a1e2db730d1e40b84f26ec33037ac0b781d34e279b1a4645da69453e"
+            },
+            {
+              "name": "[MB] TFM teeth base.package",
+              "bytes": 1503352,
+              "sha256": "da9edbb63de2611999212f0f750ca06419f7ced10ec8ced1920c4cfcb844b3e1"
+            },
+            {
+              "name": "[MB] TFM teeth only 8.package",
+              "bytes": 697596,
+              "sha256": "ed7e209be0d1532067131ddf5194354648a1aeffec77138a5aed24cbed2e0a69"
+            }
+          ],
+          "path": "CCs/03_MagicBot-teeth-_MB_Non-default_alpha_teeth.zip",
+          "source_url": "https://simfileshare.net/download/5184863/"
+        },
+        {
+          "bytes": 49757095,
+          "sha256": "ab547d7b1ce011b33c0bd509799b8e58327986dbabe5654a6f0585e6a8ced640",
+          "format": "zip",
+          "members": [
+            {
+              "name": "Base game/![MB] AFM def teeth 2 big.package",
+              "bytes": 1474520,
+              "sha256": "7d4ff182d2c0f02df342aa5901c74892b32d4e5878bfb46f6de9d324f4519ce2"
+            },
+            {
+              "name": "Base game/![MB] AFM def teeth base.package",
+              "bytes": 1477567,
+              "sha256": "3b8affcb52869508500aead49228bc29404ea6fcd4fdd68846d419222b2734a2"
+            },
+            {
+              "name": "Base game/![MB] AFM def teeth braces.package",
+              "bytes": 1793428,
+              "sha256": "a18dab35bcbbfdea541a5e47cb4bd504a331c0524cf6e513a94a6ddceeb65995"
+            },
+            {
+              "name": "Base game/![MB] AFM def teeth curves.package",
+              "bytes": 1474082,
+              "sha256": "d8c34bc5b151f12e6c2027cca3c17cbb0efac4d74f07706a3725c02af0f7fc85"
+            },
+            {
+              "name": "Base game/![MB] AFM def teeth implanted.package",
+              "bytes": 1530402,
+              "sha256": "84e490af717215d06ed87ff4e58ac40b44c69a713f9c2415408d59075e14444f"
+            },
+            {
+              "name": "Base game/![MB] AFM def teeth japanese.package",
+              "bytes": 1479396,
+              "sha256": "3ffa77a83c7e9e4d8a4435f4ab67debed3ff501955f99eb2a6c723db9e69f4ce"
+            },
+            {
+              "name": "Base game/![MB] AFM def teeth slit.package",
+              "bytes": 1473244,
+              "sha256": "9911b42d00bc7d18aa661a62718a362ff0fde912eecb9b8875f97fba10e029e1"
+            },
+            {
+              "name": "Base game/![MB] CFM def teeth 2 big.package",
+              "bytes": 1483738,
+              "sha256": "56e695dcb30ea9a3da46eb067032d4b23f01c4f4166499e05bad85283b152061"
+            },
+            {
+              "name": "Base game/![MB] CFM def teeth base .package",
+              "bytes": 1486285,
+              "sha256": "f3e1eec28ad5beb3ce1dc82347479ccd09d68be6e39aaef39d7f39c92175341f"
+            },
+            {
+              "name": "Base game/![MB] CFM def teeth braces.package",
+              "bytes": 1805864,
+              "sha256": "0549b89be1c11bbe434b8afe7403d1ba81e61a96ebf00d6184abe7403a859be7"
+            },
+            {
+              "name": "Base game/![MB] CFM def teeth curves.package",
+              "bytes": 1482466,
+              "sha256": "f5d858c9bdb82d1baf39eb1fc734cf1a7d1b982edcfb55c3e331e67173851606"
+            },
+            {
+              "name": "Base game/![MB] CFM def teeth no 2.package",
+              "bytes": 1413441,
+              "sha256": "1779f2fe28467561f9648f8ce6df624daab521c7d9e275e57548bb73ee77e662"
+            },
+            {
+              "name": "Base game/![MB] CFM def teeth slit.package",
+              "bytes": 1481711,
+              "sha256": "f07a7158c4df0a1c14d7f66ca234cccf23a1a368ebe100111895e008e55826b6"
+            },
+            {
+              "name": "Base game/![MB] IFM def no teeth.package",
+              "bytes": 236688,
+              "sha256": "1ca433bc9729cd4485e3d92817a9615f89e1c93c5b46dd64a01e296a551c11a2"
+            },
+            {
+              "name": "Base game/![MB] IFM def only 2.package",
+              "bytes": 499039,
+              "sha256": "996ff3a377dbdbcfdf18b94a835a4b179768b9a760c4cc4eb31b0a98dccf29bf"
+            },
+            {
+              "name": "Base game/![MB] IFM def only 4.package",
+              "bytes": 573682,
+              "sha256": "26c74abb86c62626ddf0585e67ec24c58575a3b1c4c6a0146788272f616fe7b3"
+            },
+            {
+              "name": "Base game/![MB] TFM def teeth base.package",
+              "bytes": 1504427,
+              "sha256": "eb54e32e7947cda2a02f28dfae7ce165512ae1ed3fb29b8aae19d87a5e9fdc11"
+            },
+            {
+              "name": "Base game/![MB] TFM def teeth only 8.package",
+              "bytes": 698739,
+              "sha256": "6918e7f16715e4c433520aee42860e6e559803f64c6f22c4ee029dcc62992039"
+            },
+            {
+              "name": "Get famous/![MB] AFM def teeth gold.package",
+              "bytes": 1477853,
+              "sha256": "63dbcf1c644098b7e108796e190ea3494dd657aaedfc583ef20eeacfad5303ad"
+            },
+            {
+              "name": "Get famous/![MB] AFM def teeth silver.package",
+              "bytes": 1478054,
+              "sha256": "d71d83ec8a34b23f9ef584479369b9d7b1361040496654610cca8865954a1432"
+            },
+            {
+              "name": "Growing Together/![MB] CFM def teeth 2 big no 1.package",
+              "bytes": 1446991,
+              "sha256": "7876b5f5a9179803896fb47757cb511e7741bdcb8f6a8fdee4cc8ec80d9b8c2c"
+            },
+            {
+              "name": "Growing Together/![MB] CFM def teeth braces no 1.package",
+              "bytes": 1976638,
+              "sha256": "57070bff799312cfcc3c75967978c15d3cd2a1109b693e399de49a9bf38ec177"
+            },
+            {
+              "name": "Growing Together/![MB] CFM def teeth curves no 1.package",
+              "bytes": 1447452,
+              "sha256": "9dc03d685bbaf8514e6c07c071210be16b53ff2f00989fdf2aca9e78771244f5"
+            },
+            {
+              "name": "Growing Together/![MB] CFM def teeth no 1.package",
+              "bytes": 1448757,
+              "sha256": "d91eb5047aaa499f5d4fc4705012fe9f75c409e8a18d8b50924bf698b230581f"
+            },
+            {
+              "name": "Growing Together/![MB] CFM def teeth slit no 1.package",
+              "bytes": 1447029,
+              "sha256": "127916a725b84b4919608b135e5f58c98b1cea4ff4b7681681e959e4291bf6c3"
+            },
+            {
+              "name": "Island living/![MB] AFM def teeth mermaid.package",
+              "bytes": 1496189,
+              "sha256": "eb1ebb1f5b6f64cbd11bddf12245432b773b5166e21d0451df4b806b24497f5d"
+            },
+            {
+              "name": "Vampires/![MB] AFM def teeth vampire 1 style.package",
+              "bytes": 1475937,
+              "sha256": "ce93b3761d2d73e3e7ed22fca1d5d50f8b967c4fdcace723dfb38e7530a104ba"
+            },
+            {
+              "name": "Vampires/![MB] AFM def teeth vampire 2 style.package",
+              "bytes": 1474251,
+              "sha256": "9052a949168a9e1f82751c67dbe117cd3a04ba4ba0f800a821492699016c5814"
+            },
+            {
+              "name": "Vampires/![MB] AFM def teeth vampire 3 style.package",
+              "bytes": 1475140,
+              "sha256": "9899e923c6091177982a0576706079cfc9d23c536ddb52c239a913f2792028ae"
+            },
+            {
+              "name": "Vampires/![MB] AFM def teeth vampire 4 style.package",
+              "bytes": 1477057,
+              "sha256": "7af1089aec4b48767bcc85cf5b731ae47ad5e802c3e4c4fd64f1ea9504d95cc4"
+            },
+            {
+              "name": "Werewolves/![MB] AFM def teeth werewolves 1 style.package",
+              "bytes": 1477721,
+              "sha256": "15c0d037f9e264d83889514d089e6059d39177bef0de0e57d919c7c647f70472"
+            },
+            {
+              "name": "Werewolves/![MB] AFM def teeth werewolves 2 style.package",
+              "bytes": 1480260,
+              "sha256": "5ee2faea7374ca84f45b5c30cb342b1dfff20457eacdab49b6ece67d45fc55af"
+            },
+            {
+              "name": "Werewolves/![MB] AFM def teeth werewolves 3 style.package",
+              "bytes": 1479167,
+              "sha256": "dd2da7d624d4fc99b529a3a8abcbbfe68888fea2c7b30414420fb07147096698"
+            },
+            {
+              "name": "Werewolves/![MB] AFM def teeth werewolves 4 style.package",
+              "bytes": 1478740,
+              "sha256": "84565a19313d29dd8856d73fad5837a2ca4a35a2311d1eb419cd65ea4751dcb0"
+            },
+            {
+              "name": "Werewolves/![MB] AFM def teeth werewolves 5 style.package",
+              "bytes": 1478381,
+              "sha256": "fbeb9be95acd867b3071130634e5a9203fd41de8e1b95d330d2774472f2fe16d"
+            },
+            {
+              "name": "Werewolves/![MB] AFM def teeth werewolves 6 style.package",
+              "bytes": 1477564,
+              "sha256": "dd9685ce8e5b51b6e174b671baf42e40e50626b0b0efafd29cc5b4ed798e8c52"
+            }
+          ],
+          "path": "CCs/03_MagicBot-teeth-_MB_Default_alpha_teeth_all.zip",
+          "source_url": "https://simfileshare.net/download/5184856/"
+        }
+      ],
+      "errors": [],
+      "selected_names": [
+        "[MB] Non-default alpha teeth.zip",
+        "[MB] Default alpha teeth all.zip"
+      ]
+    },
+    {
+      "id": "04",
+      "name": "Fullbody Rina Sweatpants",
+      "creator": "Belaloallure (tabae)",
+      "urls": [
+        "https://www.thesimsresource.com/downloads/details/category/sims4/id/1486209/"
+      ],
+      "mode": "manual",
+      "note": "TSR: download manual conforme acesso da sua conta.",
+      "status": "manual",
+      "files": [],
+      "errors": []
+    },
+    {
+      "id": "05",
+      "name": "Leo levis shoes conversion",
+      "creator": "MadMan / MagicBot",
+      "urls": [
+        "https://www.patreon.com/posts/23286338"
+      ],
+      "mode": "auto",
+      "note": "Preferir o arquivo FIX F+M publicado pelo criador.",
+      "status": "downloaded",
+      "files": [
+        {
+          "bytes": 3164618,
+          "sha256": "f03b6d3e1f2e874fccb1609c99e0b4d3ba790eb77354c738fc87a5771d4a10cf",
+          "format": "rar",
+          "members": [
+            {
+              "name": "Av.png",
+              "bytes": 89591,
+              "sha256": "46b7ab1f5ca71c50088ab2e6cfe97436f2cedfe4e48524082301da5b91f8cb68"
+            },
+            {
+              "name": "[MB] leo levis shoes CONVERSION M.package",
+              "bytes": 1581921,
+              "sha256": "be83677bc1c6844d504fb143493e06305f27de1d916fdc697f0a10f62d46f870"
+            },
+            {
+              "name": "[MB] leo levis shoes CONVERSION F.package",
+              "bytes": 1509316,
+              "sha256": "738f0a878b9451c69ff2e3d9f7ed88d774b75d89ddebc0497707a559f56e8cb4"
+            }
+          ],
+          "path": "CCs/05_MagicBot-leo-levis-shoes__MB_FIX_leo_levis_shoes_CONVERSION_F_M.rar",
+          "source_url": "https://www.patreon.com/posts/23286338"
+        }
+      ],
+      "errors": [],
+      "post_title": "Convert shoes leo-sims",
+      "available_attachments": [
+        {
+          "id": "16101631",
+          "name": "[MB] FIX leo levis shoes CONVERSION F+M.rar",
+          "bytes": 3164618
+        }
+      ],
+      "selected_names": [
+        "[MB] FIX leo levis shoes CONVERSION F+M.rar"
+      ]
+    },
+    {
+      "id": "06",
+      "name": "GPME-GOLD MAKEUP SET CC31",
+      "creator": "goppolsme",
+      "urls": [
+        "https://simfileshare.net/download/2172979/"
+      ],
+      "mode": "auto",
+      "note": "",
+      "status": "downloaded",
+      "files": [
+        {
+          "bytes": 570550,
+          "sha256": "6ecb87e5e9faa69d2733f9e04b658a8748b151ab5c39c88dcddf70553f9cda53",
+          "format": "package",
+          "members": [],
+          "path": "CCs/06_GPME-Gold-Makeup-Set-CC31.package",
+          "source_url": "https://simfileshare.net/download/2172979/"
+        }
+      ],
+      "errors": []
+    },
+    {
+      "id": "07",
+      "name": "Basics Please — eyeshadows",
+      "creator": "TwistedCat",
+      "urls": [
+        "https://www.patreon.com/posts/63321024"
+      ],
+      "mode": "auto",
+      "note": "EyeLid / Full / OuterEdge: alternativas do mesmo conjunto.",
+      "status": "downloaded",
+      "files": [
+        {
+          "bytes": 471073,
+          "sha256": "ae46a10d53b4c207892a3a13eaab8b04878c8b8bcb148ca4c863884a3591944f",
+          "format": "package",
+          "members": [],
+          "path": "CCs/07_TwistedCat-BasicsPlease_TwistedCat_BasicsPlease_EyeLid_Eyeshadow.package",
+          "source_url": "https://www.patreon.com/posts/63321024"
+        },
+        {
+          "bytes": 715104,
+          "sha256": "780bfb6e87d700bdc01fb9bd5c6c075ef4beb212d4270f4b4d9de754052c70cc",
+          "format": "package",
+          "members": [],
+          "path": "CCs/07_TwistedCat-BasicsPlease_TwistedCat_BasicsPlease_Full_Eyeshadow.package",
+          "source_url": "https://www.patreon.com/posts/63321024"
+        },
+        {
+          "bytes": 609863,
+          "sha256": "17a78f08d0372f53aa446f981fac10fb097fba990154f6f1c339963926b5f7d1",
+          "format": "package",
+          "members": [],
+          "path": "CCs/07_TwistedCat-BasicsPlease_TwistedCat_BasicsPlease_OuterEdge_Eyeshadow.package",
+          "source_url": "https://www.patreon.com/posts/63321024"
+        }
+      ],
+      "errors": [],
+      "post_title": "Basics Please - Three Eyeshadow Essentials",
+      "available_attachments": [
+        {
+          "id": "173220284",
+          "name": "TwistedCat_BasicsPlease_EyeLid_Eyeshadow.package",
+          "bytes": 471073
+        },
+        {
+          "id": "173220285",
+          "name": "TwistedCat_BasicsPlease_Full_Eyeshadow.package",
+          "bytes": 715104
+        },
+        {
+          "id": "173220286",
+          "name": "TwistedCat_BasicsPlease_OuterEdge_Eyeshadow.package",
+          "bytes": 609863
+        }
+      ],
+      "selected_names": [
+        "TwistedCat_BasicsPlease_EyeLid_Eyeshadow.package",
+        "TwistedCat_BasicsPlease_Full_Eyeshadow.package",
+        "TwistedCat_BasicsPlease_OuterEdge_Eyeshadow.package"
+      ]
+    },
+    {
+      "id": "08",
+      "name": "GPME-GOLD Liner cc10",
+      "creator": "goppolsme",
+      "urls": [
+        "https://simfileshare.net/download/568017/"
+      ],
+      "mode": "auto",
+      "note": "",
+      "status": "downloaded",
+      "files": [
+        {
+          "bytes": 377808,
+          "sha256": "16c785da61e6feeb34134177d7fa1482ee74cc54dbd13c8d88dd88eef32f611a",
+          "format": "package",
+          "members": [],
+          "path": "CCs/08_GPME-Gold-Liner-cc10.package",
+          "source_url": "https://simfileshare.net/download/568017/"
+        }
+      ],
+      "errors": []
+    },
+    {
+      "id": "09",
+      "name": "WILD CAT — BLUSH N7",
+      "creator": "Northern Siberia Winds",
+      "urls": [
+        "https://www.patreon.com/posts/64319245"
+      ],
+      "mode": "auto",
+      "note": "Selecionar BLUSH N7, não as peles/maquiagens restantes do post.",
+      "status": "downloaded",
+      "files": [
+        {
+          "bytes": 11783207,
+          "sha256": "d93a2cc0410230f9fa2652b45a0e8f3fbf6e991fbe10d6a6644533dc189e9bac",
+          "format": "package",
+          "members": [],
+          "path": "CCs/09_NSW-BLUSH-N7__NORTHERN_SIBERIA_WINDS_BLUSH_N7.package",
+          "source_url": "https://www.patreon.com/posts/64319245"
+        }
+      ],
+      "errors": [],
+      "post_title": "WILD CAT: MAKE-UP AND GENETICS COLLECTION",
+      "available_attachments": [
+        {
+          "id": "146642156",
+          "name": "[NorthernSiberiaWinds] EYELIDS N11.package",
+          "bytes": 22728431
+        },
+        {
+          "id": "146642168",
+          "name": "[NorthernSiberiaWinds] EYELIDS N12.package",
+          "bytes": 29822700
+        },
+        {
+          "id": "146642186",
+          "name": "[NorthernSiberiaWinds] NOSEMASK N6.package",
+          "bytes": 8147312
+        },
+        {
+          "id": "146642189",
+          "name": "[NorthernSiberiaWinds] LIPS N34.package",
+          "bytes": 3369075
+        },
+        {
+          "id": "146642193",
+          "name": "[NorthernSiberiaWinds] LIPS N35.package",
+          "bytes": 3742201
+        },
+        {
+          "id": "147363057",
+          "name": "[NorthernSiberiaWinds] LIPS BLOOD N1.package",
+          "bytes": 564106
+        },
+        {
+          "id": "147363058",
+          "name": "[NorthernSiberiaWinds] LIPS BLOOD N2.package",
+          "bytes": 1599464
+        },
+        {
+          "id": "194676129",
+          "name": "[NORTHERN SIBERIA WINDS] BLUSH N7.package",
+          "bytes": 11783207
+        },
+        {
+          "id": "194676146",
+          "name": "[NORTHERN SIBERIA WINDS] NOSE FRECKLES BLUSH N6.package",
+          "bytes": 4743365
+        },
+        {
+          "id": "194676163",
+          "name": "[NORTHERN SIBERIA WINDS] NOSE FRECKLES BLUSH N6 OVERLAY.package",
+          "bytes": 430246
+        },
+        {
+          "id": "255434883",
+          "name": "[NORTHERN SIBERIA WINDS] SKIN N12.package",
+          "bytes": 38901444
+        },
+        {
+          "id": "255434888",
+          "name": "[NORTHERN SIBERIA WINDS] SKIN N12 EXTRA DARK.package",
+          "bytes": 23149025
+        },
+        {
+          "id": "255435047",
+          "name": "[NORTHERN SIBERIA WINDS] SKIN N12 EXTRA DARK HQ.package",
+          "bytes": 90921956
+        },
+        {
+          "id": "255435049",
+          "name": "[NORTHERN SIBERIA WINDS] SKIN N12 HQ.package",
+          "bytes": 156687341
+        },
+        {
+          "id": "255435062",
+          "name": "[NORTHERN SIBERIA WINDS] SKIN N12 OVERLAY.package",
+          "bytes": 9221450
+        },
+        {
+          "id": "255435099",
+          "name": "[NORTHERN SIBERIA WINDS] SKIN N12 OVERLAY HQ.package",
+          "bytes": 41043768
+        }
+      ],
+      "selected_names": [
+        "[NORTHERN SIBERIA WINDS] BLUSH N7.package"
+      ]
+    },
+    {
+      "id": "10",
+      "name": "Cytosine Eyes — facepaint",
+      "creator": "RemusSirion",
+      "urls": [
+        "https://www.thesimsresource.com/downloads/details/category/sims4/id/1459200/"
+      ],
+      "mode": "manual",
+      "note": "TSR: download manual conforme acesso da sua conta.",
+      "status": "manual",
+      "files": [],
+      "errors": []
+    },
+    {
+      "id": "11",
+      "name": "Realistic Female Body Details",
+      "creator": "Mikooi / Miiko (atribuição a confirmar)",
+      "urls": [
+        "https://bestsimsmods.com/sims-4-mikkoi-female-body-details-6-0/"
+      ],
+      "mode": "manual",
+      "note": "Referência recebida, não validada: conteúdo adulto, ~273 MB; possível requisito Get Famous. Confirmar versão, autoria e requisitos na fonte original. Mirror não usado.",
+      "status": "manual",
+      "files": [],
+      "errors": []
+    },
+    {
+      "id": "12",
+      "name": "misc. face details",
+      "creator": "okruee",
+      "urls": [
+        "https://www.patreon.com/posts/71370172"
+      ],
+      "mode": "auto",
+      "note": "TATTOO / OCCULT / SKINDETAIL: escolher a categoria desejada.",
+      "status": "downloaded",
+      "files": [
+        {
+          "bytes": 2917672,
+          "sha256": "628cccbe74f8b05969f1f24c53678f5f9ec377558f11a2415939e86a7155c432",
+          "format": "package",
+          "members": [],
+          "path": "CCs/12_okruee-misc-face-details_okruee-misc-face-details-TATTOO.package",
+          "source_url": "https://www.patreon.com/posts/71370172"
+        },
+        {
+          "bytes": 3498505,
+          "sha256": "87054bfc897ca464037a9147ef80a88abc628e61b8d0e7cc40ab620b27b4183d",
+          "format": "package",
+          "members": [],
+          "path": "CCs/12_okruee-misc-face-details_okruee-misc-face-details-OCCULT.package",
+          "source_url": "https://www.patreon.com/posts/71370172"
+        },
+        {
+          "bytes": 4660114,
+          "sha256": "0315f4786a292802cef940e9211719691ca327ff3530f95665abbc86b4f94365",
+          "format": "package",
+          "members": [],
+          "path": "CCs/12_okruee-misc-face-details_okruee-misc-face-details-SKINDETAIL.package",
+          "source_url": "https://www.patreon.com/posts/71370172"
+        }
+      ],
+      "errors": [],
+      "post_title": "misc. face details",
+      "available_attachments": [
+        {
+          "id": "166672146",
+          "name": "okruee-misc-face-details-TATTOO.package",
+          "bytes": 2917672
+        },
+        {
+          "id": "179102955",
+          "name": "okruee-misc-face-details-OCCULT.package",
+          "bytes": 3498505
+        },
+        {
+          "id": "179102959",
+          "name": "okruee-misc-face-details-SKINDETAIL.package",
+          "bytes": 4660114
+        }
+      ],
+      "selected_names": [
+        "okruee-misc-face-details-TATTOO.package",
+        "okruee-misc-face-details-OCCULT.package",
+        "okruee-misc-face-details-SKINDETAIL.package"
+      ]
+    },
+    {
+      "id": "13",
+      "name": "Lighting Overlay 2.0",
+      "creator": "jo_se_oh",
+      "urls": [
+        "https://www.patreon.com/posts/94005453"
+      ],
+      "mode": "auto",
+      "note": "TRUE BLACK e COLOR: variantes; conferir instruções do criador.",
+      "status": "downloaded",
+      "files": [
+        {
+          "bytes": 30360144,
+          "sha256": "4b7e646cc8e0022d2c9c190fbe09e6ec11cfb07e1c77491e3f7828aae87cb704",
+          "format": "package",
+          "members": [],
+          "path": "CCs/13_Jo_se_oh-Lighting-Overlay__JOSH_JO_SE_OH_Ligthing_Overlay_2.0_TRUE_BLACK_MERGED.package",
+          "source_url": "https://www.patreon.com/posts/94005453"
+        },
+        {
+          "bytes": 28105894,
+          "sha256": "9ed99b450e07d067f43e3fabe02f8f89d960d0174a04da91e82ffa18f01d1d08",
+          "format": "package",
+          "members": [],
+          "path": "CCs/13_Jo_se_oh-Lighting-Overlay__JOSH_JO_SE_OH_Ligthing_Overlay_2.0_COLOR_MERGED.package",
+          "source_url": "https://www.patreon.com/posts/94005453"
+        }
+      ],
+      "errors": [],
+      "post_title": "Lighting Overlay 2.0",
+      "available_attachments": [
+        {
+          "id": "252521129",
+          "name": "[JOSH JO_SE_OH] Ligthing Overlay 2.0 (TRUE BLACK) MERGED.package",
+          "bytes": 30360144
+        },
+        {
+          "id": "252521968",
+          "name": "[JOSH JO_SE_OH] Ligthing Overlay 2.0 (COLOR) MERGED.package",
+          "bytes": 28105894
+        }
+      ],
+      "selected_names": [
+        "[JOSH JO_SE_OH] Ligthing Overlay 2.0 (TRUE BLACK) MERGED.package",
+        "[JOSH JO_SE_OH] Ligthing Overlay 2.0 (COLOR) MERGED.package"
+      ]
+    },
+    {
+      "id": "14",
+      "name": "In game shadow — face shadow",
+      "creator": "Simandy",
+      "urls": [
+        "https://www.patreon.com/posts/42027501"
+      ],
+      "mode": "auto",
+      "note": "O post oferece opções; não são 16 dependências independentes.",
+      "status": "downloaded",
+      "files": [
+        {
+          "bytes": 2142778,
+          "sha256": "1959f11c9454755f41d0d70a42d0666b842d7635692591d68336bb5ebe1818c5",
+          "format": "package",
+          "members": [],
+          "path": "CCs/14_Simandy-face-shadow_SimMandy_Spotlight_FaceMask.package",
+          "source_url": "https://www.patreon.com/posts/42027501"
+        },
+        {
+          "bytes": 10712602,
+          "sha256": "ac556f6c6f7243d1f99e0f57e4f35b1e690001a7fde1759cddb1a6339a0d326d",
+          "format": "package",
+          "members": [],
+          "path": "CCs/14_Simandy-face-shadow_SimMandy_Spotlight_Skindetails.package",
+          "source_url": "https://www.patreon.com/posts/42027501"
+        },
+        {
+          "bytes": 12856872,
+          "sha256": "125d739635b7cfe6d12c3523667ba6d7e92cbc7d88c84a20f3985b2aa347bc8c",
+          "format": "package",
+          "members": [],
+          "path": "CCs/14_Simandy-face-shadow_SimMandy_Spotlight_Tattoos.package",
+          "source_url": "https://www.patreon.com/posts/42027501"
+        }
+      ],
+      "errors": [],
+      "post_title": "Because every time I look at photoshop I want to give up",
+      "available_attachments": [
+        {
+          "id": "78996151",
+          "name": "SimMandy_Spotlight_FaceMask.package",
+          "bytes": 2142778
+        },
+        {
+          "id": "78996168",
+          "name": "SimMandy_Spotlight_Skindetails.package",
+          "bytes": 10712602
+        },
+        {
+          "id": "78996173",
+          "name": "SimMandy_Spotlight_Tattoos.package",
+          "bytes": 12856872
+        }
+      ],
+      "selected_names": [
+        "SimMandy_Spotlight_FaceMask.package",
+        "SimMandy_Spotlight_Skindetails.package",
+        "SimMandy_Spotlight_Tattoos.package"
+      ]
+    },
+    {
+      "id": "15",
+      "name": "Soft Face Freckles HQ",
+      "creator": "alf-si",
+      "urls": [
+        "https://www.thesimsresource.com/downloads/details/category/sims4/id/1355997/"
+      ],
+      "mode": "manual",
+      "note": "TSR: download manual conforme acesso da sua conta.",
+      "status": "manual",
+      "files": [],
+      "errors": []
+    },
+    {
+      "id": "16",
+      "name": "Bodycare Kit — seleção feminina",
+      "creator": "Northern Siberia Winds",
+      "urls": [
+        "https://www.patreon.com/posts/93373994"
+      ],
+      "mode": "auto",
+      "note": "Seleção de nomes FEMALE / CLEAVAGE / BODY PRESET, excluindo MALE quando não FEMALE. Escolher variantes/presets no CAS.",
+      "status": "downloaded",
+      "files": [
+        {
+          "bytes": 7853578,
+          "sha256": "39e0c6b4f688d6e4ceb58a3d037e66683d6f0b52b3b4e6f21e9b1bcf48edab07",
+          "format": "package",
+          "members": [],
+          "path": "CCs/16_NSW-Bodycare-Kit__NORTHERN_SIBERIA_WINDS_FEMALE_TORSO_MASK_N1_MM_OVERLAY.package",
+          "source_url": "https://www.patreon.com/posts/93373994"
+        },
+        {
+          "bytes": 9903488,
+          "sha256": "0789a25ccf08144c109865eb92282f42006fb8a162949df43e88ae2d8b7822d7",
+          "format": "package",
+          "members": [],
+          "path": "CCs/16_NSW-Bodycare-Kit__NORTHERN_SIBERIA_WINDS_FEMALE_TORSO_MASK_N1_B_MM_OVERLAY.package",
+          "source_url": "https://www.patreon.com/posts/93373994"
+        },
+        {
+          "bytes": 7004755,
+          "sha256": "15d04887cf1a5971eccdbdf5ea134b5e567a5f0b81c707b76241b03270c89080",
+          "format": "package",
+          "members": [],
+          "path": "CCs/16_NSW-Bodycare-Kit__NORTHERN_SIBERIA_WINDS_FEMALE_TORSO_MASK_N2_MM_OVERLAY.package",
+          "source_url": "https://www.patreon.com/posts/93373994"
+        },
+        {
+          "bytes": 6962006,
+          "sha256": "d47553675f4b464b92e78d5b46e3e1a53c1332e36cb38713fc7eea916e80ed94",
+          "format": "package",
+          "members": [],
+          "path": "CCs/16_NSW-Bodycare-Kit__NORTHERN_SIBERIA_WINDS_FEMALE_TORSO_MASK_N3_MM_OVERLAY.package",
+          "source_url": "https://www.patreon.com/posts/93373994"
+        },
+        {
+          "bytes": 45639013,
+          "sha256": "9d4769d88f9763364aedf58f002c3015244a1acaf763c7dccd4fef66bca76fc0",
+          "format": "package",
+          "members": [],
+          "path": "CCs/16_NSW-Bodycare-Kit__NORTHERN_SIBERIA_WINDS_FEMALE_TORSO_MASK_N1.package",
+          "source_url": "https://www.patreon.com/posts/93373994"
+        },
+        {
+          "bytes": 42721658,
+          "sha256": "7d9a37955d695ff1330b7b97e5c5f85db892ea34eb4ae71d74f23209dc8d8149",
+          "format": "package",
+          "members": [],
+          "path": "CCs/16_NSW-Bodycare-Kit__NORTHERN_SIBERIA_WINDS_FEMALE_TORSO_MASK_N2.package",
+          "source_url": "https://www.patreon.com/posts/93373994"
+        },
+        {
+          "bytes": 39996526,
+          "sha256": "c7897d5d7e0f16b9805c801ec9d2decf28a2d661e4be2ec0577ab5a6154cd8e4",
+          "format": "package",
+          "members": [],
+          "path": "CCs/16_NSW-Bodycare-Kit__NORTHERN_SIBERIA_WINDS_FEMALE_TORSO_MASK_N3.package",
+          "source_url": "https://www.patreon.com/posts/93373994"
+        },
+        {
+          "bytes": 2852262,
+          "sha256": "067d87baead7b96b853b6a57531c9daa5458f6d62a270cb6683e494e5ce95c63",
+          "format": "package",
+          "members": [],
+          "path": "CCs/16_NSW-Bodycare-Kit__NORTHERN_SIBERIA_WINDS_CLEAVAGE_MASK_N6_MM_OVERLAY.package",
+          "source_url": "https://www.patreon.com/posts/93373994"
+        },
+        {
+          "bytes": 24042245,
+          "sha256": "5bebd1575736da751bc3d517f309b36d43943eda8869c9cd6c9ab4a4515019a7",
+          "format": "package",
+          "members": [],
+          "path": "CCs/16_NSW-Bodycare-Kit__NORTHERN_SIBERIA_WINDS_CLEAVAGE_MASK_N6.package",
+          "source_url": "https://www.patreon.com/posts/93373994"
+        },
+        {
+          "bytes": 1760538,
+          "sha256": "f77464b07f5919ba18aba286daf81096b11dcc00c64c7ba45c3469029daf45b6",
+          "format": "package",
+          "members": [],
+          "path": "CCs/16_NSW-Bodycare-Kit__NORTHERN_SIBERIA_WINDS_FEMALE_BODY_PRESET_N1.package",
+          "source_url": "https://www.patreon.com/posts/93373994"
+        },
+        {
+          "bytes": 1791643,
+          "sha256": "3bec30b20e0701a99fa8492bdb37ccb25af618742fa20f48586dbe29ea496a13",
+          "format": "package",
+          "members": [],
+          "path": "CCs/16_NSW-Bodycare-Kit__NORTHERN_SIBERIA_WINDS_FEMALE_BODY_PRESET_N2.package",
+          "source_url": "https://www.patreon.com/posts/93373994"
+        },
+        {
+          "bytes": 1839484,
+          "sha256": "445cc04605c4c747bd8e7f02fb17e321085928f8f2799be1e6f244a24e33e422",
+          "format": "package",
+          "members": [],
+          "path": "CCs/16_NSW-Bodycare-Kit__NORTHERN_SIBERIA_WINDS_FEMALE_BODY_PRESET_N3.package",
+          "source_url": "https://www.patreon.com/posts/93373994"
+        },
+        {
+          "bytes": 1789677,
+          "sha256": "c93bc140b70aa8cbb77f8829d3e6ab68ae74805614beb7de11b55940666e6ea6",
+          "format": "package",
+          "members": [],
+          "path": "CCs/16_NSW-Bodycare-Kit__NORTHERN_SIBERIA_WINDS_FEMALE_BODY_PRESET_N4.package",
+          "source_url": "https://www.patreon.com/posts/93373994"
+        }
+      ],
+      "errors": [],
+      "post_title": "BODYCARE KIT🥑",
+      "available_attachments": [
+        {
+          "id": "258386494",
+          "name": "[NORTHERN SIBERIA WINDS] MALE TORSO MASK N1 MM OVERLAY.package",
+          "bytes": 9837677
+        },
+        {
+          "id": "258386515",
+          "name": "[NORTHERN SIBERIA WINDS] MALE TORSO MASK N1 B MM OVERLAY.package",
+          "bytes": 11234764
+        },
+        {
+          "id": "258386521",
+          "name": "[NORTHERN SIBERIA WINDS] MALE TORSO MASK N2 MM OVERLAY.package",
+          "bytes": 9934594
+        },
+        {
+          "id": "258386529",
+          "name": "[NORTHERN SIBERIA WINDS] MALE TORSO MASK N3 MM OVERLAY.package",
+          "bytes": 10752129
+        },
+        {
+          "id": "258386724",
+          "name": "[NORTHERN SIBERIA WINDS] MALE TORSO MASK N1.package",
+          "bytes": 58365744
+        },
+        {
+          "id": "258386728",
+          "name": "[NORTHERN SIBERIA WINDS] MALE TORSO MASK N2.package",
+          "bytes": 57782690
+        },
+        {
+          "id": "258386769",
+          "name": "[NORTHERN SIBERIA WINDS] MALE TORSO MASK N3.package",
+          "bytes": 63627178
+        },
+        {
+          "id": "258386775",
+          "name": "[NORTHERN SIBERIA WINDS] FEMALE TORSO MASK N1 MM OVERLAY.package",
+          "bytes": 7853578
+        },
+        {
+          "id": "258386795",
+          "name": "[NORTHERN SIBERIA WINDS] FEMALE TORSO MASK N1 B MM OVERLAY.package",
+          "bytes": 9903488
+        },
+        {
+          "id": "258386797",
+          "name": "[NORTHERN SIBERIA WINDS] FEMALE TORSO MASK N2 MM OVERLAY.package",
+          "bytes": 7004755
+        },
+        {
+          "id": "258386807",
+          "name": "[NORTHERN SIBERIA WINDS] FEMALE TORSO MASK N3 MM OVERLAY.package",
+          "bytes": 6962006
+        },
+        {
+          "id": "258386913",
+          "name": "[NORTHERN SIBERIA WINDS] FEMALE TORSO MASK N1.package",
+          "bytes": 45639013
+        },
+        {
+          "id": "258387072",
+          "name": "[NORTHERN SIBERIA WINDS] FEMALE TORSO MASK N2.package",
+          "bytes": 42721658
+        },
+        {
+          "id": "258387131",
+          "name": "[NORTHERN SIBERIA WINDS] FEMALE TORSO MASK N3.package",
+          "bytes": 39996526
+        },
+        {
+          "id": "258387168",
+          "name": "[NORTHERN SIBERIA WINDS] CLEAVAGE MASK N6 MM OVERLAY.package",
+          "bytes": 2852262
+        },
+        {
+          "id": "258387225",
+          "name": "[NORTHERN SIBERIA WINDS] CLEAVAGE MASK N6.package",
+          "bytes": 24042245
+        },
+        {
+          "id": "608927255",
+          "name": "[NORTHERN SIBERIA WINDS] FEMALE BODY PRESET N1.package",
+          "bytes": 1760538
+        },
+        {
+          "id": "608927295",
+          "name": "[NORTHERN SIBERIA WINDS] FEMALE BODY PRESET N2.package",
+          "bytes": 1791643
+        },
+        {
+          "id": "608927324",
+          "name": "[NORTHERN SIBERIA WINDS] FEMALE BODY PRESET N3.package",
+          "bytes": 1839484
+        },
+        {
+          "id": "608927346",
+          "name": "[NORTHERN SIBERIA WINDS] FEMALE BODY PRESET N4.package",
+          "bytes": 1789677
+        },
+        {
+          "id": "608927424",
+          "name": "[NORTHERN SIBERIA WINDS] MALE BODY PRESET N1.package",
+          "bytes": 2084131
+        },
+        {
+          "id": "608927441",
+          "name": "[NORTHERN SIBERIA WINDS] MALE BODY PRESET N2.package",
+          "bytes": 1912080
+        },
+        {
+          "id": "608927466",
+          "name": "[NORTHERN SIBERIA WINDS] MALE BODY PRESET N3.package",
+          "bytes": 1810858
+        },
+        {
+          "id": "608927482",
+          "name": "[NORTHERN SIBERIA WINDS] MALE BODY PRESET N4.package",
+          "bytes": 1776906
+        }
+      ],
+      "selected_names": [
+        "[NORTHERN SIBERIA WINDS] FEMALE TORSO MASK N1 MM OVERLAY.package",
+        "[NORTHERN SIBERIA WINDS] FEMALE TORSO MASK N1 B MM OVERLAY.package",
+        "[NORTHERN SIBERIA WINDS] FEMALE TORSO MASK N2 MM OVERLAY.package",
+        "[NORTHERN SIBERIA WINDS] FEMALE TORSO MASK N3 MM OVERLAY.package",
+        "[NORTHERN SIBERIA WINDS] FEMALE TORSO MASK N1.package",
+        "[NORTHERN SIBERIA WINDS] FEMALE TORSO MASK N2.package",
+        "[NORTHERN SIBERIA WINDS] FEMALE TORSO MASK N3.package",
+        "[NORTHERN SIBERIA WINDS] CLEAVAGE MASK N6 MM OVERLAY.package",
+        "[NORTHERN SIBERIA WINDS] CLEAVAGE MASK N6.package",
+        "[NORTHERN SIBERIA WINDS] FEMALE BODY PRESET N1.package",
+        "[NORTHERN SIBERIA WINDS] FEMALE BODY PRESET N2.package",
+        "[NORTHERN SIBERIA WINDS] FEMALE BODY PRESET N3.package",
+        "[NORTHERN SIBERIA WINDS] FEMALE BODY PRESET N4.package"
+      ]
+    },
+    {
+      "id": "17",
+      "name": "Tea Time Lashes HQ",
+      "creator": "venerian",
+      "urls": [
+        "https://www.thesimsresource.com/downloads/details/category/sims4/id/1770164/"
+      ],
+      "mode": "manual",
+      "note": "TSR: download manual conforme acesso da sua conta.",
+      "status": "manual",
+      "files": [],
+      "errors": []
+    },
+    {
+      "id": "18",
+      "name": "3D Eyelashes Set",
+      "creator": "obscurus",
+      "urls": [
+        "https://www.patreon.com/posts/93848968",
+        "https://www.patreon.com/posts/93851178"
+      ],
+      "mode": "auto",
+      "note": "Se o post de anexos não estiver público, download manual; nunca contornar assinatura.",
+      "status": "failed",
+      "files": [],
+      "errors": [
+        "no public attachment matches the requested selection"
+      ],
+      "post_title": "3D EYELASHES SET 👁👄👁",
+      "available_attachments": [],
+      "selected_names": []
+    },
+    {
+      "id": "19",
+      "name": "Eyebrows 33–41",
+      "creator": "alf-si / ANGISSI",
+      "urls": [
+        "https://alf-si.tumblr.com/post/614674051815849984",
+        "https://www.thesimsresource.com/downloads/details/category/sims4/id/1561164/",
+        "https://www.thesimsresource.com/downloads/details/category/sims4/id/1561412/",
+        "https://www.thesimsresource.com/downloads/details/category/sims4/id/1561566/"
+      ],
+      "mode": "manual",
+      "note": "Mapeamento recebido confirma somente links candidatos n33/n34/n35. n36–41 e a variante usada pelo sim ainda precisam de confirmação manual; não substituí-las silenciosamente.",
+      "status": "manual",
+      "files": [],
+      "errors": []
+    },
+    {
+      "id": "20",
+      "name": "Cleavage Masks Collection",
+      "creator": "sims3melancholic",
+      "urls": [
+        "https://drive.google.com/drive/folders/1p4W_kdF7oPJ4aRVQQ-alkEDZAJdrkm5B"
+      ],
+      "mode": "auto",
+      "note": "Coleção com variantes/atualização; escolher máscaras compatíveis, não sobrepor todas.",
+      "status": "failed",
+      "files": [],
+      "errors": [
+        "no public package/archive listed in the creator's Drive folder"
+      ]
+    },
+    {
+      "id": "21",
+      "name": "Nosemask N10 + overlay + presets",
+      "creator": "obscurus",
+      "urls": [
+        "https://www.patreon.com/posts/26574490"
+      ],
+      "mode": "auto",
+      "note": "70 cores conforme reconhecimento recebido; escolher máscara/overlay e presets no CAS.",
+      "status": "failed",
+      "files": [],
+      "errors": [
+        "no public attachment matches the requested selection"
+      ],
+      "post_title": "Nosemask and nose presets for females!",
+      "available_attachments": [],
+      "selected_names": []
+    }
+  ],
+  "summary": {
+    "files": 31,
+    "bytes": 406459689,
+    "downloaded": 11,
+    "manual": 7,
+    "failed": 3
+  }
+}
