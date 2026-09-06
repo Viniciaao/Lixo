@@ -1,0 +1,37 @@
+name: validate-georgia
+
+on:
+  pull_request:
+    paths:
+      - 'scripts/*georgia*'
+      - 'tests/test_georgia.py'
+      - 'georgia-tudo-junto/**'
+      - '.github/workflows/*georgia.yml'
+  push:
+    branches: [arena/01a078ab-lixo]
+    paths:
+      - 'scripts/*georgia*'
+      - 'tests/test_georgia.py'
+      - 'georgia-tudo-junto/**'
+      - '.github/workflows/*georgia.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  offline:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          lfs: false
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -r scripts/requirements-georgia.txt
+      - name: Offline regression tests (no downloads)
+        run: python -m unittest discover -s tests -v
+      - name: Check committed manifest and documentation
+        if: hashFiles('georgia-tudo-junto/README.md') != ''
+        run: python scripts/package_georgia.py --check-metadata

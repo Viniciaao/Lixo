@@ -8,11 +8,12 @@ import tempfile
 import unittest
 import zipfile
 from pathlib import Path
-from unittest.mock import patch
+from unittest.mock import MagicMock, patch
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
-from fetch_georgia import Fetcher, Links, PublicUnavailable, clean_name, public_attachments, sanitized_error
+from fetch_georgia import SOURCES, Fetcher, Links, PublicUnavailable, attachment_selected, clean_name, public_attachments, sanitized_error
 from georgia_validation import safe_member, sniff_extension, validate_dbpf, validate_file
+from package_georgia import check_manifest, render, verify_payloads
 
 
 def package():
@@ -139,6 +140,117 @@ class SourceTests(unittest.TestCase):
             with self.assertRaises(ValueError):
                 fetcher.run()
             fetcher.session.close()
+
+
+class DownloadTests(unittest.TestCase):
+    def response(self, data):
+        response = MagicMock()
+        response.__enter__.return_value = response
+        response.iter_content.return_value = [data]
+        return response
+
+    def test_atomic_download_and_dotted_filename(self):
+        with tempfile.TemporaryDirectory() as root:
+            fetcher = Fetcher(Path(root) / "pack", Path(root) / "work")
+            with patch.object(fetcher, "get", return_value=self.response(package())), patch("builtins.print"):
+                fetcher.download("13", "https://example.com/file", "13_Lighting_2.0_COLOR", "https://example.com/post", len(package()))
+            self.assertTrue((fetcher.out / "13_Lighting_2.0_COLOR.package").exists())
+            self.assertFalse(list(fetcher.out.glob("*.part")))
+            fetcher.session.close()
+
+    def test_bad_size_and_html_leave_no_files(self):
+        for data, expected in ((package(), 999), (b"<html>error</html>", None)):
+            with self.subTest(expected=expected), tempfile.TemporaryDirectory() as root:
+                fetcher = Fetcher(Path(root) / "pack", Path(root) / "work")
+                with patch.object(fetcher, "get", return_value=self.response(data)), self.assertRaises(ValueError):
+                    fetcher.download("13", "https://example.com/file", "13_test", "https://example.com/post", expected)
+                self.assertFalse(list(fetcher.out.iterdir()))
+                self.assertFalse(fetcher.items["13"]["files"])
+                fetcher.session.close()
+
+    def test_bodycare_excludes_male_names(self):
+        pattern = r"FEMALE|CLEAVAGE|BODY[\s_]*PRESET"
+        for name in ("FEMALE BODY PRESET.package", "FEMALE_BODY_PRESET.package", "CLEAVAGE MASK.package"):
+            self.assertTrue(attachment_selected("16", name, pattern))
+        for name in ("MALE BODY PRESET.package", "MALE_BODY_PRESET.package", "FEMALE.jpg"):
+            self.assertFalse(attachment_selected("16", name, pattern))
+
+    def test_drive_nested_folders_and_cycle(self):
+        with tempfile.TemporaryDirectory() as root:
+            fetcher = Fetcher(Path(root) / "pack", Path(root) / "work")
+            pages = {
+                "root": '<a href="https://drive.google.com/drive/folders/child">Child</a><a href="https://evil.example/file/d/evil/view">evil.package</a>',
+                "child": '<a href="https://drive.google.com/drive/folders/root">Root</a><a href="https://drive.google.com/file/d/valid/view">mask.package</a>',
+            }
+            def get(url):
+                fid = url.split("id=", 1)[1].split("#", 1)[0]
+                return MagicMock(text=pages[fid])
+            with patch.object(fetcher, "get", side_effect=get):
+                self.assertEqual(fetcher.gdrive_files("root"), {"valid": "mask.package"})
+            self.assertEqual(fetcher.items["20"]["resolved_folders"], ["child", "root"])
+            fetcher.session.close()
+
+    def test_sfs_missing_variant_fails_before_download(self):
+        with tempfile.TemporaryDirectory() as root:
+            fetcher = Fetcher(Path(root) / "pack", Path(root) / "work")
+            page = '<a href="/download/1/">Non-default alpha teeth.zip</a>'
+            with patch.object(fetcher, "get", return_value=MagicMock(text=page)), patch.object(fetcher, "fetch_sfs") as download:
+                with self.assertRaises(ValueError):
+                    fetcher.fetch_teeth()
+                download.assert_not_called()
+            fetcher.session.close()
+
+    def test_nosemask_follows_only_authors_expected_sfs_link(self):
+        with tempfile.TemporaryDirectory() as root:
+            fetcher = Fetcher(Path(root) / "pack", Path(root) / "work")
+            document = {"data": {"id": "26574490", "attributes": {
+                "current_user_can_view": True, "content": '<a href="http://simfileshare.net/folder/66108/">DL</a>'}}, "included": []}
+            response = MagicMock()
+            response.json.return_value = document
+            with patch.object(fetcher, "get", return_value=response), patch.object(fetcher, "fetch_sfs_folder") as folder, patch("builtins.print"):
+                fetcher.fetch_patreon("26574490", "21", "nosemask", None)
+                self.assertEqual(folder.call_args.args[0], "66108")
+                document["data"]["attributes"]["content"] = '<a href="https://evil.example/folder/66108/">DL</a>'
+                with self.assertRaises(ValueError):
+                    fetcher.fetch_patreon("26574490", "21", "nosemask", None)
+            fetcher.session.close()
+
+
+class PackagingTests(unittest.TestCase):
+    def manifest(self):
+        items = [{**copy.deepcopy(source), "status": "manual", "files": [], "errors": []} for source in SOURCES]
+        return {"schema_version": 1, "generated_at": "2026-09-06T00:00:00+00:00", "checkout_sha": "0" * 40,
+                "workflow_run": "https://github.com/Viniciaao/Lixo/actions/runs/123", "items": items,
+                "summary": {"files": 0, "bytes": 0, "downloaded": 0, "manual": 21, "failed": 0}}
+
+    def test_documentation_is_reproducible_and_honest(self):
+        manifest = self.manifest()
+        output = render(manifest)
+        self.assertEqual(output, render(manifest))
+        self.assertEqual(output["SHA256SUMS.txt"], "")
+        self.assertIn("21 manuais", output["README.md"])
+        self.assertIn("90 dias", output["README.md"])
+        self.assertIn("não estão em blobs Git", output["README.md"])
+        self.assertIn("115736891", output["INSTALACAO-MANUAL.txt"])
+        self.assertNotIn("modsfire.com", output["LINKS-ORIGINAIS.txt"])
+
+    def test_missing_source_and_false_summary_are_rejected(self):
+        manifest = self.manifest()
+        manifest["items"].pop()
+        with self.assertRaises(ValueError):
+            check_manifest(manifest)
+        manifest = self.manifest()
+        manifest["summary"]["files"] = 1
+        with self.assertRaises(ValueError):
+            check_manifest(manifest)
+
+    def test_verify_refuses_unlisted_payloads(self):
+        with tempfile.TemporaryDirectory() as root:
+            root = Path(root)
+            (root / "CCs").mkdir()
+            (root / "CCs" / "extra.package").write_bytes(package())
+            with self.assertRaises(ValueError):
+                verify_payloads(root, self.manifest())
 
 
 if __name__ == "__main__":

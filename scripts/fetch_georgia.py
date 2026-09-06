@@ -14,6 +14,7 @@ import os
 import re
 import subprocess
 import sys
+import zipfile
 from datetime import datetime, timezone
 from html.parser import HTMLParser
 from pathlib import Path
@@ -68,12 +69,14 @@ SOURCES = [
     source(16, "Bodycare Kit — seleção feminina", "Northern Siberia Winds", [patreon(93373994)],
            note="Seleção de nomes FEMALE / CLEAVAGE / BODY PRESET, excluindo MALE quando não FEMALE. Escolher variantes/presets no CAS."),
     source(17, "Tea Time Lashes HQ", "venerian", [tsr(1770164)], "manual", "TSR: download manual conforme acesso da sua conta."),
-    source(18, "3D Eyelashes Set", "obscurus", [patreon(93848968), patreon(93851178)], note="Se o post de anexos não estiver público, download manual; nunca contornar assinatura."),
+    source(18, "3D Eyelashes Set", "obscurus", [patreon(93848968), patreon(93851178), patreon(115736891)], "manual",
+           "O post original foi atualizado em 31/05/2026 e remete ao post 115736891: exige entrar/participar como membro gratuito. Baixar manualmente as variantes N6 straight/curly/extra conforme o criador; não é indicação de assinatura paga."),
     source(19, "Eyebrows 33–41", "alf-si / ANGISSI", ["https://alf-si.tumblr.com/post/614674051815849984", tsr(1561164), tsr(1561412), tsr(1561566)],
            "manual", "Mapeamento recebido confirma somente links candidatos n33/n34/n35. n36–41 e a variante usada pelo sim ainda precisam de confirmação manual; não substituí-las silenciosamente."),
     source(20, "Cleavage Masks Collection", "sims3melancholic", [f"https://drive.google.com/drive/folders/{DRIVE_FOLDER}"],
-           note="Coleção com variantes/atualização; escolher máscaras compatíveis, não sobrepor todas."),
-    source(21, "Nosemask N10 + overlay + presets", "obscurus", [patreon(26574490)], note="70 cores conforme reconhecimento recebido; escolher máscara/overlay e presets no CAS."),
+           note="A pasta pública atual contém CLEAVAGE MASKS #1-6, com subpastas OVERLAYS/SKIN COLORS e categorias SCARS/TATTOO. São alternativas; não sobrepor todas."),
+    source(21, "Nosemask N10 + overlay + presets", "obscurus", [patreon(26574490), "https://simfileshare.net/folder/66108/"],
+           note="O post público aponta ao SFS: nosemask N10 LRLE, overlay e um .package com os quatro presets. 70 cores / HQ compatível conforme o criador; escolher no CAS."),
 ]
 
 # Post, item id, output label, optional attachment-name regex.
@@ -85,7 +88,6 @@ PATREON_JOBS = [
     ("94005453", "13", "Jo_se_oh-Lighting-Overlay", None),
     ("42027501", "14", "Simandy-face-shadow", None),
     ("93373994", "16", "NSW-Bodycare-Kit", r"FEMALE|CLEAVAGE|BODY[\s_]*PRESET"),
-    ("93848968", "18", "obscurus-3D-eyelashes", None),
     ("26574490", "21", "obscurus-Nosemask-N10", None),
 ]
 
@@ -119,6 +121,14 @@ def clean_name(name):
     if not result:
         raise ValueError("empty sanitized filename")
     return result
+
+
+def attachment_selected(number, name, pattern):
+    if Path(name).suffix.lower() not in {".package", ".zip", ".rar", ".7z"}:
+        return False
+    if pattern and not re.search(pattern, name, re.I):
+        return False
+    return not (number == "16" and re.search(r"(?<![A-Za-z])MALE(?![A-Za-z])", name, re.I))
 
 
 def sanitized_error(error):
@@ -251,6 +261,12 @@ class Fetcher:
         if not url:
             raise ValueError("CurseForge did not return a public download URL")
         self.download("01", url, "01_SIM-Georgia", CF_PAGE + "/files/8674144")
+        sim = self.items["01"]["files"][0]
+        lists = [m for m in sim["members"] if m["name"].endswith("CC.txt") and m["bytes"] < 65536]
+        if len(lists) == 1:
+            with zipfile.ZipFile(self.pack / sim["path"]) as archive:
+                content = archive.read(lists[0]["name"]).decode("utf-8-sig")
+            (self.work / "fetch_georgia_creator_cc.txt").write_text(content, encoding="utf-8")
 
     def fetch_sfs(self, sid, number, label):
         page = f"https://simfileshare.net/download/{sid}/"
@@ -258,19 +274,26 @@ class Fetcher:
         self.download(number, f"https://cdn.simfileshare.net/download/{sid}/?dl",
                       f"{number}_{label}", page)
 
-    def fetch_teeth(self):
+    def fetch_sfs_folder(self, folder_id, number, label, patterns):
         parser = Links()
-        parser.feed(self.get("https://simfileshare.net/folder/235489/").text)
+        parser.feed(self.get(f"https://simfileshare.net/folder/{folder_id}/").text)
         hits = {}
         for href, name in parser.links:
             match = re.search(r"/download/(\d+)/", href)
-            if match and re.search(r"Default[\s_]+alpha[\s_]+teeth[\s_]+all|Non-default[\s_]+alpha[\s_]+teeth", name, re.I):
+            if match and any(re.search(pattern, name, re.I) for pattern in patterns):
                 hits[match.group(1)] = name.strip()
-        self.items["03"]["selected_names"] = list(hits.values())
-        if len(hits) < 2:
-            raise ValueError("SFS folder does not expose both expected default/non-default teeth choices")
+        self.items[number]["selected_names"] = list(hits.values())
+        for pattern in patterns:
+            if not any(re.search(pattern, name, re.I) for name in hits.values()):
+                raise ValueError(f"SFS folder is missing an expected variant: {pattern}")
         for sid, name in hits.items():
-            self.fetch_sfs(sid, "03", "MagicBot-teeth-" + name)
+            self.fetch_sfs(sid, number, label + "-" + name)
+
+    def fetch_teeth(self):
+        self.fetch_sfs_folder("235489", "03", "MagicBot-teeth", [
+            r"(?<!Non-)Default[\s_]+alpha[\s_]+teeth[\s_]+all",
+            r"Non-default[\s_]+alpha[\s_]+teeth",
+        ])
 
     def fetch_patreon(self, pid, number, label, pattern):
         document = self.get(f"https://www.patreon.com/api/posts/{pid}",
@@ -278,12 +301,22 @@ class Fetcher:
         attachments = public_attachments(document)
         self.items[number]["post_title"] = document["data"]["attributes"].get("title")
         self.items[number]["available_attachments"] = [{k: a[k] for k in ("id", "name", "bytes")} for a in attachments]
-        selected = [a for a in attachments if Path(a["name"]).suffix.lower() in {".package", ".rar", ".zip", ".7z"}
-                    and (not pattern or re.search(pattern, a["name"], re.I))]
-        if number == "16":
-            selected = [a for a in selected if not re.search(r"\bMALE\b", a["name"], re.I)]
+        selected = [a for a in attachments if attachment_selected(number, a["name"], pattern)]
         self.items[number]["selected_names"] = [a["name"] for a in selected]
         self.log(f"[{number}] {len(selected)}/{len(attachments)} attachments matched; public access confirmed")
+        if not selected and number == "21":
+            parser = Links()
+            parser.feed(document["data"]["attributes"].get("content") or "")
+            # Only follow the folder explicitly linked by the public author post.
+            if not any(urlsplit(href).hostname in {"simfileshare.net", "www.simfileshare.net"}
+                       and urlsplit(href).path.rstrip("/") == "/folder/66108" for href, _ in parser.links):
+                raise ValueError("author post no longer links the expected SFS folder 66108")
+            self.items[number]["resolved_folder"] = "https://simfileshare.net/folder/66108/"
+            self.fetch_sfs_folder("66108", number, label, [
+                r"nosemask_N10_lrle\.package$", r"nosemask_N10_overlay\.package$",
+                r"nose_presets_3f\.package$",
+            ])
+            return
         if not selected:
             raise ValueError("no public attachment matches the requested selection")
         errors = []
@@ -299,21 +332,51 @@ class Fetcher:
         if errors:
             raise ValueError("; ".join(errors))
 
+    def gdrive_files(self, root):
+        """Walk only public subfolders linked from the mapped root; bound recursion."""
+        queue, visited, items = [(root, 0)], set(), {}
+        while queue:
+            folder_id, depth = queue.pop(0)
+            if folder_id in visited:
+                continue
+            if depth > 8 or len(visited) >= 64:
+                raise ValueError("Drive folder traversal exceeds safety limit")
+            visited.add(folder_id)
+            parser = Links()
+            parser.feed(self.get(f"https://drive.google.com/embeddedfolderview?id={folder_id}#list").text)
+            for href, name in parser.links:
+                parsed = urlsplit(href)
+                if parsed.scheme not in {"https", "http"} or parsed.hostname != "drive.google.com":
+                    continue
+                folder = re.fullmatch(r"/drive/(?:u/\d+/)?folders/([A-Za-z0-9_-]+)", parsed.path.rstrip("/"))
+                if folder:
+                    queue.append((folder.group(1), depth + 1))
+                    continue
+                match = re.fullmatch(r"/file/d/([A-Za-z0-9_-]+)/view", parsed.path.rstrip("/"))
+                if match and Path(name.strip()).suffix.lower() in {".package", ".zip", ".rar", ".7z"}:
+                    items[match.group(1)] = name.strip()
+                    if len(items) > 128:
+                        raise ValueError("Drive file count exceeds safety limit")
+        self.items["20"]["resolved_folders"] = sorted(visited)
+        return items
+
     def fetch_gdrive(self):
-        parser = Links()
-        parser.feed(self.get(f"https://drive.google.com/embeddedfolderview?id={DRIVE_FOLDER}#list").text)
-        items = {}
-        for href, name in parser.links:
-            match = re.search(r"https://drive\.google\.com/file/d/([^/]+)/view", href)
-            if match and Path(name.strip()).suffix.lower() in {".package", ".zip", ".rar", ".7z"}:
-                items[match.group(1)] = name.strip()
+        items = self.gdrive_files(DRIVE_FOLDER)
         if not items:
-            raise ValueError("no public package/archive listed in the creator's Drive folder")
+            raise ValueError("no public package/archive listed in the creator's Drive folder tree")
         self.items["20"]["selected_names"] = list(items.values())
+        self.log(f"[20] {len(items)} files in {len(self.items['20']['resolved_folders'])} public folders")
+        errors = []
         for fid, name in items.items():
-            self.download("20", f"https://drive.usercontent.google.com/download?id={fid}&export=download&confirm=t",
-                          "20_sims3melancholic-cleavage-" + name,
-                          f"https://drive.google.com/file/d/{fid}/view")
+            try:
+                self.download("20", f"https://drive.usercontent.google.com/download?id={fid}&export=download&confirm=t",
+                              "20_sims3melancholic-cleavage-" + name,
+                              f"https://drive.google.com/file/d/{fid}/view")
+            except Exception as error:
+                errors.append(sanitized_error(error))
+                self.log(f"[20] file failure ({name}): {error}")
+        if errors:
+            raise ValueError("; ".join(errors))
 
     def finish(self):
         for item in self.items.values():

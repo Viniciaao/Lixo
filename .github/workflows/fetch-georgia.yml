@@ -25,12 +25,12 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 45
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           ref: ${{ github.ref_name }}
           fetch-depth: 0
           lfs: false
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
         with:
           python-version: '3.12'
       - name: Install dependencies
@@ -48,10 +48,20 @@ jobs:
         run: |
           set -euo pipefail
           mkdir -p work
+          # Do not publish a previous run's metadata if this run fails early.
+          rm -f georgia-tudo-junto/{MANIFEST.json,SHA256SUMS.txt,README.md,LINKS-ORIGINAIS.txt,INSTALACAO-MANUAL.txt}
+          rm -f work/fetch_georgia_{manifest.json,report.txt,log.txt,validation.txt,creator_cc.txt}
           python -u scripts/fetch_georgia.py 2>&1 | tee work/fetch_georgia_log.txt
+      - name: Revalidate payloads and assemble documentation
+        id: package
+        if: always() && steps.fetch.outcome != 'skipped' && hashFiles('georgia-tudo-junto/MANIFEST.json') != ''
+        shell: bash
+        run: |
+          set -euo pipefail
+          python scripts/package_georgia.py --verify 2>&1 | tee work/fetch_georgia_validation.txt
       - name: Upload validated downloads (may be partial on failure)
-        if: always() && steps.fetch.outcome != 'skipped'
-        uses: actions/upload-artifact@v4
+        if: always() && steps.package.outcome != 'skipped' && hashFiles('georgia-tudo-junto/README.md') != ''
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         with:
           name: georgia-tudo-junto
           path: georgia-tudo-junto/
@@ -59,14 +69,14 @@ jobs:
           if-no-files-found: error
       - name: Upload diagnostics
         if: always() && steps.fetch.outcome != 'skipped'
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         with:
           name: georgia-diagnostics
           path: work/fetch_georgia_*
           retention-days: 90
           if-no-files-found: warn
       - name: Commit metadata only to the session branch
-        if: always() && steps.fetch.outcome != 'skipped'
+        if: always() && steps.package.outcome != 'skipped' && hashFiles('georgia-tudo-junto/README.md') != ''
         shell: bash
         run: |
           set -euo pipefail
@@ -74,7 +84,10 @@ jobs:
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           for file in georgia-tudo-junto/MANIFEST.json georgia-tudo-junto/SHA256SUMS.txt \
-                      work/fetch_georgia_manifest.json work/fetch_georgia_report.txt work/fetch_georgia_log.txt; do
+                      georgia-tudo-junto/README.md georgia-tudo-junto/LINKS-ORIGINAIS.txt \
+                      georgia-tudo-junto/INSTALACAO-MANUAL.txt work/fetch_georgia_manifest.json \
+                      work/fetch_georgia_report.txt work/fetch_georgia_log.txt \
+                      work/fetch_georgia_validation.txt work/fetch_georgia_creator_cc.txt; do
             if [ -f "$file" ]; then
               git add -- "$file"
             fi

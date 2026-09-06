@@ -84,3 +84,35 @@ fornecido pelo usuário — **não** são os commits originais recuperados.
 5. Montar README, links oficiais e pendências manuais, explicitando variantes,
    conflitos de defaults e ausência de teste no jogo.
 6. Abrir PR novo; nunca chamar o pacote de “completo” enquanto houver itens manuais.
+
+## Ajustes confirmados na retomada
+
+A primeira execução (`34062492099`) validou 31 arquivos / 406.459.689 bytes,
+mas falhou corretamente em três grupos. Não foi apresentada como pacote completo.
+
+- **18:** <https://www.patreon.com/posts/93848968> anuncia atualização de
+  2026-05-31 e remete a <https://www.patreon.com/posts/115736891>. A página
+  de destino está marcada como bloqueada para visitantes anônimos, oferecendo
+  participação **gratuita**. Agora é MANUAL (login/adesão gratuita), não uma
+  afirmação de assinatura paga. Sem tentativa de baixar anexos protegidos.
+- **21:** o post <https://www.patreon.com/posts/26574490> aponta explicitamente
+  a <https://simfileshare.net/folder/66108/>. A pasta oferece **3** `.package`:
+  nosemask N10 LRLE (`2802529`), overlay (`1041421`) e o pacote de presets 3f
+  (`1041423`, contém as quatro opções, não quatro arquivos separados).
+- **20:** a pasta raiz contém a subpasta `CLEAVAGE MASKS #1-6`
+  (`1F9bkXOgfIReIMsnOBr7xQ3oC-Ti89D7K`), depois OVERLAYS / SKIN COLORS,
+  depois SCARS / TATTOO. O fetch agora percorre somente essas subpastas públicas,
+  com limites de profundidade/quantidade e detecção de ciclos.
+- **14:** os 16 efeitos/opções estão em **3** arquivos (FaceMask, Skindetails,
+  Tattoos), conforme os anexos efetivamente obtidos.
+- **16:** o filtro encontrou **13 de 24** anexos; a seleção feminina excluiu os
+  arquivos masculinos e não baixou o restante indiscriminadamente.
+- **03:** os ZIPs são coleções DEFAULT/NON-DEFAULT. A coleção DEFAULT contém
+  subpastas por expansão; a documentação alerta para selecionar variantes e
+  packs possuídos, sem tratar tudo como dependência simultânea.
+
+A sandbox conseguiu sincronizar metadados pelo Git, mas o host de armazenamento
+Azure dos artifacts recusou a conexão (`EOF`). A validação binária completa é
+executada no runner; não declarar que os binários foram verificados localmente.
+O pacote completo de arquivos públicos deve ser obtido pelo artifact no navegador
+ou por `gh run download` em uma máquina com acesso a esse armazenamento.
