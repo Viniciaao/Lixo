@@ -31,12 +31,29 @@ jobs:
         run: |
           find downloads-gwen -type f -exec ls -la {} \;
 
+      - name: Split files over 90MB (GitHub limit)
+        run: |
+          cd downloads-gwen
+          find . -type f -size +90M | while read f; do
+            echo "::notice::splitting $f ($(du -h "$f" | cut -f1))"
+            split -b 90M -d "$f" "$f.part-"
+            rm -f "$f"
+            cat > "$f.REMONTAR.txt" <<EOF
+Este arquivo foi dividido em partes por causa do limite de 100MB do GitHub.
+
+Para remontar:
+- Windows (cmd): copy /b $(basename $f).part-00+$(basename $f).part-01+$(basename $f).part-02 "$(basename $f)"
+  (use todas as partes, em ordem)
+- Linux/Mac: cat "$(basename $f).part-"* > "$(basename $f)"
+EOF
+          done
+          ls -la
+
       - name: Commit downloads to branch
         run: |
           set -x
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git ls-remote origin refs/heads/arena/01a07865-lixo 2>&1 | tail -2
           git add downloads-gwen 2>/tmp/add.log || echo "::error::add: $(tail -c 300 /tmp/add.log | tr '\n' ' ')"
           git commit -m "CI: downloaded Gwen household + CC [skip ci]" 2>/tmp/commit.log || echo "::error::commit: $(tail -c 300 /tmp/commit.log | tr '\n' ' ')"
           git push origin HEAD:arena/01a07865-lixo 2>/tmp/push.log || echo "::error::push: $(tail -c 400 /tmp/push.log | tr '\n' ' ')"
