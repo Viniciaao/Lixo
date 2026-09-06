@@ -170,18 +170,21 @@ def cf_probe_deep(dl_url, fid):
         # filter app/main chunks
         cands = [s for s in scripts if "_next/static/chunks" in s][:14]
         log(f"   chunk scripts ({len(cands)} of {len(scripts)})")
-        joined = ""
+        # keep the chunk that contains the DownloadFileContent logic for offline analysis
         for s in cands:
             try:
                 c = SESSION.get(s, timeout=40).text
-                joined += c + "\n"
             except Exception:
-                pass
-        for kw in ("download-url", "downloadUrl", "download_url", "timeoutInSeconds", "media.forgecdn"):
-            hits = [mm.start() for mm in re.finditer(kw, joined)][:2]
-            for hp in hits:
-                st = max(0, hp - 140)
-                log(f"   js[{kw}]: ...{joined[st:hp+220]}...".replace("\n", " "))
+                continue
+            if "DownloadFileContent" in c or "buildFileDownloadUrl" in c:
+                with open(f"{WORK}/cf_chunk_download.js", "w") as f:
+                    f.write(f"// {s}\n" + c)
+                log(f"   saved download chunk: {s} ({len(c)} bytes)")
+                for kw in ("buildFileDownloadUrl", "DownloadFileContent"):
+                    for mm in list(re.finditer(re.escape(kw), c))[:1]:
+                        st = max(0, mm.start() - 200)
+                        log(f"   js[{kw}] ctx: ...{c[st:mm.start()+900]}...".replace("\n", " "))
+                break
     except Exception as e:
         log(f"   cf_probe_deep exc {e}")
     log("   === END CF DEEP PROBE ===")
@@ -279,11 +282,17 @@ def fetch_sfs_folder():
                 if m1:
                     entries.append((m1.group(1), m2.group(1).strip() if m2 else "?"))
         log(f"   found {len(entries)} entries")
+        for h, n in entries[:30]:
+            log(f"     {h}  {n}")
         hits = [(h, n) for h, n in entries if want.search(n or "")]
+        log(f"   name-matches: {len(hits)}")
         for h, n in hits:
             sid = re.search(r"/download/(\d+)/", h).group(1)
             log(f"   => match {h} {n}")
             fetch_sfs(sid, "12", f"obscurus-{clean_name(n)}")
+        if not hits:
+            log("   falling back to known id 2841763 (obscurus_lips_presets_7f.package)")
+            fetch_sfs("2841763", "12", "obscurus-lips-presets-7f")
     except Exception as e:
         log(f"   SFS folder exc {e}")
 
@@ -308,17 +317,17 @@ def gdrive_folder_list(folder_id):
 
 def gdrive_download(fid, dest):
     url = f"https://drive.usercontent.google.com/download?id={fid}&export=download&confirm=t"
-    ok, info, _, saved = try_download(url, dest=dest)
+    ok, info, head, saved = try_download(url, dest=dest)
     if not ok:
         try:
             r = SESSION.get(f"https://drive.google.com/uc?id={fid}&export=download", timeout=60)
             m = re.search(r'name="confirm" value="([0-9A-Za-z_-]+)"', r.text)
             if m:
-                ok, info, _, saved = try_download(
+                ok, info, head, saved = try_download(
                     f"https://drive.google.com/uc?id={fid}&export=download&confirm={m.group(1)}", dest=dest)
         except Exception as e:
             log(f"   gdrive retry exc {e}")
-    return ok
+    return ok, info, head, saved
 
 def fetch_poyo_drive():
     log("\n===== GOOGLE DRIVE (poyo Heather Skin N7) =====")
@@ -331,8 +340,12 @@ def fetch_poyo_drive():
     chosen = cand[0] if cand else None
     if chosen:
         dest = f"{OUT}/06_poyo-{clean_name(chosen[1])}"
-        ok = gdrive_download(chosen[0], dest)
-        log(f"   => downloading {chosen[1]} ok={ok}")
+        ok, info, _, saved = gdrive_download(chosen[0], dest)
+        log(f"   => downloading {chosen[1]} ok={ok} info={info} saved={saved}")
+        if saved and os.path.exists(saved):
+            log(f"   file size on disk: {os.path.getsize(saved)}")
+        else:
+            log("   WARNING: saved path missing on disk")
     else:
         log("   no heather skin candidate found (non-overlay)")
 
@@ -384,6 +397,9 @@ def main():
     fetch_poyo_drive()
     with open(f"{WORK}/fetch_report.txt", "w") as f:
         f.write("\n".join(REPORT) + "\n")
+    log("\n===== FINAL CCs DIR =====")
+    for f in sorted(os.listdir(OUT)):
+        log(f"   {f} ({os.path.getsize(os.path.join(OUT, f))} bytes)")
     log("\n===== FETCH 3 DONE =====")
 
 if __name__ == "__main__":
