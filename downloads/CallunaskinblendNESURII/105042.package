@@ -240,7 +240,7 @@ $(window).load(function(){
 
 
 <script type="text/javascript">
-  var csrf_token = "rd4NR50AYWh7aCBpjOTY2nIDSbGOtLZgx4ms5R0r7UdWb1QpdjUmWRut6LGGitKo";
+  var csrf_token = "jJtM4C1MF76HvRLwON1BS40TQAxxzeTf33KJTGyKEV5AH9i0IQVn7yuq3oIPVt8h";
   var tz_set_endpoint = '/tz_detect/set/';
   var csrf_header_name = 'x-csrftoken';
   (function() {

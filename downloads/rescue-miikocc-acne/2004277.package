@@ -311,7 +311,7 @@ $(window).load(function(){
 
 
 <script type="text/javascript">
-  var csrf_token = "ZyRTYUOzMohFpvdPDMHEZCQO9dTbM4h55p9ycGOqVmduqUsPxhI2T6CEnNT3BM2d";
+  var csrf_token = "KSFCERL9R3rwut0OcUkXV6pvl7lN5JapucWztVi7QRqpGLxi6XeJaAT2yVw5rYpr";
   var tz_set_endpoint = '/tz_detect/set/';
   var csrf_header_name = 'x-csrftoken';
   (function() {
