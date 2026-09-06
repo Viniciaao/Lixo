@@ -1,0 +1,40 @@
+name: Download Gwen household + CC
+
+on:
+  push:
+    paths:
+      - '.github/workflows/download-gwen.yml'
+      - 'scripts/download_gwen.py'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install deps
+        run: pip install requests cloudscraper
+
+      - name: Download Gwen + required CC
+        run: python scripts/download_gwen.py
+
+      - name: List results
+        run: |
+          find downloads-gwen -type f -exec ls -la {} \;
+
+      - name: Commit downloads to branch
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add downloads-gwen
+          git commit -m "CI: downloaded Gwen household + CC [skip ci]" || echo "nothing to commit"
+          git push
