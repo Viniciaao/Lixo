@@ -1,4 +1,0 @@
-Arquivo dividido em partes (limite de 100MB do GitHub).
-Remontar:
-  Windows cmd: copy /b [NORTHERN SIBERIA WINDS] SKIN N12 HQ.package.part-00+[NORTHERN SIBERIA WINDS] SKIN N12 HQ.package.part-01+demais [NORTHERN SIBERIA WINDS] SKIN N12 HQ.package
-  Linux/Mac: cat [NORTHERN SIBERIA WINDS] SKIN N12 HQ.package.part-* > [NORTHERN SIBERIA WINDS] SKIN N12 HQ.package

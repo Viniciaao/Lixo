@@ -1,7 +1,6 @@
-# 🖤 Lilith Cloud — Sim + TODOS os CCs juntos
+# 🖤 Sims + CC — Lilith Cloud & Gwen (by MizuTS4)
 
-**Sim por [MizuTS4](https://www.curseforge.com/sims4/sims-households/lilith-cloud) (CurseForge)**
-Pacote montado automaticamente: baixei a household e dei caça a cada mod/CC da lista oficial dela, um por um.
+Pacotes montados automaticamente: baixei cada household e cacei os mods/CC da lista oficial de cada uma, um por um.
 
 ---
 
@@ -75,3 +74,43 @@ Pacote montado automaticamente: baixei a household e dei caça a cada mod/CC da 
 - Os arquivos `.package` originais foram mantidos sem modificação. Créditos e direitos aos criadores — baixe de novo direto da fonte se puder! 💜
 
 *Gerado em 06/09/2026 na branch `arena/01a07865-lixo`.*
+
+---
+---
+
+# 🌙 GWEN — Sim + CC obrigatório
+
+**Sim por [MizuTS4](https://www.curseforge.com/sims4/sims-households/gwen) (CurseForge)**
+
+## 📦 Baixe TUDO JUNTO
+
+| Arquivo | Tamanho | Conteúdo |
+|---|---|---|
+| **`Gwen-Cloud-CC-parte1.zip`** | ~80 MB | Household Gwen (Tray) + Hair Hazeh + Teeth MADMAN + Lipstick n33 + Blush N7 + Eyeliner GPME |
+| `Lilith-Cloud-CC-parte1.zip` | ~74 MB | ⬆ CCs compartilhados: Overlay, Tatuagens, Saia, Moles |
+| `Lilith-Cloud-CC-parte2.zip` | ~42 MB | ⬆ CCs compartilhados: okruee, Feet 1V, NSW Bodycare, Sobrancelhas alf-si |
+
+**Os CCs compartilhados com a Lilith valem pra Gwen também** (sobrancelhas alf-si, okruee face details, Lighting Overlay, Spotlight Tattoos, NSW Bodycare) — use os zips da Lilith!
+
+### ✅ Incluídos no zip da Gwen (baixados automaticamente)
+| Item | Criador(a) | Como consegui |
+|---|---|---|
+| A própria **Gwen** | MizuTS4 | CDN da CurseForge |
+| **F-Hair No.9** (versão NonHQ; HQ de 82MB no [post](https://www.patreon.com/posts/hezeh-fhair-no-9-108144816)) | Hazeh | Anexo público do Patreon |
+| **Default Alpha Teeth** (todos os packs) | MADMAN (MagicBot) | Anexo público do Patreon |
+| **Lipstick n33** (Gloss Collection) | NorthernSiberiaWinds | Anexo público do Patreon |
+| **Blush N7** (Wild Cat Collection) | NorthernSiberiaWinds | [CurseForge oficial](https://www.curseforge.com/sims4/create-a-sim/wild-cat-make-up-and-genetics-collection) (extraído do zip) |
+| **GPME-GOLD Liner** | goppolsme | Link SFS público |
+
+### ⚠️ Ficaram de fora (gratuitos, mas exigem login)
+| Item | Criador(a) | Link |
+|---|---|---|
+| Fullbody "Peach Friend" | SMSims | https://www.patreon.com/SMSims/posts/peach-friend-end-141401392 |
+| Shoes "Convert leo-sims" | MADMAN | https://www.patreon.com/magicbot/posts/convert-shoes-23286338 |
+| Eyeshadow (Lips+Eyelids set) | ddarkstonee | https://www.patreon.com/ddarkstonee/posts/lips-eyelids-set-31835588 |
+| Facepaint **bZIP Eyes** | RemusSirion | https://www.modcollective.gg/sims4/details/collection/627 |
+| Eyelashes Tea Time | venerian | https://www.thesimsresource.com/downloads/1770164 (TSR) |
+| Soft Face Freckles HQ | alf-si | https://www.thesimsresource.com/downloads/1355997 (TSR) |
+| Realistic Female Body Details | Mikooi Sims | LoversLab (site adulto) |
+
+📁 **Arquivos brutos originais** (hair HQ, teeth non-default, gloss completo, etc.): navegue até o commit `526bfaa` → pasta `downloads-gwen/` (interface web do GitHub → History → este commit).
