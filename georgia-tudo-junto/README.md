@@ -13,14 +13,14 @@ contém o household/Tray; os CCs são arquivos separados dos respectivos criador
 - **58 arquivos**, **511,439,588 bytes** (487.75 MiB).
 - **13 grupos baixados/validados**, **8 manuais**,
   **0 com falha**. Um grupo pode conter várias alternativas.
-- Manifesto gerado em **2026-09-06T22:08:23.277592+00:00** (UTC).
-- Código usado: `236a3c8050a8c9a0866a36d21ab6f54c796ba5f0`.
+- Manifesto gerado em **2026-09-06T22:11:43.968793+00:00** (UTC).
+- Código usado: `1d90e6b25410efb2b740bc868c64926840469e69`.
 - `MANIFEST.json` relaciona cada arquivo à fonte, tamanho, SHA-256, formato e
   membros internos; `SHA256SUMS.txt` cobre todos os binários distribuídos.
 
 ## Obter a pasta com os arquivos
 
-1. Abra [a execução que produziu estes arquivos](https://github.com/Viniciaao/Lixo/actions/runs/34063064401).
+1. Abra [a execução que produziu estes arquivos](https://github.com/Viniciaao/Lixo/actions/runs/34063244692).
 2. Confira o resultado **success**. Em **Artifacts**, baixe **georgia-tudo-junto**
    (o GitHub pode exigir login).
 3. Extraia o artifact para uma pasta `georgia-tudo-junto/` e confira os hashes
@@ -29,7 +29,7 @@ contém o household/Tray; os CCs são arquivos separados dos respectivos criador
 Alternativa com GitHub CLI:
 
 ```bash
-gh run download 34063064401 --repo Viniciaao/Lixo \
+gh run download 34063244692 --repo Viniciaao/Lixo \
   --name georgia-tudo-junto --dir georgia-tudo-junto
 ```
 
