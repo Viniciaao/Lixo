@@ -37,28 +37,51 @@ jobs:
           exit 0
       - name: Commit fetched files
         if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: |
           set +e
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git checkout -B ${GITHUB_REF_NAME} 2>&1 | tail -2
+          git checkout -B ${GITHUB_REF_NAME}
+          { echo "=== top staged sizes ==="
+            git ls-files -z helene-dacosta-tudo-junto work | xargs -0 -r stat -c "%s %n" 2>/dev/null | sort -rn | head -15
+          } > work/fetch_diag.txt
           git add helene-dacosta-tudo-junto work
-          if git diff --cached --quiet; then
-            echo "NO CHANGES TO COMMIT"
-            exit 0
-          fi
-          git commit -m "fetch: CC files for Helene Dacosta pack"
-          for i in 1 2 3 4 5 6; do
-            git push origin HEAD:${GITHUB_REF_NAME} > work/git_push_out.txt 2>&1
-            if [ $? -eq 0 ]; then
-              echo "PUSHED OK (attempt $i)"
-              exit 0
+          big_list=""
+          while IFS= read -r f; do
+            s=$(stat -c %s "$f" 2>/dev/null)
+            if [ -n "$s" ] && [ "$s" -gt 95000000 ]; then
+              echo "TOO_BIG: $f ($s bytes) - not committed" >> work/fetch_diag.txt
+              big_list="$big_list $f"
             fi
-            echo "push attempt $i failed: $(head -2 work/git_push_out.txt)"
-            sleep 5
-            git fetch origin ${GITHUB_REF_NAME} >/dev/null 2>&1
-            git rebase FETCH_HEAD >/dev/null 2>&1
-          done
-          echo "ALL PUSH ATTEMPTS FAILED"
-          git status --short | head -20
+          done < <(git diff --cached --name-only -z | tr '\0' '\n')
+          for f in $big_list; do git reset -q -- "$f"; rm -f "$f"; done
+          if git diff --cached --quiet; then
+            echo "NO CHANGES TO COMMIT" >> work/fetch_diag.txt
+          else
+            git commit -m "fetch: CC files for Helene Dacosta pack"
+            pushed=0
+            for i in 1 2 3 4 5 6; do
+              out=$(git push origin HEAD:${GITHUB_REF_NAME} 2>&1)
+              if [ $? -eq 0 ]; then
+                echo "PUSHED OK (attempt $i)" >> work/fetch_diag.txt
+                pushed=1
+                break
+              fi
+              echo "push attempt $i failed: $(echo "$out" | tail -2)" >> work/fetch_diag.txt
+              git fetch origin ${GITHUB_REF_NAME} >/dev/null 2>&1
+              git rebase FETCH_HEAD >/dev/null 2>&1
+            done
+            if [ "$pushed" = "0" ]; then
+              echo "PUSH FAILED AFTER RETRIES" >> work/fetch_diag.txt
+            fi
+          fi
+          echo "==== tail of fetch log ====" >> work/fetch_diag.txt
+          tail -80 work/fetch_log.txt >> work/fetch_diag.txt
+          b64=$(base64 -w0 < work/fetch_diag.txt)
+          gh api --method PUT "repos/${GITHUB_REPOSITORY}/contents/work/fetch_diag.txt" \
+            -f message="ci: fetch diagnostics" -f content="$b64" -f branch="${GITHUB_REF_NAME}" >/dev/null 2>&1 \
+            && echo "diagnostics pushed via Contents API" \
+            || echo "diagnostics API push failed"
           exit 0
