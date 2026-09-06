@@ -1,0 +1,25 @@
+== magicbot convert shoes ==
+cdx patreon.com/magicbot*: 0 urls
+  magicbot posts com 23286338: 0
+cdx www.patreon.com/magicbot*: 0 urls
+  magicbot posts com 23286338: 0
+== ddarkstonee lips-eyelids ==
+cdx patreon.com/ddarkstonee*: 0 urls
+  ddarkstonee posts com 31835588: 0
+cdx www.patreon.com/ddarkstonee*: 0 urls
+  ddarkstonee posts com 31835588: 0
+== SMSims peach friend ==
+cdx patreon.com/SMSims*: 0 urls
+  SMSims posts com 141401392: 0
+cdx www.patreon.com/SMSims*: 0 urls
+  SMSims posts com 141401392: 0
+== goppolsme cc48 (SFS publico) ==
+cdx patreon.com/posts/gpme-gold-liner-63398471: 1 urls
+  20240823172422 ww.patreon.com/posts/gpme-gold-liner-63398471: 0 ids, 2 ext links ['http://www.simfileshare.net/download/3004386/', 'https://www.mediafire.com/file/4hppxq0lsxdfc84/GPME-GOLD+Liner+cc48.package/file']
+    saved patreon-31627231/GPME-GOLD Liner cc48.package (331 KB)
+== modco api guesses ==
+modco api tps://www.modcollective.gg/api/creations/4695: 404 text/html; charset=utf-8
+modco api www.modcollective.gg/api/sims4/creations/4695: 404 text/html; charset=utf-8
+  err HTTPSConnectionPool(host='api.modcollective.gg', port=443): Max retries exceeded with url: /creations/4695 (Caused by NameResolutionError("HTTPSConnection(host='api.modcollective.gg', port=443): Failed to resolve 'api.modcollective.gg' ([Errno -2] Name or service not known)"))
+modco api w.modcollective.gg/api/download/creation/4695: 404 text/html; charset=utf-8
+modco api /www.modcollective.gg/api/files/creation/4695: 404 text/html; charset=utf-8

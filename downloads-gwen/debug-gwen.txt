@@ -12,9 +12,3 @@ boosty html ddarkstonee: HTTP 200
 boosty ddarkstonee: 0 posts
 boosty html goppolsme: HTTP 404
 boosty html smsims: HTTP 404
-modco odcollective.gg/sims4/browse?search=bzip: 200
-  criacoes: ['/sims4/details/creation/remussirion-neko-blush-rose-pink-cosmetic', '/sims4/details/creation/remussirion-nyrel-matte-eyeshadow-palette', '/sims4/details/creation/remussirion-regency-lipstick-royal-1']
-modco odcollective.gg/sims4/browse?search=eyes: 200
-  criacoes: ['/sims4/details/creation/remussirion-neko-blush-rose-pink-cosmetic', '/sims4/details/creation/remussirion-nyrel-matte-eyeshadow-palette', '/sims4/details/creation/remussirion-regency-lipstick-royal-1']
-modco s://www.modcollective.gg/sims4/free-mods: 200
-  criacoes: []
