@@ -30,6 +30,9 @@ jobs:
       - name: Download Gwen round 2
         run: python scripts/download_gwen2.py || true
 
+      - name: Download Gwen round 3
+        run: python scripts/download_gwen3.py || true
+
       - name: List results
         run: |
           ls -laR downloads-gwen
