@@ -1,0 +1,95 @@
+
+=== [01] Sim Georgia ===
+[01] VALIDATED 01_SIM-Georgia.zip bytes=104883 sha256=ba9c60676b974245c00bdd6a1c256d5bf47c2340db237d1e0eaede5926d120e8
+
+=== [06] GPME-GOLD MAKEUP SET CC31 ===
+[06] VALIDATED 06_GPME-Gold-Makeup-Set-CC31.package bytes=570550 sha256=6ecb87e5e9faa69d2733f9e04b658a8748b151ab5c39c88dcddf70553f9cda53
+
+=== [08] GPME-GOLD Liner cc10 ===
+[08] VALIDATED 08_GPME-Gold-Liner-cc10.package bytes=377808 sha256=16c785da61e6feeb34134177d7fa1482ee74cc54dbd13c8d88dd88eef32f611a
+
+=== [03] Teeth "Normal" — alpha teeth ===
+[03] VALIDATED 03_MagicBot-teeth-_MB_Non-default_alpha_teeth.zip bytes=49494034 sha256=ddc875ad4237696cb8abcaeb0adcd0c69c78239af7fb2abad4639452a629e910
+[03] VALIDATED 03_MagicBot-teeth-_MB_Default_alpha_teeth_all.zip bytes=49757095 sha256=ab547d7b1ce011b33c0bd509799b8e58327986dbabe5654a6f0585e6a8ced640
+
+=== [05] Leo levis shoes conversion ===
+[05] 1/1 attachments matched; public access confirmed
+[05] VALIDATED 05_MagicBot-leo-levis-shoes__MB_FIX_leo_levis_shoes_CONVERSION_F_M.rar bytes=3164618 sha256=f03b6d3e1f2e874fccb1609c99e0b4d3ba790eb77354c738fc87a5771d4a10cf
+
+=== [07] Basics Please — eyeshadows ===
+[07] 3/3 attachments matched; public access confirmed
+[07] VALIDATED 07_TwistedCat-BasicsPlease_TwistedCat_BasicsPlease_EyeLid_Eyeshadow.package bytes=471073 sha256=ae46a10d53b4c207892a3a13eaab8b04878c8b8bcb148ca4c863884a3591944f
+[07] VALIDATED 07_TwistedCat-BasicsPlease_TwistedCat_BasicsPlease_Full_Eyeshadow.package bytes=715104 sha256=780bfb6e87d700bdc01fb9bd5c6c075ef4beb212d4270f4b4d9de754052c70cc
+[07] VALIDATED 07_TwistedCat-BasicsPlease_TwistedCat_BasicsPlease_OuterEdge_Eyeshadow.package bytes=609863 sha256=17a78f08d0372f53aa446f981fac10fb097fba990154f6f1c339963926b5f7d1
+
+=== [09] WILD CAT — BLUSH N7 ===
+[09] 1/16 attachments matched; public access confirmed
+[09] VALIDATED 09_NSW-BLUSH-N7__NORTHERN_SIBERIA_WINDS_BLUSH_N7.package bytes=11783207 sha256=d93a2cc0410230f9fa2652b45a0e8f3fbf6e991fbe10d6a6644533dc189e9bac
+
+=== [12] misc. face details ===
+[12] 3/3 attachments matched; public access confirmed
+[12] VALIDATED 12_okruee-misc-face-details_okruee-misc-face-details-TATTOO.package bytes=2917672 sha256=628cccbe74f8b05969f1f24c53678f5f9ec377558f11a2415939e86a7155c432
+[12] VALIDATED 12_okruee-misc-face-details_okruee-misc-face-details-OCCULT.package bytes=3498505 sha256=87054bfc897ca464037a9147ef80a88abc628e61b8d0e7cc40ab620b27b4183d
+[12] VALIDATED 12_okruee-misc-face-details_okruee-misc-face-details-SKINDETAIL.package bytes=4660114 sha256=0315f4786a292802cef940e9211719691ca327ff3530f95665abbc86b4f94365
+
+=== [13] Lighting Overlay 2.0 ===
+[13] 2/2 attachments matched; public access confirmed
+[13] VALIDATED 13_Jo_se_oh-Lighting-Overlay__JOSH_JO_SE_OH_Ligthing_Overlay_2.0_TRUE_BLACK_MERGED.package bytes=30360144 sha256=4b7e646cc8e0022d2c9c190fbe09e6ec11cfb07e1c77491e3f7828aae87cb704
+[13] VALIDATED 13_Jo_se_oh-Lighting-Overlay__JOSH_JO_SE_OH_Ligthing_Overlay_2.0_COLOR_MERGED.package bytes=28105894 sha256=9ed99b450e07d067f43e3fabe02f8f89d960d0174a04da91e82ffa18f01d1d08
+
+=== [14] In game shadow — face shadow ===
+[14] 3/3 attachments matched; public access confirmed
+[14] VALIDATED 14_Simandy-face-shadow_SimMandy_Spotlight_FaceMask.package bytes=2142778 sha256=1959f11c9454755f41d0d70a42d0666b842d7635692591d68336bb5ebe1818c5
+[14] VALIDATED 14_Simandy-face-shadow_SimMandy_Spotlight_Skindetails.package bytes=10712602 sha256=ac556f6c6f7243d1f99e0f57e4f35b1e690001a7fde1759cddb1a6339a0d326d
+[14] VALIDATED 14_Simandy-face-shadow_SimMandy_Spotlight_Tattoos.package bytes=12856872 sha256=125d739635b7cfe6d12c3523667ba6d7e92cbc7d88c84a20f3985b2aa347bc8c
+
+=== [16] Bodycare Kit — seleção feminina ===
+[16] 13/24 attachments matched; public access confirmed
+[16] VALIDATED 16_NSW-Bodycare-Kit__NORTHERN_SIBERIA_WINDS_FEMALE_TORSO_MASK_N1_MM_OVERLAY.package bytes=7853578 sha256=39e0c6b4f688d6e4ceb58a3d037e66683d6f0b52b3b4e6f21e9b1bcf48edab07
+[16] VALIDATED 16_NSW-Bodycare-Kit__NORTHERN_SIBERIA_WINDS_FEMALE_TORSO_MASK_N1_B_MM_OVERLAY.package bytes=9903488 sha256=0789a25ccf08144c109865eb92282f42006fb8a162949df43e88ae2d8b7822d7
+[16] VALIDATED 16_NSW-Bodycare-Kit__NORTHERN_SIBERIA_WINDS_FEMALE_TORSO_MASK_N2_MM_OVERLAY.package bytes=7004755 sha256=15d04887cf1a5971eccdbdf5ea134b5e567a5f0b81c707b76241b03270c89080
+[16] VALIDATED 16_NSW-Bodycare-Kit__NORTHERN_SIBERIA_WINDS_FEMALE_TORSO_MASK_N3_MM_OVERLAY.package bytes=6962006 sha256=d47553675f4b464b92e78d5b46e3e1a53c1332e36cb38713fc7eea916e80ed94
+[16] VALIDATED 16_NSW-Bodycare-Kit__NORTHERN_SIBERIA_WINDS_FEMALE_TORSO_MASK_N1.package bytes=45639013 sha256=9d4769d88f9763364aedf58f002c3015244a1acaf763c7dccd4fef66bca76fc0
+[16] VALIDATED 16_NSW-Bodycare-Kit__NORTHERN_SIBERIA_WINDS_FEMALE_TORSO_MASK_N2.package bytes=42721658 sha256=7d9a37955d695ff1330b7b97e5c5f85db892ea34eb4ae71d74f23209dc8d8149
+[16] VALIDATED 16_NSW-Bodycare-Kit__NORTHERN_SIBERIA_WINDS_FEMALE_TORSO_MASK_N3.package bytes=39996526 sha256=c7897d5d7e0f16b9805c801ec9d2decf28a2d661e4be2ec0577ab5a6154cd8e4
+[16] VALIDATED 16_NSW-Bodycare-Kit__NORTHERN_SIBERIA_WINDS_CLEAVAGE_MASK_N6_MM_OVERLAY.package bytes=2852262 sha256=067d87baead7b96b853b6a57531c9daa5458f6d62a270cb6683e494e5ce95c63
+[16] VALIDATED 16_NSW-Bodycare-Kit__NORTHERN_SIBERIA_WINDS_CLEAVAGE_MASK_N6.package bytes=24042245 sha256=5bebd1575736da751bc3d517f309b36d43943eda8869c9cd6c9ab4a4515019a7
+[16] VALIDATED 16_NSW-Bodycare-Kit__NORTHERN_SIBERIA_WINDS_FEMALE_BODY_PRESET_N1.package bytes=1760538 sha256=f77464b07f5919ba18aba286daf81096b11dcc00c64c7ba45c3469029daf45b6
+[16] VALIDATED 16_NSW-Bodycare-Kit__NORTHERN_SIBERIA_WINDS_FEMALE_BODY_PRESET_N2.package bytes=1791643 sha256=3bec30b20e0701a99fa8492bdb37ccb25af618742fa20f48586dbe29ea496a13
+[16] VALIDATED 16_NSW-Bodycare-Kit__NORTHERN_SIBERIA_WINDS_FEMALE_BODY_PRESET_N3.package bytes=1839484 sha256=445cc04605c4c747bd8e7f02fb17e321085928f8f2799be1e6f244a24e33e422
+[16] VALIDATED 16_NSW-Bodycare-Kit__NORTHERN_SIBERIA_WINDS_FEMALE_BODY_PRESET_N4.package bytes=1789677 sha256=c93bc140b70aa8cbb77f8829d3e6ab68ae74805614beb7de11b55940666e6ea6
+
+=== [21] Nosemask N10 + overlay + presets ===
+[21] 0/0 attachments matched; public access confirmed
+[21] VALIDATED 21_obscurus-Nosemask-N10-obscurus_nosemask_N10_lrle.package bytes=8507033 sha256=ebb1ec58e67d9cf6fb6f5d6c79ca201f7ff6b6a6e7b73df5aa19445756b46e80
+[21] VALIDATED 21_obscurus-Nosemask-N10-obscurus_nose_presets_3f.package bytes=312821 sha256=83d2a811b8a59ffa0d6c0572dd07ef29d9fb0bcd6e52c611e3ef8c131899e329
+[21] VALIDATED 21_obscurus-Nosemask-N10-obscurus_nosemask_N10_overlay.package bytes=154313 sha256=67b4aa78a2ce5ff42bb3753d1b9b352c1cc002ea463585a16520b35e222e8b84
+
+=== [20] Cleavage Masks Collection ===
+[20] 24 files in 8 public folders
+[20] VALIDATED 20_sims3melancholic-cleavage-sims3melancholic_cleavage_mask_1_OVERLAY_scar_.package bytes=214732 sha256=6ee42ba5b5ede339f6b8b0768d3e598f7edd2d98ec694d0503ac62d40ee16e02
+[20] VALIDATED 20_sims3melancholic-cleavage-sims3melancholic_cleavage_mask_2_OVERLAY_scar_.package bytes=271155 sha256=0c3c3d9ef0501a1b31dcacf573a2aaccac785aaeb5b0eec0026223663fa5b576
+[20] VALIDATED 20_sims3melancholic-cleavage-sims3melancholic_cleavage_mask_3_OVERLAY_scar_.package bytes=335679 sha256=163f56d2fb6192e56c675317ddedd2946f86587ad02bfcfda3f5ec823363f973
+[20] VALIDATED 20_sims3melancholic-cleavage-sims3melancholic_cleavage_mask_4_OVERLAY_scar_.package bytes=1761316 sha256=6c2d3d3d936e0999576acafa81d22aeaebec266ec9be19a37ed28539309496b4
+[20] VALIDATED 20_sims3melancholic-cleavage-sims3melancholic_cleavage_mask_5_OVERLAY_scar_.package bytes=1755483 sha256=9a5a3db8f957cc8f0e98262963c59c1876685fc348e98bcfb22c6f18e0774637
+[20] VALIDATED 20_sims3melancholic-cleavage-sims3melancholic_cleavage_mask_6_OVERLAY_scar_.package bytes=1755652 sha256=fe246c04946f6e0b5d8326e1b9504c8a753feb506ec3db657d27b3fd41b8f20a
+[20] VALIDATED 20_sims3melancholic-cleavage-sims3melancholic_cleavage_mask_1_OVERLAY.package bytes=215464 sha256=be4d47ce683757f5fd6b270796268539a25f4c4f701270aadb9f832d5ae2ccb6
+[20] VALIDATED 20_sims3melancholic-cleavage-sims3melancholic_cleavage_mask_2_OVERLAY.package bytes=269686 sha256=ba4a7beb26663b5d50883011ba07aa4dcb2e9efda9de3dec22851d25bebe243c
+[20] VALIDATED 20_sims3melancholic-cleavage-sims3melancholic_cleavage_mask_3_OVERLAY.package bytes=334377 sha256=7fb87b18c44e39c4cdbb34cfab5c672e1e71b327807513a8fa7783de4b31f77f
+[20] VALIDATED 20_sims3melancholic-cleavage-sims3melancholic_cleavage_mask_4_OVERLAY.package bytes=1752329 sha256=c57e7985b4c59c4d4132722a5d3078ccda67c926226e01388ac90807fe706b8e
+[20] VALIDATED 20_sims3melancholic-cleavage-sims3melancholic_cleavage_mask_5_OVERLAY.package bytes=1746670 sha256=80ecb10d353c755e1f16c809db6bddb1044a0a29cc74c5de3deeaa4320a2ed1d
+[20] VALIDATED 20_sims3melancholic-cleavage-sims3melancholic_cleavage_mask_6_OVERLAY.package bytes=1746160 sha256=904949f29f37350f75b56e72656f0c47efa90842d76141a3e6b18fa8748925db
+[20] VALIDATED 20_sims3melancholic-cleavage-sims3melancgolic_cleavage_mask_1_scar_.package bytes=31508 sha256=c9b83c538b1052fd97b22f20bb458a1a5eec3924f0e01a8d9f84e07367fc9fe9
+[20] VALIDATED 20_sims3melancholic-cleavage-sims3melancgolic_cleavage_mask_2_scar_.package bytes=36852 sha256=d0bc1de34c947aafd7017202a99b92f8e0e1ae000d48505af5cce37e6a2360fe
+[20] VALIDATED 20_sims3melancholic-cleavage-sims3melancgolic_cleavage_mask_3_scar_.package bytes=36278 sha256=0cc7490dd3075dfb6db96747bbfb77f23689d5bb0876ec2f3b1f26b01df73bf1
+[20] VALIDATED 20_sims3melancholic-cleavage-sims3melancholic_cleavage_mask_4_scar_.package bytes=10805797 sha256=e352ef39f002173233ad511e3f2f08fac7d9a9d74a7834087ced7b370a171e5c
+[20] VALIDATED 20_sims3melancholic-cleavage-sims3melancholic_cleavage_mask_5_scar_.package bytes=11291739 sha256=c90c2573638e49e608d0c44e3ae95e91e5c3608e0f973b8e8561fd286a93f4b5
+[20] VALIDATED 20_sims3melancholic-cleavage-sims3melancholic_cleavage_mask_6_scar_.package bytes=10619123 sha256=dacfbad6f20db16254dd66b85e9027e75ab0bc65b53921c6fa97a73df4d0ddf4
+[20] VALIDATED 20_sims3melancholic-cleavage-sims3melancgolic_cleavage_mask_1.package bytes=3644367 sha256=cd416a567929929af3b97d60d4b7e746b4c10a613bc70608d64172f61100a6bd
+[20] VALIDATED 20_sims3melancholic-cleavage-sims3melancgolic_cleavage_mask_2.package bytes=6969619 sha256=1ae791fa95ade6b9495fced56f392ddb61ba684c998c89704e5d0b744d50e107
+[20] VALIDATED 20_sims3melancholic-cleavage-sims3melancgolic_cleavage_mask_3.package bytes=7675614 sha256=74abe3c5915114938e38bcd1db769707a793c768c1455194f3fd840fcfacf098
+[20] VALIDATED 20_sims3melancholic-cleavage-sims3melancholic_cleavage_mask_4.package bytes=10817089 sha256=e1811ae19643cc1fca9dd32e8d9e0dd8e4cc34fd8fb557991a96c1fcfb06482d
+[20] VALIDATED 20_sims3melancholic-cleavage-sims3melancholic_cleavage_mask_5.package bytes=11293677 sha256=49fe21078cff4e544a52c16fe2d0c74dee09d364f662f403d49b2fba0d501d85
+[20] VALIDATED 20_sims3melancholic-cleavage-sims3melancholic_cleavage_mask_6.package bytes=10625366 sha256=bae180d2228b273f54a08868b6c8232adab33aaa1925779bf65a5345aeb50dad
+
+=== SUMMARY {"files": 58, "bytes": 511439588, "downloaded": 13, "manual": 8, "failed": 0} ===
