@@ -1,0 +1,15 @@
+name: probe-sources
+
+on:
+  push:
+    branches: [arena/**]
+  workflow_dispatch:
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run source probe
+        run: python3 scripts/probe_sources.py
