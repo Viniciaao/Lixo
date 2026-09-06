@@ -43,15 +43,21 @@ jobs:
           set +e
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git lfs install >/dev/null 2>&1
+          git lfs track "helene-dacosta-tudo-junto/CCs/06_*" >/dev/null 2>&1
+          git add .gitattributes
           git checkout -B ${GITHUB_REF_NAME}
           { echo "=== top staged sizes ==="
             git ls-files -z helene-dacosta-tudo-junto work | xargs -0 -r stat -c "%s %n" 2>/dev/null | sort -rn | head -15
           } > work/fetch_diag.txt
-          git add helene-dacosta-tudo-junto work
+          git add helene-dacosta-tudo-junto work .gitattributes
           big_list=""
           while IFS= read -r f; do
             s=$(stat -c %s "$f" 2>/dev/null)
             if [ -n "$s" ] && [ "$s" -gt 95000000 ]; then
+              case "$f" in
+                */06_*) echo "LFS file kept: $f ($s bytes)" >> work/fetch_diag.txt; continue ;;
+              esac
               echo "TOO_BIG: $f ($s bytes) - not committed" >> work/fetch_diag.txt
               big_list="$big_list $f"
             fi

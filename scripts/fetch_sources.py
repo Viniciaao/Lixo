@@ -472,10 +472,7 @@ def main():
     fetch_sfs(472891, "09", "GPME-Gold-Eyes-G2")
     fetch_sfs(2759281, "13", "MagicBot-Default-Mouth")
     fetch_sfs_folder()
-    if os.environ.get("FETCH_POYO") == "1":
-        fetch_poyo_drive()
-    else:
-        log("\n===== GOOGLE DRIVE (poyo): SKIPPED (365MB file - needs decision) =====")
+    fetch_poyo_drive()  # 365MB -> tracked via Git LFS (see fetch.yml)
     with open(f"{WORK}/fetch_report.txt", "w") as f:
         f.write("\n".join(REPORT) + "\n")
     log("\n===== FINAL CCs DIR =====")
