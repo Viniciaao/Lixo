@@ -38,23 +38,27 @@ jobs:
       - name: Commit fetched files
         if: always()
         run: |
+          set +e
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git checkout -B ${GITHUB_REF_NAME}
+          git checkout -B ${GITHUB_REF_NAME} 2>&1 | tail -2
           git add helene-dacosta-tudo-junto work
           if git diff --cached --quiet; then
-            echo "no changes"
-          else
-            git commit -m "fetch: CC files for Helene Dacosta pack"
-            for i in 1 2 3 4 5; do
-              if git push origin HEAD:${GITHUB_REF_NAME}; then
-                echo "pushed (attempt $i)"
-                exit 0
-              fi
-              echo "push failed (attempt $i), fetching+rebasing..."
-              git fetch origin ${GITHUB_REF_NAME}
-              git rebase FETCH_HEAD || git reset --hard FETCH_HEAD
-            done
-            echo "ALL PUSH ATTEMPTS FAILED"
-            exit 1
+            echo "NO CHANGES TO COMMIT"
+            exit 0
           fi
+          git commit -m "fetch: CC files for Helene Dacosta pack"
+          for i in 1 2 3 4 5 6; do
+            git push origin HEAD:${GITHUB_REF_NAME} > work/git_push_out.txt 2>&1
+            if [ $? -eq 0 ]; then
+              echo "PUSHED OK (attempt $i)"
+              exit 0
+            fi
+            echo "push attempt $i failed: $(head -2 work/git_push_out.txt)"
+            sleep 5
+            git fetch origin ${GITHUB_REF_NAME} >/dev/null 2>&1
+            git rebase FETCH_HEAD >/dev/null 2>&1
+          done
+          echo "ALL PUSH ATTEMPTS FAILED"
+          git status --short | head -20
+          exit 0
