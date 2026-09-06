@@ -1,4 +1,12 @@
 === top staged sizes ===
+5905252 helene-dacosta-tudo-junto/CCs/15_eunosims-euno-Body-preset.package
+4170760 helene-dacosta-tudo-junto/CCs/07_Belaloallure-phaedra-mini-skirt_Belaloallure_phaedra_mini_skirt.package
+3742201 helene-dacosta-tudo-junto/CCs/11_NSW-LIPS-N35_NorthernSiberiaWinds_LIPS_N35.package
+2773132 helene-dacosta-tudo-junto/CCs/08_GPME-Gold-C2-contour.package
+1498028 helene-dacosta-tudo-junto/CCs/09_GPME-Gold-Eyes-G2.package
+388354 helene-dacosta-tudo-junto/CCs/14_Kijiko-Remove-EA-Lashes.zip
+291013 helene-dacosta-tudo-junto/CCs/13_MagicBot-Default-Mouth.package
+119301 work/cf_page.html
 85195 work/patreon/64319245.json
 38655 work/patreon/77031948.json
 25008 work/patreon/56990147.json
@@ -6,7 +14,3 @@
 24498 work/patreon/59616486.json
 21952 work/patreon/123193524.json
 20464 work/patreon/17490207.json
-20145 work/patreon/22436855.json
-4857 work/fetch_log.txt
-4792 work/fetch_report.txt
-25 work/fetch_diag.txt

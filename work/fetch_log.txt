@@ -1,6 +1,5 @@
 
-===== KIJIKO =====
-   OK size=388354 saved=14_Kijiko-Remove-EA-Lashes.zip final=https://simfileshare.net/download/3247982/?dl
+===== KIJIKO: already present =====
 
 ===== EUNOSIMS =====
    link: https://blog.kakaocdn.net/dna/bpAt8L/btsMIbBwbIl/AAAAAAAAAAAAAAAAAAAAAFNHYCkka2RztvWlFXtwaqhSAXIS0lgLlrhNtokJrCEz/euno%20Body%20preset%201-4.package?c...
@@ -8,21 +7,23 @@
 
 ===== CURSEFORGE =====
 -- CF SIM-Helene-Dacosta: media HTTP 403 ct=application/xml final=https://media.forgecdn.net/files/8763/744/Anyulinela_Household_Dacosta_0x0026170a56100035.zip
--- CF SIM-Helene-Dacosta: endpoint bad payload size=119327 ct=text/html; charset=utf-8 final=https://www.curseforge.com/sims4/sims-households/helene-dacosta/download/8763744
+-- CF SIM-Helene-Dacosta: endpoint bad payload size=119301 ct=text/html; charset=utf-8 final=https://www.curseforge.com/sims4/sims-households/helene-dacosta/download/8763744
    === CF DEEP PROBE ===
-   page len=119313
+   page len=119299
    buildId=None
    chunk scripts (13 of 13)
-   js[timeoutInSeconds]: ...27);let u="pages.download.downloadStartsIn";e.s(["DownloadFileContent",0,e=>{let m,h,p,g,f,x,w,b,v,S,_,j,y,I,P,E,A,T,N,C,k,R,B=(0,r.c)(53),{timeoutInSeconds:D,project:U,fileId:$}=e,F=(0,d.default)(),{buildAppDownloadPageUrl:G}=(0,c.default)(),{buildFileDownloadUrl:z}=(0,n.default)(),{setUserInstallParams:H}=(0,a.useUserInstallParams)(),{t:L}=(0,o.useLegacyTr...
+   saved download chunk: https://static-beta.curseforge.com/_next/static/chunks/26aqrx1vga-xb.js (10827 bytes)
+   js[buildFileDownloadUrl] ctx: ...e.s(["DownloadFileContent",0,e=>{let m,h,p,g,f,x,w,b,v,S,_,j,y,I,P,E,A,T,N,C,k,R,B=(0,r.c)(53),{timeoutInSeconds:D,project:U,fileId:$}=e,F=(0,d.default)(),{buildAppDownloadPageUrl:G}=(0,c.default)(),{buildFileDownloadUrl:z}=(0,n.default)(),{setUserInstallParams:H}=(0,a.useUserInstallParams)(),{t:L}=(0,o.useLegacyTranslation)();B[0]!==z||B[1]!==F.kBaseExternalUrl||B[2]!==$||B[3]!==U.id?(m=()=>z(F.kBaseExternalUrl,U.id,$),B[0]=z,B[1]=F.kBaseExternalUrl,B[2]=$,B[3]=U.id,B[4]=m):m=B[4];let M=m;B[5]!==$||B[6]!==U.id||B[7]!==H?(h=()=>{H({projectId:U.id,fileId:$})},B[5]=$,B[6]=U.id,B[7]=H,B[8]=h):h=B[8];let O=h,q=(0,s.useRef)(null),K=(0,s.useRef)(D),J=(0,s.useRef)(M),Q=(0,s.useRef)(L);B[9]!==M?(p=()=>{J.current=M},g=[M],B[9]=M,B[10]=p,B[11]=g):(p=B[10],g=B[11]),(0,s.useEffect)(p,g),B[12]!==L?(f=()=>{Q.current=L},x=[L],B[12]=L,B[13]=f,B[14]=x):(f=B[13],x=B[14]),(0,s.useEffect)(f,x);let V=`${D}`;B[15]!==L||B[16]!==V?(w=L(u,{timeout:V}),B[15]=L,B[16]=V,B[17]=w):w=B[17];let[W,X]=(0,s.useState)(w),[Y,Z]=(0,s.useState)(!1);return B[18]!==D?(b=()=>(K.current=D,X(Q.current(u,{timeout:`${D}`})),Z(!1...
+   js[DownloadFileContent] ctx: ...2553,e=>{"use strict";var t=e.i(43476),r=e.i(932),s=e.i(71645),i=e.i(22016),l=e.i(67945),a=e.i(19411),n=e.i(61271),o=e.i(49959),d=e.i(40321),c=e.i(73027);let u="pages.download.downloadStartsIn";e.s(["DownloadFileContent",0,e=>{let m,h,p,g,f,x,w,b,v,S,_,j,y,I,P,E,A,T,N,C,k,R,B=(0,r.c)(53),{timeoutInSeconds:D,project:U,fileId:$}=e,F=(0,d.default)(),{buildAppDownloadPageUrl:G}=(0,c.default)(),{buildFileDownloadUrl:z}=(0,n.default)(),{setUserInstallParams:H}=(0,a.useUserInstallParams)(),{t:L}=(0,o.useLegacyTranslation)();B[0]!==z||B[1]!==F.kBaseExternalUrl||B[2]!==$||B[3]!==U.id?(m=()=>z(F.kBaseExternalUrl,U.id,$),B[0]=z,B[1]=F.kBaseExternalUrl,B[2]=$,B[3]=U.id,B[4]=m):m=B[4];let M=m;B[5]!==$||B[6]!==U.id||B[7]!==H?(h=()=>{H({projectId:U.id,fileId:$})},B[5]=$,B[6]=U.id,B[7]=H,B[8]=h):h=B[8];let O=h,q=(0,s.useRef)(null),K=(0,s.useRef)(D),J=(0,s.useRef)(M),Q=(0,s.useRef)(L);B[9]!==M?(p=()=>{J.current=M},g=[M],B[9]=M,B[10]=p,B[11]=g):(p=B[10],g=B[11]),(0,s.useEffect)(p,g),B[12]!==L?(f=()=>{Q.current=L},x=[L],B[12]=L,B[13]=f,B[14]=x):(f=B[13],x=B[14]),(0,s.useEffect)(f,x);let V=`${D}`;B[15]!...
    === END CF DEEP PROBE ===
 -- CF EGGSIMS-earrings-19: media HTTP 403 ct=application/xml final=https://media.forgecdn.net/files/6496/196/%5BEGGSIMS%5D%20earrings%2019_TS4.zip
--- CF EGGSIMS-earrings-19: endpoint bad payload size=119289 ct=text/html; charset=utf-8 final=https://www.curseforge.com/sims4/create-a-sim/eggsims-earrings-19/download/6496196
+-- CF EGGSIMS-earrings-19: endpoint bad payload size=119278 ct=text/html; charset=utf-8 final=https://www.curseforge.com/sims4/create-a-sim/eggsims-earrings-19/download/6496196
 -- CF Sparkly-French-Nails: media HTTP 403 ct=application/xml final=https://media.forgecdn.net/files/8649/348/4w25_SparklyFrenchNails.zip
--- CF Sparkly-French-Nails: endpoint bad payload size=119459 ct=text/html; charset=utf-8 final=https://www.curseforge.com/sims4/create-a-sim/sparkly-french-nails/download/8649348
+-- CF Sparkly-French-Nails: endpoint bad payload size=119450 ct=text/html; charset=utf-8 final=https://www.curseforge.com/sims4/create-a-sim/sparkly-french-nails/download/8649348
 -- CF Shiny-Patent-Mary-Jane-Heels: media HTTP 403 ct=application/xml final=https://media.forgecdn.net/files/7751/173/%5BPolySphere%5DShinyPatentMaryJaneHeels_NonAutoHeight.package.zip
--- CF Shiny-Patent-Mary-Jane-Heels: endpoint bad payload size=119273 ct=text/html; charset=utf-8 final=https://www.curseforge.com/sims4/create-a-sim/shiny-patent-mary-jane-heels/download/7751173
+-- CF Shiny-Patent-Mary-Jane-Heels: endpoint bad payload size=119282 ct=text/html; charset=utf-8 final=https://www.curseforge.com/sims4/create-a-sim/shiny-patent-mary-jane-heels/download/7751173
 -- CF Ava-Sweatshirt: media HTTP 403 ct=application/xml final=https://media.forgecdn.net/files/8177/818/Valentine_Top_Ava.zip
--- CF Ava-Sweatshirt: endpoint bad payload size=119521 ct=text/html; charset=utf-8 final=https://www.curseforge.com/sims4/create-a-sim/ava-sweatshirt/download/8177818
+-- CF Ava-Sweatshirt: endpoint bad payload size=119538 ct=text/html; charset=utf-8 final=https://www.curseforge.com/sims4/create-a-sim/ava-sweatshirt/download/8177818
    (CF needs manual solving - see probe debug above)
 
 ===== PATREON PUBLIC ATTACHMENTS =====
@@ -38,12 +39,46 @@
 
 ===== SFS FOLDER obscurus 151649 =====
    found 19 entries
+     /download/2841764/  obscurus_nose_presets_9f.package
+     /download/2841763/  obscurus_lips_presets_7f.package
+     /download/2841762/  obscurus_eyes_presets_5f.package
+     /download/2841672/  obscurus_eyebrows_51.package
+     /download/2841673/  obscurus_eyebrows_48.package
+     /download/2841671/  obscurus_eyebrows_49.package
+     /download/2841670/  obscurus_eyebrows_50.package
+     /download/2841669/  obscurus_lips_N44.package
+     /download/2841667/  obscurus_lips_N43.package
+     /download/2841666/  obscurus_lips_N45.package
+     /download/2841665/  obscurus_lips_N46.package
+     /download/2841664/  obscurus_nose_blush.package
+     /download/2841663/  obscurus_eyeliner_N15.package
+     /download/2841661/  obscurus_eyeliner_N13.package
+     /download/2841662/  obscurus_eyeliner_N16.package
+     /download/2841659/  obscurus_eyeshadows_N12.package
+     /download/2841660/  obscurus_eyeliner_N14.package
+     /download/2841657/  obscurus_eyeshadows_N10.package
+     /download/2841658/  obscurus_eyeshadows_N11.package
+   name-matches: 0
+   falling back to known id 2841763 (obscurus_lips_presets_7f.package)
+   SFS 2841763 (obscurus-lips-presets-7f): OK size=126928 saved=12_obscurus-lips-presets-7f.package final=https://simfileshare.net/download/2841763/?dl
 
 ===== GOOGLE DRIVE (poyo Heather Skin N7) =====
    folder items (2):
      1O4qRheU3lpua7WBt5rbv6Waz2fIwdwrX  [poyopoyo] Heather Skin (Skin N7).package
      1PDjx52k7sUvgy6V2qwk5TVEKiPtJRFau  [poyopoyo] Heather Skin Overlay (Skin N7).package
-   => downloading [poyopoyo] Heather Skin (Skin N7).package ok=True
+   => downloading [poyopoyo] Heather Skin (Skin N7).package ok=True info=OK size=365428353 saved=06_poyo-poyopoyo_Heather_Skin_Skin_N7_.package final=https://drive.usercontent.google.com/download?id=1O4qRheU3lpua7WBt5rbv6Waz2fIwdwrX&export=download&confirm=t saved=helene-dacosta-tudo-junto/CCs/06_poyo-poyopoyo_Heather_Skin_Skin_N7_.package
+   file size on disk: 365428353
+
+===== FINAL CCs DIR =====
+   06_poyo-poyopoyo_Heather_Skin_Skin_N7_.package (365428353 bytes)
+   07_Belaloallure-phaedra-mini-skirt_Belaloallure_phaedra_mini_skirt.package (4170760 bytes)
+   08_GPME-Gold-C2-contour.package (2773132 bytes)
+   09_GPME-Gold-Eyes-G2.package (1498028 bytes)
+   11_NSW-LIPS-N35_NorthernSiberiaWinds_LIPS_N35.package (3742201 bytes)
+   12_obscurus-lips-presets-7f.package (126928 bytes)
+   13_MagicBot-Default-Mouth.package (291013 bytes)
+   14_Kijiko-Remove-EA-Lashes.zip (388354 bytes)
+   15_eunosims-euno-Body-preset.package (5905252 bytes)
 
 ===== FETCH 3 DONE =====
-fetch-exit=0 run: 2026-09-06T20:39:00Z
+fetch-exit=0 run: 2026-09-06T20:44:19Z
