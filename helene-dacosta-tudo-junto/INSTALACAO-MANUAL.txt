@@ -42,10 +42,15 @@ Helene. (Depois de baixar, instale como os demais: .package → Mods.)
    (os cílios são opcionais para o visual da personagem).
 
 --------------------------------------------------------------------
-3) (Opcional) HEATHER SKIN N7 — se o repositório não tiver o arquivo
+3) (Referência) HEATHER SKIN N7 — já incluída via Git LFS
 --------------------------------------------------------------------
-   O arquivo tem ~365 MB. Se não estiver na pasta CCs/ (método Git LFS),
-   baixe direto do Google Drive do criador:
+   A pele já está no repositório (pasta CCs/, arquivo 06_poyo-...package,
+   365 MB). Para baixá-la com o resto do pacote: instale o Git LFS
+   (https://git-lfs.com/) e rode `git lfs install` uma vez antes do clone.
+   Pela interface do GitHub, clique em "Download" na página do arquivo
+   06_poyo-...package (o Download ZIP do repositório NÃO inclui LFS).
+
+   Se preferir o link direto do Google Drive do criador (alternativa):
    https://drive.usercontent.google.com/download?id=1O4qRheU3lpua7WBt5rbv6Waz2fIwdwrX&export=download&confirm=t
    (arquivo: "[poyopoyo] Heather Skin (Skin N7).package")
    Página do criador: https://www.patreon.com/posts/heather-skin-n7-85159474

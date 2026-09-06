@@ -26,6 +26,7 @@ helene-dacosta-tudo-junto/
     ├── 03_Sparkly-French-Nails.zip
     ├── 04_Shiny-Patent-Mary-Jane-Heels.zip
     ├── 05_Ava-Sweatshirt.zip
+    ├── 06_poyo-...Heather-Skin.package  (365 MB — Git LFS, ver seção abaixo)
     ├── 07_Belaloallure-...        (Patreon → .package)
     ├── 08_GPME-Gold-C2-contour.package
     ├── 09_GPME-Gold-Eyes-G2.package
@@ -36,8 +37,8 @@ helene-dacosta-tudo-junto/
     └── 15_eunosims-euno-Body-preset.package
 ```
 
-Itens **06, 10, 16–21** estão pendentes (ver seção de status) — o 06 pode entrar
-via Git LFS após nova execução do workflow de fetch.
+Faltam apenas os itens **10, 16–21** (download manual — ver seção de status).
+O item 06 fica num arquivo Git LFS separado por causa do tamanho (365 MB).
 
 ---
 
@@ -71,7 +72,7 @@ via Git LFS após nova execução do workflow de fetch.
 | 03 | Sparkly French Nails | 4w25 | CurseForge | ✅ baixado |
 | 04 | Shiny Patent Mary Jane Heels | PolySphere | CurseForge | ✅ baixado |
 | 05 | Ava Sweatshirt | MissValentinee | CurseForge | ✅ baixado |
-| 06 | Heather Skin (Skin N7) | poyopoyosim | Google Drive/Patreon | ⚠️ arquivo grande (ver abaixo) |
+| 06 | Heather Skin (Skin N7) | poyopoyosim | Google Drive/Patreon | ✅ baixado (Git LFS) |
 | 07 | `_phaedra_mini_skirt` | Belaloallure | Patreon | ✅ baixado |
 | 08 | GPME Gold C2 (contour) | goppolsme | Patreon/SimFileShare | ✅ baixado |
 | 09 | GPME Gold Eyes G2 | goppolsme | Patreon/SimFileShare | ✅ baixado |
@@ -88,22 +89,27 @@ via Git LFS após nova execução do workflow de fetch.
 | 20 | S-CLUB WM TS4 Eyelashes 201801 | S-CLUB | The Sims Resource | 🔒 manual (login) |
 | 21 | Freckles Z53 | (TSR) | The Sims Resource | 🔒 manual (login) |
 
-Legenda: ✅ baixado · ⏳ download automático pendente · 🔒 download manual necessário
+Legenda: ✅ baixado · 🔒 download manual necessário
 
 ---
 
-## ⚠️ Item 06 — Heather Skin (365 MB)
+## 💾 Item 06 — Heather Skin (365 MB, Git LFS)
 
-O arquivo da pele tem **~365 MB** e o GitHub não aceita arquivos acima de 100 MB
-em repositórios comuns. Decisão em andamento:
+A pele (365 MB) é grande demais para um arquivo comum do GitHub, então ela está
+no repositório como arquivo **Git LFS** (ponteiro `06_poyo-...package` na pasta
+`CCs/`). Para obter o arquivo de verdade:
 
-- **Opção A (Git LFS):** o arquivo entra no repositório via Git LFS — o workflow
-  de fetch já está configurado para rastrear `CCs/06_*` com LFS (o arquivo fica
-  disponível após a próxima execução). Para baixá-lo pelo `git clone`/`git pull`
-  você precisa ter `git lfs install` feito uma vez na sua máquina.
-- **Opção B (link direto):** link do Google Drive dela dentro deste README.
+- **Via git (recomendado):** instale o Git LFS uma vez
+  (`https://git-lfs.com/` — ou `git lfs install` no terminal) e depois faça
+  `git clone` ou `git pull`. O arquivo completo vem junto automaticamente.
+- **Pela página do GitHub:** abra
+  `CCs/06_poyo-poyopoyo_Heather_Skin_Skin_N7_.package` no site e clique em
+  **Download** — o GitHub entrega o arquivo real (365 MB), não o ponteiro.
+  (Obs.: o "Download ZIP" do repositório **não** inclui o conteúdo LFS.)
+- **Link direto (alternativa):** Google Drive do criador:
+  <https://drive.usercontent.google.com/download?id=1O4qRheU3lpua7WBt5rbv6Waz2fIwdwrX&export=download&confirm=t>
 
-Download direto (se precisar agora):
+Hash SHA-256 (para conferência): `84355e51c1ca58236004bb96662616cc18a7af85cc6e998c2a0b7eab1865c3c4`
 <https://drive.usercontent.google.com/download?id=1O4qRheU3lpua7WBt5rbv6Waz2fIwdwrX&export=download&confirm=t>
 
 ---
