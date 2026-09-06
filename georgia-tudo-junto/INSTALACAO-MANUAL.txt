@@ -5,32 +5,32 @@ Estes itens NÃO estão completos na pasta CCs. Não contornar login/assinatura.
 02 — Hair S-Club 031226 Double Ponytail | S-Club
 Situação: Manual — não incluído
 TSR: download manual conforme acesso da sua conta.
-https://www.thesimsresource.com/downloads/details/category/sims4/id/1766849/
+https://www.thesimsresource.com/downloads/details/category/sims4-hair-hairstyles/title/s-club-031226-double-ponytail/id/1766849/
 
-04 — Fullbody Rina Sweatpants | Belaloallure (tabae)
+04 — Rina Sweatpants (Fullbody na lista do sim) | Belaloallure; lista cita [tabae]clothes01
 Situação: Manual — não incluído
-TSR: download manual conforme acesso da sua conta.
-https://www.thesimsresource.com/downloads/details/category/sims4/id/1486209/
+A lista original chama o item Fullbody e cita [tabae]clothes01, mas fornece este link de Rina Sweatpants. Confirmar a correspondência/variante com o criador do sim; download manual TSR.
+https://www.thesimsresource.com/downloads/details/category/sims4-clothing-female-teenadultelder-everyday/title/belaloallure-rina-sweatpants/id/1486209/
 
 10 — Cytosine Eyes — facepaint | RemusSirion
 Situação: Manual — não incluído
 TSR: download manual conforme acesso da sua conta.
-https://www.thesimsresource.com/downloads/details/category/sims4/id/1459200/
+https://www.thesimsresource.com/downloads/details/category/sims4-eyecolors/title/cytosine-eyes/id/1459200/
 
-11 — Realistic Female Body Details | Mikooi / Miiko (atribuição a confirmar)
+11 — Realistic Female Body Details (16154) | Mikooi Sims (conforme lista do sim)
 Situação: Manual — não incluído
-Referência recebida, não validada: conteúdo adulto, ~273 MB; possível requisito Get Famous. Confirmar versão, autoria e requisitos na fonte original. Mirror não usado.
+A lista original cita Mikooi Sims e 16154-realistic-female-body-details, sem link. O guia recebido não foi validado: conteúdo adulto, ~273 MB e possível Get Famous são informações a confirmar na fonte original. Não confundir automaticamente com Miiko; mirror não usado.
 https://bestsimsmods.com/sims-4-mikkoi-female-body-details-6-0/
 
 15 — Soft Face Freckles HQ | alf-si
 Situação: Manual — não incluído
 TSR: download manual conforme acesso da sua conta.
-https://www.thesimsresource.com/downloads/details/category/sims4/id/1355997/
+https://www.thesimsresource.com/downloads/details/category/sims4-makeup-female-skindetails/title/soft-face-freckles-hq/id/1355997/
 
 17 — Tea Time Lashes HQ | venerian
 Situação: Manual — não incluído
 TSR: download manual conforme acesso da sua conta.
-https://www.thesimsresource.com/downloads/details/category/sims4/id/1770164/
+https://www.thesimsresource.com/downloads/details/category/sims4/title/venerian-tea-time-lashes-hq/id/1770164/
 
 18 — 3D Eyelashes Set | obscurus
 Situação: Manual — não incluído
@@ -46,13 +46,6 @@ https://alf-si.tumblr.com/post/614674051815849984
 https://www.thesimsresource.com/downloads/details/category/sims4/id/1561164/
 https://www.thesimsresource.com/downloads/details/category/sims4/id/1561412/
 https://www.thesimsresource.com/downloads/details/category/sims4/id/1561566/
-
-21 — Nosemask N10 + overlay + presets | obscurus
-Situação: Falhou / incompleto
-O post público aponta ao SFS: nosemask N10 LRLE, overlay e um .package com os quatro presets. 70 cores / HQ compatível conforme o criador; escolher no CAS.
-author post no longer links the expected SFS folder 66108
-https://www.patreon.com/posts/26574490
-https://simfileshare.net/folder/66108/
 
 Não foi testado no jogo. Sem os itens manuais, a aparência de Georgia pode diferir.
 Escolha variantes/defaults compatíveis; não instale tudo indiscriminadamente.

@@ -1,8 +1,8 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-09-06T22:04:21.425211+00:00",
-  "checkout_sha": "f93b0f4b5ea912730be56a6ceb1aa5e476bd75dd",
-  "workflow_run": "https://github.com/Viniciaao/Lixo/actions/runs/34062870040",
+  "generated_at": "2026-09-06T22:08:23.277592+00:00",
+  "checkout_sha": "236a3c8050a8c9a0866a36d21ab6f54c796ba5f0",
+  "workflow_run": "https://github.com/Viniciaao/Lixo/actions/runs/34063064401",
   "items": [
     {
       "id": "01",
@@ -64,7 +64,7 @@
       "name": "Hair S-Club 031226 Double Ponytail",
       "creator": "S-Club",
       "urls": [
-        "https://www.thesimsresource.com/downloads/details/category/sims4/id/1766849/"
+        "https://www.thesimsresource.com/downloads/details/category/sims4-hair-hairstyles/title/s-club-031226-double-ponytail/id/1766849/"
       ],
       "mode": "manual",
       "note": "TSR: download manual conforme acesso da sua conta.",
@@ -471,13 +471,13 @@
     },
     {
       "id": "04",
-      "name": "Fullbody Rina Sweatpants",
-      "creator": "Belaloallure (tabae)",
+      "name": "Rina Sweatpants (Fullbody na lista do sim)",
+      "creator": "Belaloallure; lista cita [tabae]clothes01",
       "urls": [
-        "https://www.thesimsresource.com/downloads/details/category/sims4/id/1486209/"
+        "https://www.thesimsresource.com/downloads/details/category/sims4-clothing-female-teenadultelder-everyday/title/belaloallure-rina-sweatpants/id/1486209/"
       ],
       "mode": "manual",
-      "note": "TSR: download manual conforme acesso da sua conta.",
+      "note": "A lista original chama o item Fullbody e cita [tabae]clothes01, mas fornece este link de Rina Sweatpants. Confirmar a correspondência/variante com o criador do sim; download manual TSR.",
       "status": "manual",
       "files": [],
       "errors": []
@@ -536,6 +536,7 @@
       "name": "GPME-GOLD MAKEUP SET CC31",
       "creator": "goppolsme",
       "urls": [
+        "https://www.patreon.com/posts/44511936",
         "https://simfileshare.net/download/2172979/"
       ],
       "mode": "auto",
@@ -619,6 +620,7 @@
       "name": "GPME-GOLD Liner cc10",
       "creator": "goppolsme",
       "urls": [
+        "https://www.patreon.com/posts/19279776",
         "https://simfileshare.net/download/568017/"
       ],
       "mode": "auto",
@@ -749,7 +751,7 @@
       "name": "Cytosine Eyes — facepaint",
       "creator": "RemusSirion",
       "urls": [
-        "https://www.thesimsresource.com/downloads/details/category/sims4/id/1459200/"
+        "https://www.thesimsresource.com/downloads/details/category/sims4-eyecolors/title/cytosine-eyes/id/1459200/"
       ],
       "mode": "manual",
       "note": "TSR: download manual conforme acesso da sua conta.",
@@ -759,13 +761,13 @@
     },
     {
       "id": "11",
-      "name": "Realistic Female Body Details",
-      "creator": "Mikooi / Miiko (atribuição a confirmar)",
+      "name": "Realistic Female Body Details (16154)",
+      "creator": "Mikooi Sims (conforme lista do sim)",
       "urls": [
         "https://bestsimsmods.com/sims-4-mikkoi-female-body-details-6-0/"
       ],
       "mode": "manual",
-      "note": "Referência recebida, não validada: conteúdo adulto, ~273 MB; possível requisito Get Famous. Confirmar versão, autoria e requisitos na fonte original. Mirror não usado.",
+      "note": "A lista original cita Mikooi Sims e 16154-realistic-female-body-details, sem link. O guia recebido não foi validado: conteúdo adulto, ~273 MB e possível Get Famous são informações a confirmar na fonte original. Não confundir automaticamente com Miiko; mirror não usado.",
       "status": "manual",
       "files": [],
       "errors": []
@@ -883,10 +885,11 @@
       "name": "In game shadow — face shadow",
       "creator": "Simandy",
       "urls": [
+        "https://simandy.tumblr.com/post/630272666330415104/because-every-time-i-look-at-photoshop-i-want-to",
         "https://www.patreon.com/posts/42027501"
       ],
       "mode": "auto",
-      "note": "O post oferece opções; não são 16 dependências independentes.",
+      "note": "O post oferece opções em 3 arquivos/categorias; não são 16 dependências independentes.",
       "status": "downloaded",
       "files": [
         {
@@ -944,7 +947,7 @@
       "name": "Soft Face Freckles HQ",
       "creator": "alf-si",
       "urls": [
-        "https://www.thesimsresource.com/downloads/details/category/sims4/id/1355997/"
+        "https://www.thesimsresource.com/downloads/details/category/sims4-makeup-female-skindetails/title/soft-face-freckles-hq/id/1355997/"
       ],
       "mode": "manual",
       "note": "TSR: download manual conforme acesso da sua conta.",
@@ -1213,7 +1216,7 @@
       "name": "Tea Time Lashes HQ",
       "creator": "venerian",
       "urls": [
-        "https://www.thesimsresource.com/downloads/details/category/sims4/id/1770164/"
+        "https://www.thesimsresource.com/downloads/details/category/sims4/title/venerian-tea-time-lashes-hq/id/1770164/"
       ],
       "mode": "manual",
       "note": "TSR: download manual conforme acesso da sua conta.",
@@ -1257,6 +1260,7 @@
       "name": "Cleavage Masks Collection",
       "creator": "sims3melancholic",
       "urls": [
+        "https://www.patreon.com/posts/96600228",
         "https://drive.google.com/drive/folders/1p4W_kdF7oPJ4aRVQQ-alkEDZAJdrkm5B"
       ],
       "mode": "auto",
@@ -1499,26 +1503,55 @@
       "name": "Nosemask N10 + overlay + presets",
       "creator": "obscurus",
       "urls": [
+        "https://obscurus-sims.tumblr.com/post/184629124468/nosemask-n10-70-colors-all-ages-all-genders",
         "https://www.patreon.com/posts/26574490",
         "https://simfileshare.net/folder/66108/"
       ],
       "mode": "auto",
       "note": "O post público aponta ao SFS: nosemask N10 LRLE, overlay e um .package com os quatro presets. 70 cores / HQ compatível conforme o criador; escolher no CAS.",
-      "status": "failed",
-      "files": [],
-      "errors": [
-        "author post no longer links the expected SFS folder 66108"
+      "status": "downloaded",
+      "files": [
+        {
+          "bytes": 8507033,
+          "sha256": "ebb1ec58e67d9cf6fb6f5d6c79ca201f7ff6b6a6e7b73df5aa19445756b46e80",
+          "format": "package",
+          "members": [],
+          "path": "CCs/21_obscurus-Nosemask-N10-obscurus_nosemask_N10_lrle.package",
+          "source_url": "https://simfileshare.net/download/2802529/"
+        },
+        {
+          "bytes": 312821,
+          "sha256": "83d2a811b8a59ffa0d6c0572dd07ef29d9fb0bcd6e52c611e3ef8c131899e329",
+          "format": "package",
+          "members": [],
+          "path": "CCs/21_obscurus-Nosemask-N10-obscurus_nose_presets_3f.package",
+          "source_url": "https://simfileshare.net/download/1041423/"
+        },
+        {
+          "bytes": 154313,
+          "sha256": "67b4aa78a2ce5ff42bb3753d1b9b352c1cc002ea463585a16520b35e222e8b84",
+          "format": "package",
+          "members": [],
+          "path": "CCs/21_obscurus-Nosemask-N10-obscurus_nosemask_N10_overlay.package",
+          "source_url": "https://simfileshare.net/download/1041421/"
+        }
       ],
+      "errors": [],
       "post_title": "Nosemask and nose presets for females!",
       "available_attachments": [],
-      "selected_names": []
+      "selected_names": [
+        "obscurus_nosemask_N10_lrle.package",
+        "obscurus_nose_presets_3f.package",
+        "obscurus_nosemask_N10_overlay.package"
+      ],
+      "resolved_folder": "https://simfileshare.net/folder/66108/"
     }
   ],
   "summary": {
-    "files": 55,
-    "bytes": 502465421,
-    "downloaded": 12,
+    "files": 58,
+    "bytes": 511439588,
+    "downloaded": 13,
     "manual": 8,
-    "failed": 1
+    "failed": 0
   }
 }

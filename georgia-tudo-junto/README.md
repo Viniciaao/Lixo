@@ -1,6 +1,6 @@
 # Georgia (MizuTS4) — Sim + CCs públicos
 
-> **Não é o visual completo instalado automaticamente.** 9 dos 21 itens
+> **Não é o visual completo instalado automaticamente.** 8 dos 21 itens
 > mapeados dependem de download manual ou resolução de pendências. As variantes
 > reunidas também precisam ser escolhidas antes de instalar.
 
@@ -10,17 +10,17 @@ contém o household/Tray; os CCs são arquivos separados dos respectivos criador
 
 ## Resultado medido
 
-- **55 arquivos**, **502,465,421 bytes** (479.19 MiB).
-- **12 grupos baixados/validados**, **8 manuais**,
-  **1 com falha**. Um grupo pode conter várias alternativas.
-- Manifesto gerado em **2026-09-06T22:04:21.425211+00:00** (UTC).
-- Código usado: `f93b0f4b5ea912730be56a6ceb1aa5e476bd75dd`.
+- **58 arquivos**, **511,439,588 bytes** (487.75 MiB).
+- **13 grupos baixados/validados**, **8 manuais**,
+  **0 com falha**. Um grupo pode conter várias alternativas.
+- Manifesto gerado em **2026-09-06T22:08:23.277592+00:00** (UTC).
+- Código usado: `236a3c8050a8c9a0866a36d21ab6f54c796ba5f0`.
 - `MANIFEST.json` relaciona cada arquivo à fonte, tamanho, SHA-256, formato e
   membros internos; `SHA256SUMS.txt` cobre todos os binários distribuídos.
 
 ## Obter a pasta com os arquivos
 
-1. Abra [a execução que produziu estes arquivos](https://github.com/Viniciaao/Lixo/actions/runs/34062870040).
+1. Abra [a execução que produziu estes arquivos](https://github.com/Viniciaao/Lixo/actions/runs/34063064401).
 2. Confira o resultado **success**. Em **Artifacts**, baixe **georgia-tudo-junto**
    (o GitHub pode exigir login).
 3. Extraia o artifact para uma pasta `georgia-tudo-junto/` e confira os hashes
@@ -29,7 +29,7 @@ contém o household/Tray; os CCs são arquivos separados dos respectivos criador
 Alternativa com GitHub CLI:
 
 ```bash
-gh run download 34062870040 --repo Viniciaao/Lixo \
+gh run download 34063064401 --repo Viniciaao/Lixo \
   --name georgia-tudo-junto --dir georgia-tudo-junto
 ```
 
@@ -100,14 +100,14 @@ georgia-tudo-junto/
 | 01 | Sim Georgia — MizuTS4 | Validado | 1 |
 | 02 | Hair S-Club 031226 Double Ponytail — S-Club | Manual — não incluído | 0 |
 | 03 | Teeth "Normal" — alpha teeth — MagicBot | Validado | 2 |
-| 04 | Fullbody Rina Sweatpants — Belaloallure (tabae) | Manual — não incluído | 0 |
+| 04 | Rina Sweatpants (Fullbody na lista do sim) — Belaloallure; lista cita [tabae]clothes01 | Manual — não incluído | 0 |
 | 05 | Leo levis shoes conversion — MadMan / MagicBot | Validado | 1 |
 | 06 | GPME-GOLD MAKEUP SET CC31 — goppolsme | Validado | 1 |
 | 07 | Basics Please — eyeshadows — TwistedCat | Validado | 3 |
 | 08 | GPME-GOLD Liner cc10 — goppolsme | Validado | 1 |
 | 09 | WILD CAT — BLUSH N7 — Northern Siberia Winds | Validado | 1 |
 | 10 | Cytosine Eyes — facepaint — RemusSirion | Manual — não incluído | 0 |
-| 11 | Realistic Female Body Details — Mikooi / Miiko (atribuição a confirmar) | Manual — não incluído | 0 |
+| 11 | Realistic Female Body Details (16154) — Mikooi Sims (conforme lista do sim) | Manual — não incluído | 0 |
 | 12 | misc. face details — okruee | Validado | 3 |
 | 13 | Lighting Overlay 2.0 — jo_se_oh | Validado | 2 |
 | 14 | In game shadow — face shadow — Simandy | Validado | 3 |
@@ -117,7 +117,7 @@ georgia-tudo-junto/
 | 18 | 3D Eyelashes Set — obscurus | Manual — não incluído | 0 |
 | 19 | Eyebrows 33–41 — alf-si / ANGISSI | Manual — não incluído | 0 |
 | 20 | Cleavage Masks Collection — sims3melancholic | Validado | 24 |
-| 21 | Nosemask N10 + overlay + presets — obscurus | Falhou / incompleto | 0 |
+| 21 | Nosemask N10 + overlay + presets — obscurus | Validado | 3 |
 
 Veja as páginas originais e os downloads públicos resolvidos em
 `LINKS-ORIGINAIS.txt`; os itens ausentes e suas ressalvas estão em

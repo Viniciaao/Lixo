@@ -61,7 +61,9 @@
 
 === [21] Nosemask N10 + overlay + presets ===
 [21] 0/0 attachments matched; public access confirmed
-[21] FAILED: ValueError: author post no longer links the expected SFS folder 66108
+[21] VALIDATED 21_obscurus-Nosemask-N10-obscurus_nosemask_N10_lrle.package bytes=8507033 sha256=ebb1ec58e67d9cf6fb6f5d6c79ca201f7ff6b6a6e7b73df5aa19445756b46e80
+[21] VALIDATED 21_obscurus-Nosemask-N10-obscurus_nose_presets_3f.package bytes=312821 sha256=83d2a811b8a59ffa0d6c0572dd07ef29d9fb0bcd6e52c611e3ef8c131899e329
+[21] VALIDATED 21_obscurus-Nosemask-N10-obscurus_nosemask_N10_overlay.package bytes=154313 sha256=67b4aa78a2ce5ff42bb3753d1b9b352c1cc002ea463585a16520b35e222e8b84
 
 === [20] Cleavage Masks Collection ===
 [20] 24 files in 8 public folders
@@ -90,4 +92,4 @@
 [20] VALIDATED 20_sims3melancholic-cleavage-sims3melancholic_cleavage_mask_5.package bytes=11293677 sha256=49fe21078cff4e544a52c16fe2d0c74dee09d364f662f403d49b2fba0d501d85
 [20] VALIDATED 20_sims3melancholic-cleavage-sims3melancholic_cleavage_mask_6.package bytes=10625366 sha256=bae180d2228b273f54a08868b6c8232adab33aaa1925779bf65a5345aeb50dad
 
-=== SUMMARY {"files": 55, "bytes": 502465421, "downloaded": 12, "manual": 8, "failed": 1} ===
+=== SUMMARY {"files": 58, "bytes": 511439588, "downloaded": 13, "manual": 8, "failed": 0} ===
