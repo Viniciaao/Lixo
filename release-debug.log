@@ -1,8 +1,0 @@
-+ gh auth status
-+ ls -la
-+ gh release delete v1.0-sims-cc --yes
-+ true
-+ gh release create v1.0-sims-cc Lilith-Cloud-CC-parte1.zip Lilith-Cloud-CC-parte2.zip Gwen-Cloud-CC-parte1.zip --title 'Lilith Cloud + Gwen - Sims & CC completo (by MizuTS4)' --notes-file RELEASE_NOTES.md
-+ RC=0
-+ echo exit=0
-+ exit 0
