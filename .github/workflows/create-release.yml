@@ -1,0 +1,59 @@
+name: Create release with zips
+
+on:
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: 'Tag da release'
+        required: true
+        default: 'v1.0-sims-cc'
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout tag
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.inputs.tag }}
+
+      - name: Create release and upload zips
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release create "${{ github.event.inputs.tag }}" \
+            "Lilith-Cloud-CC-parte1.zip" \
+            "Lilith-Cloud-CC-parte2.zip" \
+            "Gwen-Cloud-CC-parte1.zip" \
+            --title "🖤 Lilith Cloud + 🌙 Gwen — Sims & CC completo (by MizuTS4)" \
+            --notes "Pacotes prontos das sims **Lilith Cloud** e **Gwen** (CurseForge, criadora MizuTS4), com os CCs obrigatórios baixados um a um das fontes oficiais.
+
+## 📦 Arquivos
+| Anexo | Tamanho | Conteúdo |
+|---|---|---|
+| \`Lilith-Cloud-CC-parte1.zip\` | 74 MB | Household Lilith (Tray) + Lighting Overlay + Spotlight Tattoos + Saia Amaranth + Moles 01 |
+| \`Lilith-Cloud-CC-parte2.zip\` | 42 MB | okruee Face Details + Feet 1V (MB) + NSW Bodycare (Torso Mask + Presets) + Sobrancelhas alf-si |
+| \`Gwen-Cloud-CC-parte1.zip\` | 80 MB | Household Gwen (Tray) + Hair Hazeh + Teeth MADMAN + Lipstick n33 + Blush N7 + Eyeliner GPME |
+
+## 🔧 Instalação
+1. **Households**: as pastas com \`Lilith/\` e \`Gwen/\` (arquivos .householdbinary/.trayitem/.sgi/.hhi) vão para \`Documentos/Electronic Arts/The Sims 4/Tray\`
+2. **CC**: todos os .package e .zip vão para \`Documentos/Electronic Arts/The Sims 4/Mods\` (não precisa extrair os zips de CC)
+3. Ative *Conteúdo personalizado e mods* nas opções de jogo
+
+## ⚠️ Itens que exigem login grátis (links no README do repo)
+- **TSR**: Contour N4, LaDiDa Top, Madlen Mia Boots (+mesh), Nose Mask 04, Freckles alf-si, Tea Time Lashes, SayaSims Eye Reflections
+- **Patreon/ModCo**: bZIP Eyes, CLEAVAGE Masks, Acne miikocc, YUNSEOL, Peach Friend (SMSims), Shoes convert, Eyeshadow ddarkstonee, Mikooi Body Details
+
+Lista completa com links diretos: **README.md** do repositório.
+
+CC gratuito — todos os créditos e direitos às criadoras originais (MizuTS4, NSW, okruee, alf-si, Simandy, 148DAZED, LutessaSims, Jo_se_oh, Hazeh, MADMAN, goppolsme, NESURII, catplnt, obscurus, MB/magicbot). 💜"
+
+      - name: Verify assets
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release view "${{ github.event.inputs.tag }}" --json assets --jq '.assets[] | .name + " -> " + (.size|tostring) + " bytes"'
