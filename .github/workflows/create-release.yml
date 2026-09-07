@@ -1,6 +1,9 @@
 name: Create release with zips
 
 on:
+  push:
+    paths:
+      - '.github/workflows/create-release.yml'
   workflow_dispatch:
     inputs:
       tag:
@@ -19,13 +22,13 @@ jobs:
       - name: Checkout tag
         uses: actions/checkout@v4
         with:
-          ref: ${{ github.event.inputs.tag }}
+          ref: ${{ github.event.inputs.tag || 'v1.0-sims-cc' }}
 
       - name: Create release and upload zips
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          gh release create "${{ github.event.inputs.tag }}" \
+          gh release create "${{ github.event.inputs.tag || 'v1.0-sims-cc' }}" \
             "Lilith-Cloud-CC-parte1.zip" \
             "Lilith-Cloud-CC-parte2.zip" \
             "Gwen-Cloud-CC-parte1.zip" \
@@ -56,4 +59,4 @@ CC gratuito — todos os créditos e direitos às criadoras originais (MizuTS4, 
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          gh release view "${{ github.event.inputs.tag }}" --json assets --jq '.assets[] | .name + " -> " + (.size|tostring) + " bytes"'
+          gh release view "${{ github.event.inputs.tag || 'v1.0-sims-cc' }}" --json assets --jq '.assets[] | .name + " -> " + (.size|tostring) + " bytes"'
