@@ -21,22 +21,23 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:
-      - name: Checkout tag
+      - name: Checkout branch
         uses: actions/checkout@v4
-        with:
-          ref: ${{ github.event.inputs.tag || 'v1.0-sims-cc' }}
 
-      - name: Create release (com log commitado)
+      - name: Create release (log em release-debug.log)
         env:
           GITHUB_TOKEN: ${{ github.token }}
         run: |
           bash scripts/make_release.sh "v1.0-sims-cc" || true
+          if ! grep -q "exit=0" release-exit.txt 2>/dev/null; then
+            echo "::error::release falhou: $(tail -c 350 release-debug.log 2>/dev/null | tr '\n' ' ')"
+          fi
 
-      - name: Commit debug log
+      - name: Commit debug log na branch
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add release-debug.log release-exit.txt 2>/dev/null || true
           git commit -m "release debug [skip ci]" || echo "nada para commitar"
-          git fetch origin arena/01a07865-lixo || true
-          git push origin HEAD:arena/01a07865-lixo || echo "push falhou (ok se release deu certo)"
+          git pull --rebase origin arena/01a07865-lixo || true
+          git push origin HEAD:arena/01a07865-lixo || echo "::error::push do debug falhou"
