@@ -3,11 +3,11 @@
 code=200 final=https://www.curseforge.com/sims4/sims-households/helene-dacosta/download/8763744 type=text/html; charset=utf-8
 HTTP/2 200 
 content-type: text/html; charset=utf-8
-set-cookie: __cf_bm=Q4VDH2nq5yihmk3ODz2gimjOA.6vJqcVe0uEK47YkSU-1788725921.4316719-1.0.1.1-Z6mpUmI1n1d1Oj7SL9LxH7sJuPvZlGFs8iGUSqdUhRhxikBf6ggLibb2VKhgpetprX6JMA0lEllR3_YEnO89aZXjD4SKnNFEcJy0I3fdcrUuGpCoN4hs_csMwOPEDWTsk0tkjTH0pVg67__2Ggsc5g; HttpOnly; SameSite=None; Secure; Path=/; Domain=curseforge.com; Expires=Sun, 06 Sep 2026 20:48:41 GMT
-body-size=119310
+set-cookie: __cf_bm=7Px76T7U7oK023bPaA6LrIvkvHkfhX3p5c5UkjvHF7M-1789592368.5786564-1.0.1.1-Q5c4HYTprERfBRgvsAO7FiYQx36oT7OlnMurpPFtIjXrh9FMn8TPSb8cMcMefY1s13HQY1seISksif.h3E.wJh.8Emk5yPc4vNDobERpxoSiHp_mKXWSWi35Y.Np6QoOrd5T_wtbHaEgC9GH81BSTw; HttpOnly; SameSite=None; Secure; Path=/; Domain=curseforge.com; Expires=Wed, 16 Sep 2026 21:29:28 GMT
+body-size=119033
 --- forgecdn links in body:
-https://media.forgecdn.net/navbar-image-urls/navbar-image-url_44329429-a08d-4a4c-aec9-ca2ceb0158c4.webp
-https://media.forgecdn.net/navbar-image-urls/navbar-image-url_296f17aa-2e77-4097-84be-c97879ba9410.webp
+https://media.forgecdn.net/navbar-image-urls/navbar-image-url_0a3030c4-408b-4b68-a8e4-47276fee42f9.webp
+https://media.forgecdn.net/navbar-image-urls/navbar-image-url_5bc239f1-e17b-4729-bd1b-4bf0c31ab093.webp
 https://media.forgecdn.net/avatars/1070/17/638605223094593241.webp
 https://media.forgecdn.net/avatars/thumbnails/2015/109/256/256/639236278367084210.png
 https://media.forgecdn.net/avatars/thumbnails/2015/109/256/256/639236278367084210.png
@@ -19,11 +19,11 @@ https://media.forgecdn.net/avatars/thumbnails/2015/109/256/256/63923627836708421
 code=200 final=https://www.curseforge.com/sims4/create-a-sim/eggsims-earrings-19/download/6496196 type=text/html; charset=utf-8
 HTTP/2 200 
 content-type: text/html; charset=utf-8
-set-cookie: __cf_bm=2g9i1KwmkLpOncZZxp48NJTlHcio7ieKpzp2kxOiu8Q-1788725921.6497-1.0.1.1-C0Jr5nLa145El7ziFwzmCB6KULhpGF57hWqD00wtHPRrM.DZrjqrQq4Bj5abehu531NPvQb1Lab5e_cVqGHl9WYRmGRVU00RunHHtEcusAUNF5MnyMeDZVY_nc_ob7nWyir8qx9aPD46ZQ8ocIJZVw; HttpOnly; SameSite=None; Secure; Path=/; Domain=curseforge.com; Expires=Sun, 06 Sep 2026 20:48:41 GMT
-body-size=119283
+set-cookie: __cf_bm=Nmp5Q3PcYotpmSCf75.0ak2cC4oceTvqXOXkAV0CAUQ-1789592368.962828-1.0.1.1-LuzDvynhFjuK4y_XutrcrUVo7Fc5qt7Kg17KbWg.LEp1NW5gnUMe6Bk5N7GF.HV.H.CQzsW3Rf8Gl1Bu.LC4_ZvFlQjVu0ZNyew7N.1MXI73Arcji8pUYXKHVIEKnjBy3g1eOvaj0AKOshiYkwEe8w; HttpOnly; SameSite=None; Secure; Path=/; Domain=curseforge.com; Expires=Wed, 16 Sep 2026 21:29:29 GMT
+body-size=119034
 --- forgecdn links in body:
-https://media.forgecdn.net/navbar-image-urls/navbar-image-url_44329429-a08d-4a4c-aec9-ca2ceb0158c4.webp
-https://media.forgecdn.net/navbar-image-urls/navbar-image-url_296f17aa-2e77-4097-84be-c97879ba9410.webp
+https://media.forgecdn.net/navbar-image-urls/navbar-image-url_0a3030c4-408b-4b68-a8e4-47276fee42f9.webp
+https://media.forgecdn.net/navbar-image-urls/navbar-image-url_5bc239f1-e17b-4729-bd1b-4bf0c31ab093.webp
 https://media.forgecdn.net/avatars/1070/17/638605223094593241.webp
 https://media.forgecdn.net/avatars/thumbnails/1279/907/256/256/638832301690115101.png
 https://media.forgecdn.net/avatars/thumbnails/1279/907/256/256/638832301690115101.png
@@ -35,11 +35,11 @@ https://media.forgecdn.net/avatars/thumbnails/1279/907/256/256/63883230169011510
 code=200 final=https://www.curseforge.com/sims4/create-a-sim/sparkly-french-nails/download/8649348 type=text/html; charset=utf-8
 HTTP/2 200 
 content-type: text/html; charset=utf-8
-set-cookie: __cf_bm=HQMP4V0WvCIhHTrCpprK.ZcWZZxsv_dHk7HMh3psBJc-1788725921.8656285-1.0.1.1-_cceCKRvXfMSORJYmQNqa4oD73owKnPwO1yt6weXnT0mBfznMXAsqevzVLiNDZumV.frGopVFW11x6ND4O3ly0xK8Gcsd9ZBgR7z.Tu_DW_jlI.Emk91boHb0sz.6T2OutWgfqkQMp_sqAUZpyBQbg; HttpOnly; SameSite=None; Secure; Path=/; Domain=curseforge.com; Expires=Sun, 06 Sep 2026 20:48:41 GMT
-body-size=119456
+set-cookie: __cf_bm=PyzbY7E4lrLT_0FL6se_UsCO41Azof7Pr62YvvSxpXs-1789592369.0601022-1.0.1.1-27FQQuGoE_49oTYpJfJjoERwiLh_zyF8CzozrNz9tWiApMKlrZ2SDbyEVKB7ZT5EL18gG1tLK6mibFEPGYEN_F1YYnd.ucpbAnCkkZMatGKJxiq4zGF.i3XSIG92uzsfhVEOxbv6T5Rd.Q.rEY_UYg; HttpOnly; SameSite=None; Secure; Path=/; Domain=curseforge.com; Expires=Wed, 16 Sep 2026 21:29:29 GMT
+body-size=119182
 --- forgecdn links in body:
-https://media.forgecdn.net/navbar-image-urls/navbar-image-url_44329429-a08d-4a4c-aec9-ca2ceb0158c4.webp
-https://media.forgecdn.net/navbar-image-urls/navbar-image-url_296f17aa-2e77-4097-84be-c97879ba9410.webp
+https://media.forgecdn.net/navbar-image-urls/navbar-image-url_0a3030c4-408b-4b68-a8e4-47276fee42f9.webp
+https://media.forgecdn.net/navbar-image-urls/navbar-image-url_5bc239f1-e17b-4729-bd1b-4bf0c31ab093.webp
 https://media.forgecdn.net/avatars/1070/17/638605223094593241.webp
 https://media.forgecdn.net/avatars/thumbnails/1779/148/256/256/639129057860940462.png
 https://media.forgecdn.net/avatars/thumbnails/1779/148/256/256/639129057860940462.png
@@ -51,11 +51,11 @@ https://media.forgecdn.net/avatars/thumbnails/1779/148/256/256/63912905786094046
 code=200 final=https://www.curseforge.com/sims4/create-a-sim/shiny-patent-mary-jane-heels/download/7751173 type=text/html; charset=utf-8
 HTTP/2 200 
 content-type: text/html; charset=utf-8
-set-cookie: __cf_bm=hfaL6dy86AYRcSQv2pzXT2Po0uRdENSE0sNzjhw7KdQ-1788725922.0703976-1.0.1.1-tHabLzMqGFHITksCHJ8_.NEHRMXKpE4mJvKpoZ0smDugsqP9nEUDKaVbZfPwUOOUXPTxlRGKCrWm1uQe0sgrXD5mkJyC3n8hQBeKq0lSyqKR7UF5DBZ6BsqY3wYeS_5TWiOHV5wCO2aS8ApSicIhhA; HttpOnly; SameSite=None; Secure; Path=/; Domain=curseforge.com; Expires=Sun, 06 Sep 2026 20:48:42 GMT
-body-size=119275
+set-cookie: __cf_bm=DrEI5ZHr8LV4ImhKxlmVEGrukWz9yPQBP7ObYE1mzdA-1789592369.1482425-1.0.1.1-ie7.CWA4s5sClCnwbqhTcpBpCXgCMhC.qHKwcLhCsqHquAj2_xcpAmkLezOAg9Y4MYoRzTxfp_wXAqcwr3adzjIxzxvPeldCHOTLjCu6FGBMs333SSUXR38nB..fQMGwV7Nt5xDQ2jwomPsr.OR1yw; HttpOnly; SameSite=None; Secure; Path=/; Domain=curseforge.com; Expires=Wed, 16 Sep 2026 21:29:29 GMT
+body-size=119002
 --- forgecdn links in body:
-https://media.forgecdn.net/navbar-image-urls/navbar-image-url_44329429-a08d-4a4c-aec9-ca2ceb0158c4.webp
-https://media.forgecdn.net/navbar-image-urls/navbar-image-url_296f17aa-2e77-4097-84be-c97879ba9410.webp
+https://media.forgecdn.net/navbar-image-urls/navbar-image-url_0a3030c4-408b-4b68-a8e4-47276fee42f9.webp
+https://media.forgecdn.net/navbar-image-urls/navbar-image-url_5bc239f1-e17b-4729-bd1b-4bf0c31ab093.webp
 https://media.forgecdn.net/avatars/1070/17/638605223094593241.webp
 https://media.forgecdn.net/avatars/thumbnails/1645/649/256/256/639051032788357278.png
 https://media.forgecdn.net/avatars/thumbnails/1645/649/256/256/639051032788357278.png
@@ -67,11 +67,11 @@ https://media.forgecdn.net/avatars/thumbnails/1645/649/256/256/63905103278835727
 code=200 final=https://www.curseforge.com/sims4/create-a-sim/ava-sweatshirt/download/8177818 type=text/html; charset=utf-8
 HTTP/2 200 
 content-type: text/html; charset=utf-8
-set-cookie: __cf_bm=uDBqePx82zznQzh_dQipLgMobbVFF4To2XWJQK61SHI-1788725922.263067-1.0.1.1-FrgiCBQoNIxG25UWqc1NG0k5gvxJerRbA8UIPPqm0m5xRrBm7lXgv2205GspLdtVZCTwFgaOfNpHiU9ZEK.n.11gAyiPWDhThxdjdIZVRwhoR_KUXIWwQIdOBdgEdbrobvRFS.glkR7ZiGSZsYxVYA; HttpOnly; SameSite=None; Secure; Path=/; Domain=curseforge.com; Expires=Sun, 06 Sep 2026 20:48:42 GMT
-body-size=119548
+set-cookie: __cf_bm=rYeGFkbZB41ECQV.K.DRaT8gh5uIAWL6nh9Wv.nkEGI-1789592369.5126657-1.0.1.1-a8POgnqJ2AgGTFawkK1N3aa2Nw8ij3Tt0a7lfyUNxQ6K0eW8ASQRy.DaII.nL5Hsj_x4emwzLMcG4Jv5WD4RrIgXXKEeQz2NyUm0GMIDShxBOuoyQkHObvaYqjZZw1U8r64_SGa_fTWsLRNygU6gGQ; HttpOnly; SameSite=None; Secure; Path=/; Domain=curseforge.com; Expires=Wed, 16 Sep 2026 21:29:29 GMT
+body-size=119268
 --- forgecdn links in body:
-https://media.forgecdn.net/navbar-image-urls/navbar-image-url_44329429-a08d-4a4c-aec9-ca2ceb0158c4.webp
-https://media.forgecdn.net/navbar-image-urls/navbar-image-url_296f17aa-2e77-4097-84be-c97879ba9410.webp
+https://media.forgecdn.net/navbar-image-urls/navbar-image-url_0a3030c4-408b-4b68-a8e4-47276fee42f9.webp
+https://media.forgecdn.net/navbar-image-urls/navbar-image-url_5bc239f1-e17b-4729-bd1b-4bf0c31ab093.webp
 https://media.forgecdn.net/avatars/1070/17/638605223094593241.webp
 https://media.forgecdn.net/avatars/thumbnails/1838/140/256/256/639158660646256169.png
 https://media.forgecdn.net/avatars/thumbnails/1838/140/256/256/639158660646256169.png
@@ -118,8 +118,8 @@ api code=200 size=17727
 {"data":{"id":"17490207","type":"post","attributes":{"attachments_preview_metadata":[],"autopilot_controlled_unlock_state":null,"comment_count":0,"content":null,"content_json_string":"{\"type\":\"doc\",\"content\":[{\"type\":\"paragraph\",\"content\":[{\"type\":\"text\",\"text\":\"GPME-GOLD Eyes G2\"}]},{\"type\":\"bulletList\",\"content\":[{\"type\":\"listItem\",\"content\":[{\"type\":\"paragraph\",\"content\":[{\"type\":\"text\",\"text\":\"30 Swatches\"}]}]},{\"type\":\"listItem\",\"content\":[{\"type\":\"paragraph\",\"content\":[{\"type\":\"text\",\"marks\":[{\"type\":\"link\",\"attrs\":{\"href\":\"http://simfileshare.net/download/472891/\",\"target\":\"_blank\"}}],\"text\":\"Download\"},
 
 ### API post 85159474
-api code=200 size=21478
-{"data":{"id":"85159474","type":"post","attributes":{"attachments_preview_metadata":[],"autopilot_controlled_unlock_state":null,"comment_count":4,"content":null,"content_json_string":"{\"type\":\"doc\",\"content\":[{\"type\":\"paragraph\",\"content\":[{\"type\":\"image\",\"attrs\":{\"alignment\":null,\"alt\":null,\"caption\":null,\"height\":null,\"link\":null,\"media_height\":null,\"media_id\":\"211936055\",\"media_width\":null,\"node_type\":\"inline\",\"src\":\"https://c10.patreonusercontent.com/4/patreon-media/p/post/85159474/a6f3ba9512d84f2fac9a8b7f91650f6e/eyJhIjoxLCJ3Ijo4MjB9/1.png?token-hash=3Ff-ljdQCl_hh6UTiQcyiQZxzsNqo5NmhUqiyLheBVY%3D&token-time=1789948800\",\"width\":null}}]},{\"ty
+api code=200 size=21482
+{"data":{"id":"85159474","type":"post","attributes":{"attachments_preview_metadata":[],"autopilot_controlled_unlock_state":null,"comment_count":4,"content":null,"content_json_string":"{\"type\":\"doc\",\"content\":[{\"type\":\"paragraph\",\"content\":[{\"type\":\"image\",\"attrs\":{\"alignment\":null,\"alt\":null,\"caption\":null,\"height\":null,\"link\":null,\"media_height\":null,\"media_id\":\"211936055\",\"media_width\":null,\"node_type\":\"inline\",\"src\":\"https://c10.patreonusercontent.com/4/patreon-media/p/post/85159474/a6f3ba9512d84f2fac9a8b7f91650f6e/eyJhIjoxLCJ3Ijo4MjB9/1.png?token-hash=D-of_zkc_kNzBLCb7BfpkOKM_jH1PPMkIvuvdVPZoSw%3D&token-time=1790812800\",\"width\":null}}]},{\"ty
 
 ### API post 77031948
 api code=200 size=37466
@@ -130,12 +130,12 @@ api code=200 size=83234
 {"data":{"id":"64319245","type":"post","attributes":{"attachments_preview_metadata":[{"file_name":"[NorthernSiberiaWinds] EYELIDS N11.package","mimetype":"application","size_bytes":22728431},{"file_name":"[NorthernSiberiaWinds] EYELIDS N12.package","mimetype":"application","size_bytes":29822700},{"file_name":"[NorthernSiberiaWinds] NOSEMASK N6.package","mimetype":"application","size_bytes":8147312},{"file_name":"[NorthernSiberiaWinds] LIPS N34.package","mimetype":"application","size_bytes":3369075},{"file_name":"[NorthernSiberiaWinds] LIPS N35.package","mimetype":"application","size_bytes":3742201},{"file_name":"[NorthernSiberiaWinds] LIPS BLOOD N1.package","mimetype":"application","size_byt
 
 ### API post 59616486
-api code=200 size=21468
+api code=200 size=21466
 {"data":{"id":"59616486","type":"post","attributes":{"attachments_preview_metadata":[],"autopilot_controlled_unlock_state":null,"comment_count":12,"content":null,"content_json_string":"{\"type\":\"doc\",\"content\":[{\"type\":\"heading\",\"content\":[{\"type\":\"hardBreak\"}],\"attrs\":{\"level\":3}},{\"type\":\"heading\",\"content\":[{\"type\":\"text\",\"text\":\"Here is my part! Check out \"},{\"type\":\"text\",\"marks\":[{\"type\":\"bold\"}],\"text\":\"her!\"},{\"type\":\"text\",\"text\":\"(link coming soon)\"}],\"attrs\":{\"level\":3}},{\"type\":\"paragraph\",\"content\":[{\"type\":\"text\",\"marks\":[{\"type\":\"bold\"}],\"text\":\"EYES PRESETS 5f:\"},{\"type\":\"text\",\"text\":\" 3 pr
 
 ### API post 56990147
-api code=200 size=21510
-{"data":{"id":"56990147","type":"post","attributes":{"attachments_preview_metadata":[],"autopilot_controlled_unlock_state":null,"comment_count":38,"content":null,"content_json_string":"{\"type\":\"doc\",\"content\":[{\"type\":\"image\",\"attrs\":{\"alignment\":null,\"alt\":null,\"caption\":null,\"height\":null,\"link\":null,\"media_height\":80,\"media_id\":\"124732577\",\"media_width\":1848,\"node_type\":\"block\",\"src\":\"https://c10.patreonusercontent.com/4/patreon-media/p/post/56990147/264b1cf0b4ef4a1e92374e45dfd2cd5e/eyJhIjoxLCJ3Ijo4MjB9/1.png?token-hash=JMQVwQLftpK6SVKFZ53CC5zI8ocv_7gYLdCiNAWSlfE%3D&token-time=1789948800\",\"width\":null}},{\"type\":\"heading\",\"content\":[{\"type\":\
+api code=200 size=21506
+{"data":{"id":"56990147","type":"post","attributes":{"attachments_preview_metadata":[],"autopilot_controlled_unlock_state":null,"comment_count":38,"content":null,"content_json_string":"{\"type\":\"doc\",\"content\":[{\"type\":\"image\",\"attrs\":{\"alignment\":null,\"alt\":null,\"caption\":null,\"height\":null,\"link\":null,\"media_height\":80,\"media_id\":\"124732577\",\"media_width\":1848,\"node_type\":\"block\",\"src\":\"https://c10.patreonusercontent.com/4/patreon-media/p/post/56990147/264b1cf0b4ef4a1e92374e45dfd2cd5e/eyJhIjoxLCJ3Ijo4MjB9/1.png?token-hash=wF0FxRfupBCMtQVe187iqpOQZP1_Fjq_QR056xDe9zs%3D&token-time=1790812800\",\"width\":null}},{\"type\":\"heading\",\"content\":[{\"type\":\
 
 ############ TISTORY / KAKAO ############
 tistory code=200
@@ -152,4 +152,4 @@ sfs code=200 final=https://simfileshare.net/download/3247982/
 href="https://cdn.simfileshare.net/download/3247982/?dl"
 
 ############ DONE ############
-inspect run: 2026-09-06T20:18:47Z
+inspect run: 2026-09-16T20:59:34Z
