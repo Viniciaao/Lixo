@@ -1,0 +1,31 @@
+{
+  "workflow_run": "https://github.com/Viniciaao/Lixo/actions/runs/34063244692",
+  "workflow_conclusion": "success",
+  "checkout_sha": "1d90e6b25410efb2b740bc868c64926840469e69",
+  "artifact": {
+    "id": 9998144878,
+    "name": "georgia-tudo-junto",
+    "url": "https://github.com/Viniciaao/Lixo/actions/runs/34063244692/artifacts/9998144878",
+    "bytes": 500065120,
+    "sha256_reported_by_actions": "sha256:3c9b487632e7fa15b624581cb15c657027061f540776ea7ad7c749bbb163ed0d",
+    "expires_at": "2026-12-05T22:10:37Z",
+    "binary_payloads_in_git": false
+  },
+  "payloads": {
+    "files": 58,
+    "bytes": 511439588,
+    "downloaded": 13,
+    "manual": 8,
+    "failed": 0
+  },
+  "validation": {
+    "offline_unit_tests": 23,
+    "binary_checks": "DBPF 2.1 headers/index bounds; ZIP/RAR CRC; internal package headers; household Tray members; SHA-256",
+    "execution_environment": "GitHub Actions runner",
+    "repeat_run": "https://github.com/Viniciaao/Lixo/actions/runs/34063064401",
+    "identical_payload_sha256_between_runs": 58,
+    "local_checks": "Unit tests, manifest/report/checksum consistency, generated documentation and git diff --check",
+    "artifact_download_in_sandbox": "Unavailable: Azure artifact storage connection returned EOF. No claim of local binary validation.",
+    "tested_in_the_sims_4": false
+  }
+}

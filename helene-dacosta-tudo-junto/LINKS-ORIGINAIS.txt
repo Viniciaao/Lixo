@@ -1,0 +1,41 @@
+LISTA DE LINKS ORIGINAIS — Helene Dacosta (sim + CCs usados)
+
+Página principal do sim (CurseForge):
+  https://www.curseforge.com/sims4/sims-households/helene-dacosta
+  Arquivo (file id 8763744): Anyulinela_Household_Dacosta_0x0026170a56100035.zip
+
+CCs listados na descrição do sim (links oficiais dos criadores):
+
+ 01 (sim)      https://www.curseforge.com/sims4/sims-households/helene-dacosta
+ 02 earrings   https://www.curseforge.com/sims4/create-a-sim/eggsims-earrings-19
+               (file id 6496196) [EGGSIMS] earrings 19_TS4.zip
+ 03 nails      https://www.curseforge.com/sims4/create-a-sim/sparkly-french-nails
+               (file id 8649348) 4w25_SparklyFrenchNails.zip
+ 04 sapatos    https://www.curseforge.com/sims4/create-a-sim/shiny-patent-mary-jane-heels
+               (file id 7751173) [PolySphere]ShinyPatentMaryJaneHeels_NonAutoHeight.package.zip
+ 05 top        https://www.curseforge.com/sims4/create-a-sim/ava-sweatshirt
+               (file id 8177818) Valentine_Top_Ava.zip
+ 06 pele       https://www.patreon.com/posts/heather-skin-n7-85159474   (poyopoyosim)
+               Google Drive: https://drive.google.com/drive/folders/1-gFVfhtikp1_OVZ96YuW9q8v2vIESD7l
+ 07 saia       https://www.patreon.com/posts/belaloallure-day-77031948  (Belaloallure)
+ 08 contour    https://www.patreon.com/posts/gpme-gold-c2-22436855      (goppolsme)
+ 09 olhos      https://www.patreon.com/posts/gpme-gold-eyes-17490207    (goppolsme)
+ 10 cílios N6  https://www.patreon.com/posts/3d-eyelashes-123193524     (Northern Siberia Winds)
+ 11 lábios N35 https://www.patreon.com/posts/wild-cat-make-up-64319245  (Northern Siberia Winds)
+ 12 presets    https://www.patreon.com/posts/helgatisha-sims-59616486   (obscurus-sims)
+ 13 boca       https://www.patreon.com/posts/default-mouth-56990147     (MagicBot)
+ 14 cílios EA  https://kijiko-catfood.com/ea-eyelashes-remover/         (Kijiko)
+               SimFileShare: https://simfileshare.net/download/3247982/
+ 15 preset     https://eunosims.tistory.com/entry/sims4cc-body-preset-1-5  (eunosims)
+ 16 blush      https://www.thesimsresource.com/members/VELYSEA/downloads/details/category/sims4-makeup-female-blush/title/holiday-snow-blush/id/1632502/
+ 17 sombra     https://www.thesimsresource.com/downloads/details/category/sims4-makeup-female-eyeshadow/title/eyeshadow-n42/id/1458745/
+ 18 cabelo     https://www.thesimsresource.com/downloads/details/category/sims4-hair-hairstyles/title/elegante-long-hairstyle-071124-by-s-club/id/1721513/
+ 19 sobrancelha https://www.thesimsresource.com/downloads/details/category/sims4-hair-facial-eyebrows/title/eyebrows-28-v2/id/1485348/
+ 20 cílios     https://www.thesimsresource.com/downloads/details/category/sims4-makeup-female-eyeliner/title/s-club-wm-ts4-eyelashes-201801/id/1400406/
+ 21 sardas     https://www.thesimsresource.com/downloads/details/category/sims4-makeup-female-skindetails/title/freckles-z53/id/1658934/
+
+Observações:
+ - Alguns criadores pedem para você conferir as páginas (termos de uso).
+ - O link do post "helgatisha" (obscurus) contém os presets "lips presets 7f"
+   hospedados na pasta do SimFileShare: https://simfileshare.net/folder/151649/
+ - O post "Belaloallure Day" contém 5 peças; o sim usa apenas "_phaedra_mini_skirt".
